@@ -25,29 +25,30 @@ import requests
 
 url = 'api_endpoint_here'
 headers = {
-    "Doselect-Api-Key": "Rosetta-Key",
-    "Doselect-Api-Secret": "42"
+    "DoSelect-Api-Key": "88d4266fd4e6338d13b845fcf28",
+    "DoSelect-Api-Secret": "385041b7bbc2320471b8551d"
 }
 response = requests.get(url, headers=headers)
 ```
 
 ```shell
 curl "api_endpoint_here"
-  -H "Doselect-Api-Key: Rosetta-Key" \
-  -H "Doselect-Api-Secret: 42"
+  -H "DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28" \
+  -H "DoSelect-Api-Secret: 385041b7bbc2320471b8551d"
 ```
 
-> Make sure to replace `Rosetta-Key` and `42` with your API key and secret.
+> Make sure to replace the dummy key and secret with your API key and secret.
 
-Our APIs use a distinct identifying key and an ai_secret to allow access to the API. Do not share your secret API keys in publicly accessible areas such GitHub, client-side code, and so forth.
+Our APIs use a distinct alpha-numeric identifying key and an api_secret to allow access to the API. Do not share your secret API keys in publicly accessible areas such GitHub, client-side code, and so forth.
 
 It is expected for the API key and API Secret to be included in all API requests to the server in a header that looks like the following:
 
-`Doselect-Api-Key: Rosetta-Key`
-`Doselect-Api-Secret: 42`
+`DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28`
+<br>
+`DoSelect-Api-Secret: 385041b7bbc2320471b8551d`
 
 <aside class="notice">
-You must replace <code>Rosetta-Key</code> and <code>42</code> with your personal API key and secret.
+You must replace <code>88d4266fd4e6338d13b845fcf28</code> and <code>385041b7bbc2320471b8551d</code> with your personal API key and secret.
 </aside>
 
 # Errors
@@ -73,8 +74,10 @@ We use limit-offset based pagination with a default page size of 100.
 
 
 # Metadata
-All top-level API resources have support for bulk fetches via "list" API methods. These will have a meta key in the response json
->
+All top-level API resources have support for bulk fetches via "list" API methods. These will have a meta key in the response json.
+
+The actual resource data will be associated with the key `objects` in the response dictionary.
+
 ```json
 {
     "meta": {
@@ -87,7 +90,7 @@ All top-level API resources have support for bulk fetches via "list" API methods
     "objects":[]
 }
 ```
->
+> Response Format
 
 Parameter | Meaning
 ---------- | -------
@@ -101,141 +104,58 @@ limit | The number of objects returned, as sent in the request
 # Core Resources
 
 ## Test
-This is an object representing a Test which has been/is being/will be conducted. You can retrieve it to see the information of the test
+This is an object representing a Test which has been/is being/will be conducted. 
+You can retrieve it to see the information of the test
 
 ### Get All Tests
 
 ```python
 import requests
 
-url = 'https://api.doselect.com/tardis/api/v1/test'
+url = 'https://api.doselect.com/platform/v1/test'
 headers = {
-    "Doselect-Api-Key": "Rosetta-Key",
-    "Doselect-Api-Secret": "42"
+    "DoSelect-Api-Key": "88d4266fd4e6338d13b845fcf28",
+    "DoSelect-Api-Secret": "42"
 }
 response = requests.get(url, headers=headers)
 ```
 
 ```shell
-curl "https://api.doselect.com/tardis/api/v1/test"
-  -H "Doselect-Api-Key: Rosetta-Key" \
-  -H "Doselect-Api-Secret: 42"
+curl "https://api.doselect.com/platform/v1/test"
+  -H "DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28" \
+  -H "DoSelect-Api-Secret: 385041b7bbc2320471b8551d"
 ```
 
-> Make sure to replace `Rosetta-Key` and `42` with your API key and secret.
-> The above command returns JSON structured like this:
+> Make Sure to replace the dummy values with your key and secret.   `
+> Response Format:
 
 ```json
 {
-    "meta": {
-        "limit": 1,
-        "next": "/tardis/api/v1/test?limit=1&offset=1",
-        "offset": 0,
-        "previous": null,
-        "total_count": 2
-    },
     "objects": [
         {
             "allowed_technologies": {},
-            "archived": true,
-            "cutoff": 42,
-            "duration": 42,
+            "archived": false,
+            "cutoff": 0,
+            "duration": 30,
             "end_time": null,
-            "id": 42,
             "instructions": "",
-            "is_activated": true,
-            "is_live": true,
             "level": "EAS",
-            "meta": {
-                "description": "",
-                "title": ""
-            },
-            "name": "Python Scripting",
+            "name": "Sample",
             "public_access_password": null,
             "public_access_slug": null,
-            "resource_uri": "/tardis/api/v1/test/4242",
+            "resource_uri": "/platform/v1/test/78z50",
             "sections": [
                 {
                     "description": "",
                     "duration": 0,
-                    "name": "Section 42",
-                    "problems": [
-                        {
-                            "level": "EAS",
-                            "name": "Hello World!",
-                            "problem_type": "SCR",
-                            "score": 42,
-                            "slug": "42"
-                        },
-                        {
-                            "level": "EAS",
-                            "name": "The distance problem",
-                            "problem_type": "MCQ",
-                            "score": 42,
-                            "slug": "42-1"
-                        },
-                        {
-                            "level": "EAS",
-                            "name": "The socks problem",
-                            "problem_type": "MCQ",
-                            "score": 42,
-                            "slug": "42-2"
-                        }
-                    ],
-                    "sample": 3,
+                    "name": "Section 1",
+                    "problems": [],
+                    "sample": 0,
                     "shuffle": false,
-                    "slug": "section-42"
+                    "slug": "section-1"
                 }
             ],
-            "settings": {
-                "hacker_extra_data": {
-                    "custom_data": {
-                        "enabled": false,
-                        "fields": []
-                    },
-                    "profile_data": false
-                },
-                "invites": {
-                    "expiry": {
-                        "date": "",
-                        "days": 15,
-                        "enabled": true
-                    },
-                    "message": ""
-                },
-                "proctor": {
-                    "compare": {
-                        "fingerprint": {
-                            "flag": 1,
-                            "max": 0
-                        },
-                        "navigation": {
-                            "flag": 3,
-                            "max": 10
-                        }
-                    },
-                    "enabled": false,
-                    "snapshot": false
-                },
-                "reminders": {
-                    "days_after_creation": 3,
-                    "days_before_expiry": 1,
-                    "enabled": false
-                },
-                "reports": {
-                    "admin_emails": [],
-                    "confirmation": {
-                        "enabled": false,
-                        "message": ""
-                    },
-                    "send_to_candidate": false
-                },
-                "support": {
-                    "email": "hello@doselect.com",
-                    "phone": ""
-                }
-            },
-            "slug": "4242",
+            "slug": "78z50",
             "start_time": null,
             "status": "DRA",
             "tags": []
@@ -248,136 +168,78 @@ This endpoint retrieves all tests of your company.
 
 #### HTTP Request
 
-`GET https://api.doselect.com/tardis/api/v1/test`
+`GET https://api.doselect.com/platform/v1/test`
 
-<aside class="success">
-Remember to send authentication Headers
-</aside>
 
 ### Get a Specific Test
 
 ```python
 import requests
 
-url = 'https://api.doselect.com/tardis/api/v1/test/4242'
+url = 'https://api.doselect.com/platform/v1/test/4242'
 headers = {
-    "Doselect-Api-Key": "Rosetta-Key",
-    "Doselect-Api-Secret": "42"
+    "DoSelect-Api-Key": "88d4266fd4e6338d13b845fcf28",
+    "DoSelect-Api-Secret": "385041b7bbc2320471b8551d"
 }
 response = requests.get(url, headers=headers)
 ```
 
 ```shell
-curl "https://api.doselect.com/tardis/api/v1/test/4242"
-  -H "Doselect-Api-Key: Rosetta-Key" \
-  -H "Doselect-Api-Secret: 42"
+curl "https://api.doselect.com/platform/v1/test/4242"
+  -H "DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28" \
+  -H "DoSelect-Api-Secret: 42"
 ```
 
-> Make sure to replace `Rosetta-Key` and `42` with your API key and secret.
-> The above command returns JSON structured like this:
+> Make Sure to replace the dummy values with your key and secret.   `
+> Response Format:
 
 ```json
 {
     "allowed_technologies": {},
     "archived": true,
-    "cutoff": 42,
-    "duration": 42,
+    "cutoff": 0,
+    "duration": 45,
     "end_time": null,
-    "id": 42,
-    "instructions": "",
-    "is_activated": true,
-    "is_live": true,
+    "instructions": "<p> Lorem Borem </p>",
     "level": "EAS",
-    "meta": {
-        "description": "",
-        "title": ""
-    },
     "name": "Python Scripting",
     "public_access_password": null,
     "public_access_slug": null,
-    "resource_uri": "/tardis/api/v1/test/4242",
+    "resource_uri": "/platform/v1/test/esows",
     "sections": [
         {
             "description": "",
             "duration": 0,
-            "name": "Section 42",
+            "name": "Section 1",
             "problems": [
                 {
                     "level": "EAS",
                     "name": "Hello World!",
                     "problem_type": "SCR",
-                    "score": 42,
-                    "slug": "42"
+                    "score": 50,
+                    "slug": "76wv0"
                 },
                 {
                     "level": "EAS",
                     "name": "The distance problem",
                     "problem_type": "MCQ",
-                    "score": 42,
-                    "slug": "42-1"
+                    "score": 5,
+                    "slug": "0ugxs"
                 },
                 {
                     "level": "EAS",
                     "name": "The socks problem",
                     "problem_type": "MCQ",
-                    "score": 42,
-                    "slug": "42-2"
+                    "score": 5,
+                    "slug": "75g30"
                 }
             ],
             "sample": 3,
             "shuffle": false,
-            "slug": "section-42"
+            "slug": "section-1"
         }
     ],
-    "settings": {
-        "hacker_extra_data": {
-            "custom_data": {
-                "enabled": false,
-                "fields": []
-            },
-            "profile_data": false
-        },
-        "invites": {
-            "expiry": {
-                "date": "",
-                "days": 15,
-                "enabled": true
-            },
-            "message": ""
-        },
-        "proctor": {
-            "compare": {
-                "fingerprint": {
-                    "flag": 1,
-                    "max": 0
-                },
-                "navigation": {
-                    "flag": 3,
-                    "max": 10
-                }
-            },
-            "enabled": false,
-            "snapshot": false
-        },
-        "reminders": {
-            "days_after_creation": 3,
-            "days_before_expiry": 1,
-            "enabled": false
-        },
-        "reports": {
-            "admin_emails": [],
-            "confirmation": {
-                "enabled": false,
-                "message": ""
-            },
-            "send_to_candidate": false
-        },
-        "support": {
-            "email": "hello@doselect.com",
-            "phone": ""
-        }
-    },
-    "slug": "4242",
+    "slug": "esows",
     "start_time": null,
     "status": "DRA",
     "tags": []
@@ -388,17 +250,13 @@ This endpoint retrieves a specific Test.
 
 #### HTTP Request
 
-`GET https://api.doselect.com/tardis/api/v1/test/<slug>`
+`GET https://api.doselect.com/platform/v1/test/<slug>`
 
 #### URL Parameters
 
-Parameter | Description
---------- | -----------
-slug | The slug of the test to retrieve
-
-<aside class="success">
-Remember to send authentication Headers
-</aside>
+Parameter | Description | Source
+--------- | ----------- | ------
+slug | Unique identifier of a test |  GET all tests response will have this in each test.
 
 
 ### Get All Candidates of a Test
@@ -406,42 +264,32 @@ Remember to send authentication Headers
 ```python
 import requests
 
-url = 'https://api.doselect.com/tardis/api/v1/test/4242/candidates'
+url = 'https://api.doselect.com/platform/v1/test/4242/candidates'
 headers = {
-    "Doselect-Api-Key": "Rosetta-Key",
-    "Doselect-Api-Secret": "42"
+    "DoSelect-Api-Key": "88d4266fd4e6338d13b845fcf28",
+    "DoSelect-Api-Secret": "385041b7bbc2320471b8551d"
 }
 response = requests.get(url, headers=headers)
 ```
 
 ```shell
-curl "https://api.doselect.com/tardis/api/v1/test/4242/candidates"
-  -H "Doselect-Api-Key: Rosetta-Key" \
-  -H "Doselect-Api-Secret: 42"
+curl "https://api.doselect.com/platform/v1/test/4242/candidates"
+  -H "DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28" \
+  -H "DoSelect-Api-Secret: 385041b7bbc2320471b8551d"
 ```
 
-> Make sure to replace `Rosetta-Key` and `42` with your API key and secret.
-> The above command returns JSON structured like this:
+> Make Sure to replace the dummy values with your key and secret.   `
+> Response Format:
 
 ```json
 {
-    "meta": {
-        "limit": 1,
-        "next": null,
-        "offset": 0,
-        "previous": null,
-        "total_count": 1
-    },
     "objects": [
         {
-            "access_code": "4242",
+            "access_code": "AbUxfgtmNWQGLYFvsfdgdewlXLjVaqD2MPAwO6dm27c",
             "archived": false,
-            "email": "ghost@wall.com",
-            "expiry": "2015-06-26T10:39:49.124792",
+            "email": "donnie@campushash.com",
+            "expiry": "2015-05-10T13:23:42.006100",
             "extra_data": "{}",
-            "id": 424,
-            "is_demo": false,
-            "is_onboarded": false,
             "is_team_invite": false,
             "member_type": null,
             "report": {
@@ -453,10 +301,10 @@ curl "https://api.doselect.com/tardis/api/v1/test/4242/candidates"
             },
             "resource_uri": "",
             "status": "accepted",
-            "test": "/tardis/api/v1/test/4242",
+            "test": "/platform/v1/test/esows",
             "times_reset": 0,
             "times_sent": 0
-        }
+        },
     ]
 }
 ```
@@ -465,17 +313,13 @@ This endpoint retrieves all candidates of a test.
 
 #### HTTP Request
 
-`GET https://api.doselect.com/tardis/api/v1/test/<slug>/candidates`
+`GET https://api.doselect.com/platform/v1/test/<slug>/candidates`
 
 #### URL Parameters
 
-Parameter | Description
---------- | -----------
-slug | The slug of the test, whose candidates are to retrieve
-
-<aside class="success">
-Remember to send authentication Headers
-</aside>
+Parameter | Description | Source
+--------- | ----------- | ------
+slug | Unique identifier of a test |  GET all tests response will have this in each test.
 
 
 ### Get Report of a Candidate
@@ -483,89 +327,93 @@ Remember to send authentication Headers
 ```python
 import requests
 
-url = 'https://api.doselect.com/tardis/api/v1/test/4242/candidates/ghost@wall.com/report'
+url = 'https://api.doselect.com/platform/v1/test/4242/candidates/ghost@wall.com/report'
 headers = {
-    "Doselect-Api-Key": "Rosetta-Key",
-    "Doselect-Api-Secret": "42"
+    "DoSelect-Api-Key": "88d4266fd4e6338d13b845fcf28",
+    "DoSelect-Api-Secret": "385041b7bbc2320471b8551d"
 }
 response = requests.get(url, headers=headers)
 ```
 
 ```shell
-curl "https://api.doselect.com/tardis/api/v1/test/4242/candidates/ghost@wall.com/report"
-  -H "Doselect-Api-Key: Rosetta-Key" \
-  -H "Doselect-Api-Secret: 42"
+curl "https://api.doselect.com/platform/v1/test/4242/candidates/ghost@wall.com/report"
+  -H "DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28" \
+  -H "DoSelect-Api-Secret: 385041b7bbc2320471b8551d"
 ```
 
-> Make sure to replace `Rosetta-Key` and `42` with your API key and secret.
-> The above command returns JSON structured like this:
+> Make Sure to replace the dummy values with your key and secret.   `
+> Response Format:
 
 ```json
 {
-    "_test": {
-        "name": "Sample",
-        "slug": "4242"
-    },
-    "accepted": 0,
-    "attempted": 1,
-    "code_quality_frequency": null,
-    "ended_at": "2017-06-25T08:21:31.141877",
+    "accepted": 41,
+    "attempted": 76,
+    "code_quality_frequency": [
+        {
+            "labels": "Bug Risk",
+            "value": 3
+        }
+    ],
+    "ended_at": "2017-08-17T06:29:06.955499",
     "extra_data": {},
-    "has_access": false,
-    "id": 424,
-    "is_expired": true,
     "is_submitted": true,
-    "max_score": 105,
-    "need_review": 1,
-    "percentile_score": 50,
+    "max_score": 580,
+    "need_review": 0,
+    "percentile_score": 33,
     "proctored_data": {},
-    "rejected": 0,
-    "reports_url": "reports_url",
+    "rejected": 35,
+    "reports_url": "http://doselect.local:8000/reports/test?access_code=kp0MNj5%2BAG1LRSW2wPlcYZ/TX7Hf9VBE9Wz0EE0hHUSmZ2w0FlRD4oebPPBw3lt6",
     "resource_uri": "",
     "sections": [
         {
-            "name": "Section 1",
+            "name": "BASH Scripting",
             "problems": [
-                "problem_slug_1",
-                "problem_slug_2",
-                "problem_slug_3"
+                "ed9op",
+                "br9p9"
+            ]
+        },
+        {
+            "name": "MCQ Section",
+            "problems": [
+                "7gnwp",
+                "syhnm",
+                "7ygow",
+                "7lv90"
             ]
         }
     ],
-    "settings": {
-        "proctor": {
-            "enabled": false,
-            "snapshot": false
-        }
-    },
-    "started_at": "2017-06-19T10:40:17.657687",
+    "started_at": "2017-08-17T05:14:12.167016",
     "tagwise_proficiency": {
         "languages": [
-            "ubuntu-1404"
+            "bash"
         ],
         "tags": {
-            "labels": [],
-            "values": []
+            "labels": [
+                "Linux"
+            ],
+            "values": [
+                2.76
+            ]
         }
     },
-    "test": "/tardis/api/v1/test/4242",
-    "time_taken": 78073,
-    "total_problems": 3,
-    "total_score": "0.0",
-    "total_solutions": 1,
+    "test": "/platform/v1/test/2edpq",
+    "time_taken": 4494,
+    "total_problems": 78,
+    "total_score": "263.0",
+    "total_solutions": 76,
     "user": {
-        "email": "ghost@wall.com",
-        "first_name": "Agnes",
-        "id": 30,
+        "email": "tessyjoseph1992@gmail.com",
+        "first_name": "TESSY",
+        "id": 31270,
         "is_active": true,
-        "last_name": "Gru",
-        "username": "ghost"
+        "last_name": "JOSEPH JOHN",
+        "username": "7302e16af6ea4bcb9446fe6542ea4e"
     },
     "verdict": {
-        "percentage": 0,
-        "quality_score": null,
-        "quality_verdict": "bad",
-        "verdict": "Qualified"
+        "percentage": 45,
+        "quality_score": 4.3,
+        "quality_verdict": "ok",
+        "verdict": "Not qualified"
     }
 }
 ```
@@ -574,15 +422,13 @@ This endpoint retrieves all candidates of a test.
 
 #### HTTP Request
 
-`GET https://api.doselect.com/tardis/api/v1/test/<slug>/candidates/<email>/report`
+`GET https://api.doselect.com/platform/v1/test/<slug>/candidates/<email>/report`
 
 ### URL Parameters
 
-Parameter | Description
---------- | -----------
-slug | The slug of the test, whose report is to be retrieved
-email | The email of the candidate, whose report is to be retrieved
+#### URL Parameters
 
-<aside class="success">
-Remember to send authentication Headers
-</aside>
+Parameter | Description | Source
+--------- | ----------- | ------
+slug | Unique identifier of a test | GET all tests response will have this in each test.
+email | The email of the candidate | GET all candidates response will have this in each candidate.
