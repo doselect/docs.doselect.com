@@ -432,3 +432,201 @@ Parameter | Description | Source
 --------- | ----------- | ------
 slug | Unique identifier of a test | GET all tests response will have this in each test.
 email | The email of the candidate | GET all candidates response will have this in each candidate.
+
+
+# Embed APIs
+
+The APIs powering the embeds being used by our partners
+
+## Embed Init
+This API will validate and authenticate a user and return an access token which will be used for subsequent authentication and authorization
+
+```python
+import requests
+
+url = 'https://api.doselect.com/spock/v2/auth/'
+headers = {
+    "Content-Type": "application/json",
+    "Referer": "doselect.com"
+}
+body = {
+	"api_key": "abc",
+	"email": "donnie@campushash.com",
+	"full_name": "Donnie Caan",
+	"timezone": "GMT",
+	"user_hash": "CLjME03fz+Jr36VaDwv2MbNeemtfA57IgWhwcR3GfdI="
+}
+response = requests.post(url, body=body, headers=headers)
+```
+
+```shell
+curl -X POST \
+  https://api.doselect.com/spock/v2/auth/ \
+  -H 'content-type: application/json' \
+  -H 'referer: doselect.com' \
+  -d '{
+	"api_key": "abc",
+	"email": "donnie@campushash.com",
+	"full_name": "Donnie Caan",
+	"timezone": "GMT",
+	"user_hash": "CLjME03fz+Jr36VaDwv2MbNeemtfA57IgWhwcR3GfdI="
+}'
+```
+
+> Sample Response:
+
+```json
+{
+    "token": "50cea1c5-8684-48fb-a3b4-98207b91d430"
+}
+```
+
+This API will be called by all our embeds with the user's email and hash to validate the user.
+
+### Response Codes:
+Status Code | Meaning | Description
+---------- | ------- | -----------
+200 | Success | The request was successful
+400 | Bad Request | Your request is not in an accepted format.
+401 | Unauthorized | Your API key and referrer host is wrong/missing.
+403 | Forbidden | The user hash doesn't match the one calculated.
+405 | Method Not Allowed | You tried to use a method other than POST.
+500 | Internal Server Error | We had a problem with our server. Try again later.
+503 | Service Unavailable | We're temporarily offline for maintenance. Please try again later.
+
+
+
+## Embed Test Frame
+This API will fetch the embed test frame
+
+```python
+import requests
+
+url = "https://api.doselect.com/spock/v2/test/"
+
+params = {"token":"5834be15-694b-4394-be03-bc44c020db31", "testslug":"abcd"}
+
+response = requests.get(url, params=params)
+```
+
+```shell
+curl -X GET \
+  'https://api.doselect.com/spock/v2/test/?token=5834be15-694b-4394-be03-bc44c020db31&testslug=abcd'
+```
+
+> Sample Response:
+
+```
+<iframe src=api.doselect.com/spock/v2/company/195/test/abcd/></iframe>
+```
+
+This API will return the embed test view for a particular user of a particular company as identified by the access token.
+
+### URL Parameters
+
+Parameter | Description | Source
+--------- | ----------- | ------
+testslug | Unique identifier of a test |  <?>
+token | Unique identifier of a user |  The embed init API
+
+
+### Response Codes:
+Status Code | Meaning | Description
+---------- | ------- | -----------
+200 | Success | The request was successful
+401 | Unauthorized | Your token sent is wrong/missing.
+403 | Forbidden | The company doesn't have access to the test identified by the slug.
+405 | Method Not Allowed | You tried to use a method other than GET.
+500 | Internal Server Error | We had a problem with our server. Try again later.
+503 | Service Unavailable | We're temporarily offline for maintenance. Please try again later.
+
+
+## Embed Test Report
+This API will fetch the report of a user
+
+```python
+import requests
+
+url = "https://api.doselect.com/spock/v2/report/"
+
+params = {"token":"5834be15-694b-4394-be03-bc44c020db31","testslug":"78z50"}
+
+response = requests.get(url, params=params)
+```
+
+```shell
+curl -X GET \
+  'https://api.doselect.com/spock/v2/report/?token=5834be15-694b-4394-be03-bc44c020db31&testslug=78z50'
+```
+
+> Sample Response:
+
+```json
+{
+    "accepted": 0,
+    "stats": {},
+    "proctored_data": {},
+    "total_problems": 3,
+    "sections": [
+        {
+            "problems": [
+                {
+                    "slug": "7hge0",
+                    "score": 50,
+                    "problem_type": "SCR",
+                    "name": "Sum of all digits",
+                    "level": "EAS"
+                },
+                {
+                    "slug": "sz3i7",
+                    "score": 50,
+                    "problem_type": "SCR",
+                    "name": "Print number in reverse order",
+                    "level": "EAS"
+                },
+                {
+                    "slug": "78z50",
+                    "score": 5,
+                    "problem_type": "SUB",
+                    "name": "DoSelect Mailserver",
+                    "level": "EAS"
+                }
+            ],
+            "name": "Section 1"
+        }
+    ],
+    "invite": 594,
+    "attempted": 1,
+    "rejected": 0,
+    "code_quality_issues": null,
+    "candidate_extra_data": {
+        "something": "else"
+    },
+    "ended_at": "2015-06-25T08:21:31.141Z",
+    "max_score": 105,
+    "time_taken": 78073,
+    "need_review": 1
+}
+```
+
+This API will return the report a particular user of a particular test as identified by the access token and test slug.
+
+### URL Parameters
+
+Parameter | Description | Source
+--------- | ----------- | ------
+testslug | Unique identifier of a test |  <?>
+token | Unique identifier of a user |  The embed init API
+
+### Response Codes:
+Status Code | Meaning | Description
+---------- | ------- | -----------
+200 | Success | The request was successful
+401 | Unauthorized | Your token sent is wrong/missing.
+403 | Forbidden | The company doesn't have access to the test identified by the slug.
+404 | Not Found | The Report doesn't exist.
+405 | Method Not Allowed | You tried to use a method other than GET.
+500 | Internal Server Error | We had a problem with our server. Try again later.
+503 | Service Unavailable | We're temporarily offline for maintenance. Please try again later.
+
+
