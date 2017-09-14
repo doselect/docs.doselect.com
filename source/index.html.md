@@ -483,35 +483,27 @@ curl -X POST \
 
 This API will be called by all our embeds with the user's email and hash to validate the user.
 
-### Response Codes:
-Status Code | Meaning | Description
----------- | ------- | -----------
-200 | Success | The request was successful
-400 | Bad Request | Your request is not in an accepted format.
-401 | Unauthorized | Your API key and referrer host is wrong/missing.
-403 | Forbidden | The user hash doesn't match the one calculated.
-405 | Method Not Allowed | You tried to use a method other than POST.
-500 | Internal Server Error | We had a problem with our server. Try again later.
-503 | Service Unavailable | We're temporarily offline for maintenance. Please try again later.
 
-
-
-## Embed Test Frame
-This API will fetch the embed test frame
+## Embed Load Frame
 
 ```python
 import requests
 
-url = "https://api.doselect.com/spock/v2/test/"
+url = "http://localhost:8000/spock/v2/loadframe/"
 
-params = {"token":"5834be15-694b-4394-be03-bc44c020db31", "testslug":"abcd"}
+params = {"token":"5834be15-694b-4394-be03-bc44c020db31","slug":"abcd4","category":"problem"}
 
-response = requests.get(url, params=params)
+headers = {
+    'referer': "localhost",
+    }
+
+response = requests.request("GET", url, headers=headers, params=params)
 ```
 
 ```shell
 curl -X GET \
-  'https://api.doselect.com/spock/v2/test/?token=5834be15-694b-4394-be03-bc44c020db31&testslug=abcd'
+  'http://localhost:8000/spock/v2/loadframe/?token=5834be15-694b-4394-be03-bc44c020db31&slug=78z50&category=problem' \
+  -H 'referer: localhost'
 ```
 
 > Sample Response:
@@ -520,29 +512,18 @@ curl -X GET \
 <iframe src=api.doselect.com/spock/v2/company/195/test/abcd/></iframe>
 ```
 
-This API will return the embed test view for a particular user of a particular company as identified by the access token.
-
+This API will fetch the html code snippet containing an iframe with the url of a test or a problem in it.
+It will test whether the company-user identified by the token has access or not
 ### URL Parameters
 
 Parameter | Description | Source
 --------- | ----------- | ------
-testslug | Unique identifier of a test |  <?>
-token | Unique identifier of a user |  The embed init API
-
-
-### Response Codes:
-Status Code | Meaning | Description
----------- | ------- | -----------
-200 | Success | The request was successful
-401 | Unauthorized | Your token sent is wrong/missing.
-403 | Forbidden | The company doesn't have access to the test identified by the slug.
-405 | Method Not Allowed | You tried to use a method other than GET.
-500 | Internal Server Error | We had a problem with our server. Try again later.
-503 | Service Unavailable | We're temporarily offline for maintenance. Please try again later.
+category | Enum which describes which frame to return | "problem" or "test"
+slug | Unique identifier of a Test/Problem |  The Partner API
+token | Unique identifier of a User-Company |  The embed init API
 
 
 ## Embed Test Report
-This API will fetch the report of a user
 
 ```python
 import requests
@@ -615,18 +596,5 @@ This API will return the report a particular user of a particular test as identi
 
 Parameter | Description | Source
 --------- | ----------- | ------
-testslug | Unique identifier of a test |  <?>
+testslug | Unique identifier of a test |  The Partner API
 token | Unique identifier of a user |  The embed init API
-
-### Response Codes:
-Status Code | Meaning | Description
----------- | ------- | -----------
-200 | Success | The request was successful
-401 | Unauthorized | Your token sent is wrong/missing.
-403 | Forbidden | The company doesn't have access to the test identified by the slug.
-404 | Not Found | The Report doesn't exist.
-405 | Method Not Allowed | You tried to use a method other than GET.
-500 | Internal Server Error | We had a problem with our server. Try again later.
-503 | Service Unavailable | We're temporarily offline for maintenance. Please try again later.
-
-
