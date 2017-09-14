@@ -14,7 +14,8 @@ search: true
 
 # Introduction
 
-Welcome to the Doselect Partner API! You can use our API to access our partner API endpoints, which can get information on tests associated with your company, the candidates for each test and the report of the candidates.
+Welcome to the DoSelect Partner API. Structured around REST, our API uses built-in HTTP features such as HTTP authentication, HTTP Requests and Responses, et. al. Our API will help you access DoSelect’s partner API endpoints where you can retrieve information on tests associated with your company, candidate information for each test and reports of candidates.
+
 
 # Authentication
 
@@ -39,9 +40,8 @@ curl "api_endpoint_here"
 
 > Make sure to replace the dummy key and secret with your API key and secret.
 
-Our APIs use a distinct alpha-numeric identifying key and an api_secret to allow access to the API. Do not share your secret API keys in publicly accessible areas such GitHub, client-side code, and so forth.
-
-It is expected for the API key and API Secret to be included in all API requests to the server in a header that looks like the following:
+To allow access to itself, our API requires you to specify a distinct alpha-numeric key for identification along with an API secret (api_secret). Because your secret key contains sensitive information, we advise you to not expose your API secret in publicly accessible forums such as GitHub, or in the client-side code.
+We expect you to include the key and API secret in all your API requests to the server in a header. The specification would look like this -
 
 `DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28`
 <br>
@@ -59,24 +59,22 @@ The Partner API uses the following error codes:
 Error Code | Meaning | Description
 ---------- | ------- | -----------
 400 | Bad Request | Your request is not in an accepted format.
-401 | Unauthorized | Your API key and secret is wrong/missing.
-403 | Forbidden | The resource requested is not associated with you.
+401 | Unauthorized | Your API key and/or secret is wrong or missing.
+403 | Forbidden | The requested resource is not accessible to you.
 404 | Not Found | The specified resource could not be found.
-405 | Method Not Allowed | You tried to access a resource with an invalid method.
+405 | Method Not Allowed | You are trying to access the resource using an invalid method.
 500 | Internal Server Error | We had a problem with our server. Try again later.
 503 | Service Unavailable | We're temporarily offline for maintenance. Please try again later.
 
 
 # Pagination
-All top-level API resources have support for bulk fetches via "list" API methods. These list API methods share a common structure, taking at least these two parameters: `limit` and `offset`.
-
-We use limit-offset based pagination with a default page size of 100.
-
+All reliable API resources provide support for bulk fetches using the "list" API methods. These list API methods share a common structure and usually take (at least) these two parameters: limit and offset.
+Our API uses the limit-offset based pagination with a default page size of 100.
 
 # Metadata
-All top-level API resources have support for bulk fetches via "list" API methods. These will have a meta key in the response json.
+All reliable API resources provide support for bulk fetches using the "list" API methods. These methods contain a `meta` key in the response Json object.
+The resource data will be returned in the key `objects` of the response dictionary.
 
-The actual resource data will be associated with the key `objects` in the response dictionary.
 
 ```json
 {
@@ -102,8 +100,7 @@ limit | The number of objects returned, as sent in the request
 
 
 # Test API
-This is an object representing a Test which has been/is being/will be conducted.
-You can retrieve it to see the information of the test
+Test is an object representing a test which has been conducted/is under progress/or will be conducted. All the information regarding a test can be viewed by retrieving this object.
 
 ## Get All Tests
 
@@ -254,7 +251,7 @@ This endpoint retrieves a specific Test.
 
 Parameter | Description | Source
 --------- | ----------- | ------
-slug | Unique identifier of a test |  GET all tests response will have this in each test.
+slug | Unique identifier of a test |  "GET all Tests" response will contain this parameter in each test.
 
 
 ## Get All Candidates of a Test
@@ -317,7 +314,7 @@ This endpoint retrieves all candidates of a test.
 
 Parameter | Description | Source
 --------- | ----------- | ------
-slug | Unique identifier of a test |  GET all tests response will have this in each test.
+slug | Unique identifier of a test |  "GET all Tests" response will contain this parameter in each test.
 
 
 ## Get Report of a Candidate
@@ -426,8 +423,8 @@ This endpoint retrieves all candidates of a test.
 
 Parameter | Description | Source
 --------- | ----------- | ------
-slug | Unique identifier of a test | GET all tests response will have this in each test.
-email | The email of the candidate | GET all candidates response will have this in each candidate.
+slug | Unique identifier of a test | "GET all Tests" response will contain this parameter in each test.
+email | The email of the candidate | "GET All Candidates" response will contain this parameter in each candidate’s data.
 
 
 # Embed API
