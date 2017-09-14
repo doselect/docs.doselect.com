@@ -1,108 +1,115 @@
 ---
-title: API Reference
+title: DoSelect Platform APIs
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
   - python
 
 toc_footers:
-  - Contact us for the API Key.
-  - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
 search: true
 ---
 
 # Introduction
 
-Welcome to the DoSelect Partner API. Structured around REST, our API uses built-in HTTP features such as HTTP authentication, HTTP Requests and Responses, et. al. Our API will help you access DoSelect’s partner API endpoints where you can retrieve information on tests associated with your company, candidate information for each test and reports of candidates.
+Welcome to the DoSelect Platform APIs! These APIs provide you access to various resources and functionalities of the DoSelect platform,
+like Tests, Reports, Problems, Submissions and Embeds.
 
+The API is organized around REST. All requests should be made over SSL. All request and response bodies, including errors, are encoded in JSON.
 
 # Authentication
 
-> To authenticate, use this code:
+> Example request with authentication:
 
 ```python
 import requests
 
-url = 'api_endpoint_here'
+url = 'https://api.doselect.com/platform/v1/test'
+
 headers = {
     "DoSelect-Api-Key": "88d4266fd4e6338d13b845fcf28",
     "DoSelect-Api-Secret": "385041b7bbc2320471b8551d"
 }
+
 response = requests.get(url, headers=headers)
 ```
 
 ```shell
-curl "api_endpoint_here"
+curl "https://api.doselect.com/platform/v1/test"
   -H "DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28" \
   -H "DoSelect-Api-Secret: 385041b7bbc2320471b8551d"
 ```
 
-> Make sure to replace the dummy key and secret with your API key and secret.
+Access to the APIs are authenticated using your team account's `API_KEY` and `API_SECRET`. These credentials are available in your team dashbaord.
 
-To allow access to itself, our API requires you to specify a distinct alpha-numeric key for identification along with an API secret (api_secret). Because your secret key contains sensitive information, we advise you to not expose your API secret in publicly accessible forums such as GitHub, or in the client-side code.
-We expect you to include the key and API secret in all your API requests to the server in a header. The specification would look like this -
-
-`DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28`
-<br>
-`DoSelect-Api-Secret: 385041b7bbc2320471b8551d`
+You must include the `API_KEY` and `API_SECRET` in custom request headers, `DoSelect-Api-Key` and `DoSelect-Api-Secret` respectively.
+Because your `API_SECRET` is sensitive information and allows access to your account, we strongly advise you to not expose your `API_SECRET`
+in publicly accessible avenues such as GitHub, or in client-side code.
 
 <aside class="notice">
-You must replace <code>88d4266fd4e6338d13b845fcf28</code> and <code>385041b7bbc2320471b8551d</code> with your personal API key and secret.
+The examples given in this documentation use dummy credentials. You must use your team's actual credentials for these requests to work.
 </aside>
 
 # Errors
 
-The Partner API uses the following error codes:
+The APIs return standard HTTP success or error status codes. For errors, extra information about what went wrong will also be sent in the respose,
+encoded in JSON. The various HTTP codes we might return are listed below.
 
-
-Error Code | Meaning | Description
+Code | Title | Description
 ---------- | ------- | -----------
-400 | Bad Request | Your request is not in an accepted format.
-401 | Unauthorized | Your API key and/or secret is wrong or missing.
-403 | Forbidden | The requested resource is not accessible to you.
-404 | Not Found | The specified resource could not be found.
-405 | Method Not Allowed | You are trying to access the resource using an invalid method.
-500 | Internal Server Error | We had a problem with our server. Try again later.
-503 | Service Unavailable | We're temporarily offline for maintenance. Please try again later.
+200 | OK | The request was successful.
+400 | Bad request | The request was malformed or in an unaccepted format.
+401 | Unauthorized | Your `API_KEY` and/or `API_SECRET` is wrong or missing.
+403 | Forbidden | The requested resource was not accessible to you.
+404 | Not found | The specified resource was not be found.
+405 | Method not allowed | You were trying to access the resource using an invalid HTTP method.
+50X | Internal server error | An error occured with our APIs.
 
 
 # Pagination
-All reliable API resources provide support for bulk fetches using the "list" API methods. These list API methods share a common structure and usually take (at least) these two parameters: limit and offset.
-Our API uses the limit-offset based pagination with a default page size of 100.
 
-# Metadata
-All reliable API resources provide support for bulk fetches using the "list" API methods. These methods contain a `meta` key in the response Json object.
-The resource data will be returned in the key `objects` of the response dictionary.
+API endpoints that return a collection of results are always paginated, and contain a `meta` object with pagination details. The `objects` object contains the list of
+resource objects in such responses.
 
+## Meta
 
 ```json
 {
     "meta": {
             "limit": 100,
-            "next": null,
-            "offset": 0,
-            "previous": null,
-            "total_count": 1
+            "next": /platform/v1/test?limit=100&offset=200,
+            "offset": 100,
+            "previous": /platform/v1/test?limit=100&offset=0,
+            "total_count": 217
     },
-    "objects":[]
+    "objects":[
+        {
+            ...
+        },
+        {
+            ...
+        }
+    ]
 }
 ```
-> Response Format
 
-Parameter | Meaning
+The `meta` object contains the following information:
+
+Parameter | Description
 ---------- | -------
-total_count | The total number of objects being returned
-previous | The URI of the previous page
-next | The URI of the next page
-offset | The object offset, as sent in the request
-limit | The number of objects returned, as sent in the request
+limit | The page size for this request. This is set to `50` by default.
+offset | The offset of the first object sent in this response.
+next | The resource URI of the next page in this resource list. This field would be `null` if there's no next page.
+previous | The resource URI of the previous page in this resource list. This field would be `null` if there's no previous page.
+total_count | The total number of objects in this resource list.
 
 
 # Test API
-Test is an object representing a test which has been conducted/is under progress/or will be conducted. All the information regarding a test can be viewed by retrieving this object.
 
-## Get All Tests
+The Test API lets you retrieve tests that have been created in your team.
+
+## Get all tests
+> Request
 
 ```python
 import requests
@@ -110,7 +117,7 @@ import requests
 url = 'https://api.doselect.com/platform/v1/test'
 headers = {
     "DoSelect-Api-Key": "88d4266fd4e6338d13b845fcf28",
-    "DoSelect-Api-Secret": "42"
+    "DoSelect-Api-Secret": "385041b7bbc2320471b8551d"
 }
 response = requests.get(url, headers=headers)
 ```
@@ -121,8 +128,7 @@ curl "https://api.doselect.com/platform/v1/test"
   -H "DoSelect-Api-Secret: 385041b7bbc2320471b8551d"
 ```
 
-> Make Sure to replace the dummy values with your key and secret.   `
-> Response Format:
+> Response
 
 ```json
 {
@@ -159,19 +165,21 @@ curl "https://api.doselect.com/platform/v1/test"
 }
 ```
 
-This endpoint retrieves all tests of your company.
+This endpoint retrieves all tests that exist in your team's account.
 
 ### HTTP Request
 
 `GET https://api.doselect.com/platform/v1/test`
 
 
-## Get a Specific Test
+## Get one test
+
+> Request
 
 ```python
 import requests
 
-url = 'https://api.doselect.com/platform/v1/test/4242'
+url = 'https://api.doselect.com/platform/v1/test/esows'
 headers = {
     "DoSelect-Api-Key": "88d4266fd4e6338d13b845fcf28",
     "DoSelect-Api-Secret": "385041b7bbc2320471b8551d"
@@ -180,13 +188,12 @@ response = requests.get(url, headers=headers)
 ```
 
 ```shell
-curl "https://api.doselect.com/platform/v1/test/4242"
+curl "https://api.doselect.com/platform/v1/test/esows"
   -H "DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28" \
-  -H "DoSelect-Api-Secret: 42"
+  -H "DoSelect-Api-Secret: 385041b7bbc2320471b8551d"
 ```
 
-> Make Sure to replace the dummy values with your key and secret.   `
-> Response Format:
+> Response
 
 ```json
 {
@@ -195,7 +202,7 @@ curl "https://api.doselect.com/platform/v1/test/4242"
     "cutoff": 0,
     "duration": 45,
     "end_time": null,
-    "instructions": "<p> Lorem Borem </p>",
+    "instructions": "<p>Cras ultricies ligula sed magna dictum porta.</p>",
     "level": "EAS",
     "name": "Python Scripting",
     "public_access_password": null,
@@ -203,7 +210,7 @@ curl "https://api.doselect.com/platform/v1/test/4242"
     "resource_uri": "/platform/v1/test/esows",
     "sections": [
         {
-            "description": "",
+            "description": "Cras ultricies ligula sed magna dictum porta.",
             "duration": 0,
             "name": "Section 1",
             "problems": [
@@ -237,29 +244,24 @@ curl "https://api.doselect.com/platform/v1/test/4242"
     "slug": "esows",
     "start_time": null,
     "status": "DRA",
-    "tags": []
+    "tags": ["python", "functions"]
 }
 ```
-
-This endpoint retrieves a specific Test.
+A test is identified by a unique `slug` that gets generated during creation. This endpoint retrieves a specific test:
 
 ### HTTP Request
 
 `GET https://api.doselect.com/platform/v1/test/<slug>`
 
-### URL Parameters
 
-Parameter | Description | Source
---------- | ----------- | ------
-slug | Unique identifier of a test |  "GET all Tests" response will contain this parameter in each test.
+## Get all candidates of a test
 
-
-## Get All Candidates of a Test
+> Request
 
 ```python
 import requests
 
-url = 'https://api.doselect.com/platform/v1/test/4242/candidates'
+url = 'https://api.doselect.com/platform/v1/test/esows/candidates'
 headers = {
     "DoSelect-Api-Key": "88d4266fd4e6338d13b845fcf28",
     "DoSelect-Api-Secret": "385041b7bbc2320471b8551d"
@@ -268,13 +270,12 @@ response = requests.get(url, headers=headers)
 ```
 
 ```shell
-curl "https://api.doselect.com/platform/v1/test/4242/candidates"
+curl "https://api.doselect.com/platform/v1/test/esows/candidates"
   -H "DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28" \
   -H "DoSelect-Api-Secret: 385041b7bbc2320471b8551d"
 ```
 
-> Make Sure to replace the dummy values with your key and secret.   `
-> Response Format:
+> Response
 
 ```json
 {
@@ -284,9 +285,7 @@ curl "https://api.doselect.com/platform/v1/test/4242/candidates"
             "archived": false,
             "email": "donnie@campushash.com",
             "expiry": "2015-05-10T13:23:42.006100",
-            "extra_data": "{}",
-            "is_team_invite": false,
-            "member_type": null,
+            "extra_data": {},
             "report": {
                 "percentile_score": null,
                 "time_taken": null,
@@ -295,10 +294,7 @@ curl "https://api.doselect.com/platform/v1/test/4242/candidates"
                 "total_solutions": null
             },
             "resource_uri": "",
-            "status": "accepted",
-            "test": "/platform/v1/test/esows",
-            "times_reset": 0,
-            "times_sent": 0
+            "test": "/platform/v1/test/esows"
         },
     ]
 }
@@ -310,14 +306,10 @@ This endpoint retrieves all candidates of a test.
 
 `GET https://api.doselect.com/platform/v1/test/<slug>/candidates`
 
-### URL Parameters
 
-Parameter | Description | Source
---------- | ----------- | ------
-slug | Unique identifier of a test |  "GET all Tests" response will contain this parameter in each test.
+## Get a candidate's report
 
-
-## Get Report of a Candidate
+> Request
 
 ```python
 import requests
@@ -336,8 +328,7 @@ curl "https://api.doselect.com/platform/v1/test/4242/candidates/ghost@wall.com/r
   -H "DoSelect-Api-Secret: 385041b7bbc2320471b8551d"
 ```
 
-> Make Sure to replace the dummy values with your key and secret.   `
-> Response Format:
+> Response
 
 ```json
 {
@@ -357,7 +348,6 @@ curl "https://api.doselect.com/platform/v1/test/4242/candidates/ghost@wall.com/r
     "percentile_score": 33,
     "proctored_data": {},
     "rejected": 35,
-    "reports_url": "http://doselect.local:8000/reports/test?access_code=kp0MNj5%2BAG1LRSW2wPlcYZ/TX7Hf9VBE9Wz0EE0hHUSmZ2w0FlRD4oebPPBw3lt6",
     "resource_uri": "",
     "sections": [
         {
@@ -397,11 +387,11 @@ curl "https://api.doselect.com/platform/v1/test/4242/candidates/ghost@wall.com/r
     "total_score": "263.0",
     "total_solutions": 76,
     "user": {
-        "email": "tessyjoseph1992@gmail.com",
-        "first_name": "TESSY",
+        "email": "john@example.com",
+        "first_name": "John",
         "id": 31270,
         "is_active": true,
-        "last_name": "JOSEPH JOHN",
+        "last_name": "Doe",
         "username": "7302e16af6ea4bcb9446fe6542ea4e"
     },
     "verdict": {
@@ -413,212 +403,118 @@ curl "https://api.doselect.com/platform/v1/test/4242/candidates/ghost@wall.com/r
 }
 ```
 
-This endpoint retrieves all candidates of a test.
+This endpoint retrieves the reports of one candidate in a test. A candidate is identified by the `email` in a test.
 
 ### HTTP Request
 
 `GET https://api.doselect.com/platform/v1/test/<slug>/candidates/<email>/report`
 
-### URL Parameters
+# User API
 
-Parameter | Description | Source
---------- | ----------- | ------
-slug | Unique identifier of a test | "GET all Tests" response will contain this parameter in each test.
-email | The email of the candidate | "GET All Candidates" response will contain this parameter in each candidate’s data.
+The User API allows you to retrieve the details of a user on DoSelect.
 
+# Problem API
+
+The Problem API allows you to retrieve one problem on DoSelect.
+
+<aside class="notice">Details coming soon.</aside>
+
+# Submission API
+
+The Submission API allows you to create a solution for a problem and retrieve evaluation results.
+
+<aside class="notice">Details coming soon.</aside>
 
 # Embed API
 
-The embed client library powers interactions with DoSelect embed partner APIs
+The Embed API allows you to embed a `Test` or a `Problem` on DoSelect on your platform. This API is designed keeping in mind that
+the platform which using the embed need not store any state data on their end -- all state data is stored by DoSelect and can be retrieved using
+the REST Platform APIs.
 
-## Setup
+## Client library
 
-### Step 1: Install the DoSelect Embed JS library
+The Embed API can be accessed using the embed client library, `doselect-embed.js`. This library provides a simple JavaScript interface
+for authentication, creating embed objects on your application, and retrieving general information related to the embedded objects. 
 
-To initiate the DoSelect embed, simply copy and paste the snippet below before the </body> tag on every page where you want the embed to appear.
+### Setup
 
-```
-<DoSelect embed script goes here>
-```
+#### Step 1: Install the `doselect-embed.js` library
 
-### Step 2: Configure user metadata
+To use the Embed API, simply copy and paste the snippet below before the `</body>` tag on every page where you want the embed to appear.
 
-To display embed problems and tests with respect to user, update `window.doselectSettings` object with user metadata and place it above the minifed library.
+`<script>[DOSELECT EMBED CODE SNIPPET]</script>`
 
-```
+#### Step 2: Configure user settings
+
+```javascript
 window.doselectSettings = {
-	"api_key": API_KEY,
-	"email": USER_EMAIL,
-	"full_name": USER_FULL_NAME,
-	"timezone": USER_TIMEZONE,
-	"user_hash": HMAC(SHA256(API_SECRET, USER_EMAIL))
-}
-```
-
-Example:
-
-```
-window.doselectSettings = {
-	"api_key": "abc",
-	"email": "donnie@campushash.com",
-	"full_name": "Donnie Caan",
-	"timezone": "GMT",
-	"user_hash": "CLjME03fz+Jr36VaDwv2MbNeemtfA57IgWhwcR3GfdI="
+    "api_key": "88d4266fd4e6338d13b845fcf28",
+    "email": "john@example.com",
+    "full_name": "John Doe",
+    "timezone": "Asia/Kolkata",
+    "user_hash": "CLjME03fz+Jr36VaDwv2MbNeemtfA57IgWhwcR3GfdI="
 }
 
-<DoSelect embed script goes here>
+<script>[DOSELECT EMBED CODE SNIPPET]</script>
 ```
 
+To display embed problems and tests with respect to user, update `window.doselectSettings` object with user metadata and place it above the embed code snippet.
+
+The following details are needed for configuration:
+
+Parameter | Description
+----------|------------
+api_key | Your team account's `API_KEY`
+email | Email of the current user in your application for which you want the embed objects
+full_name | Full name of the current user
+timezone | Timezone of the current user
+user_hash | The verification hash for this user, which must be generated on your server-side
+
+##### Generating `user_hash`
+
+The `user_hash` must be a server-side generated [HMAC (hash based message authentication code)](http://en.wikipedia.org/wiki/Hash-based_message_authentication_code),
+using **SHA256**, with the current user's `email` as the message and your `API_SECRET` as the key.
+
+The embed requests will fail if the `user_hash` is incorrect.
+
+## Problem embed
+
+You can embed a problem on your platform using the problem's `slug`, which uniquely identifies a problem on
+DoSelect. Add this HTML code where you want a problem to show up:
+
+`<div class="doselect-embed" data-category="problem" data-slug="3myr6">`
+
+## Test embed
+
+You can embed a test on your platform using the test's `slug`, which uniquely identifies a test on
+DoSelect. Add this HTML code where you want a test to show up:
+
+`<div class="doselect-embed" data-category="test" data-slug="es6ts">`
 
 ## Actions
 
-### Load frame
+The `doselect` global object provides methods to take various actions on the embed objects on your
+app.
 
-- To load problem/test frame, copy the following to respective places where the frame has to be loaded.
+### Loading embeds
+Call `doselect.loadFrame()` to load all the embed objects on a page.
 
-```
-<div id="doselct-embed" category="FRAME_TYPE" slug="CATEGORY_SLUG"></div>
-```
-```json
-Webhook Begin/End Test/Problem Payload:
-{
-    "category": "`problem` or `test`",
-    "event_type": "`begin` or `end`",
-    "data": {
-        "This will have": "the report data if it exists"
-    }
-}
-```
-- Call `doselect.loadFrame()` to load all the frames in the page.
+### Destroying an embed
 
-#### Webhook
-A call will be made to your webhook-url when the user begins the test with the payload.
-
-
-Example:
-
-```
-..
-..
-<div id="doselect-embed" category="problem" slug="2ytr6">
-..
-..
-..
-<div id="doselect-embed" category="problem" slug="3myr6">
-..
-..
-..
-
-doselect.loadFrame()
-
-```
-
-### Close frame
-
-To close a frame, call `doselect.closeFrame(category, slug)`. If the frame element is available in the current page, it will be closed.
-
-#### Webhook
-A call will be made to your webhook-url when the user ends the test/problem with the payload.
-
+To close an embed, call `doselect.closeFrame(category, slug)`. If the embed element is available in the current page, it will be destroyed.
 
 ### Fetch report
 
-To fetch report, call `doselect.fetchReport(category, slug)`.
+To fetch the report for an embed, call `doselect.fetchReport(category, slug)`.
 
-Sample request/response:
+# Webhooks
 
-```
-var testReport = doselect.fetchReport('problem', 'yr64t')
+The webhooks framework notifies you about various events that have happened related to the resources on your team. You can add a
+`webhook_url` in your team settings. Whenever a new event occurs, we will make a `POST` request to this URL with a JSON payload in body.
 
-// testReport
-{
-    "status": "OK",
-    "test_report": {
-        "percentile_score": 50,
-        "tagwise_proficiency": {
-            "languages_used": [
-                "ubuntu-1404"
-            ],
-            "tags": []
-        },
-        "accepted": 0,
-        "stats": {},
-        "proctored_data": {},
-        "total_problems": 3,
-        "sections": [
-            {
-                "problems": [
-                    {
-                        "slug": "7hge0",
-                        "score": 50,
-                        "problem_type": "SCR",
-                        "name": "Sum of all digits",
-                        "level": "EAS"
-                    },
-                    {
-                        "slug": "sz3i7",
-                        "score": 50,
-                        "problem_type": "SCR",
-                        "name": "Print number in reverse order",
-                        "level": "EAS"
-                    },
-                    {
-                        "slug": "78z50",
-                        "score": 5,
-                        "problem_type": "SUB",
-                        "name": "DoSelect Mailserver",
-                        "level": "EAS"
-                    }
-                ],
-                "name": "Section 1"
-            }
-        ],
-        "invite": 594,
-        "attempted": 1,
-        "rejected": 0,
-        "code_quality_issues": null,
-        "candidate_extra_data": {
-            "something": "else"
-        },
-        "ended_at": "2015-06-25T08:21:31.141Z",
-        "max_score": 105,
-        "time_taken": 78073,
-        "need_review": 1,
-        "verdict": {
-            "percentage": 0,
-            "verdict": "Qualified",
-            "quality_score": null,
-            "quality_verdict": "bad"
-        }
-    }
-}
+If you return anything other than a HTTP 200 status to the webhook POST then we’ll try to deliver the webhook up to 5 times with a backoff.
 
-// problemReport
-{
-    "code": "",
-    "analysis_details": {},
-    "expunge_time": "2014-11-12T20:00:13.703Z",
-    "technology": 15,
-    "evaluator": null,
-    "test": null,
-    "extra_data": "{}",
-    "ide_status": null,
-    "status": "NRE",
-    "resubmissions": 0,
-    "solution_type": "APP",
-    "total_score": "0.0",
-    "container_id": "9c3594e5d825",
-    "expunged": false,
-    "choice": null,
-    "answer": "",
-    "test_solution_set": null,
-    "is_submitted": true,
-    "solution_set": null,
-    "slug": "75ee0",
-    "stage": 26,
-    "submitted_at": "2017-05-14T09:10:22.558Z",
-    "run_details": null,
-    "attachments": "[]",
-    "problem": 6
-}
-```
+The following events are currently sent:
+
+* Test started by a candidate
+* Test submitted by a candidate
