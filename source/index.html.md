@@ -101,13 +101,11 @@ offset | The object offset, as sent in the request
 limit | The number of objects returned, as sent in the request
 
 
-# Core Resources
-
-## Test
+# Test API
 This is an object representing a Test which has been/is being/will be conducted.
 You can retrieve it to see the information of the test
 
-### Get All Tests
+## Get All Tests
 
 ```python
 import requests
@@ -166,12 +164,12 @@ curl "https://api.doselect.com/platform/v1/test"
 
 This endpoint retrieves all tests of your company.
 
-#### HTTP Request
+### HTTP Request
 
 `GET https://api.doselect.com/platform/v1/test`
 
 
-### Get a Specific Test
+## Get a Specific Test
 
 ```python
 import requests
@@ -248,18 +246,18 @@ curl "https://api.doselect.com/platform/v1/test/4242"
 
 This endpoint retrieves a specific Test.
 
-#### HTTP Request
+### HTTP Request
 
 `GET https://api.doselect.com/platform/v1/test/<slug>`
 
-#### URL Parameters
+### URL Parameters
 
 Parameter | Description | Source
 --------- | ----------- | ------
 slug | Unique identifier of a test |  GET all tests response will have this in each test.
 
 
-### Get All Candidates of a Test
+## Get All Candidates of a Test
 
 ```python
 import requests
@@ -311,18 +309,18 @@ curl "https://api.doselect.com/platform/v1/test/4242/candidates"
 
 This endpoint retrieves all candidates of a test.
 
-#### HTTP Request
+### HTTP Request
 
 `GET https://api.doselect.com/platform/v1/test/<slug>/candidates`
 
-#### URL Parameters
+### URL Parameters
 
 Parameter | Description | Source
 --------- | ----------- | ------
 slug | Unique identifier of a test |  GET all tests response will have this in each test.
 
 
-### Get Report of a Candidate
+## Get Report of a Candidate
 
 ```python
 import requests
@@ -420,13 +418,11 @@ curl "https://api.doselect.com/platform/v1/test/4242/candidates/ghost@wall.com/r
 
 This endpoint retrieves all candidates of a test.
 
-#### HTTP Request
+### HTTP Request
 
 `GET https://api.doselect.com/platform/v1/test/<slug>/candidates/<email>/report`
 
 ### URL Parameters
-
-#### URL Parameters
 
 Parameter | Description | Source
 --------- | ----------- | ------
@@ -434,7 +430,7 @@ slug | Unique identifier of a test | GET all tests response will have this in ea
 email | The email of the candidate | GET all candidates response will have this in each candidate.
 
 
-# Embed client library
+# Embed API
 
 The embed client library powers interactions with DoSelect embed partner APIs
 
