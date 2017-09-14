@@ -522,34 +522,64 @@ var testReport = doselect.fetchReport('problem', 'yr64t')
 
 // testReport
 {
-    "accepted": 0,
-    "stats": {},
-    "proctored_data": {},
-    "total_problems": 3,
-    "sections": [
-        {
-            "problems": [
-                {
-                    "slug": "7hge0",
-                    "score": 50,
-                    "problem_type": "SCR",
-                    "name": "Sum of all digits",
-                    "level": "EAS"
-                }
+    "status": "OK",
+    "test_report": {
+        "percentile_score": 50,
+        "tagwise_proficiency": {
+            "languages_used": [
+                "ubuntu-1404"
             ],
-            "name": "Section 1"
+            "tags": []
+        },
+        "accepted": 0,
+        "stats": {},
+        "proctored_data": {},
+        "total_problems": 3,
+        "sections": [
+            {
+                "problems": [
+                    {
+                        "slug": "7hge0",
+                        "score": 50,
+                        "problem_type": "SCR",
+                        "name": "Sum of all digits",
+                        "level": "EAS"
+                    },
+                    {
+                        "slug": "sz3i7",
+                        "score": 50,
+                        "problem_type": "SCR",
+                        "name": "Print number in reverse order",
+                        "level": "EAS"
+                    },
+                    {
+                        "slug": "78z50",
+                        "score": 5,
+                        "problem_type": "SUB",
+                        "name": "DoSelect Mailserver",
+                        "level": "EAS"
+                    }
+                ],
+                "name": "Section 1"
+            }
+        ],
+        "invite": 594,
+        "attempted": 1,
+        "rejected": 0,
+        "code_quality_issues": null,
+        "candidate_extra_data": {
+            "something": "else"
+        },
+        "ended_at": "2015-06-25T08:21:31.141Z",
+        "max_score": 105,
+        "time_taken": 78073,
+        "need_review": 1,
+        "verdict": {
+            "percentage": 0,
+            "verdict": "Qualified",
+            "quality_score": null,
+            "quality_verdict": "bad"
         }
-    ],
-    "invite": 594,
-    "attempted": 1,
-    "rejected": 0,
-    "code_quality_issues": null,
-    "candidate_extra_data": {
-        "something": "else"
-    },
-    "ended_at": "2015-06-25T08:21:31.141Z",
-    "max_score": 105,
-    "time_taken": 78073,
-    "need_review": 1
+    }
 }
 ```
