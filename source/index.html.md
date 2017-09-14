@@ -486,8 +486,21 @@ window.doselectSettings = {
 ```
 <div id="doselct-embed" category="FRAME_TYPE" slug="CATEGORY_SLUG"></div>
 ```
-
+```json
+Webhook Begin/End Test/Problem Payload:
+{
+    "category": "`problem` or `test`",
+    "event_type": "`begin` or `end`",
+    "data": {
+        "This will have": "the report data if it exists"
+    }
+}
+```
 - Call `doselect.loadFrame()` to load all the frames in the page.
+
+#### Webhook
+A call will be made to your webhook-url when the user begins the test with the payload.
+
 
 Example:
 
@@ -510,6 +523,10 @@ doselect.loadFrame()
 ### Close frame
 
 To close a frame, call `doselect.closeFrame(category, slug)`. If the frame element is available in the current page, it will be closed.
+
+#### Webhook
+A call will be made to your webhook-url when the user ends the test/problem with the payload.
+
 
 ### Fetch report
 
@@ -581,5 +598,34 @@ var testReport = doselect.fetchReport('problem', 'yr64t')
             "quality_verdict": "bad"
         }
     }
+}
+
+// problemReport
+{
+    "code": "",
+    "analysis_details": {},
+    "expunge_time": "2014-11-12T20:00:13.703Z",
+    "technology": 15,
+    "evaluator": null,
+    "test": null,
+    "extra_data": "{}",
+    "ide_status": null,
+    "status": "NRE",
+    "resubmissions": 0,
+    "solution_type": "APP",
+    "total_score": "0.0",
+    "container_id": "9c3594e5d825",
+    "expunged": false,
+    "choice": null,
+    "answer": "",
+    "test_solution_set": null,
+    "is_submitted": true,
+    "solution_set": null,
+    "slug": "75ee0",
+    "stage": 26,
+    "submitted_at": "2017-05-14T09:10:22.558Z",
+    "run_details": null,
+    "attachments": "[]",
+    "problem": 6
 }
 ```
