@@ -386,7 +386,7 @@ The User API allows you to retrieve the details of a user on DoSelect.
 
 # Problem API
 
-The Problem API allows you to retrieve one problem on DoSelect.
+The Problem API allows you to retrieve one problem on DoSelect and retreive all of their solutions as well as the solution by a particular user.
 
 ## Get one problem
 
@@ -503,14 +503,13 @@ curl "https://api.doselect.com/platform/v1/problem/esows/solution"
                         "sid": "f770685b-c969-4d39-b9db-71377e7d5881"
                     }
                 },
-                "technology": <technology_slug>,
+                "technology": "java7",
                 "evaluator": {
                     "first_name": "Hemil",
                     "last_name": "Shah",
                     "username": "hemil42",
                     "email": "hemil@doselect.com"
                 },
-                "test": null,
                 "extra_data": "{}",
                 "status": "NRE",
                 "resubmissions": 0,
@@ -518,15 +517,11 @@ curl "https://api.doselect.com/platform/v1/problem/esows/solution"
                 "total_score": "0.0",
                 "choice": null,
                 "answer": "",
-                "test_solution_set": null,
                 "is_submitted": true,
-                "solution_set": null,
                 "slug": "75ee0",
-                "stage": 26,
                 "submitted_at": "2017-05-14T09:10:22.558Z",
                 "run_details": null,
-                "attachments": "[]",
-                "problem": 6
+                "attachments": "[]"
             }
         },
     ]
@@ -618,14 +613,13 @@ curl "https://api.doselect.com/platform/v1/problem/esows/solution/tessyjosseph@g
                 "sid": "f770685b-c969-4d39-b9db-71377e7d5881"
             }
         },
-        "technology": <technology_slug>,
+        "technology": "java7",
         "evaluator": {
             "first_name": "Hemil",
             "last_name": "Shah",
             "username": "hemil42",
             "email": "hemil@doselect.com"
         },
-        "test": null,
         "extra_data": "{}",
         "status": "NRE",
         "resubmissions": 0,
@@ -633,15 +627,11 @@ curl "https://api.doselect.com/platform/v1/problem/esows/solution/tessyjosseph@g
         "total_score": "0.0",
         "choice": null,
         "answer": "",
-        "test_solution_set": null,
         "is_submitted": true,
-        "solution_set": null,
         "slug": "75ee0",
-        "stage": 26,
         "submitted_at": "2017-05-14T09:10:22.558Z",
         "run_details": null,
-        "attachments": "[]",
-        "problem": 6
+        "attachments": "[]"
     }
 }
 ```
@@ -666,31 +656,83 @@ The Submission API allows you to create a solution for a problem.
 ```python
 import requests
 
-url = 'https://api.doselect.com/platform/v1/problem/esows/solution/tessyjosseph@gmail.com/submit/'
-headers = {
-    "DoSelect-Api-Key": "88d4266fd4e6338d13b845fcf28",
-    "DoSelect-Api-Secret": "385041b7bbc2320471b8551d"
+url = "https://api.doselect.com/platform/v1/submission/"
+
+payload = {
+	"code": "print 'Hello World'",
+	"technology": "technology_slug",
+	"code_url": "https://s3.amazon.com/zygon.zip",
+	"problem_slug": "esows",
+	"problem_type": "problem_type",
+	"email": "tessyjosseph@gmail.com"
 }
-response = requests.post(url, headers=headers)
+
+headers = {
+    'DoSelect-Api-Key': "88d4266fd4e6338d13b845fcf28",
+    'DoSelect-Api-Secret': "385041b7bbc2320471b8551d",
+    'content-type': "application/json"
+    }
+
+response = requests.request("POST", url, data=payload, headers=headers)
 ```
 
 ```shell
-TBA
+curl -X POST \
+  https://api.doselect.com/platform/v1/submission/ \
+  -H 'content-type: application/json' \
+  -H 'DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28' \
+  -H 'DoSelect-Api-Secret: 385041b7bbc2320471b8551d' \
+  -d '{
+	"technology": "technology_slug",
+	"problem_type": "problem_type",
+	"code": "print '\''Hello World'\''",
+	"email": "tessyjosseph@gmail.com",
+	"problem_slug": "esows",
+	"code_url": "https://s3.amazon.com/zygon.zip"
+}'
 ```
 
 > Response
 
-```json
-{
-    TBD
-}
+```
 ```
 This endpoint accepts the submission of a specific problem, identified by a `slug` submitted by a user who is identified by the `email`.
 
 
 ### HTTP Request
 
-`POST https://api.doselect.com/platform/v1/problem/<slug>/solution/<email>/submit/`
+`POST https://api.doselect.com/platform/v1/submission/`
+
+
+### Payload Params
+Parameter    | Description
+----------   | ---------------
+technology   | The `slug` which identifies the technology used
+problem_type | The `slug` which identifies the problem type
+code         | The code which the user wrote
+code_url     | The public url of the zip of the code
+problem_slug | The `slug` which identifies the problem
+email        | The email of the user
+
+
+The Allowed Problem Types are:
+
+Problem Type  | Slug
+------------  | ----
+Project Based | PRJ
+UI/UX Project | UIX
+Scripting     | SCR
+Mobile        | MOB
+
+
+Allowed Technologies for each Problem Type are:
+
+Problem Type | Slug (Technology Name)
+------------ | ----------------------
+Project Based| java7 (Java 7), python3 (Python 3), python2 (Python 2), java8 (Java 8)
+UI/UX Project| angularjs (AngularJS), jquery (jQuery), reactjs (React), backbonejs (Backbone), vanillajs (Vanilla JS)
+Scripting    | julia (Julia), haskell (Haskell), csharp (C#), go (Go), javascript (JavaScript (NodeJS)), scala (Scala), swift (Swift), perl (Perl), lua (Lua), clisp (Clisp), objectivec (ObjectiveC), php (PHP), ruby (Ruby), bash (Bash), clojure (Clojure), rust (Rust), c (C), cpp (C++), java7 (Java 7), python3 (Python 3), python2 (Python 2), java8 (Java 8), r (R), fsharp (F#), cpp14 (C++14), kotlin (Kotlin)
+Android      | android (Android)
 
 <aside class="notice">Details coming soon.</aside>
 
