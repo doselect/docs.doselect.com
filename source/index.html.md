@@ -388,11 +388,309 @@ The User API allows you to retrieve the details of a user on DoSelect.
 
 The Problem API allows you to retrieve one problem on DoSelect.
 
+## Get one problem
+
+> Request
+
+```python
+import requests
+
+url = 'https://api.doselect.com/platform/v1/problem/esows'
+headers = {
+    "DoSelect-Api-Key": "88d4266fd4e6338d13b845fcf28",
+    "DoSelect-Api-Secret": "385041b7bbc2320471b8551d"
+}
+response = requests.get(url, headers=headers)
+```
+
+```shell
+curl "https://api.doselect.com/platform/v1/problem/esows"
+  -H "DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28" \
+  -H "DoSelect-Api-Secret: 385041b7bbc2320471b8551d"
+```
+
+> Response
+
+```json
+{
+	TBD
+}
+```
+A Problem is identified by a unique `slug` that gets generated during creation. This endpoint retrieves a specific problem:
+
+### HTTP Request
+
+`GET https://api.doselect.com/platform/v1/problem/<slug>`
+
+
+## Get all solutions of one problem
+
+> Request
+
+```python
+import requests
+
+url = 'https://api.doselect.com/platform/v1/problem/esows/solution'
+headers = {
+    "DoSelect-Api-Key": "88d4266fd4e6338d13b845fcf28",
+    "DoSelect-Api-Secret": "385041b7bbc2320471b8551d"
+}
+response = requests.get(url, headers=headers)
+```
+
+```shell
+curl "https://api.doselect.com/platform/v1/problem/esows/solution"
+  -H "DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28" \
+  -H "DoSelect-Api-Secret: 385041b7bbc2320471b8551d"
+```
+
+> Response
+
+```json
+{
+    "objects": [
+        {
+            {
+                "code": "",
+                "analysis_details": {
+                    "quality": {
+                        "analysis_ended": "2017-04-30T10:26:25Z",
+                        "score": "4.3",
+                        "analysis_started": "2017-04-30T10:26:12Z",
+                        "issues": [{
+                            "description": "Remove this useless assignment to local variable DoSelectHack",
+                            "engine_name": "checks",
+                            "check_name": "javascript:S1854",
+                            "location": {
+                                "path": "source.js",
+                                "lines": {
+                                    "begin": 4,
+                                    "end": 4
+                                }
+                            },
+                            "type": "issue",
+                            "categories": ["Bug Risk"],
+                            "remediation_points": 0
+                        }, {
+                            "description": "Remove this logging statement.",
+                            "engine_name": "checks",
+                            "check_name": "javascript:S2228",
+                            "location": {
+                                "path": "source.js",
+                                "lines": {
+                                    "begin": 6,
+                                    "end": 6
+                                }
+                            },
+                            "type": "issue",
+                            "categories": ["Security"],
+                            "remediation_points": 0
+                        }, {
+                            "description": "Remove this logging statement.",
+                            "engine_name": "checks",
+                            "check_name": "javascript:S2228",
+                            "location": {
+                                "path": "source.js",
+                                "lines": {
+                                    "begin": 8,
+                                    "end": 8
+                                }
+                            },
+                            "type": "issue",
+                            "categories": ["Security"],
+                            "remediation_points": 0
+                        }],
+                        "sid": "f770685b-c969-4d39-b9db-71377e7d5881"
+                    }
+                },
+                "technology": <technology_slug>,
+                "evaluator": {
+                    "first_name": "Hemil",
+                    "last_name": "Shah",
+                    "username": "hemil42",
+                    "email": "hemil@doselect.com"
+                },
+                "test": null,
+                "extra_data": "{}",
+                "status": "NRE",
+                "resubmissions": 0,
+                "solution_type": "APP",
+                "total_score": "0.0",
+                "choice": null,
+                "answer": "",
+                "test_solution_set": null,
+                "is_submitted": true,
+                "solution_set": null,
+                "slug": "75ee0",
+                "stage": 26,
+                "submitted_at": "2017-05-14T09:10:22.558Z",
+                "run_details": null,
+                "attachments": "[]",
+                "problem": 6
+            }
+        },
+    ]
+}
+```
+The solutions will contain information regarding the submission made by the user. The Problem is identified by a unique `slug` that gets generated during creation. This endpoint retrieves all solutions of a specific problem:
+
+
+### HTTP Request
+
+`GET https://api.doselect.com/platform/v1/problem/<slug>/solution`
+
+
+## Get solution of problem by user
+
+> Request
+
+```python
+import requests
+
+url = 'https://api.doselect.com/platform/v1/problem/esows/solution/tessyjosseph@gmail.com/'
+headers = {
+    "DoSelect-Api-Key": "88d4266fd4e6338d13b845fcf28",
+    "DoSelect-Api-Secret": "385041b7bbc2320471b8551d"
+}
+response = requests.get(url, headers=headers)
+```
+
+```shell
+curl "https://api.doselect.com/platform/v1/problem/esows/solution/tessyjosseph@gmail.com/"
+  -H "DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28" \
+  -H "DoSelect-Api-Secret: 385041b7bbc2320471b8551d"
+```
+
+> Response
+
+```json
+{
+    {
+        "code": "",
+        "analysis_details": {
+            "quality": {
+                "analysis_ended": "2017-04-30T10:26:25Z",
+                "score": "4.3",
+                "analysis_started": "2017-04-30T10:26:12Z",
+                "issues": [{
+                    "description": "Remove this useless assignment to local variable DoSelectHack",
+                    "engine_name": "checks",
+                    "check_name": "javascript:S1854",
+                    "location": {
+                        "path": "source.js",
+                        "lines": {
+                            "begin": 4,
+                            "end": 4
+                        }
+                    },
+                    "type": "issue",
+                    "categories": ["Bug Risk"],
+                    "remediation_points": 0
+                }, {
+                    "description": "Remove this logging statement.",
+                    "engine_name": "checks",
+                    "check_name": "javascript:S2228",
+                    "location": {
+                        "path": "source.js",
+                        "lines": {
+                            "begin": 6,
+                            "end": 6
+                        }
+                    },
+                    "type": "issue",
+                    "categories": ["Security"],
+                    "remediation_points": 0
+                }, {
+                    "description": "Remove this logging statement.",
+                    "engine_name": "checks",
+                    "check_name": "javascript:S2228",
+                    "location": {
+                        "path": "source.js",
+                        "lines": {
+                            "begin": 8,
+                            "end": 8
+                        }
+                    },
+                    "type": "issue",
+                    "categories": ["Security"],
+                    "remediation_points": 0
+                }],
+                "sid": "f770685b-c969-4d39-b9db-71377e7d5881"
+            }
+        },
+        "technology": <technology_slug>,
+        "evaluator": {
+            "first_name": "Hemil",
+            "last_name": "Shah",
+            "username": "hemil42",
+            "email": "hemil@doselect.com"
+        },
+        "test": null,
+        "extra_data": "{}",
+        "status": "NRE",
+        "resubmissions": 0,
+        "solution_type": "APP",
+        "total_score": "0.0",
+        "choice": null,
+        "answer": "",
+        "test_solution_set": null,
+        "is_submitted": true,
+        "solution_set": null,
+        "slug": "75ee0",
+        "stage": 26,
+        "submitted_at": "2017-05-14T09:10:22.558Z",
+        "run_details": null,
+        "attachments": "[]",
+        "problem": 6
+    }
+}
+```
+This endpoint retrieves the solution of a specific problem, identified by a `slug` submitted by a user who is identified by the `email`.
+
+
+### HTTP Request
+
+`GET https://api.doselect.com/platform/v1/problem/<slug>/solution/<email>/`
+
+
 <aside class="notice">Details coming soon.</aside>
 
 # Submission API
 
-The Submission API allows you to create a solution for a problem and retrieve evaluation results.
+The Submission API allows you to create a solution for a problem.
+
+## Post submission of problem by user
+
+> Request
+
+```python
+import requests
+
+url = 'https://api.doselect.com/platform/v1/problem/esows/solution/tessyjosseph@gmail.com/submit/'
+headers = {
+    "DoSelect-Api-Key": "88d4266fd4e6338d13b845fcf28",
+    "DoSelect-Api-Secret": "385041b7bbc2320471b8551d"
+}
+response = requests.post(url, headers=headers)
+```
+
+```shell
+TBA
+```
+
+> Response
+
+```json
+{
+    TBD
+}
+```
+This endpoint accepts the submission of a specific problem, identified by a `slug` submitted by a user who is identified by the `email`.
+
+
+### HTTP Request
+
+`POST https://api.doselect.com/platform/v1/problem/<slug>/solution/<email>/submit/`
 
 <aside class="notice">Details coming soon.</aside>
 
