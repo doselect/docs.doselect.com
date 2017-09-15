@@ -259,9 +259,25 @@
           </li>
           <li>
             <a href="#problem-api" class="toc-h1 toc-link" data-title="Problem API">Problem API</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-one-problem" class="toc-h2 toc-link" data-title="Problem API">Get one problem</a>
+                  </li>
+                  <li>
+                    <a href="#get-all-submissions-of-one-problem" class="toc-h2 toc-link" data-title="Problem API">Get all submissions of one problem</a>
+                  </li>
+                  <li>
+                    <a href="#get-submission-by-a-user" class="toc-h2 toc-link" data-title="Problem API">Get submission by a user</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#submission-api" class="toc-h1 toc-link" data-title="Submission API">Submission API</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-a-new-submission" class="toc-h2 toc-link" data-title="Submission API">Create a new submission</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#embed-api" class="toc-h1 toc-link" data-title="Embed API">Embed API</a>
@@ -441,32 +457,39 @@ resource objects in such responses.</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"objects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"allowed_technologies"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-            </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"cutoff"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"candidates_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/test/2edpq/candidates"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"cutoff"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">110</span><span class="p">,</span><span class="w">
             </span><span class="s2">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"instructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"instructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Instructions HTML"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EAS"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sample"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"public_access_password"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"public_access_slug"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"resource_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/test/78z50"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"sections"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Section 1"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"problems"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-                    </span><span class="s2">"sample"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"shuffle"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"section-1"</span><span class="w">
-                </span><span class="p">}</span><span class="w">
-            </span><span class="p">],</span><span class="w">
-            </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"78z50"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Site Reliability Engineering Test"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"public_test_password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public_test_password"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"public_test_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public_test_url"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"resource_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/test/2edpq"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sections"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+                </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BASH Scripting"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"problems"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+                    </span><span class="s2">"allowed_technologies"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                    </span><span class="s2">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EAS"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Print the HTTP status code"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"problem_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SCR"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ed9op"</span><span class="w">
+                </span><span class="p">}],</span><span class="w">
+                </span><span class="s2">"randomization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"sampling"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2 out of 2"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"shuffle"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"section-1"</span><span class="w">
+            </span><span class="p">}],</span><span class="w">
+            </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2edpq"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DRA"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+            </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"python"</span><span class="p">,</span><span class="w"> </span><span class="s2">"functions"</span><span class="p">],</span><span class="w">
+            </span><span class="s2">"usable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -494,54 +517,39 @@ resource objects in such responses.</p>
 <p>Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"allowed_technologies"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-    </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cutoff"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"candidates_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/test/2edpq/candidates"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cutoff"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">110</span><span class="p">,</span><span class="w">
     </span><span class="s2">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"instructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;Cras ultricies ligula sed magna dictum porta.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Instructions HTML"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EAS"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Python Scripting"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"public_access_password"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"public_access_slug"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/test/esows"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"sections"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cras ultricies ligula sed magna dictum porta."</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Section 1"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"problems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EAS"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello World!"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"problem_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SCR"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"76wv0"</span><span class="w">
-                </span><span class="p">},</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EAS"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The distance problem"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"problem_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MCQ"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0ugxs"</span><span class="w">
-                </span><span class="p">},</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EAS"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The socks problem"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"problem_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MCQ"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"75g30"</span><span class="w">
-                </span><span class="p">}</span><span class="w">
-            </span><span class="p">],</span><span class="w">
-            </span><span class="s2">"sample"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"shuffle"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"section-1"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"esows"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Site Reliability Engineering Test"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"public_test_password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public_test_password"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"public_test_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public_test_url"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/test/2edpq"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sections"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BASH Scripting"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"problems"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+            </span><span class="s2">"allowed_technologies"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EAS"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Print the HTTP status code"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"problem_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SCR"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ed9op"</span><span class="w">
+        </span><span class="p">}],</span><span class="w">
+        </span><span class="s2">"randomization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"sampling"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2 out of 2"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"shuffle"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"section-1"</span><span class="w">
+    </span><span class="p">}],</span><span class="w">
+    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2edpq"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DRA"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"python"</span><span class="p">,</span><span class="w"> </span><span class="s2">"functions"</span><span class="p">]</span><span class="w">
+    </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"python"</span><span class="p">,</span><span class="w"> </span><span class="s2">"functions"</span><span class="p">],</span><span class="w">
+    </span><span class="s2">"usable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>A test is identified by a unique <code>slug</code> that gets generated during creation. This endpoint retrieves a specific test:</p>
@@ -569,20 +577,22 @@ resource objects in such responses.</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"objects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"access_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AbUxfgtmNWQGLYFvsfdgdewlXLjVaqD2MPAwO6dm27c"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"donnie@campushash.com"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-10T13:23:42.006100"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"extra_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+            </span><span class="s2">"access_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kp0MNj5dfsPlcYZ/TX7Hf9VBE9Wz0EE0hHUSmZ2w0FlRD4oebPPBw3lt6"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"candidate_extra_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+            </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tesssd2@gmail.com"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-31T07:18:50.328659"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"report"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"percentile_score"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"report_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/test/2edpq/candidates/tesssd2@gmail.com/report"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"time_taken"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"total_problems"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"total_problems"</span><span class="p">:</span><span class="w"> </span><span class="mi">78</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"total_score"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"total_solutions"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="s2">"resource_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/test/esows"</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accepted"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/test/2edpq"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"times_sent"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
         </span><span class="p">},</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -612,71 +622,48 @@ resource objects in such responses.</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"accepted"</span><span class="p">:</span><span class="w"> </span><span class="mi">41</span><span class="p">,</span><span class="w">
     </span><span class="s2">"attempted"</span><span class="p">:</span><span class="w"> </span><span class="mi">76</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"code_quality_frequency"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Risk"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"candidate_extra_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="s2">"code_quality_issues"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Risk"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+    </span><span class="p">}],</span><span class="w">
     </span><span class="s2">"ended_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-17T06:29:06.955499"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"extra_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
     </span><span class="s2">"is_submitted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"max_score"</span><span class="p">:</span><span class="w"> </span><span class="mi">580</span><span class="p">,</span><span class="w">
     </span><span class="s2">"need_review"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"percentile_score"</span><span class="p">:</span><span class="w"> </span><span class="mi">33</span><span class="p">,</span><span class="w">
     </span><span class="s2">"proctored_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
     </span><span class="s2">"rejected"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w">
     </span><span class="s2">"resource_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"sections"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BASH Scripting"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"problems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                </span><span class="s2">"ed9op"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"br9p9"</span><span class="w">
-            </span><span class="p">]</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MCQ Section"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"problems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                </span><span class="s2">"7gnwp"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"syhnm"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"7ygow"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"7lv90"</span><span class="w">
-            </span><span class="p">]</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"sections"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BASH Scripting"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"problems"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+            </span><span class="s2">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EAS"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Print the HTTP status code"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"problem_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SCR"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ed9op"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"solution"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"is_submitted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"w4a9a"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REJ"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}]</span><span class="w">
+    </span><span class="p">}],</span><span class="w">
     </span><span class="s2">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-17T05:14:12.167016"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"tagwise_proficiency"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="s2">"bash"</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                </span><span class="s2">"Linux"</span><span class="w">
-            </span><span class="p">],</span><span class="w">
-            </span><span class="s2">"values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                </span><span class="mf">2.76</span><span class="w">
-            </span><span class="p">]</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"stats"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
     </span><span class="s2">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/test/2edpq"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"time_taken"</span><span class="p">:</span><span class="w"> </span><span class="mi">4494</span><span class="p">,</span><span class="w">
     </span><span class="s2">"total_problems"</span><span class="p">:</span><span class="w"> </span><span class="mi">78</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"total_score"</span><span class="p">:</span><span class="w"> </span><span class="s2">"263.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total_score"</span><span class="p">:</span><span class="w"> </span><span class="mi">263</span><span class="p">,</span><span class="w">
     </span><span class="s2">"total_solutions"</span><span class="p">:</span><span class="w"> </span><span class="mi">76</span><span class="p">,</span><span class="w">
     </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@example.com"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tessyjoseph1992@gmail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TESSY"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">31270</span><span class="p">,</span><span class="w">
         </span><span class="s2">"is_active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JOSEPH JOHN"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7302e16af6ea4bcb9446fe6542ea4e"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"verdict"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"percentage"</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"quality_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.3</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"quality_verdict"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"verdict"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Not qualified"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -686,13 +673,371 @@ resource objects in such responses.</p>
 <h1 id='user-api'>User API</h1>
 <p>The User API allows you to retrieve the details of a user on DoSelect.</p>
 <h1 id='problem-api'>Problem API</h1>
-<p>The Problem API allows you to retrieve one problem on DoSelect.</p>
+<p>The Problem API allows you to retrieve one problem on DoSelect. You can also retrieve all submissions made to the problem
+within your team, as well as by a particular user identified by email.</p>
+<h2 id='get-one-problem'>Get one problem</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<aside class="notice">Details coming soon.</aside>
+<span class="n">url</span> <span class="o">=</span> <span class="s">'https://api.doselect.com/platform/v1/problem/esows'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"DoSelect-Api-Key"</span><span class="p">:</span> <span class="s">"88d4266fd4e6338d13b845fcf28"</span><span class="p">,</span>
+    <span class="s">"DoSelect-Api-Secret"</span><span class="p">:</span> <span class="s">"385041b7bbc2320471b8551d"</span>
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doselect.com/platform/v1/problem/esows"</span>
+  -H <span class="s2">"DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28"</span> <span class="se">\</span>
+  -H <span class="s2">"DoSelect-Api-Secret: 385041b7bbc2320471b8551d"</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"</span><span class="se">\n</span><span class="s2">Build a chat application which has `Add chatbox` button, which on click adds a chat box to the window. When clicked again, it should add another chat box next to the first one. Maximum of 10 chat boxes are allowed ..."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"insight_tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EAS"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mcq_options"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"options"</span><span class="p">],</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Multi chat"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"penalty"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"primary_technology"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"problem_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UIX"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">75</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"64l05"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"stubs"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"front-end"</span><span class="p">],</span><span class="w">
+    </span><span class="s2">"technologies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"vanillajs"</span><span class="p">,</span><span class="w"> </span><span class="s2">"angularjs"</span><span class="p">],</span><span class="w">
+    </span><span class="s2">"time_limit_secs"</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total_testcases"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>A problem is identified by a unique <code>slug</code> that gets generated during creation. This endpoint retrieves a specific problem:</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET https://api.doselect.com/platform/v1/problem/&lt;slug&gt;</code></p>
+<h2 id='get-all-submissions-of-one-problem'>Get all submissions of one problem</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">'https://api.doselect.com/platform/v1/problem/esows/solution'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"DoSelect-Api-Key"</span><span class="p">:</span> <span class="s">"88d4266fd4e6338d13b845fcf28"</span><span class="p">,</span>
+    <span class="s">"DoSelect-Api-Secret"</span><span class="p">:</span> <span class="s">"385041b7bbc2320471b8551d"</span>
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doselect.com/platform/v1/problem/esows/solution"</span>
+  -H <span class="s2">"DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28"</span> <span class="se">\</span>
+  -H <span class="s2">"DoSelect-Api-Secret: 385041b7bbc2320471b8551d"</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"objects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"analysis_details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"quality"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"analysis_ended"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-04-30T10:26:25Z"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.3"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"analysis_started"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-04-30T10:26:12Z"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"issues"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+                            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remove this useless assignment to local variable DoSelectHack"</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"engine_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"checks"</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"check_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"javascript:S1854"</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                                </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"source.js"</span><span class="p">,</span><span class="w">
+                                </span><span class="s2">"lines"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                                    </span><span class="s2">"begin"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+                                    </span><span class="s2">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+                                </span><span class="p">}</span><span class="w">
+                            </span><span class="p">},</span><span class="w">
+                            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"issue"</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Bug Risk"</span><span class="p">],</span><span class="w">
+                            </span><span class="s2">"remediation_points"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+                        </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+                            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remove this logging statement."</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"engine_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"checks"</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"check_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"javascript:S2228"</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                                </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"source.js"</span><span class="p">,</span><span class="w">
+                                </span><span class="s2">"lines"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                                    </span><span class="s2">"begin"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+                                    </span><span class="s2">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="w">
+                                </span><span class="p">}</span><span class="w">
+                            </span><span class="p">},</span><span class="w">
+                            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"issue"</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Security"</span><span class="p">],</span><span class="w">
+                            </span><span class="s2">"remediation_points"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+                        </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+                            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remove this logging statement."</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"engine_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"checks"</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"check_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"javascript:S2228"</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                                </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"source.js"</span><span class="p">,</span><span class="w">
+                                </span><span class="s2">"lines"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                                    </span><span class="s2">"begin"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+                                    </span><span class="s2">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w">
+                                </span><span class="p">}</span><span class="w">
+                            </span><span class="p">},</span><span class="w">
+                            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"issue"</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Security"</span><span class="p">],</span><span class="w">
+                            </span><span class="s2">"remediation_points"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+                        </span><span class="p">}],</span><span class="w">
+                        </span><span class="s2">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f770685b-c969-4d39-b9db-71377e7d5881"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"technology"</span><span class="p">:</span><span class="w"> </span><span class="s2">"angularjs"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACC"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"resubmissions"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"solution_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UIX"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"total_score"</span><span class="p">:</span><span class="w"> </span><span class="s2">"45.0"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"choice"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"is_submitted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"75ee0"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"submitted_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-05-14T09:10:22.558Z"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"run_details"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[]"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@example.com"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>The problem is identified by a unique <code>slug</code> that gets generated during creation. This endpoint retrieves all submission of a specific problem:</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>GET https://api.doselect.com/platform/v1/problem/&lt;slug&gt;/submissions</code></p>
+<h2 id='get-submission-by-a-user'>Get submission by a user</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">'https://api.doselect.com/platform/v1/problem/esows/solution/tessyjosseph@gmail.com/'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"DoSelect-Api-Key"</span><span class="p">:</span> <span class="s">"88d4266fd4e6338d13b845fcf28"</span><span class="p">,</span>
+    <span class="s">"DoSelect-Api-Secret"</span><span class="p">:</span> <span class="s">"385041b7bbc2320471b8551d"</span>
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doselect.com/platform/v1/problem/esows/solution/tessyjosseph@gmail.com/"</span>
+  -H <span class="s2">"DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28"</span> <span class="se">\</span>
+  -H <span class="s2">"DoSelect-Api-Secret: 385041b7bbc2320471b8551d"</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"analysis_details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"quality"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"analysis_ended"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-04-30T10:26:25Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.3"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"analysis_started"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-04-30T10:26:12Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"issues"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+                </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remove this useless assignment to local variable DoSelectHack"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"engine_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"checks"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"check_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"javascript:S1854"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"source.js"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"lines"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"begin"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"issue"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Bug Risk"</span><span class="p">],</span><span class="w">
+                </span><span class="s2">"remediation_points"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remove this logging statement."</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"engine_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"checks"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"check_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"javascript:S2228"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"source.js"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"lines"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"begin"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"issue"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Security"</span><span class="p">],</span><span class="w">
+                </span><span class="s2">"remediation_points"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remove this logging statement."</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"engine_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"checks"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"check_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"javascript:S2228"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"source.js"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"lines"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"begin"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"issue"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Security"</span><span class="p">],</span><span class="w">
+                </span><span class="s2">"remediation_points"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="p">}],</span><span class="w">
+            </span><span class="s2">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f770685b-c969-4d39-b9db-71377e7d5881"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"technology"</span><span class="p">:</span><span class="w"> </span><span class="s2">"angularjs"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACC"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resubmissions"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"solution_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UIX"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total_score"</span><span class="p">:</span><span class="w"> </span><span class="s2">"45.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"choice"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_submitted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"75ee0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"submitted_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-05-14T09:10:22.558Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"run_details"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[]"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@example.com"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves the submission of a specific problem, identified by a <code>slug</code> submitted by a user who is identified by the <code>email</code>.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>GET https://api.doselect.com/platform/v1/problem/&lt;slug&gt;/submission/&lt;email&gt;/</code></p>
 <h1 id='submission-api'>Submission API</h1>
-<p>The Submission API allows you to create a solution for a problem and retrieve evaluation results.</p>
+<p>The Submission API allows you to create a submission for a problem. After creating a submission, you will get notified via webhooks
+when the result becomes available.</p>
+<h2 id='create-a-new-submission'>Create a new submission</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<aside class="notice">Details coming soon.</aside>
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.doselect.com/platform/v1/submission/"</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"code"</span><span class="p">:</span> <span class="s">"print 'Hello World'"</span><span class="p">,</span>
+    <span class="s">"technology"</span><span class="p">:</span> <span class="s">"technology_slug"</span><span class="p">,</span>
+    <span class="s">"code_url"</span><span class="p">:</span> <span class="s">"https://s3.amazon.com/zygon.zip"</span><span class="p">,</span>
+    <span class="s">"problem_slug"</span><span class="p">:</span> <span class="s">"esows"</span><span class="p">,</span>
+    <span class="s">"problem_type"</span><span class="p">:</span> <span class="s">"problem_type"</span><span class="p">,</span>
+    <span class="s">"email"</span><span class="p">:</span> <span class="s">"tessyjosseph@gmail.com"</span>
+<span class="p">}</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'DoSelect-Api-Key'</span><span class="p">:</span> <span class="s">"88d4266fd4e6338d13b845fcf28"</span><span class="p">,</span>
+    <span class="s">'DoSelect-Api-Secret'</span><span class="p">:</span> <span class="s">"385041b7bbc2320471b8551d"</span><span class="p">,</span>
+    <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json"</span>
+    <span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  https://api.doselect.com/platform/v1/submission/ <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28'</span> <span class="se">\</span>
+  -H <span class="s1">'DoSelect-Api-Secret: 385041b7bbc2320471b8551d'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "technology": "technology_slug",
+    "problem_type": "problem_type",
+    "code": "print '</span><span class="se">\'</span><span class="s1">'Hello World'</span><span class="se">\'</span><span class="s1">'",
+    "email": "tessyjosseph@gmail.com",
+    "problem_slug": "esows",
+    "code_url": "https://s3.amazon.com/zygon.zip"
+}'</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code></code></pre>
+<p>This endpoint accepts a new submission for a specific problem, identified by a <code>slug</code> submitted by a user who is identified by the <code>email</code>.</p>
+<h3 id='http-request-8'>HTTP Request</h3>
+<p><code>POST https://api.doselect.com/platform/v1/submission/</code></p>
+<h3 id='payload-params'>Payload Params</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>technology</td>
+<td>The <code>slug</code> which identifies the technology used for this submission</td>
+</tr>
+<tr>
+<td>problem_type</td>
+<td>The code for type of the problem</td>
+</tr>
+<tr>
+<td>code</td>
+<td>If the submission is a coding-type problem, the code of the submission</td>
+</tr>
+<tr>
+<td>code_url</td>
+<td>If the submission is a project-type problem, the publicly accessible url of the ZIP of the project</td>
+</tr>
+<tr>
+<td>problem_slug</td>
+<td>The <code>slug</code> which identifies the problem</td>
+</tr>
+<tr>
+<td>email</td>
+<td>Email of the user</td>
+</tr>
+</tbody></table>
+
+<p>The allowed problem types are:</p>
+
+<table><thead>
+<tr>
+<th>Problem type</th>
+<th>Slug</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Project-based</td>
+<td>PRJ</td>
+</tr>
+<tr>
+<td>Front-end project</td>
+<td>UIX</td>
+</tr>
+<tr>
+<td>Coding</td>
+<td>SCR</td>
+</tr>
+<tr>
+<td>Mobile</td>
+<td>MOB</td>
+</tr>
+</tbody></table>
+
+<p>The allowed technologies for each problem type are:</p>
+
+<table><thead>
+<tr>
+<th>Problem type</th>
+<th>Slug reference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Project-based</td>
+<td>java7 (Java 7), python3 (Python 3), python2 (Python 2), java8 (Java 8)</td>
+</tr>
+<tr>
+<td>Front-end project</td>
+<td>angularjs (AngularJS), jquery (jQuery), reactjs (React), backbonejs (Backbone), vanillajs (Vanilla JS)</td>
+</tr>
+<tr>
+<td>Coding</td>
+<td>julia (Julia), haskell (Haskell), csharp (C#), go (Go), javascript (JavaScript (NodeJS)), scala (Scala), swift (Swift), perl (Perl), lua (Lua), clisp (Clisp), objectivec (ObjectiveC), php (PHP), ruby (Ruby), bash (Bash), clojure (Clojure), rust (Rust), c (C), cpp (C++), java7 (Java 7), python3 (Python 3), python2 (Python 2), java8 (Java 8), r (R), fsharp (F#), cpp14 (C++14), kotlin (Kotlin)</td>
+</tr>
+<tr>
+<td>Mobile</td>
+<td>android (Android)</td>
+</tr>
+</tbody></table>
 <h1 id='embed-api'>Embed API</h1>
 <p>The Embed API allows you to embed a <code>Test</code> or a <code>Problem</code> on DoSelect on your platform. This API is designed keeping in mind that
 the platform which using the embed need not store any state data on their end -- all state data is stored by DoSelect and can be retrieved using
