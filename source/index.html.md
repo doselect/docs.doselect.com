@@ -386,7 +386,8 @@ The User API allows you to retrieve the details of a user on DoSelect.
 
 # Problem API
 
-The Problem API allows you to retrieve one problem on DoSelect and retreive all of their solutions as well as the solution by a particular user.
+The Problem API allows you to retrieve one problem on DoSelect. You can also retrieve all submissions made to the problem
+within your team, as well as by a particular user identified by email.
 
 ## Get one problem
 
@@ -414,38 +415,31 @@ curl "https://api.doselect.com/platform/v1/problem/esows"
 ```json
 {
 	"attachments": [],
-	"category": "MAR",
-	"code": "",
-	"editorial": "",
-	"gist": "\nBuild a chat application which has `Add chatbox` button, which on click adds a chat box to the window. When clicked again, it should add another chat box next to the first one. Maximum of 10 chat boxes are allowed ...",
+	"description": "\nBuild a chat application which has `Add chatbox` button, which on click adds a chat box to the window. When clicked again, it should add another chat box next to the first one. Maximum of 10 chat boxes are allowed ...",
 	"insight_tags": [],
-	"language": null,
 	"level": "EAS",
 	"mcq_options": ["options"],
 	"name": "Multi chat",
-	"num_problem_test_cases": 0,
 	"penalty": 0,
 	"primary_technology": null,
 	"problem_type": "UIX",
-	"sample_test_cases": [],
 	"score": 75,
 	"slug": "64l05",
-	"solving_time": null,
 	"stubs": {},
-	"tags": [],
+	"tags": ["front-end"],
 	"technologies": ["vanillajs", "angularjs"],
-	"time_limit_secs": null,
-	"total_sample_testcases": 0,
+	"time_limit_secs": 45,
+	"total_testcases": 3,
 }
 ```
-A Problem is identified by a unique `slug` that gets generated during creation. This endpoint retrieves a specific problem:
+A problem is identified by a unique `slug` that gets generated during creation. This endpoint retrieves a specific problem:
 
 ### HTTP Request
 
 `GET https://api.doselect.com/platform/v1/problem/<slug>`
 
 
-## Get all solutions of one problem
+## Get all submissions of one problem
 
 > Request
 
@@ -525,39 +519,35 @@ curl "https://api.doselect.com/platform/v1/problem/esows/solution"
                         "sid": "f770685b-c969-4d39-b9db-71377e7d5881"
                     }
                 },
-                "technology": "java7",
-                "evaluator": {
-                    "first_name": "Hemil",
-                    "last_name": "Shah",
-                    "username": "hemil42",
-                    "email": "hemil@doselect.com"
-                },
-                "extra_data": "{}",
-                "status": "NRE",
+                "technology": "angularjs",
+                "status": "ACC",
                 "resubmissions": 0,
-                "solution_type": "APP",
-                "total_score": "0.0",
+                "solution_type": "UIX",
+                "total_score": "45.0",
                 "choice": null,
                 "answer": "",
                 "is_submitted": true,
                 "slug": "75ee0",
                 "submitted_at": "2017-05-14T09:10:22.558Z",
                 "run_details": null,
-                "attachments": "[]"
+                "attachments": "[]",
+                "creator": {
+                    "email": "john@example.com"
+                }
             }
         },
     ]
 }
 ```
-The solutions will contain information regarding the submission made by the user. The Problem is identified by a unique `slug` that gets generated during creation. This endpoint retrieves all solutions of a specific problem:
+The problem is identified by a unique `slug` that gets generated during creation. This endpoint retrieves all submission of a specific problem:
 
 
 ### HTTP Request
 
-`GET https://api.doselect.com/platform/v1/problem/<slug>/solution`
+`GET https://api.doselect.com/platform/v1/problem/<slug>/submissions`
 
 
-## Get solution of problem by user
+## Get submission by a user
 
 > Request
 
@@ -582,94 +572,89 @@ curl "https://api.doselect.com/platform/v1/problem/esows/solution/tessyjosseph@g
 
 ```json
 {
-    {
-        "code": "",
-        "analysis_details": {
-            "quality": {
-                "analysis_ended": "2017-04-30T10:26:25Z",
-                "score": "4.3",
-                "analysis_started": "2017-04-30T10:26:12Z",
-                "issues": [{
-                    "description": "Remove this useless assignment to local variable DoSelectHack",
-                    "engine_name": "checks",
-                    "check_name": "javascript:S1854",
-                    "location": {
-                        "path": "source.js",
-                        "lines": {
-                            "begin": 4,
-                            "end": 4
-                        }
-                    },
-                    "type": "issue",
-                    "categories": ["Bug Risk"],
-                    "remediation_points": 0
-                }, {
-                    "description": "Remove this logging statement.",
-                    "engine_name": "checks",
-                    "check_name": "javascript:S2228",
-                    "location": {
-                        "path": "source.js",
-                        "lines": {
-                            "begin": 6,
-                            "end": 6
-                        }
-                    },
-                    "type": "issue",
-                    "categories": ["Security"],
-                    "remediation_points": 0
-                }, {
-                    "description": "Remove this logging statement.",
-                    "engine_name": "checks",
-                    "check_name": "javascript:S2228",
-                    "location": {
-                        "path": "source.js",
-                        "lines": {
-                            "begin": 8,
-                            "end": 8
-                        }
-                    },
-                    "type": "issue",
-                    "categories": ["Security"],
-                    "remediation_points": 0
-                }],
-                "sid": "f770685b-c969-4d39-b9db-71377e7d5881"
-            }
-        },
-        "technology": "java7",
-        "evaluator": {
-            "first_name": "Hemil",
-            "last_name": "Shah",
-            "username": "hemil42",
-            "email": "hemil@doselect.com"
-        },
-        "extra_data": "{}",
-        "status": "NRE",
-        "resubmissions": 0,
-        "solution_type": "APP",
-        "total_score": "0.0",
-        "choice": null,
-        "answer": "",
-        "is_submitted": true,
-        "slug": "75ee0",
-        "submitted_at": "2017-05-14T09:10:22.558Z",
-        "run_details": null,
-        "attachments": "[]"
+    "code": "",
+    "analysis_details": {
+        "quality": {
+            "analysis_ended": "2017-04-30T10:26:25Z",
+            "score": "4.3",
+            "analysis_started": "2017-04-30T10:26:12Z",
+            "issues": [{
+                "description": "Remove this useless assignment to local variable DoSelectHack",
+                "engine_name": "checks",
+                "check_name": "javascript:S1854",
+                "location": {
+                    "path": "source.js",
+                    "lines": {
+                        "begin": 4,
+                        "end": 4
+                    }
+                },
+                "type": "issue",
+                "categories": ["Bug Risk"],
+                "remediation_points": 0
+            }, {
+                "description": "Remove this logging statement.",
+                "engine_name": "checks",
+                "check_name": "javascript:S2228",
+                "location": {
+                    "path": "source.js",
+                    "lines": {
+                        "begin": 6,
+                        "end": 6
+                    }
+                },
+                "type": "issue",
+                "categories": ["Security"],
+                "remediation_points": 0
+            }, {
+                "description": "Remove this logging statement.",
+                "engine_name": "checks",
+                "check_name": "javascript:S2228",
+                "location": {
+                    "path": "source.js",
+                    "lines": {
+                        "begin": 8,
+                        "end": 8
+                    }
+                },
+                "type": "issue",
+                "categories": ["Security"],
+                "remediation_points": 0
+            }],
+            "sid": "f770685b-c969-4d39-b9db-71377e7d5881"
+        }
+    },
+    "technology": "angularjs",
+    "status": "ACC",
+    "resubmissions": 0,
+    "solution_type": "UIX",
+    "total_score": "45.0",
+    "choice": null,
+    "answer": "",
+    "is_submitted": true,
+    "slug": "75ee0",
+    "submitted_at": "2017-05-14T09:10:22.558Z",
+    "run_details": null,
+    "attachments": "[]",
+    "creator": {
+        "email": "john@example.com"
     }
 }
 ```
-This endpoint retrieves the solution of a specific problem, identified by a `slug` submitted by a user who is identified by the `email`.
+This endpoint retrieves the submission of a specific problem, identified by a `slug` submitted by a user who is identified by the `email`.
 
 
 ### HTTP Request
 
-`GET https://api.doselect.com/platform/v1/problem/<slug>/solution/<email>/`
+`GET https://api.doselect.com/platform/v1/problem/<slug>/submission/<email>/`
 
 
 # Submission API
 
-The Submission API allows you to create a solution for a problem.
+The Submission API allows you to create a submission for a problem. After creating a submission, you will get notified via webhooks
+when the result becomes available.
 
-## Post submission of problem by user
+## Create a new submission
 
 > Request
 
@@ -690,7 +675,7 @@ payload = {
 headers = {
     'DoSelect-Api-Key': "88d4266fd4e6338d13b845fcf28",
     'DoSelect-Api-Secret': "385041b7bbc2320471b8551d",
-    'content-type': "application/json"
+    'Content-Type': "application/json"
     }
 
 response = requests.request("POST", url, data=payload, headers=headers)
@@ -699,7 +684,7 @@ response = requests.request("POST", url, data=payload, headers=headers)
 ```shell
 curl -X POST \
   https://api.doselect.com/platform/v1/submission/ \
-  -H 'content-type: application/json' \
+  -H 'Content-Type: application/json' \
   -H 'DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28' \
   -H 'DoSelect-Api-Secret: 385041b7bbc2320471b8551d' \
   -d '{
@@ -716,7 +701,7 @@ curl -X POST \
 
 ```
 ```
-This endpoint accepts the submission of a specific problem, identified by a `slug` submitted by a user who is identified by the `email`.
+This endpoint accepts a new submission for a specific problem, identified by a `slug` submitted by a user who is identified by the `email`.
 
 
 ### HTTP Request
@@ -727,32 +712,32 @@ This endpoint accepts the submission of a specific problem, identified by a `slu
 ### Payload Params
 Parameter    | Description
 ----------   | ---------------
-technology   | The `slug` which identifies the technology used
-problem_type | The `slug` which identifies the problem type
-code         | The code which the user wrote
-code_url     | The public url of the zip of the code
+technology   | The `slug` which identifies the technology used for this submission
+problem_type | The code for type of the problem
+code         | If the submission is a coding-type problem, the code of the submission
+code_url     | If the submission is a project-type problem, the publicly accessible url of the ZIP of the project
 problem_slug | The `slug` which identifies the problem
-email        | The email of the user
+email        | Email of the user
 
 
-The Allowed Problem Types are:
+The allowed problem types are:
 
-Problem Type  | Slug
+Problem type  | Slug
 ------------  | ----
-Project Based | PRJ
-UI/UX Project | UIX
-Scripting     | SCR
+Project-based | PRJ
+Front-end project | UIX
+Coding     | SCR
 Mobile        | MOB
 
 
-Allowed Technologies for each Problem Type are:
+The allowed technologies for each problem type are:
 
-Problem Type | Slug (Technology Name)
+Problem type | Slug reference
 ------------ | ----------------------
-Project Based| java7 (Java 7), python3 (Python 3), python2 (Python 2), java8 (Java 8)
-UI/UX Project| angularjs (AngularJS), jquery (jQuery), reactjs (React), backbonejs (Backbone), vanillajs (Vanilla JS)
-Scripting    | julia (Julia), haskell (Haskell), csharp (C#), go (Go), javascript (JavaScript (NodeJS)), scala (Scala), swift (Swift), perl (Perl), lua (Lua), clisp (Clisp), objectivec (ObjectiveC), php (PHP), ruby (Ruby), bash (Bash), clojure (Clojure), rust (Rust), c (C), cpp (C++), java7 (Java 7), python3 (Python 3), python2 (Python 2), java8 (Java 8), r (R), fsharp (F#), cpp14 (C++14), kotlin (Kotlin)
-Android      | android (Android)
+Project-based| java7 (Java 7), python3 (Python 3), python2 (Python 2), java8 (Java 8)
+Front-end project| angularjs (AngularJS), jquery (jQuery), reactjs (React), backbonejs (Backbone), vanillajs (Vanilla JS)
+Coding    | julia (Julia), haskell (Haskell), csharp (C#), go (Go), javascript (JavaScript (NodeJS)), scala (Scala), swift (Swift), perl (Perl), lua (Lua), clisp (Clisp), objectivec (ObjectiveC), php (PHP), ruby (Ruby), bash (Bash), clojure (Clojure), rust (Rust), c (C), cpp (C++), java7 (Java 7), python3 (Python 3), python2 (Python 2), java8 (Java 8), r (R), fsharp (F#), cpp14 (C++14), kotlin (Kotlin)
+Mobile      | android (Android)
 
 
 # Embed API
