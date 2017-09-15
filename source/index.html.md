@@ -413,7 +413,29 @@ curl "https://api.doselect.com/platform/v1/problem/esows"
 
 ```json
 {
-	TBD
+	"attachments": [],
+	"category": "MAR",
+	"code": "",
+	"editorial": "",
+	"gist": "\nBuild a chat application which has `Add chatbox` button, which on click adds a chat box to the window. When clicked again, it should add another chat box next to the first one. Maximum of 10 chat boxes are allowed ...",
+	"insight_tags": [],
+	"language": null,
+	"level": "EAS",
+	"mcq_options": ["options"],
+	"name": "Multi chat",
+	"num_problem_test_cases": 0,
+	"penalty": 0,
+	"primary_technology": null,
+	"problem_type": "UIX",
+	"sample_test_cases": [],
+	"score": 75,
+	"slug": "64l05",
+	"solving_time": null,
+	"stubs": {},
+	"tags": [],
+	"technologies": ["vanillajs", "angularjs"],
+	"time_limit_secs": null,
+	"total_sample_testcases": 0,
 }
 ```
 A Problem is identified by a unique `slug` that gets generated during creation. This endpoint retrieves a specific problem:
@@ -643,8 +665,6 @@ This endpoint retrieves the solution of a specific problem, identified by a `slu
 `GET https://api.doselect.com/platform/v1/problem/<slug>/solution/<email>/`
 
 
-<aside class="notice">Details coming soon.</aside>
-
 # Submission API
 
 The Submission API allows you to create a solution for a problem.
@@ -734,7 +754,6 @@ UI/UX Project| angularjs (AngularJS), jquery (jQuery), reactjs (React), backbone
 Scripting    | julia (Julia), haskell (Haskell), csharp (C#), go (Go), javascript (JavaScript (NodeJS)), scala (Scala), swift (Swift), perl (Perl), lua (Lua), clisp (Clisp), objectivec (ObjectiveC), php (PHP), ruby (Ruby), bash (Bash), clojure (Clojure), rust (Rust), c (C), cpp (C++), java7 (Java 7), python3 (Python 3), python2 (Python 2), java8 (Java 8), r (R), fsharp (F#), cpp14 (C++14), kotlin (Kotlin)
 Android      | android (Android)
 
-<aside class="notice">Details coming soon.</aside>
 
 # Embed API
 
