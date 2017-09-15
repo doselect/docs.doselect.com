@@ -134,32 +134,39 @@ curl "https://api.doselect.com/platform/v1/test"
 {
     "objects": [
         {
-            "allowed_technologies": {},
-            "archived": false,
-            "cutoff": 0,
-            "duration": 30,
+            "candidates_uri": "/platform/v1/test/2edpq/candidates",
+            "cutoff": 60,
+            "duration": 110,
             "end_time": null,
-            "instructions": "",
+            "instructions": "Test Instructions HTML",
             "level": "EAS",
-            "name": "Sample",
-            "public_access_password": null,
-            "public_access_slug": null,
-            "resource_uri": "/platform/v1/test/78z50",
-            "sections": [
-                {
-                    "description": "",
-                    "duration": 0,
-                    "name": "Section 1",
-                    "problems": [],
-                    "sample": 0,
-                    "shuffle": false,
-                    "slug": "section-1"
-                }
-            ],
-            "slug": "78z50",
+            "name": "Site Reliability Engineering Test",
+            "public_test_password": "public_test_password",
+            "public_test_url": "public_test_url",
+            "resource_uri": "/platform/v1/test/2edpq",
+            "sections": [{
+                "description": "",
+                "duration": 0,
+                "name": "BASH Scripting",
+                "problems": [{
+                    "allowed_technologies": [],
+                    "level": "EAS",
+                    "name": "Print the HTTP status code",
+                    "problem_type": "SCR",
+                    "score": 50,
+                    "slug": "ed9op"
+                }],
+                "randomization": {
+                    "sampling": "2 out of 2",
+                    "shuffle": false
+                },
+                "slug": "section-1"
+            }],
+            "slug": "2edpq",
             "start_time": null,
             "status": "DRA",
-            "tags": []
+            "tags": ["python", "functions"],
+            "usable": true
         }
     ]
 }
@@ -197,54 +204,39 @@ curl "https://api.doselect.com/platform/v1/test/esows"
 
 ```json
 {
-    "allowed_technologies": {},
-    "archived": true,
-    "cutoff": 0,
-    "duration": 45,
-    "end_time": null,
-    "instructions": "<p>Cras ultricies ligula sed magna dictum porta.</p>",
-    "level": "EAS",
-    "name": "Python Scripting",
-    "public_access_password": null,
-    "public_access_slug": null,
-    "resource_uri": "/platform/v1/test/esows",
-    "sections": [
-        {
-            "description": "Cras ultricies ligula sed magna dictum porta.",
-            "duration": 0,
-            "name": "Section 1",
-            "problems": [
-                {
-                    "level": "EAS",
-                    "name": "Hello World!",
-                    "problem_type": "SCR",
-                    "score": 50,
-                    "slug": "76wv0"
-                },
-                {
-                    "level": "EAS",
-                    "name": "The distance problem",
-                    "problem_type": "MCQ",
-                    "score": 5,
-                    "slug": "0ugxs"
-                },
-                {
-                    "level": "EAS",
-                    "name": "The socks problem",
-                    "problem_type": "MCQ",
-                    "score": 5,
-                    "slug": "75g30"
-                }
-            ],
-            "sample": 3,
-            "shuffle": false,
-            "slug": "section-1"
-        }
-    ],
-    "slug": "esows",
-    "start_time": null,
-    "status": "DRA",
-    "tags": ["python", "functions"]
+	"candidates_uri": "/platform/v1/test/2edpq/candidates",
+	"cutoff": 60,
+	"duration": 110,
+	"end_time": null,
+	"instructions": "Test Instructions HTML",
+	"level": "EAS",
+	"name": "Site Reliability Engineering Test",
+	"public_test_password": "public_test_password",
+	"public_test_url": "public_test_url",
+	"resource_uri": "/platform/v1/test/2edpq",
+	"sections": [{
+		"description": "",
+		"duration": 0,
+		"name": "BASH Scripting",
+		"problems": [{
+			"allowed_technologies": [],
+			"level": "EAS",
+			"name": "Print the HTTP status code",
+			"problem_type": "SCR",
+			"score": 50,
+			"slug": "ed9op"
+		}],
+		"randomization": {
+			"sampling": "2 out of 2",
+			"shuffle": false
+		},
+		"slug": "section-1"
+	}],
+	"slug": "2edpq",
+	"start_time": null,
+	"status": "DRA",
+	"tags": ["python", "functions"],
+	"usable": true
 }
 ```
 A test is identified by a unique `slug` that gets generated during creation. This endpoint retrieves a specific test:
@@ -281,20 +273,22 @@ curl "https://api.doselect.com/platform/v1/test/esows/candidates"
 {
     "objects": [
         {
-            "access_code": "AbUxfgtmNWQGLYFvsfdgdewlXLjVaqD2MPAwO6dm27c",
-            "archived": false,
-            "email": "donnie@campushash.com",
-            "expiry": "2015-05-10T13:23:42.006100",
-            "extra_data": {},
+            "access_code": "kp0MNj5dfsPlcYZ/TX7Hf9VBE9Wz0EE0hHUSmZ2w0FlRD4oebPPBw3lt6",
+            "candidate_extra_data": {},
+            "email": "tesssd2@gmail.com",
+            "expiry": "2017-08-31T07:18:50.328659",
             "report": {
                 "percentile_score": null,
+                "report_uri": "/platform/v1/test/2edpq/candidates/tesssd2@gmail.com/report",
                 "time_taken": null,
-                "total_problems": 3,
+                "total_problems": 78,
                 "total_score": null,
                 "total_solutions": null
             },
             "resource_uri": "",
-            "test": "/platform/v1/test/esows"
+            "status": "accepted",
+            "test": "/platform/v1/test/2edpq",
+            "times_sent": 1
         },
     ]
 }
@@ -332,74 +326,51 @@ curl "https://api.doselect.com/platform/v1/test/4242/candidates/ghost@wall.com/r
 
 ```json
 {
-    "accepted": 41,
-    "attempted": 76,
-    "code_quality_frequency": [
-        {
-            "labels": "Bug Risk",
-            "value": 3
-        }
-    ],
-    "ended_at": "2017-08-17T06:29:06.955499",
-    "extra_data": {},
-    "is_submitted": true,
-    "max_score": 580,
-    "need_review": 0,
-    "percentile_score": 33,
-    "proctored_data": {},
-    "rejected": 35,
-    "resource_uri": "",
-    "sections": [
-        {
-            "name": "BASH Scripting",
-            "problems": [
-                "ed9op",
-                "br9p9"
-            ]
-        },
-        {
-            "name": "MCQ Section",
-            "problems": [
-                "7gnwp",
-                "syhnm",
-                "7ygow",
-                "7lv90"
-            ]
-        }
-    ],
-    "started_at": "2017-08-17T05:14:12.167016",
-    "tagwise_proficiency": {
-        "languages": [
-            "bash"
-        ],
-        "tags": {
-            "labels": [
-                "Linux"
-            ],
-            "values": [
-                2.76
-            ]
-        }
-    },
-    "test": "/platform/v1/test/2edpq",
-    "time_taken": 4494,
-    "total_problems": 78,
-    "total_score": "263.0",
-    "total_solutions": 76,
-    "user": {
-        "email": "john@example.com",
-        "first_name": "John",
-        "id": 31270,
-        "is_active": true,
-        "last_name": "Doe",
-        "username": "7302e16af6ea4bcb9446fe6542ea4e"
-    },
-    "verdict": {
-        "percentage": 45,
-        "quality_score": 4.3,
-        "quality_verdict": "ok",
-        "verdict": "Not qualified"
-    }
+	"accepted": 41,
+	"attempted": 76,
+	"candidate_extra_data": {},
+	"code_quality_issues": [{
+		"labels": "Bug Risk",
+		"value": 3
+	}],
+	"ended_at": "2017-08-17T06:29:06.955499",
+	"is_submitted": true,
+	"max_score": 580,
+	"need_review": 0,
+	"proctored_data": {},
+	"rejected": 35,
+	"resource_uri": "",
+	"sections": [{
+		"name": "BASH Scripting",
+		"problems": [{
+			"level": "EAS",
+			"name": "Print the HTTP status code",
+			"problem_type": "SCR",
+			"score": 50,
+			"slug": "ed9op",
+			"solution": {
+				"is_submitted": true,
+				"score": "0.0",
+				"slug": "w4a9a",
+				"status": "REJ"
+			}
+		}]
+	}],
+	"started_at": "2017-08-17T05:14:12.167016",
+	"stats": {},
+	"test": "/platform/v1/test/2edpq",
+	"time_taken": 4494,
+	"total_problems": 78,
+	"total_score": 263,
+	"total_solutions": 76,
+	"user": {
+		"email": "tessyjoseph1992@gmail.com",
+		"first_name": "TESSY",
+		"id": 31270,
+		"is_active": true,
+		"last_name": "JOSEPH JOHN",
+		"username": "7302e16af6ea4bcb9446fe6542ea4e"
+	}
 }
 ```
 
