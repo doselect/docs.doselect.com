@@ -1,14 +1,14 @@
 # Errors
 
-The Partner API uses the following error codes:
+The APIs return standard HTTP success or error status codes. For errors, extra information about what went wrong will also be sent in the respose,
+encoded in JSON. The various HTTP codes we might return are listed below.
 
-
-Error Code | Meaning | Description
+Code | Title | Description
 ---------- | ------- | -----------
-400 | Bad Request | Your request is not in an accepted format.
-401 | Unauthorized | Your API key and secret is wrong/missing.
-403 | Forbidden | The resource requested is not associated with you.
-404 | Not Found | The specified resource could not be found.
-405 | Method Not Allowed | You tried to access a resource with an invalid method.
-500 | Internal Server Error | We had a problem with our server. Try again later.
-503 | Service Unavailable | We're temporarily offline for maintenance. Please try again later.
+200 | OK | The request was successful.
+400 | Bad request | The request was malformed or in an unaccepted format.
+401 | Unauthorized | Your `API_KEY` and/or `API_SECRET` is wrong or missing.
+403 | Forbidden | The requested resource was not accessible to you.
+404 | Not found | The specified resource was not be found.
+405 | Method not allowed | You were trying to access the resource using an invalid HTTP method.
+50X | Internal server error | An error occured with our APIs.
