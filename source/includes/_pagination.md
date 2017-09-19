@@ -9,9 +9,9 @@ resource objects in such responses.
 {
     "meta": {
             "limit": 100,
-            "next": /platform/v1/test?limit=100&offset=200,
+            "next": "/platform/v1/test?limit=100&offset=200",
             "offset": 100,
-            "previous": /platform/v1/test?limit=100&offset=0,
+            "previous": "/platform/v1/test?limit=100&offset=0",
             "total_count": 217
     },
     "objects":[
