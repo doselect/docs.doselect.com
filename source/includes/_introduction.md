@@ -17,7 +17,3 @@ The API Platform is in limited release at the moment.
 You must have developer options enabled for your DoSelect team in order to be able to use these APIs.
 Please contact your account manager or write to <a href="mailto:support@doselect.com">support@doselect.com</a> for help.
 </aside>
-
-<aside class="notice">
-The dev sandbox for the APIs can be accessed at <code>api.dev.doselect.in</code>. Please note that all requests should be made over HTTPS.
-</aside>
