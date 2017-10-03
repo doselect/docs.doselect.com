@@ -319,10 +319,6 @@ The API Platform is in limited release at the moment.
 You must have developer options enabled for your DoSelect team in order to be able to use these APIs.
 Please contact your account manager or write to <a href="mailto:support@doselect.com">support@doselect.com</a> for help.
 </aside>
-
-<aside class="notice">
-The dev sandbox for the APIs can be accessed at <code>api.dev.doselect.in</code>. Please note that all requests should be made over HTTPS.
-</aside>
 <h1 id='authentication'>Authentication</h1>
 <blockquote>
 <p>Example request with authentication:</p>
@@ -451,6 +447,143 @@ resource objects in such responses.</p>
 </tbody></table>
 <h1 id='test-api'>Test API</h1>
 <p>The Test API lets you retrieve tests that have been created in your team.</p>
+
+<p>The test information which can be accessed from our APIs will contain the following information:</p>
+
+<table><thead>
+<tr>
+<th>Field Name</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>resource_uri</td>
+<td>string</td>
+<td>The URI for a particular test</td>
+</tr>
+<tr>
+<td>slug</td>
+<td>string</td>
+<td>The identifier for that test</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>The name of the test</td>
+</tr>
+<tr>
+<td>is_usable</td>
+<td>boolean</td>
+<td>If true, this test is active and can be taken</td>
+</tr>
+<tr>
+<td>instructions</td>
+<td>string</td>
+<td>The instructions for the test taker</td>
+</tr>
+<tr>
+<td>duration</td>
+<td>integer</td>
+<td>The duration of the test in seconds</td>
+</tr>
+<tr>
+<td>total_problems</td>
+<td>integer</td>
+<td>The total number of problems in the test</td>
+</tr>
+<tr>
+<td>total_sections</td>
+<td>integer</td>
+<td>The total number of sections in the test</td>
+</tr>
+<tr>
+<td>cutoff</td>
+<td>integer</td>
+<td>The cutoff marks for a test</td>
+</tr>
+<tr>
+<td>level</td>
+<td>string</td>
+<td>The level of this test</td>
+</tr>
+<tr>
+<td>public_access_url</td>
+<td>string</td>
+<td>This will be the publically accessible url for this test</td>
+</tr>
+<tr>
+<td>public_access_password</td>
+<td>string</td>
+<td>This will be the password if any, for accessing the test on the <code>public_access_url</code></td>
+</tr>
+<tr>
+<td>start_time</td>
+<td>string</td>
+<td>This will contain the start time of the test in a date time string</td>
+</tr>
+<tr>
+<td>end_time</td>
+<td>string</td>
+<td>This will contain the end time of the test in a date time string</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>list</td>
+<td></td>
+</tr>
+<tr>
+<td>sections</td>
+<td>list</td>
+<td>This will contain a list of dictionaries with information about each section of the test</td>
+</tr>
+<tr>
+<td>settings</td>
+<td>dictionary</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p>The aforementioned <code>settings</code> will have the following information:</p>
+
+<table><thead>
+<tr>
+<th>Field Name</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>secure_mode</td>
+<td>boolean</td>
+<td>If true, it indicates tha the test has secure mode on</td>
+</tr>
+<tr>
+<td>webcam_proctoring</td>
+<td>boolean</td>
+<td>If true, it indicates tha the test has webcam proctoring on</td>
+</tr>
+<tr>
+<td>custom_fields</td>
+<td>list</td>
+<td>A list of custom fields</td>
+</tr>
+<tr>
+<td>test_administrators</td>
+<td>list</td>
+<td>A list of test administrators</td>
+</tr>
+<tr>
+<td>invite_expiry_enabled</td>
+<td>boolean</td>
+<td>If true, indicates that the invites can expire</td>
+</tr>
+<tr>
+<td>invite_expiry_days</td>
+<td>integer</td>
+<td>Indicates the number of days for which an invite of this test will be active</td>
+</tr>
+</tbody></table>
 <h2 id='get-all-tests'>Get all tests</h2>
 <blockquote>
 <p>Request</p>
@@ -473,40 +606,55 @@ resource objects in such responses.</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"objects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"candidates_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/test/2edpq/candidates"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"cutoff"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">110</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"cutoff"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
             </span><span class="s2">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"instructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Instructions HTML"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"instructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;ol&gt;&lt;li&gt;&lt;!--block--&gt;This is an online programming test by Doselect.&lt;/li&gt;"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"is_usable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
             </span><span class="s2">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EAS"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Site Reliability Engineering Test"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"public_test_password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public_test_password"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"public_test_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public_test_url"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"resource_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/test/2edpq"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"sections"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-                </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BASH Scripting"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"problems"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-                    </span><span class="s2">"allowed_technologies"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-                    </span><span class="s2">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EAS"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Print the HTTP status code"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"problem_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SCR"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ed9op"</span><span class="w">
-                </span><span class="p">}],</span><span class="w">
-                </span><span class="s2">"randomization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"sampling"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2 out of 2"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"shuffle"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-                </span><span class="p">},</span><span class="w">
-                </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"section-1"</span><span class="w">
-            </span><span class="p">}],</span><span class="w">
-            </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2edpq"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sample Test"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"public_access_password"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"public_access_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"resource_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/test/esows"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sections"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Section 1"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"num_problems"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"problems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="s2">"allowed_technologies"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                            </span><span class="s2">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MED"</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Create a decorator"</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"problem_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SCR"</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rra3l"</span><span class="w">
+                        </span><span class="p">}</span><span class="w">
+                    </span><span class="p">],</span><span class="w">
+                    </span><span class="s2">"randomization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"sampling"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 out of 1"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"shuffle"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"section-1"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                </span><span class="s2">"invite_expiry_days"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"invite_expiry_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"secure_mode"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"test_administrators"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                </span><span class="s2">"webcam_proctoring"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"esows"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DRA"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"python"</span><span class="p">,</span><span class="w"> </span><span class="s2">"functions"</span><span class="p">],</span><span class="w">
-            </span><span class="s2">"usable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-        </span><span class="p">}</span><span class="w">
+            </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"total_candidates"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"total_problems"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"total_sections"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -533,40 +681,56 @@ resource objects in such responses.</p>
 <p>Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"candidates_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/test/2edpq/candidates"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cutoff"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">110</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cutoff"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
     </span><span class="s2">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"instructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Instructions HTML"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;ol&gt;&lt;li&gt;&lt;!--block--&gt;This is an online programming test by Doselect.&lt;/li&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_usable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EAS"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Site Reliability Engineering Test"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"public_test_password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public_test_password"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"public_test_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public_test_url"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/test/2edpq"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"sections"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BASH Scripting"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"problems"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-            </span><span class="s2">"allowed_technologies"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-            </span><span class="s2">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EAS"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Print the HTTP status code"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"problem_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SCR"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ed9op"</span><span class="w">
-        </span><span class="p">}],</span><span class="w">
-        </span><span class="s2">"randomization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"sampling"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2 out of 2"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"shuffle"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"section-1"</span><span class="w">
-    </span><span class="p">}],</span><span class="w">
-    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2edpq"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sample Test"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"public_access_password"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"public_access_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/test/esows"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sections"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Section 1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"num_problems"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"problems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"allowed_technologies"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                    </span><span class="s2">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MED"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Create a decorator"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"problem_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SCR"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rra3l"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"randomization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"sampling"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 out of 1"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"shuffle"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"section-1"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"invite_expiry_days"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"invite_expiry_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"secure_mode"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"test_administrators"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"webcam_proctoring"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"esows"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DRA"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"python"</span><span class="p">,</span><span class="w"> </span><span class="s2">"functions"</span><span class="p">],</span><span class="w">
-    </span><span class="s2">"usable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"total_candidates"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total_problems"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total_sections"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
+
+
 </span></code></pre>
 <p>A test is identified by a unique <code>slug</code> that gets generated during creation. This endpoint retrieves a specific test:</p>
 <h3 id='http-request-2'>HTTP Request</h3>
@@ -593,29 +757,103 @@ resource objects in such responses.</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"objects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"access_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kp0MNj5dfsPlcYZ/TX7Hf9VBE9Wz0EE0hHUSmZ2w0FlRD4oebPPBw3lt6"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"candidate_extra_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-            </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tesssd2@gmail.com"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-31T07:18:50.328659"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"donnie@campushash.com"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-22T08:01:50.960070"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"report"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"percentile_score"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"report_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/test/2edpq/candidates/tesssd2@gmail.com/report"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"report_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/test/esows/candidates/donnie@campushash.com/report"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"time_taken"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"total_problems"</span><span class="p">:</span><span class="w"> </span><span class="mi">78</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"total_problems"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"total_score"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"total_solutions"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="s2">"resource_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accepted"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/test/2edpq"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"times_sent"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+            </span><span class="s2">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/test/esows"</span><span class="w">
         </span><span class="p">},</span><span class="w">
+
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all candidates of a test.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
 <p><code>GET https://api.doselect.com/platform/v1/test/&lt;slug&gt;/candidates</code></p>
+
+<p>The candidate information which can be accessed from our APIs will contain the following information:</p>
+
+<table><thead>
+<tr>
+<th>Field Name</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>resource_uri</td>
+<td>string</td>
+<td>The URI for a particular candidate</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>The email of the candidate</td>
+</tr>
+<tr>
+<td>expiry</td>
+<td>string</td>
+<td>The datetime string about the expiry date of this candidate&#39;s invite</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>It indicates whether the candidate has accepted/rejected/not responded to the invite</td>
+</tr>
+<tr>
+<td>test</td>
+<td>string</td>
+<td>The URI of the test</td>
+</tr>
+<tr>
+<td>report</td>
+<td>dictionary</td>
+<td>The information about the report of this candidate</td>
+</tr>
+</tbody></table>
+
+<p>The aforementioned <code>report</code> dictionary will contain the following information:</p>
+
+<table><thead>
+<tr>
+<th>Field Name</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>report_uri</td>
+<td>string</td>
+<td>The URI of the report of the candidate for this test, if it exists</td>
+</tr>
+<tr>
+<td>time_taken</td>
+<td>integer</td>
+<td>The time taken by this candidate for the test</td>
+</tr>
+<tr>
+<td>total_score</td>
+<td>float</td>
+<td>The total score of this candidate</td>
+</tr>
+<tr>
+<td>total_solutions</td>
+<td>integer</td>
+<td>The number of solutions submitted by the candidate</td>
+</tr>
+<tr>
+<td>total_problems</td>
+<td>integer</td>
+<td>The number of problems in the test</td>
+</tr>
+</tbody></table>
 <h2 id='get-a-candidate-39-s-report'>Get a candidate&#39;s report</h2>
 <blockquote>
 <p>Request</p>
@@ -636,56 +874,190 @@ resource objects in such responses.</p>
 <p>Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"accepted"</span><span class="p">:</span><span class="w"> </span><span class="mi">41</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"attempted"</span><span class="p">:</span><span class="w"> </span><span class="mi">76</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"candidate_extra_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-    </span><span class="s2">"code_quality_issues"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-        </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Risk"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
-    </span><span class="p">}],</span><span class="w">
-    </span><span class="s2">"ended_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-17T06:29:06.955499"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"accepted"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"attempted"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"donnie@campushash.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ended_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-08T07:26:03.549447"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"insights"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"languages_used"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"julia"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="s2">"is_submitted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"max_score"</span><span class="p">:</span><span class="w"> </span><span class="mi">580</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"need_review"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"proctored_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-    </span><span class="s2">"rejected"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"max_score"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"quality_analysis"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Risk"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"rejected"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"resource_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"sections"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BASH Scripting"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"problems"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-            </span><span class="s2">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EAS"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Print the HTTP status code"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"problem_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SCR"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ed9op"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"solution"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"is_submitted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"w4a9a"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REJ"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">}]</span><span class="w">
-    </span><span class="p">}],</span><span class="w">
-    </span><span class="s2">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-17T05:14:12.167016"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"stats"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-    </span><span class="s2">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/test/2edpq"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"time_taken"</span><span class="p">:</span><span class="w"> </span><span class="mi">4494</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"total_problems"</span><span class="p">:</span><span class="w"> </span><span class="mi">78</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"total_score"</span><span class="p">:</span><span class="w"> </span><span class="mi">263</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"total_solutions"</span><span class="p">:</span><span class="w"> </span><span class="mi">76</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tessyjoseph1992@gmail.com"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TESSY"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">31270</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"is_active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JOSEPH JOHN"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7302e16af6ea4bcb9446fe6542ea4e"</span><span class="w">
+    </span><span class="s2">"sections"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Section 1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"problems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EAS"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Whois Search Tool"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"problem_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SCR"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shjx7"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"solution"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"is_submitted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2pda3"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NRE"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-08T07:25:21.937355"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"time_taken"</span><span class="p">:</span><span class="w"> </span><span class="mi">41</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total_problems"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total_score"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total_solutions"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"verdict"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"percentage"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"quality_score"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"quality_verdict"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bad"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"verdict"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Qualified"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves the reports of one candidate in a test. A candidate is identified by the <code>email</code> in a test.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
 <p><code>GET https://api.doselect.com/platform/v1/test/&lt;slug&gt;/candidates/&lt;email&gt;/report</code></p>
+
+<p>The report which can be accessed from our APIs will contain the following information:</p>
+
+<table><thead>
+<tr>
+<th>Field Name</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>resource_uri</td>
+<td>string</td>
+<td>The URI for a particular candidate</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>The email of the candidate</td>
+</tr>
+<tr>
+<td>total_solutions</td>
+<td>integer</td>
+<td>The number of solutions submitted by the candidate</td>
+</tr>
+<tr>
+<td>attempted</td>
+<td>integer</td>
+<td>The number of problems attempted</td>
+</tr>
+<tr>
+<td>rejected</td>
+<td>integer</td>
+<td>The number of problems rejected</td>
+</tr>
+<tr>
+<td>accepted</td>
+<td>integer</td>
+<td>The number of problems accepted</td>
+</tr>
+<tr>
+<td>total_score</td>
+<td>float</td>
+<td>The total score of this candidate</td>
+</tr>
+<tr>
+<td>max_score</td>
+<td>float</td>
+<td>The maximum score of a candidate can get in this test</td>
+</tr>
+<tr>
+<td>started_at</td>
+<td>string</td>
+<td>A datetime string indicating when the candidate began taking the test</td>
+</tr>
+<tr>
+<td>ended_at</td>
+<td>string</td>
+<td>A datetime string indicating when the candidate stopped the test</td>
+</tr>
+<tr>
+<td>time_taken</td>
+<td>integer</td>
+<td>The time taken to give this test in seconds</td>
+</tr>
+<tr>
+<td>is_submitted</td>
+<td>boolean</td>
+<td>If true, the candidate has made the final submission</td>
+</tr>
+<tr>
+<td>sections</td>
+<td>list</td>
+<td>A list of sections of the test</td>
+</tr>
+<tr>
+<td>insights</td>
+<td>list</td>
+<td>A list of</td>
+</tr>
+<tr>
+<td>quality_analysis</td>
+<td>list</td>
+<td>A list of dictionaries containing analysis details</td>
+</tr>
+</tbody></table>
+
+<p>expiry          | string     | The datetime string about the expiry date of this candidate&#39;s invite
+status          | string     | It indicates whether the candidate has accepted/rejected/not responded to the invite
+test            | string     | The URI of the test
+verdict         | dictionary | The verdict on this report</p>
+
+<p>The aforementioned <code>verdict</code> dictionary will contain the following information:</p>
+
+<table><thead>
+<tr>
+<th>Field Name</th>
+<th>Data Type</th>
+<th>Possible Values</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>percentage</td>
+<td>integer</td>
+<td>N.A</td>
+<td>The percentage of marks scored by the candidate</td>
+</tr>
+<tr>
+<td>quality_score</td>
+<td>string</td>
+<td>N.A</td>
+<td>The average code quality score in this test</td>
+</tr>
+<tr>
+<td>quality_verdict</td>
+<td>string</td>
+<td><code>good</code>, <code>ok</code>, <code>bad</code></td>
+<td>The verdict based on the code written by the candidate</td>
+</tr>
+<tr>
+<td>verdict</td>
+<td>string</td>
+<td><code>Not qualified</code>, <code>Qualified</code>, <code>Outstanding</code></td>
+<td>The verdict on the candidate</td>
+</tr>
+</tbody></table>
 <h1 id='user-api'>User API</h1>
 <p>The User API allows you to retrieve the details of a user on DoSelect.</p>
 <h1 id='problem-api'>Problem API</h1>
