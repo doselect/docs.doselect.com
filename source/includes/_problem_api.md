@@ -158,7 +158,7 @@ The problem is identified by a unique `slug` that gets generated during creation
 
 ### HTTP Request
 
-`GET https://api.doselect.com/platform/v1/problem/<slug>/submissions`
+`GET https://api.doselect.com/platform/v1/problem/<slug>/submission`
 
 
 ## Get submission by a user
