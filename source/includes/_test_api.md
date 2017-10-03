@@ -2,6 +2,40 @@
 
 The Test API lets you retrieve tests that have been created in your team.
 
+The test information which can be accessed from our APIs will contain the following information:
+
+Field Name             | Data Type  | Description
+----------             | ---------  | -----------
+resource_uri           | string     | The URI for a particular test
+slug                   | string     | The identifier for that test
+name                   | string     | The name of the test
+is_usable              | boolean    | If true, this test is active and can be taken
+instructions           | string     | The instructions for the test taker
+duration               | integer    | The duration of the test in seconds
+total_problems         | integer    | The total number of problems in the test
+total_sections         | integer    | The total number of sections in the test
+cutoff                 | integer    | The cutoff marks for a test
+level                  | string     | The level of this test
+public_access_url      | string     | This will be the publically accessible url for this test
+public_access_password | string     | This will be the password if any, for accessing the test on the `public_access_url`
+start_time             | string     | This will contain the start time of the test in a date time string
+end_time               | string     | This will contain the end time of the test in a date time string
+tags                   | list       |
+sections               | list       | This will contain a list of dictionaries with information about each section of the test
+settings               | dictionary |
+
+The aforementioned `settings` will have the following information:
+
+Field Name             | Data Type  | Description
+----------             | ---------  | -----------
+secure_mode            | boolean    | If true, it indicates tha the test has secure mode on
+webcam_proctoring      | boolean    | If true, it indicates tha the test has webcam proctoring on
+custom_fields          | list       | A list of custom fields
+test_administrators    | list       | A list of test administrators
+invite_expiry_enabled  | boolean    | If true, indicates that the invites can expire
+invite_expiry_days     | integer    | Indicates the number of days for which an invite of this test will be active
+
+
 ## Get all tests
 > Request
 
@@ -28,40 +62,55 @@ curl "https://api.doselect.com/platform/v1/test"
 {
     "objects": [
         {
-            "candidates_uri": "/platform/v1/test/2edpq/candidates",
-            "cutoff": 60,
-            "duration": 110,
+            "cutoff": 40,
+            "duration": 120,
             "end_time": null,
-            "instructions": "Test Instructions HTML",
+            "instructions": "<ol><li><!--block-->This is an online programming test by Doselect.</li>",
+            "is_usable": false,
             "level": "EAS",
-            "name": "Site Reliability Engineering Test",
-            "public_test_password": "public_test_password",
-            "public_test_url": "public_test_url",
-            "resource_uri": "/platform/v1/test/2edpq",
-            "sections": [{
-                "description": "",
-                "duration": 0,
-                "name": "BASH Scripting",
-                "problems": [{
-                    "allowed_technologies": [],
-                    "level": "EAS",
-                    "name": "Print the HTTP status code",
-                    "problem_type": "SCR",
-                    "score": 50,
-                    "slug": "ed9op"
-                }],
-                "randomization": {
-                    "sampling": "2 out of 2",
-                    "shuffle": false
-                },
-                "slug": "section-1"
-            }],
-            "slug": "2edpq",
+            "name": "Sample Test",
+            "public_access_password": null,
+            "public_access_url": null,
+            "resource_uri": "/platform/v1/test/esows",
+            "sections": [
+                {
+                    "description": "",
+                    "duration": 0,
+                    "name": "Section 1",
+                    "num_problems": 1,
+                    "problems": [
+                        {
+                            "allowed_technologies": [],
+                            "level": "MED",
+                            "name": "Create a decorator",
+                            "problem_type": "SCR",
+                            "score": 100,
+                            "slug": "rra3l"
+                        }
+                    ],
+                    "randomization": {
+                        "sampling": "1 out of 1",
+                        "shuffle": false
+                    },
+                    "slug": "section-1"
+                }
+            ],
+            "settings": {
+                "custom_fields": [],
+                "invite_expiry_days": 15,
+                "invite_expiry_enabled": true,
+                "secure_mode": true,
+                "test_administrators": [],
+                "webcam_proctoring": true
+            },
+            "slug": "esows",
             "start_time": null,
-            "status": "DRA",
-            "tags": ["python", "functions"],
-            "usable": true
-        }
+            "tags": [],
+            "total_candidates": 1,
+            "total_problems": 1,
+            "total_sections": 1
+        },
+
     ]
 }
 ```
@@ -98,40 +147,56 @@ curl "https://api.doselect.com/platform/v1/test/esows"
 
 ```json
 {
-    "candidates_uri": "/platform/v1/test/2edpq/candidates",
-    "cutoff": 60,
-    "duration": 110,
+    "cutoff": 40,
+    "duration": 120,
     "end_time": null,
-    "instructions": "Test Instructions HTML",
+    "instructions": "<ol><li><!--block-->This is an online programming test by Doselect.</li>",
+    "is_usable": false,
     "level": "EAS",
-    "name": "Site Reliability Engineering Test",
-    "public_test_password": "public_test_password",
-    "public_test_url": "public_test_url",
-    "resource_uri": "/platform/v1/test/2edpq",
-    "sections": [{
-        "description": "",
-        "duration": 0,
-        "name": "BASH Scripting",
-        "problems": [{
-            "allowed_technologies": [],
-            "level": "EAS",
-            "name": "Print the HTTP status code",
-            "problem_type": "SCR",
-            "score": 50,
-            "slug": "ed9op"
-        }],
-        "randomization": {
-            "sampling": "2 out of 2",
-            "shuffle": false
-        },
-        "slug": "section-1"
-    }],
-    "slug": "2edpq",
+    "name": "Sample Test",
+    "public_access_password": null,
+    "public_access_url": null,
+    "resource_uri": "/platform/v1/test/esows",
+    "sections": [
+        {
+            "description": "",
+            "duration": 0,
+            "name": "Section 1",
+            "num_problems": 1,
+            "problems": [
+                {
+                    "allowed_technologies": [],
+                    "level": "MED",
+                    "name": "Create a decorator",
+                    "problem_type": "SCR",
+                    "score": 100,
+                    "slug": "rra3l"
+                }
+            ],
+            "randomization": {
+                "sampling": "1 out of 1",
+                "shuffle": false
+            },
+            "slug": "section-1"
+        }
+    ],
+    "settings": {
+        "custom_fields": [],
+        "invite_expiry_days": 15,
+        "invite_expiry_enabled": true,
+        "secure_mode": true,
+        "test_administrators": [],
+        "webcam_proctoring": true
+    },
+    "slug": "esows",
     "start_time": null,
-    "status": "DRA",
-    "tags": ["python", "functions"],
-    "usable": true
+    "tags": [],
+    "total_candidates": 1,
+    "total_problems": 1,
+    "total_sections": 1
 }
+
+
 ```
 A test is identified by a unique `slug` that gets generated during creation. This endpoint retrieves a specific test:
 
@@ -167,23 +232,20 @@ curl "https://api.doselect.com/platform/v1/test/esows/candidates"
 {
     "objects": [
         {
-            "access_code": "kp0MNj5dfsPlcYZ/TX7Hf9VBE9Wz0EE0hHUSmZ2w0FlRD4oebPPBw3lt6",
-            "candidate_extra_data": {},
-            "email": "tesssd2@gmail.com",
-            "expiry": "2017-08-31T07:18:50.328659",
+            "email": "donnie@campushash.com",
+            "expiry": "2015-06-22T08:01:50.960070",
             "report": {
-                "percentile_score": null,
-                "report_uri": "/platform/v1/test/2edpq/candidates/tesssd2@gmail.com/report",
+                "report_uri": "/platform/v1/test/esows/candidates/donnie@campushash.com/report",
                 "time_taken": null,
-                "total_problems": 78,
+                "total_problems": 2,
                 "total_score": null,
                 "total_solutions": null
             },
             "resource_uri": "",
             "status": "accepted",
-            "test": "/platform/v1/test/2edpq",
-            "times_sent": 1
+            "test": "/platform/v1/test/esows"
         },
+
     ]
 }
 ```
@@ -193,6 +255,28 @@ This endpoint retrieves all candidates of a test.
 ### HTTP Request
 
 `GET https://api.doselect.com/platform/v1/test/<slug>/candidates`
+
+
+The candidate information which can be accessed from our APIs will contain the following information:
+
+Field Name      | Data Type  | Description
+----------      | ---------  | -----------
+resource_uri    | string     | The URI for a particular candidate
+email           | string     | The email of the candidate
+expiry          | string     | The datetime string about the expiry date of this candidate's invite
+status          | string     | It indicates whether the candidate has accepted/rejected/not responded to the invite
+test            | string     | The URI of the test
+report          | dictionary | The information about the report of this candidate
+
+The aforementioned `report` dictionary will contain the following information:
+
+Field Name      | Data Type  | Description
+----------      | ---------  | -----------
+report_uri      | string     | The URI of the report of the candidate for this test, if it exists
+time_taken      | integer    | The time taken by this candidate for the test
+total_score     | float      | The total score of this candidate
+total_solutions | integer    | The number of solutions submitted by the candidate
+total_problems  | integer    | The number of problems in the test
 
 
 ## Get a candidate's report
@@ -220,50 +304,57 @@ curl "https://api.doselect.com/platform/v1/test/4242/candidates/ghost@wall.com/r
 
 ```json
 {
-    "accepted": 41,
-    "attempted": 76,
-    "candidate_extra_data": {},
-    "code_quality_issues": [{
-        "labels": "Bug Risk",
-        "value": 3
-    }],
-    "ended_at": "2017-08-17T06:29:06.955499",
+    "accepted": 0,
+    "attempted": 1,
+    "email": "donnie@campushash.com",
+    "ended_at": "2016-07-08T07:26:03.549447",
+    "insights": {
+        "languages_used": [
+            "julia"
+        ],
+        "tags": []
+    },
     "is_submitted": true,
-    "max_score": 580,
-    "need_review": 0,
-    "proctored_data": {},
-    "rejected": 35,
+    "max_score": 100,
+    "quality_analysis": [
+        {
+            "labels": "Bug Risk",
+            "value": 3
+        },
+
+    ],
+    "rejected": 0,
     "resource_uri": "",
-    "sections": [{
-        "name": "BASH Scripting",
-        "problems": [{
-            "level": "EAS",
-            "name": "Print the HTTP status code",
-            "problem_type": "SCR",
-            "score": 50,
-            "slug": "ed9op",
-            "solution": {
-                "is_submitted": true,
-                "score": "0.0",
-                "slug": "w4a9a",
-                "status": "REJ"
-            }
-        }]
-    }],
-    "started_at": "2017-08-17T05:14:12.167016",
-    "stats": {},
-    "test": "/platform/v1/test/2edpq",
-    "time_taken": 4494,
-    "total_problems": 78,
-    "total_score": 263,
-    "total_solutions": 76,
-    "user": {
-        "email": "tessyjoseph1992@gmail.com",
-        "first_name": "TESSY",
-        "id": 31270,
-        "is_active": true,
-        "last_name": "JOSEPH JOHN",
-        "username": "7302e16af6ea4bcb9446fe6542ea4e"
+    "sections": [
+        {
+            "name": "Section 1",
+            "problems": [
+                {
+                    "level": "EAS",
+                    "name": "Whois Search Tool",
+                    "problem_type": "SCR",
+                    "score": 50,
+                    "slug": "shjx7",
+                    "solution": {
+                        "is_submitted": true,
+                        "score": "0.0",
+                        "slug": "2pda3",
+                        "status": "NRE"
+                    }
+                },
+            ]
+        }
+    ],
+    "started_at": "2016-07-08T07:25:21.937355",
+    "time_taken": 41,
+    "total_problems": 1,
+    "total_score": 0,
+    "total_solutions": 1,
+    "verdict": {
+        "percentage": 0,
+        "quality_score": null,
+        "quality_verdict": "bad",
+        "verdict": "Qualified"
     }
 }
 ```
@@ -273,3 +364,39 @@ This endpoint retrieves the reports of one candidate in a test. A candidate is i
 ### HTTP Request
 
 `GET https://api.doselect.com/platform/v1/test/<slug>/candidates/<email>/report`
+
+
+The report which can be accessed from our APIs will contain the following information:
+
+
+Field Name      | Data Type  | Description
+----------      | ---------  | -----------
+resource_uri    | string     | The URI for a particular candidate
+email           | string     | The email of the candidate
+total_solutions | integer    | The number of solutions submitted by the candidate
+attempted       | integer    | The number of problems attempted
+rejected        | integer    | The number of problems rejected
+accepted        | integer    | The number of problems accepted
+total_score     | float      | The total score of this candidate
+max_score       | float      | The maximum score of a candidate can get in this test
+started_at      | string     | A datetime string indicating when the candidate began taking the test
+ended_at        | string     | A datetime string indicating when the candidate stopped the test
+time_taken      | integer    | The time taken to give this test in seconds
+is_submitted    | boolean    | If true, the candidate has made the final submission
+sections        | list       | A list of sections of the test
+insights        | list       | A list of
+quality_analysis| list       | A list of dictionaries containing analysis details
+
+expiry          | string     | The datetime string about the expiry date of this candidate's invite
+status          | string     | It indicates whether the candidate has accepted/rejected/not responded to the invite
+test            | string     | The URI of the test
+verdict         | dictionary | The verdict on this report
+
+The aforementioned `verdict` dictionary will contain the following information:
+
+Field Name      | Data Type  | Possible Values | Description
+----------      | ---------  | --------------- | -----------
+percentage      | integer    | N.A | The percentage...??
+quality_score   | string     | N.A | The scoring based on the quality of the code
+quality_verdict | string     | `good`, `ok`, `bad`| The verdict based on the code written by the candidate
+verdict         | string     | `Not qualified`, `Qualified`, `Outstanding`| The verdict on the candidate
