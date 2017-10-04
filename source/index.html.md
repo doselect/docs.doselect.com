@@ -15,6 +15,7 @@ includes:
  - errors
  - pagination
  - test_api
+ - invite_api
  - user_api
  - problem_api
  - submission_api
