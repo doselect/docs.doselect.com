@@ -9,7 +9,8 @@ Field Name             | Data Type  | Description
 resource_uri           | string     | The URI for a particular test
 slug                   | string     | The identifier for that test
 name                   | string     | The name of the test
-is_usable              | boolean    | If true, this test is active and can be taken
+is_usable              | boolean    | If true, this test is active and has more than 1 problems in it
+archived               | boolean    | If false, this test cannot be taken
 instructions           | string     | The instructions for the test taker
 duration               | integer    | The duration of the test in seconds
 total_problems         | integer    | The total number of problems in the test
@@ -62,11 +63,12 @@ curl "https://api.doselect.com/platform/v1/test"
 {
     "objects": [
         {
+            "archived": false,
             "cutoff": 40,
             "duration": 120,
             "end_time": null,
             "instructions": "<ol><li><!--block-->This is an online programming test by Doselect.</li>",
-            "is_usable": false,
+            "is_usable": true,
             "level": "EAS",
             "name": "Sample Test",
             "public_access_password": null,
@@ -147,11 +149,12 @@ curl "https://api.doselect.com/platform/v1/test/esows"
 
 ```json
 {
+    "archived": false,
     "cutoff": 40,
     "duration": 120,
     "end_time": null,
     "instructions": "<ol><li><!--block-->This is an online programming test by Doselect.</li>",
-    "is_usable": false,
+    "is_usable": true,
     "level": "EAS",
     "name": "Sample Test",
     "public_access_password": null,
@@ -259,21 +262,22 @@ This endpoint retrieves all candidates of a test.
 
 The candidate information which can be accessed from our APIs will contain the following information:
 
-Field Name      | Data Type  | Description
-----------      | ---------  | -----------
-resource_uri    | string     | The URI for a particular candidate
-email           | string     | The email of the candidate
-expiry          | string     | The datetime string about the expiry date of this candidate's invite
-status          | string     | It indicates whether the candidate has accepted/rejected/not responded to the invite
-test            | string     | The URI of the test
-report          | dictionary | The information about the report of this candidate
+Field Name           | Data Type  | Description
+-------------------- | ---------  | -----------
+resource_uri         | string     | The URI for a particular candidate
+email                | string     | The email of the candidate
+expiry               | string     | The datetime string about the expiry date of this candidate's invite
+status               | string     | It indicates whether the candidate has accepted/rejected/not responded to the invite
+test                 | string     | The URI of the test
+candidate_access_url | string     | The public access URL of the test for the candidate
+report               | dictionary | The information about the report of this candidate
 
 The aforementioned `report` dictionary will contain the following information:
 
 Field Name      | Data Type  | Description
 ----------      | ---------  | -----------
 report_uri      | string     | The URI of the report of the candidate for this test, if it exists
-time_taken      | integer    | The time taken by this candidate for the test
+time_taken      | integer    | The time taken by this candidate for the test in seconds
 total_score     | float      | The total score of this candidate
 total_solutions | integer    | The number of solutions submitted by the candidate
 total_problems  | integer    | The number of problems in the test

@@ -20,5 +20,6 @@ includes:
  - problem_api
  - submission_api
  - embed_api
+ - changelog
 
 ---
