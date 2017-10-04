@@ -400,3 +400,6 @@ percentage      | integer    | N.A | The percentage of marks scored by the candi
 quality_score   | string     | N.A | The average code quality score in this test
 quality_verdict | string     | `good`, `ok`, `bad`| The verdict based on the code written by the candidate
 verdict         | string     | `Not qualified`, `Qualified`, `Outstanding`| The verdict on the candidate
+
+
+
