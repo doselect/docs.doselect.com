@@ -18,7 +18,7 @@ payload = {
     "code_url": "https://s3.amazon.com/zygon.zip",
     "problem_slug": "esows",
     "problem_type": "problem_type",
-    "email": "tessyjosseph@gmail.com"
+    "email": "john@example.com"
 }
 
 headers = {
@@ -40,7 +40,7 @@ curl -X POST \
     "technology": "technology_slug",
     "problem_type": "problem_type",
     "code": "print '\''Hello World'\''",
-    "email": "tessyjosseph@gmail.com",
+    "email": "john@example.com",
     "problem_slug": "esows",
     "code_url": "https://s3.amazon.com/zygon.zip"
 }'
@@ -151,26 +151,26 @@ curl "https://api.doselect.com/platform/v1/submission/mmoe0"
         }
     },
     "attachments": [],
-    "code": "print 'Hello World'",
+    "code": "var a;\nvar fs=require(\"fs\");\nprocess.exit(1)",
     "created": "2017-09-25T08:14:41.304029",
     "creator": {
-        "email": "bilalbudhani@gmail.com",
-        "first_name": "Bilal",
-        "last_name": "Budhani",
-        "username": "bilalbudhani"
+        "email": "john@example.com",
+        "first_name": "John",
+        "last_name": "Doe",
+        "username": "johndoe"
     },
     "evaluated_at": null,
     "is_accepted": false,
     "modified": "2017-09-25T08:14:41.362048",
     "problem_slug": "7f3p0",
-    "resource_uri": "/platform/v1/problem/7f3p0/submission/bilalbudhani@gmail.com",
+    "resource_uri": "/platform/v1/problem/7f3p0/submission/john@example.com",
     "resubmissions": 0,
     "run_details": {},
     "slug": "mmoe0",
     "solution_type": "SCR",
     "status": "NRE",
     "submitted_at": "2017-09-25T08:14:41.342872",
-    "technology": "java7",
+    "technology": "javascript",
     "total_score": "0.0"
 }
 ```

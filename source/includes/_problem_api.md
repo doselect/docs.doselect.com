@@ -168,7 +168,7 @@ The problem is identified by a unique `slug` that gets generated during creation
 ```python
 import requests
 
-url = 'https://api.doselect.com/platform/v1/problem/esows/solution/tessyjosseph@gmail.com/'
+url = 'https://api.doselect.com/platform/v1/problem/esows/solution/john@example.com/'
 headers = {
     "DoSelect-Api-Key": "88d4266fd4e6338d13b845fcf28",
     "DoSelect-Api-Secret": "385041b7bbc2320471b8551d"
@@ -177,7 +177,7 @@ response = requests.get(url, headers=headers)
 ```
 
 ```shell
-curl "https://api.doselect.com/platform/v1/problem/esows/solution/tessyjosseph@gmail.com/"
+curl "https://api.doselect.com/platform/v1/problem/esows/solution/john@example.com/"
   -H "DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28" \
   -H "DoSelect-Api-Secret: 385041b7bbc2320471b8551d"
 ```
