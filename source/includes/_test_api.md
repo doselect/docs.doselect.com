@@ -290,7 +290,7 @@ total_problems  | integer    | The number of problems in the test
 ```python
 import requests
 
-url = 'https://api.doselect.com/platform/v1/test/4242/candidates/ghost@wall.com/report'
+url = 'https://api.doselect.com/platform/v1/test/4242/candidates/donnie@campushash.com/report'
 headers = {
     "DoSelect-Api-Key": "88d4266fd4e6338d13b845fcf28",
     "DoSelect-Api-Secret": "385041b7bbc2320471b8551d"
@@ -299,7 +299,7 @@ response = requests.get(url, headers=headers)
 ```
 
 ```shell
-curl "https://api.doselect.com/platform/v1/test/4242/candidates/ghost@wall.com/report"
+curl "https://api.doselect.com/platform/v1/test/4242/candidates/donnie@campushash.com/report"
   -H "DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28" \
   -H "DoSelect-Api-Secret: 385041b7bbc2320471b8551d"
 ```
