@@ -332,6 +332,15 @@ html, body {
     clear: both;
   }
 
+  a {
+    color: #5868BF;
+    text-decoration: none;
+
+    &:hover, &:active {
+      text-decoration: underline;
+    }
+  }
+
   &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>table, &>ul, &>ol, &>aside, &>dl {
     margin-right: $examples-width;
     padding: 0 $main-padding;
@@ -393,7 +402,7 @@ html, body {
   }
 
   h4, h5, h6 {
-    font-size: 10px;
+    font-size: 13px;
   }
 
   hr {
@@ -453,8 +462,10 @@ html, body {
 
   code {
     background-color: rgba(0,0,0,0.05);
-    padding: 3px;
-    border-radius: 3px;
+    padding: 2px 4px;
+    border-radius: 2px;
+    color: #f92672;
+    margin: 0 2px;
     @extend %break-words;
     @extend %code-font;
   }
@@ -471,6 +482,7 @@ html, body {
     margin-bottom: 1.5em;
     background: $aside-notice-bg;
     line-height: 1.6;
+    font-weight: 700;
 
     &.warning {
       background-color: $aside-warning-bg;

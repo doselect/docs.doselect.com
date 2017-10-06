@@ -42,6 +42,7 @@ under the License.
       <%= javascript_include_tag  "all_nosearch" %>
     <% end %>
     <%= favicon_tag 'images/favicon.png' %>
+    <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,400i,900|Source+Code+Pro' rel='stylesheet' type='text/css'>
   </head>
 
   <body class="<%= page_classes %>" data-languages="<%=h language_tabs.map{ |lang| lang.is_a?(Hash) ? lang.keys.first : lang }.to_json %>">

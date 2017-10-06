@@ -1,18 +1,19 @@
 # Invite API
 
-The Invite API lets you retrieve, create and delete your team's invites.
-
-The invite information which can be accessed from our APIs will contain the following information:
+Using the Invite API, you can invite a candidate to take a test in your team via their email address. The resources contains the
+following fields:
 
 Field Name             | Data Type  | Description
 ----------             | ---------  | -----------
-resource_uri           | string     | The URI for a particular invite
-email                  | string     | The email of the candidate
-status                 | string     | The status of whether the candidate has accepted the invite or not
-expiry                 | string     | An ISO formatted datetime string signifying the expiry date of an invite
-test                   | string     | The URI of the test
+resource_uri           | string     | URI that can be used to access this invite
+email                  | string     | Email address of the candidate
+status                 | string     | Status of this invite. Possible values are *accepted*, *rejected* and *pending*
+expiry                 | string     | Optional, denotes the expiry of this invite
+test                   | string     | URI of the test resource for this invite
+candidate_access_uri   | string     | Access link for the candidate to take the test for this invite
+report                 | object     | Optional. If the test has been attempted, this would contain the gist of the result
 
-## Create Invite
+## Create a new invite
 
 > Request
 
@@ -49,6 +50,7 @@ curl -X POST \
 
 ```json
 {
+    "candidate_access_url": "https://doselect.com/gateways/test?access_code=U2DsXUOgvXe2yUXiSPMHglkd/ORMykzTvw8jqmQrj6d1OL8N6MBqUqtu2nxSLz2E5BAuG5T8C9l%2BXYmjUPA0akTATBJB47bU9Yc8CQmwC8s%3D",
     "email": "john@example.com",
     "expiry": "2017-10-11T08:16:33.033149",
     "resource_uri": "/platform/v1/test/esows/candidates/john@example.com",
@@ -57,16 +59,14 @@ curl -X POST \
 }
 ```
 
-This endpoint creates an invite for an email.
-
 ### HTTP Request
 
 `POST https://api.doselect.com/platform/v1/test/<slug>/candidates`
 
-Optionally, add a `suppress_email=True` parameter to the URL if you do not want
-the candidate to receive an invitation email.
+Optionally, you can add a `suppress_email=True` GET parameter to the URL if you do not want
+the candidate to receive an invitation email from DoSelect.
 
-Json Payload attributes:
+JSON payload attributes:
 
 Field  | Required | Data Type | Description
 ------ | -------- | --------- | -----------
@@ -75,12 +75,12 @@ expiry | No       | string    | The expiry of the invite in an ISO format dateti
 
 <aside class="notice">
 If the expiry is not sent, the default expiry for an invite will be taken from
-the test's settings' `invite_expiry_days` field.
+the `invite_expiry_days` field in the test's settings.
 </aside>
 
 
 
-## Delete an Invite
+## Delete an invite
 
 > Request
 
@@ -114,7 +114,6 @@ This endpoint deletes an invite for an email.
 ### HTTP Request
 
 `DELETE https://api.doselect.com/platform/v1/test/<slug>/candidates/<email>`
-
 
 <aside class="notice">
 The invite can only be deleted if it hasn't been accepted by the candidate.

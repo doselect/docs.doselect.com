@@ -3,6 +3,80 @@
 The Problem API allows you to retrieve one problem on DoSelect. You can also retrieve all submissions made to the problem
 within your team, as well as by a particular user identified by email.
 
+## Get all problems
+
+You can get all problems in your team account using the list endpoint:
+
+### HTTP Request
+
+`GET https://api.doselect.com/platform/v1/problem`
+
+> Request
+
+```python
+import requests
+
+url = 'https://api.doselect.com/platform/v1/problem'
+headers = {
+    "DoSelect-Api-Key": "88d4266fd4e6338d13b845fcf28",
+    "DoSelect-Api-Secret": "385041b7bbc2320471b8551d"
+}
+response = requests.get(url, headers=headers)
+```
+
+```shell
+curl "https://api.doselect.com/platform/v1/problem"
+  -H "DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28" \
+  -H "DoSelect-Api-Secret: 385041b7bbc2320471b8551d"
+```
+
+> Response
+
+```json
+{
+    "objects": [
+        {
+            "archived": false,
+            "name": "Create a decorator",
+            "level": "MED",
+            "created": "2017-07-21T16:10:53",
+            "is_active": true,
+            "penalty": 0,
+            "score": 100,
+            "resource_uri": "/platform/v1/problem/rra3l",
+            "problem_type": "SCR",
+            "slug": "rra3l",
+            "tags": [
+                "decorators",
+                "file handling",
+                "Python"
+            ],
+            "description": "Implement a Python decorator that should take whatever the decorated function returns, and writes it to a file in a new line.For the sake of this problem, let us assume that the decorated functions always return a string. Constraints:The decorator should ..."
+        }
+    ],
+    "meta": {
+        "total_count": 1,
+        "next": null,
+        "offset": 0,
+        "limit": 10,
+        "previous": null
+    }
+}
+```
+
+### Search for problems
+
+The list endpoint enables you to search for problems as well, the constraints of which can be controlled via GET parameters listed below.
+The query can contain any combination of these parameters.
+
+Parameter name | Possible values  | Description
+---------------|------------------|-------------
+q              | Any string       | Generic query parameter that does a full text search
+is_active      | true, false      | Filter only active problems that are usable
+tags           | Comma separated tags | Searches on discovery tags of problems
+problem_type   | Allowed problem type codes | Filter on problem types
+archived       | true, false | Filter on archived status
+
 ## Get one problem
 
 > Request

@@ -3,7 +3,7 @@
 Welcome to the DoSelect API documentation! These APIs provide you access to various resources and functionalities of the DoSelect platform.
 
 The Platform APIs are organized around REST, and can be accessed at `api.doselect.com`.
-All request and response bodies, including errors, are encoded in JSON. These APIs include resources like [Tests](#test-api),
+All request and response bodies, including errors, are encoded in JSON. These APIs include resources like [Tests](#test-api), [Invites](#invite-api), 
 [Problems](#problem-api), [Submissions](#submission-api) and [Users](#user-api).
 
 The [Embed API](#embed-api) gives you a simple JavaScript interface to embed resources like tests and problems on your front-end application directly -- without
