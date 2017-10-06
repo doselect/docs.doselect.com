@@ -63,6 +63,9 @@ This endpoint creates an invite for an email.
 
 `POST https://api.doselect.com/platform/v1/test/<slug>/candidates`
 
+Optionally, add a `suppress_email=True` parameter to the URL if you do not want
+the candidate to receive an invitation email.
+
 Json Payload attributes:
 
 Field  | Required | Data Type | Description
