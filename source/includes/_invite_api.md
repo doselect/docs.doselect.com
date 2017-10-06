@@ -26,7 +26,7 @@ headers = {
 }
 
 payload = {
-    "email": "vegiops@gmail.com",
+    "email": "john@example.com",
     "expiry": "2017-10-11T08:16:33.033149"
 }
 
@@ -40,7 +40,7 @@ curl -X POST \
   -H 'doselect-api-key: 88d4266fd4e6338d13b845fcf28' \
   -H 'doselect-api-secret: 385041b7bbc2320471b8551d' \
   -d '{
-    "email": "vegiops@gmail.com",
+    "email": "john@example.com",
     "expiry": "2017-10-11T08:16:33.033149"
 }'
 ```
@@ -49,9 +49,9 @@ curl -X POST \
 
 ```json
 {
-    "email": "vegiops@gmail.com",
+    "email": "john@example.com",
     "expiry": "2017-10-11T08:16:33.033149",
-    "resource_uri": "/platform/v1/test/esows/candidates/vegiops@gmail.com",
+    "resource_uri": "/platform/v1/test/esows/candidates/john@example.com",
     "status": "pending",
     "test": "/platform/v1/test/esows"
 }
@@ -84,7 +84,7 @@ the test's settings' `invite_expiry_days` field.
 ```python
 import requests
 
-url = 'https://api.doselect.com/platform/v1/test/esows/candidates/vegiops@gmail.com'
+url = 'https://api.doselect.com/platform/v1/test/esows/candidates/john@example.com'
 headers = {
     "DoSelect-Api-Key": "88d4266fd4e6338d13b845fcf28",
     "DoSelect-Api-Secret": "385041b7bbc2320471b8551d"
