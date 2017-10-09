@@ -466,7 +466,6 @@ html, body {
     border-radius: 2px;
     color: #f92672;
     margin: 0 2px;
-    @extend %break-words;
     @extend %code-font;
   }
 
