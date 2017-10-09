@@ -1,3 +1,5 @@
 # Changelog
 
-All changes to the API platform shall be tracked here. Keep an eye.
+Date | Description
+---- | -----------
+October 9, 2017 | Added webhook senders for [test session](#test-session) and [solution](#solution).
