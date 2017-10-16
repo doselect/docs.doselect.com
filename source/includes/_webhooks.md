@@ -67,10 +67,11 @@ solution | submit | Solution is submitted by the user
 
 The following actions are sent by a test session are listed below. These actions are sent for all tests on DoSelect.
 
-Sender | Action  | Description
------- |-------- | -------- 
-test-session | begin | The candidate has started taking the test
-test-session | end | The candidate has submitted the test, or the test was auto-submitted
+Sender       | Action | Description
+------------ |------- | --------
+test-session | begin  | The candidate has started taking the test
+test-session | end    | The candidate has submitted the test, or the test was auto-submitted
+test-session | report | The test report of the candidate
 
 > Example payload
 
@@ -87,6 +88,66 @@ test-session | end | The candidate has submitted the test, or the test was auto-
         "test_uri": "https://api.doselect.com/platform/v1/test/k716y",
         "email": "mibukuyij@storj99.com",
         "test_slug": "k016y"
+    }
+}
+```
+
+> Example Test Report payload
+
+```json
+
+{
+    "accepted": 0,
+    "attempted": 1,
+    "email": "donnie@campushash.com",
+    "ended_at": "2016-07-08T07:26:03.549447",
+    "insights": {
+        "languages_used": [
+            "julia"
+        ],
+        "tags": []
+    },
+    "is_submitted": true,
+    "max_score": 100,
+    "quality_analysis": [
+        {
+            "labels": "Bug Risk",
+            "value": 3
+        },
+
+    ],
+    "rejected": 0,
+    "resource_uri": "",
+    "sections": [
+        {
+            "name": "Section 1",
+            "problems": [
+                {
+                    "level": "EAS",
+                    "name": "Whois Search Tool",
+                    "problem_type": "SCR",
+                    "score": 50,
+                    "slug": "shjx7",
+                    "solution": {
+                        "is_submitted": true,
+                        "score": "0.0",
+                        "slug": "2pda3",
+                        "status": "NRE"
+                    }
+                },
+            ]
+        }
+    ],
+    "started_at": "2016-07-08T07:25:21.937355",
+    "time_taken": 41,
+    "total_problems": 1,
+    "total_score": 0,
+    "total_solutions": 1,
+    "verdict": {
+        "percentage": 0,
+        "quality_score": null,
+        "quality_verdict": "bad",
+        "verdict": "Qualified"
     }
 }
 ```
