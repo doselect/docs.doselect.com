@@ -7,7 +7,7 @@ the REST Platform APIs.
 ## Client library
 
 The Embed API can be accessed using the embed client library, `doselect-embed.js`. This library provides a simple JavaScript interface
-for authentication, creating embed objects on your application, and retrieving general information related to the embedded objects. 
+for authentication, creating embed objects on your application, and retrieving general information related to the embedded objects.
 
 ### Setup
 
@@ -55,7 +55,9 @@ The embed requests will fail if the `user_hash` is incorrect.
 You can embed a problem on your platform using the problem's `slug`, which uniquely identifies a problem on
 DoSelect. Add this HTML code where you want a problem to show up:
 
-`<div class="doselect-embed" data-category="problem" data-slug="3myr6">`
+`<div class="doselect-embed" data-category="problem" data-slug="3myr6" data-config='{"allow_submission": true}'>`
+
+Note: Valid JSON string should be passed to `data-config`.
 
 ## Test embed
 
