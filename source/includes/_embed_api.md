@@ -15,7 +15,7 @@ for authentication, creating embed objects on your application, and retrieving g
 
 To use the Embed API, simply copy and paste the snippet below before the `</body>` tag on every page where you want the embed to appear.
 
-`<script>[DOSELECT EMBED CODE SNIPPET]</script>`
+`<script src="https://assets.doselect.com/doselect-embed.min.js" async></script>`
 
 #### Step 2: Configure user settings
 
@@ -28,7 +28,7 @@ window.doselectSettings = {
     "user_hash": "CLjME03fz+Jr36VaDwv2MbNeemtfA57IgWhwcR3GfdI="
 }
 
-<script>[DOSELECT EMBED CODE SNIPPET]</script>
+<script src="https://assets.doselect.com/doselect-embed.min.js" async></script>
 ```
 
 To display embed problems and tests with respect to user, update `window.doselectSettings` object with user metadata and place it above the embed code snippet.
@@ -55,16 +55,34 @@ The embed requests will fail if the `user_hash` is incorrect.
 You can embed a problem on your platform using the problem's `slug`, which uniquely identifies a problem on
 DoSelect. Add this HTML code where you want a problem to show up:
 
-`<div class="doselect-embed" data-category="problem" data-slug="3myr6" data-config='{"allow_submission": true}'>`
+```html
+<div class="doselect-embed" data-category="problem" data-slug="3myr6"
+     data-config='{"allow_submission": true}'></div>
+```
 
-Note: Valid JSON string should be passed to `data-config`.
+Attribute | Description
+----------|------------
+data-category | Required. Defines the kind of embed. Should be either `test` or `problem`
+data-slug | Required. Identification slug of the object being embedded
+data-config | Optional. Specify optional config parameters for this embed. This value must be a valid JSON string.
+
+The following attributes are supported in the configuration object at the moment.
+
+Attribute | Type | Description
+----------|------| ------
+allow_submission | boolean | Dynamically control if the submissions are allowed for a problem at the moment. This is only available in a problem embed.
+
 
 ## Test embed
 
 You can embed a test on your platform using the test's `slug`, which uniquely identifies a test on
 DoSelect. Add this HTML code where you want a test to show up:
 
-`<div class="doselect-embed" data-category="test" data-slug="es6ts">`
+```html
+<div class="doselect-embed" data-category="test" data-slug="es6ts"></div>
+```
+
+*Please note that the test embed is in an alpha release at the moment, and the API is subject to change without notice.*
 
 ## Actions
 

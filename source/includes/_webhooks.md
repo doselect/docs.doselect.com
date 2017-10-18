@@ -5,6 +5,9 @@ The webhooks framework notifies you about various actions that have happened rel
 
 If you return anything other than an HTTP 2XX status to the webhook POST then we’ll try to deliver the webhook up to 5 times with a backoff.
 
+**Tip:** You can use a service like [RequestBin](https://requestb.in/) to test webhook delivery.
+
+
 ## Payload
 
 For each webhook delivery on a URL, the `POST` request contains a JSON payload in the body with information about the action.

@@ -4,7 +4,7 @@ The Test API lets you retrieve tests that have been created in your team.
 
 The test information which can be accessed from our APIs will contain the following information:
 
-Field Name             | Data Type  | Description
+Field Name             | Type  | Description
 ----------             | ---------  | -----------
 resource_uri           | string     | The URI for a particular test
 slug                   | string     | The identifier for that test
@@ -27,7 +27,7 @@ settings               | dictionary |
 
 The aforementioned `settings` will have the following information:
 
-Field Name             | Data Type  | Description
+Field Name             | Type  | Description
 ----------             | ---------  | -----------
 secure_mode            | boolean    | If true, it indicates tha the test has secure mode on
 webcam_proctoring      | boolean    | If true, it indicates tha the test has webcam proctoring on
@@ -262,7 +262,7 @@ This endpoint retrieves all candidates of a test.
 
 The candidate information which can be accessed from our APIs will contain the following information:
 
-Field Name           | Data Type  | Description
+Field Name           | Type  | Description
 -------------------- | ---------  | -----------
 resource_uri         | string     | The URI for a particular candidate
 email                | string     | The email of the candidate
@@ -274,7 +274,7 @@ report               | dictionary | The information about the report of this can
 
 The aforementioned `report` dictionary will contain the following information:
 
-Field Name      | Data Type  | Description
+Field Name      | Type  | Description
 ----------      | ---------  | -----------
 report_uri      | string     | The URI of the report of the candidate for this test, if it exists
 time_taken      | integer    | The time taken by this candidate for the test in seconds
@@ -373,7 +373,7 @@ This endpoint retrieves the reports of one candidate in a test. A candidate is i
 The report which can be accessed from our APIs will contain the following information:
 
 
-Field Name      | Data Type  | Description
+Field Name      | Type  | Description
 ----------      | ---------  | -----------
 resource_uri    | string     | The URI for a particular candidate
 email           | string     | The email of the candidate
@@ -398,7 +398,7 @@ verdict         | dictionary | The verdict on this report
 
 The aforementioned `verdict` dictionary will contain the following information:
 
-Field Name      | Data Type  | Possible Values | Description
+Field Name      | Type  | Possible Values | Description
 ----------      | ---------  | --------------- | -----------
 percentage      | integer    | N.A | The percentage of marks scored by the candidate
 quality_score   | string     | N.A | The average code quality score in this test

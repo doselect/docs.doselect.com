@@ -3,7 +3,7 @@
 Using the Invite API, you can invite a candidate to take a test in your team via their email address. The resources contains the
 following fields:
 
-Field Name             | Data Type  | Description
+Field Name             | Type  | Description
 ----------             | ---------  | -----------
 resource_uri           | string     | URI that can be used to access this invite
 email                  | string     | Email address of the candidate
@@ -68,7 +68,7 @@ the candidate to receive an invitation email from DoSelect.
 
 JSON payload attributes:
 
-Field  | Required | Data Type | Description
+Field  | Required | Type | Description
 ------ | -------- | --------- | -----------
 email  | Yes      | string    | The email of the candidate
 expiry | No       | string    | The expiry of the invite in an ISO format datetime string

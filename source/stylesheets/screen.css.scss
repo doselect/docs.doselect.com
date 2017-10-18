@@ -58,7 +58,7 @@ html, body {
   bottom: 0;
   width: $nav-width;
   background-color: $nav-bg;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: bold;
 
   // language selector for mobile devices
@@ -82,26 +82,27 @@ html, body {
 
   &>.search {
     position: relative;
+    margin: 10px 0px;
 
     input {
       background: $nav-bg;
-      border-width: 0 0 1px 0;
-      border-color: $search-box-border-color;
+      border-width: 0;
       padding: 6px 0 6px 20px;
       box-sizing: border-box;
       margin: $nav-v-padding $nav-padding;
       width: $nav-width - 30;
       outline: none;
-      color: $nav-text;
+      color: #ccc;
       border-radius: 0; /* ios has a default border radius */
     }
 
     &:before {
       position: absolute;
-      top: 17px;
+      top: 20px;
       left: $nav-padding;
-      color: $nav-text;
+      color: #ccc;
       @extend %icon-search;
+      font-size: 13px;
     }
   }
 
@@ -147,7 +148,7 @@ html, body {
     list-style: none;
     margin: 0;
     padding: 0;
-    line-height: 28px;
+    line-height: 32px;
   }
 
   li {
@@ -177,7 +178,7 @@ html, body {
 
   .toc-h2 {
     padding-left: $nav-padding + $nav-indent;
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .toc-footer {
