@@ -27,7 +27,7 @@ The `object` attribute contains a contextual object.
         "timestamp": "2017-10-07T10:41:31.846531+00:00",
         "delivery_id": "441cd01e-d82d-485c-95d8-c8c498417649"
     },
-    "object": {  
+    "object": {
         "report_uri": "https://api.doselect.com/platform/v1/test/k716y/candidates/mibukuyij@storj99.com/report",
         "test_uri": "https://api.doselect.com/platform/v1/test/k716y",
         "email": "mibukuyij@storj99.com",
@@ -36,12 +36,25 @@ The `object` attribute contains a contextual object.
 }
 ```
 
+## Webhook Security
+
+In using a webhook, there is a possibility that an attacker might be able to forge webhook notifications which
+might result in unwanted actions being taken.
+
+To prevent that, in each webhook delivery from DoSelect, the `POST` request will contain a `DoSelect-Webhook-Signature` header.
+
+For verification, onn your server side, you need to generate a [HMAC (hash based message authentication code)](http://en.wikipedia.org/wiki/Hash-based_message_authentication_code),
+using **SHA256**, with the current request's `delivery_id` as the message and your `API_SECRET` as the key.
+
+The calculated and the request hashes should match, indicating that the message is authentic and was indeed sent by DoSelect.
+
+
 ## Solution
 
 The following actions are sent by solution are listed below. These actions are only sent for solutions created via Embed API.
 
 Sender | Action  | Description
------- |-------- | -------- 
+------ |-------- | --------
 solution | create | Solution is created (saved for the first time)
 solution | submit | Solution is submitted by the user
 
@@ -50,17 +63,17 @@ solution | submit | Solution is submitted by the user
 ```json
 {
     "meta":{
-        "sender": u"solution",
-        "action": u"submit",
-        "timestamp": u"2017-10-07T10:41:31.846531+00:00",
-        "delivery_id": u"441cd01e-d82d-485c-95d8-c8c498417649"
+        "sender": "solution",
+        "action": "submit",
+        "timestamp": "2017-10-07T10:41:31.846531+00:00",
+        "delivery_id": "441cd01e-d82d-485c-95d8-c8c498417649"
     },
-    "object":{  
-        "submission_slug": u"7yt6ss",
-        "submission_uri": u"https://api.doselect.com/platform/v1/submission/7yt6ss",
-        "problem_uri": u"https://api.doselect.com/platform/v1/problem/rra3l",
-        "problem_slug":u"rra3l",
-        "email": u"mibukuyij@storj99.com"
+    "object":{
+        "submission_slug": "7yt6ss",
+        "submission_uri": "https://api.doselect.com/platform/v1/submission/7yt6ss",
+        "problem_uri": "https://api.doselect.com/platform/v1/problem/rra3l",
+        "problem_slug":"rra3l",
+        "email": "mibukuyij@storj99.com"
     }
 }
 ```
@@ -86,7 +99,7 @@ test-session | report | The candidate's test report has been generated
         "timestamp": "2017-10-07T10:41:31.846531+00:00",
         "delivery_id": "441cd01e-d82d-485c-95d8-c8c498417649"
     },
-    "object": {  
+    "object": {
         "report_uri": "https://api.doselect.com/platform/v1/test/k716y/candidates/mibukuyij@storj99.com/report",
         "test_uri": "https://api.doselect.com/platform/v1/test/k716y",
         "email": "mibukuyij@storj99.com",
