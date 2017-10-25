@@ -43,7 +43,7 @@ might result in unwanted actions being taken.
 
 To prevent that, in each webhook delivery from DoSelect, the `POST` request will contain a `DoSelect-Webhook-Signature` header.
 
-For verification, onn your server side, you need to generate a [HMAC (hash based message authentication code)](http://en.wikipedia.org/wiki/Hash-based_message_authentication_code),
+For verification, on your server side, you need to generate a [HMAC (hash based message authentication code)](http://en.wikipedia.org/wiki/Hash-based_message_authentication_code),
 using **SHA256**, with the current request's `delivery_id` as the message and your `API_SECRET` as the key.
 
 The calculated and the request hashes should match, indicating that the message is authentic and was indeed sent by DoSelect.
