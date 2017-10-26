@@ -4,7 +4,7 @@ The Test API lets you retrieve tests that have been created in your team.
 
 The test information which can be accessed from our APIs will contain the following information:
 
-Field Name             | Type  | Description
+Field Name             | Type       | Description
 ----------             | ---------  | -----------
 resource_uri           | string     | The URI for a particular test
 slug                   | string     | The identifier for that test
