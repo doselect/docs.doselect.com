@@ -335,3 +335,111 @@ This endpoint retrieves the submission of a specific problem, identified by a `s
 ### HTTP Request
 
 `GET https://api.doselect.com/platform/v1/problem/<slug>/submission/<email>/`
+
+
+## Create a Problem
+
+> Request
+
+```python
+import requests
+
+url = 'https://api.doselect.com/platform/v1/problem/'
+headers = {
+    "DoSelect-Api-Key": "88d4266fd4e6338d13b845fcf28",
+    "DoSelect-Api-Secret": "385041b7bbc2320471b8551d",
+    "Content-Type": "application/json"
+}
+payload = {
+	"name": "Doselect API Problem",
+	"problem_type": "PRJ",
+	"time_limit_secs": 100,
+	"tags": [
+		"Regex"
+	],
+	"insight_tags": [
+		"Python2"
+	],
+	"description": "This is not the problem you are looking for",
+	"max_submissions": 5,
+	"score": 75,
+	"penalty": 1
+}
+response = requests.post(url, headers=headers, data=payload)
+```
+
+```shell
+curl -X POST "https://api.doselect.com/platform/v1/problem/"
+  -H "DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28" \
+  -H "DoSelect-Api-Secret: 385041b7bbc2320471b8551d" \
+  -d '{
+	"name": "Doselect API Problem",
+	"problem_type": "PRJ",
+	"time_limit_secs": 100,
+	"tags": [
+		"Regex"
+	],
+	"insight_tags": [
+		"Python2"
+	],
+	"description": "This is not the problem you are looking for",
+	"max_submissions": 5,
+	"score": 75,
+	"penalty": 1
+}'
+```
+
+> Response
+
+```json
+{
+    "attachments": [],
+    "created": "2017-10-25T10:13:09.561690",
+    "description": "This is not the problem you are looking for",
+    "eval_mode": "ATF",
+    "insight_tags": [
+        "Python2"
+    ],
+    "is_active": true,
+    "level": "EAS",
+    "max_submissions": 5,
+    "modified": "2017-10-25T10:13:09.568721",
+    "name": "Doselect API Problem",
+    "penalty": 1,
+    "problem_type": "SCR",
+    "resource_uri": "/platform/v1/problem/nq4yq",
+    "sample_solutions": "{}",
+    "score": 75,
+    "slug": "nq4yq",
+    "stubs": {},
+    "tags": [
+        "Regex"
+    ],
+    "technologies": [],
+    "testcases": [],
+    "time_limit_secs": "100"
+}
+```
+This API partially creates problem, which can then be edited on the DoSelect platform.
+
+The fields accepted in the body of this request are:
+
+Field Name          | Type       | Description
+----------          | ---------  | -----------
+name                | string     | The name of the problem
+problem_type        | string     | The type of the problem (`PRJ`, `UIX`, `SCR`, `MOB` or `MCQ`)
+description         | string     | The description of the problem
+max_submissions     | integer    | The maximum number of submissions allowed
+score               | integer    | The score of the problem
+mcq_options         | array      | A list of possible mcq options
+mcq_options_correct | string     | The correct mcq option
+penalty             | integer    | The penalty for the problem
+time_limit_secs     | integer    | The time limit for this problem in seconds
+eval_mode           | string     | Evaluation mode for this problem (`TXT` IO Based or `ATF` Script Based)
+tags                | array      | A list of strings of discovery tags
+insight_tags        | array      | A list of strings of insight tags
+
+<aside class="notice">
+The fields `name` and `problem_type` are compulsory for the problem creation.
+If any field other than the ones mentioned above is sent then the API will throw a `400 Bad Request`
+</aside>
