@@ -417,7 +417,7 @@ curl -X POST "https://api.doselect.com/platform/v1/problem/"
     ],
     "technologies": [],
     "testcases": [],
-    "time_limit_secs": "100"
+    "time_limit_secs": "42"
 }
 ```
 This API partially creates problem, which can then be edited on the DoSelect platform.
@@ -434,7 +434,7 @@ score               | integer    | The score of the problem
 mcq_options         | array      | A list of possible mcq options
 mcq_options_correct | string     | The correct mcq option
 penalty             | integer    | The penalty for the problem
-time_limit_secs     | integer    | The time limit for this problem in seconds
+time_limit_secs     | integer    | The time limit for this problem in seconds (Between 0-99)
 eval_mode           | string     | Evaluation mode for this problem (`TXT` IO Based or `ATF` Script Based)
 tags                | array      | A list of strings of discovery tags
 insight_tags        | array      | A list of strings of insight tags
