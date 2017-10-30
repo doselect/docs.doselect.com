@@ -51,12 +51,24 @@ The calculated and the request hashes should match, indicating that the message 
 
 ## Solution
 
-The following actions are sent by solution are listed below. These actions are only sent for solutions created via Embed API.
+The actions sent by solution are listed below. These actions are only sent for solutions created via Embed API.
 
 Sender | Action  | Description
 ------ |-------- | --------
 solution | create | Solution is created (saved for the first time)
 solution | submit | Solution is submitted by the user
+
+The Solution webhooks will have the following fields:
+
+Field Name             | Type       | Description
+----------             | ---------  | -----------
+submission_slug        | string     | The identifier for that submission
+submission_uri         | string     | The URI for a particular submission
+problem_slug           | string     | The identifier for the problem
+problem_uri            | string     | The URI of the problem
+email                  | string     | The email of the user
+code                   | string     | The latest submitted code of the user
+
 
 > Example payload
 
@@ -73,7 +85,8 @@ solution | submit | Solution is submitted by the user
         "submission_uri": "https://api.doselect.com/platform/v1/submission/7yt6ss",
         "problem_uri": "https://api.doselect.com/platform/v1/problem/rra3l",
         "problem_slug":"rra3l",
-        "email": "mibukuyij@storj99.com"
+        "email": "mibukuyij@storj99.com",
+        "code": "print 'Hello world test.' "
     }
 }
 ```
@@ -81,13 +94,24 @@ solution | submit | Solution is submitted by the user
 
 ## Test Session
 
-The following actions are sent by a test session are listed below. These actions are sent for all tests on DoSelect.
+The actions sent by a test session are listed below. These actions are sent for all tests on DoSelect.
 
 Sender       | Action | Description
 ------------ |------- | --------
 test-session | begin  | The candidate has started taking the test
 test-session | end    | The candidate has submitted the test, or the test was auto-submitted
 test-session | report | The candidate's test report has been generated
+
+
+The test webhooks will have the following fields:
+
+Field Name | Type   | Description
+---------- | ------ | -----------
+report_uri | string | The URI of the test report
+test_uri   | string | The URI of the test
+test_slug  | string | The identifier for the test
+email      | string | The email of the user taking the test
+
 
 > Example payload
 
@@ -105,5 +129,40 @@ test-session | report | The candidate's test report has been generated
         "email": "mibukuyij@storj99.com",
         "test_slug": "k016y"
     }
+}
+```
+
+## Problem
+
+The actions sent by a problem are listed below. These actions are sent for all private problems on DoSelect.
+
+Sender  | Action | Description
+------- | ------ | --------
+problem | create | A new problem has been created
+problem | edit   | The problem has been edited
+
+The Problem webhooks will have the following fields:
+
+Field Name    | Type   | Description
+------------- | ------ | -----------
+problem_uri   | string | The URI of the problem
+problem_slug  | string | The identifier for the problem
+creator_email | string | The email of the user who made the problem
+
+> Example payload
+
+```json
+{
+	"meta": {
+		"action": "create",
+		"timestamp": "2017-10-30T07:08:18.457736+00:00",
+		"delivery_id": "faa8f070-9644-4112-8a4b-40865afdd5bf",
+		"sender": "problem"
+	},
+	"object": {
+		"creator_email": "",
+		"problem_slug": "o94yw",
+		"problem_uri": "http://api.central.dev.sg1.chsh.in/platform/v1/problem/o94yw"
+	}
 }
 ```
