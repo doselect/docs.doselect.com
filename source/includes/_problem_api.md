@@ -363,7 +363,12 @@ payload = {
 	"description": "This is not the problem you are looking for",
 	"max_submissions": 5,
 	"score": 75,
-	"penalty": 1
+	"penalty": 1,
+	"stubs": {
+	    "python2": "print 'hello world'",
+        "java7": "System.out.println('hello world')",
+        "java": "System.out.println('hello world')"
+	}
 }
 response = requests.post(url, headers=headers, data=payload)
 ```
@@ -385,7 +390,12 @@ curl -X POST "https://api.doselect.com/platform/v1/problem/"
 	"description": "This is not the problem you are looking for",
 	"max_submissions": 5,
 	"score": 75,
-	"penalty": 1
+	"penalty": 1,
+	"stubs": {
+	    "python2": "print 'hello world'",
+        "java7": "System.out.println('hello world')",
+        "java": "System.out.println('hello world')"
+	}
 }'
 ```
 
@@ -417,7 +427,12 @@ curl -X POST "https://api.doselect.com/platform/v1/problem/"
     ],
     "technologies": [],
     "testcases": [],
-    "time_limit_secs": "42"
+    "time_limit_secs": "42",
+    "stubs": {
+	    "python2": "print 'hello world'",
+        "java7": "System.out.println('hello world')",
+        "java": "System.out.println('hello world')"
+	}
 }
 ```
 This API partially creates problem, which can then be edited on the DoSelect platform.
@@ -438,8 +453,43 @@ time_limit_secs     | integer    | The time limit for this problem in seconds (B
 eval_mode           | string     | Evaluation mode for this problem (`TXT` IO Based or `ATF` Script Based)
 tags                | array      | A list of strings of discovery tags
 insight_tags        | array      | A list of strings of insight tags
+stubs               | dictionary | A dictionary containing the stubs of the problem
 
 <aside class="notice">
 The fields `name` and `problem_type` are compulsory for the problem creation.
 If any field other than the ones mentioned above is sent then the API will throw a `400 Bad Request`
 </aside>
+
+The stubs dictionary will have the technology slug as the key and the stub string as the value.
+The possible values of technology slugs are:
+
+Technology Slug | Technology
+--------------- | ---------------
+julia | Julia
+haskell | Haskell
+csharp | C#
+go | Go
+javascript | JavaScript (NodeJS)
+scala | Scala
+swift | Swift
+perl | Perl
+lua | Lua
+clisp | Clisp
+objectivec | ObjectiveC
+php | PHP
+ruby | Ruby
+bash | Bash
+clojure | Clojure
+rust | Rust
+c | C
+cpp | C++
+java7 | Java 7
+python3 | Python 3
+python2 | Python 2
+java8 | Java 8
+r | R
+fsharp | F#
+cpp14 | C++14
+kotlin | Kotlin
+
+
