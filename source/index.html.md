@@ -17,6 +17,7 @@ includes:
  - test_api
  - invite_api
  - problem_api
+ - problem_testcase_api
  - submission_api
  - embed_api
  - webhooks
