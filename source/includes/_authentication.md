@@ -22,7 +22,7 @@ curl "https://api.doselect.com/platform/v1/test"
 ```
 
 Access to the Platform APIs are authenticated using your team account's `API_KEY` and `API_SECRET`.
-These credentials are available in your team dashbaord under the path `Team Settings > Integrations`.
+These credentials are available in your team dashboard under the path `Team Settings > Integrations`.
 
 You must include the `API_KEY` and `API_SECRET` in custom request headers, `DoSelect-API-Key` and `DoSelect-API-Secret` respectively.
 Because your `API_SECRET` is sensitive information and allows access to your account, we strongly advise you to not expose your `API_SECRET`
