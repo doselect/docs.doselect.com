@@ -1,4 +1,4 @@
-# Problem testcase API
+# Problem Testcase API
 
 The Problem testcase API allows you to retrieve all testcases of one problem on DoSelect.
 You can also create and delete the testcases of a problem.

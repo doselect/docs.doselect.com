@@ -22,5 +22,6 @@ includes:
  - embed_api
  - webhooks
  - changelog
+ - help
 
 ---
