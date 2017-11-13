@@ -368,7 +368,15 @@ payload = {
 	    "python2": "print 'hello world'",
         "java7": "System.out.println('hello world')",
         "java": "System.out.println('hello world')"
-	}
+	},
+	"sample_solutions": {
+        "python2": "def add(a,b): return a + b"
+    },
+    "technologies": [
+        "python2",
+        "java7",
+        "lua"
+    ]
 }
 response = requests.post(url, headers=headers, data=payload)
 ```
@@ -395,7 +403,15 @@ curl -X POST "https://api.doselect.com/platform/v1/problem/"
 	    "python2": "print 'hello world'",
         "java7": "System.out.println('hello world')",
         "java": "System.out.println('hello world')"
-	}
+	},
+	"sample_solutions": {
+        "python2": "def add(a,b): return a + b"
+    },
+    "technologies": [
+        "python2",
+        "java7",
+        "lua"
+    ]
 }'
 ```
 
@@ -421,11 +437,14 @@ curl -X POST "https://api.doselect.com/platform/v1/problem/"
     "sample_solutions": "{}",
     "score": 75,
     "slug": "nq4yq",
-    "stubs": {},
     "tags": [
         "Regex"
     ],
-    "technologies": [],
+    "technologies": [
+        "python2",
+        "java7",
+        "lua"
+    ],
     "testcases": [],
     "time_limit_secs": "42",
     "stubs": {
@@ -454,13 +473,19 @@ eval_mode           | string     | Evaluation mode for this problem (`TXT` IO Ba
 tags                | array      | A list of strings of discovery tags
 insight_tags        | array      | A list of strings of insight tags
 stubs               | dictionary | A dictionary containing the stubs of the problem
+sample_solutions    | dictionary | A dictionary containing the sample solutions of the problem
+technologies        | array      | A list of strings containing the slugs of allowed technologies
 
 <aside class="notice">
 The fields `name` and `problem_type` are compulsory for the problem creation.
-If any field other than the ones mentioned above is sent then the API will throw a `400 Bad Request`
+If any field other than the ones mentioned above is sent then the API will throw a 400 Bad Request
 </aside>
 
-The stubs dictionary will have the technology slug as the key and the stub string as the value.
+The `stubs` dictionary should have the technology slug as the key and the stub string as the value.
+
+The `sample_solutions` dictionary should have the technology slug as the key and the solution string as the value.
+
+
 The possible values of technology slugs are:
 
 Technology Slug | Technology
