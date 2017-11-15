@@ -21,7 +21,7 @@ includes:
  - submission_api
  - embed_api
  - webhooks
- - changelog
  - help
+ - changelog
 
 ---
