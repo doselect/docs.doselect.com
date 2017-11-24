@@ -621,7 +621,7 @@ curl -X PATCH "https://api.doselect.com/platform/v1/problem/q3w8q"
     "Java"
   ],
   "description": "A new description of the problem"
-}
+}'
 ```
 
 > Response
