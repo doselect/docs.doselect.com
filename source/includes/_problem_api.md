@@ -518,7 +518,7 @@ cpp14 | C++14
 kotlin | Kotlin
 
 
-## Clone a Problem
+## Clone a problem
 
 > Request
 
@@ -580,12 +580,10 @@ curl -X POST "https://api.doselect.com/platform/v1/problem/481bo/clone"
     "time_limit_secs": null
 }
 ```
-This API clones a problem identified by the `slug`.
-
-The API response will contain the data of the new problem.
+This API clones a problem identified by the `slug`. The response will contain the data of the new problem.
 
 
-## Update a Problem
+## Update a problem
 
 > Request
 
