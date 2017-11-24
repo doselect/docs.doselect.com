@@ -518,3 +518,156 @@ cpp14 | C++14
 kotlin | Kotlin
 
 
+## Clone a Problem
+
+> Request
+
+```python
+import requests
+
+url = 'https://api.doselect.com/platform/v1/problem/481bo/clone'
+headers = {
+    "DoSelect-Api-Key": "88d4266fd4e6338d13b845fcf28",
+    "DoSelect-Api-Secret": "385041b7bbc2320471b8551d",
+    "Content-Type": "application/json"
+}
+
+response = requests.post(url, headers=headers)
+```
+
+```shell
+curl -X POST "https://api.doselect.com/platform/v1/problem/481bo/clone"
+  -H "DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28" \
+  -H "DoSelect-Api-Secret: 385041b7bbc2320471b8551d"
+```
+
+> Response
+
+```json
+{
+    "attachments": [],
+    "created": "2017-11-24T09:11:12.103398",
+    "description": "<div><!--block-->Jim is very health conscious. Determine whether he is.</div>",
+    "eval_mode": "TXT",
+    "insight_tags": [],
+    "is_active": true,
+    "is_locked": false,
+    "level": "MED",
+    "max_submissions": 0,
+    "modified": "2017-11-24T09:11:12.230166",
+    "name": "Nutrition calculator",
+    "penalty": 0,
+    "problem_type": "SCR",
+    "resource_uri": "/platform/v1/problem/q3w8q",
+    "sample_solutions": {},
+    "score": 100,
+    "slug": "q3w8q",
+    "stubs": {},
+    "tags": [
+        "CPP"
+    ],
+    "technologies": [],
+    "testcases": [
+        {
+            "id": 20873,
+            "input": "duck egg\n",
+            "is_sample": false,
+            "name": "Testcase #1",
+            "output": "12.81g\n",
+            "weight": 1
+        }
+    ],
+    "time_limit_secs": null
+}
+```
+This API clones a problem identified by the `slug`.
+
+The API response will contain the data of the new problem.
+
+
+## Update a Problem
+
+> Request
+
+```python
+import requests
+
+url = 'https://api.doselect.com/platform/v1/problem/q3w8q/'
+headers = {
+    "DoSelect-Api-Key": "88d4266fd4e6338d13b845fcf28",
+    "DoSelect-Api-Secret": "385041b7bbc2320471b8551d",
+    "Content-Type": "application/json"
+}
+
+payload = {
+  "name": "Updated Problem Name",
+  "tags": [
+    "Java"
+  ],
+  "description": "A new description of the problem"
+}
+
+
+response = requests.patch(url, data=payload, headers=headers)
+```
+
+```shell
+curl -X PATCH "https://api.doselect.com/platform/v1/problem/q3w8q"
+  -H "DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28" \
+  -H "DoSelect-Api-Secret: 385041b7bbc2320471b8551d" \
+  -d '{
+  "name": "Updated Problem Name",
+  "tags": [
+    "Java"
+  ],
+  "description": "A new description of the problem"
+}
+```
+
+> Response
+
+```json
+{
+    "attachments": [],
+    "created": "2017-11-24T09:11:12.103398",
+    "description": "A new description of the problem",
+    "eval_mode": "TXT",
+    "insight_tags": [],
+    "is_active": true,
+    "is_locked": false,
+    "level": "MED",
+    "max_submissions": 0,
+    "modified": "2017-11-24T09:36:19.239739",
+    "name": "Updated Problem Name",
+    "penalty": 0,
+    "problem_type": "SCR",
+    "resource_uri": "/platform/v1/problem/q3w8q",
+    "sample_solutions": {},
+    "score": 100,
+    "slug": "q3w8q",
+    "stubs": {},
+    "tags": [
+        "Java"
+    ],
+    "technologies": [],
+    "testcases": [
+        {
+            "id": 20873,
+            "input": "duck egg\n",
+            "is_sample": false,
+            "name": "Testcase #1",
+            "output": "12.81g\n",
+            "weight": 1
+        }
+    ],
+    "time_limit_secs": null
+}
+```
+This API updates a problem identified by it's `slug`.
+The allowed update fields are:
+
+Field Name          | Type       | Description
+----------          | ---------  | -----------
+name                | string     | The name of the problem
+description         | string     | The description of the problem
+tags                | array      | A list of strings of discovery tags
