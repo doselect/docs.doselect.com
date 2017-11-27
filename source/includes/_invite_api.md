@@ -70,6 +70,8 @@ curl -X POST \
 Optionally, you can add a `suppress_email=True` GET parameter to the URL if you do not want
 the candidate to receive an invitation email from DoSelect.
 
+If you need to schedule a test, it can be done by setting the `start_time` and `expiry` of the invite accordingly.
+
 JSON payload attributes:
 
 Field      | Required | Type | Description
