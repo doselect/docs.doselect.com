@@ -21,6 +21,7 @@ public_access_url      | string     | This will be the publically accessible url
 public_access_password | string     | This will be the password if any, for accessing the test on the `public_access_url`
 start_time             | string     | This will contain the start time of the test in a date time string
 end_time               | string     | This will contain the end time of the test in a date time string
+redirection_url        | string     | After the test, the user will be redirected to this URL
 tags                   | list       |
 sections               | list       | This will contain a list of dictionaries with information about each section of the test
 settings               | dictionary |
@@ -110,7 +111,8 @@ curl "https://api.doselect.com/platform/v1/test"
             "tags": [],
             "total_candidates": 1,
             "total_problems": 1,
-            "total_sections": 1
+            "total_sections": 1,
+            "redirection_url": "https://www.doselect.com"
         },
 
     ]
@@ -196,7 +198,8 @@ curl "https://api.doselect.com/platform/v1/test/esows"
     "tags": [],
     "total_candidates": 1,
     "total_problems": 1,
-    "total_sections": 1
+    "total_sections": 1,
+    "redirection_url": "https://www.doselect.com"
 }
 
 
