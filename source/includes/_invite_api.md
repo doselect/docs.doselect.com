@@ -9,6 +9,7 @@ resource_uri           | string     | URI that can be used to access this invite
 email                  | string     | Email address of the candidate
 status                 | string     | Status of this invite. Possible values are *accepted*, *rejected* and *pending*
 expiry                 | string     | Optional, denotes the expiry of this invite
+start_time             | string     | Optional, denotes the time when the test becomes active for this invite
 test                   | string     | URI of the test resource for this invite
 candidate_access_uri   | string     | Access link for the candidate to take the test for this invite
 report                 | object     | Optional. If the test has been attempted, this would contain the gist of the result
@@ -28,7 +29,8 @@ headers = {
 
 payload = {
     "email": "john@example.com",
-    "expiry": "2017-10-11T08:16:33.033149"
+    "expiry": "2017-12-11T08:16:33.033149",
+    "start_time": "2017-11-27T16:30:35"
 }
 
 response = requests.post(url, headers=headers, json=payload)
@@ -42,7 +44,8 @@ curl -X POST \
   -H 'doselect-api-secret: 385041b7bbc2320471b8551d' \
   -d '{
     "email": "john@example.com",
-    "expiry": "2017-10-11T08:16:33.033149"
+    "expiry": "2017-12-11T08:16:33.033149",
+    "start_time": "2017-11-27T16:30:35"
 }'
 ```
 
@@ -52,10 +55,11 @@ curl -X POST \
 {
     "candidate_access_url": "https://doselect.com/gateways/test?access_code=U2DsXUOgvXe2yUXiSPMHglkd/ORMykzTvw8jqmQrj6d1OL8N6MBqUqtu2nxSLz2E5BAuG5T8C9l%2BXYmjUPA0akTATBJB47bU9Yc8CQmwC8s%3D",
     "email": "john@example.com",
-    "expiry": "2017-10-11T08:16:33.033149",
+    "expiry": "2017-12-11T08:16:33.033149",
     "resource_uri": "/platform/v1/test/esows/candidates/john@example.com",
     "status": "pending",
-    "test": "/platform/v1/test/esows"
+    "test": "/platform/v1/test/esows",
+    "start_time": "2017-11-27T16:30:35"
 }
 ```
 
@@ -68,10 +72,11 @@ the candidate to receive an invitation email from DoSelect.
 
 JSON payload attributes:
 
-Field  | Required | Type | Description
------- | -------- | --------- | -----------
-email  | Yes      | string    | The email of the candidate
-expiry | No       | string    | The expiry of the invite in an ISO format datetime string
+Field      | Required | Type | Description
+------     | -------- | --------- | -----------
+email      | Yes      | string    | The email of the candidate
+expiry     | No       | string    | The expiry of the invite in an ISO format datetime string
+start_time | No       | string    | The scheduled start time of an ISO format datetime string
 
 <aside class="notice">
 If the expiry is not sent, the default expiry for an invite will be taken from
@@ -146,10 +151,10 @@ curl -X POST \
 > Response
 
 ```json
-204 NO CONTENT
+202 ACCEPTED
 ```
 
-This endpoint resets an invite for an email. This will work only if the user has already taken the test, else it will throw a `400 BAD REQUEST`.
+This endpoint resets the invite for an user. This will work only if the user has already taken the test, else it will throw a `400 BAD REQUEST`.
 
 Once an invite has been reset, a user can take the test again.
 
@@ -160,5 +165,5 @@ Once an invite has been reset, a user can take the test again.
 candidates/<email>/reset`
 
 <aside class="notice">
-This will delete all existing data about the user's test report in our system.
+This will delete all existing data about the user's test report in our system and will not be recoverable.
 </aside>
