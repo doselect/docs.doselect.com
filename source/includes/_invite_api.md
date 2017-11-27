@@ -118,3 +118,47 @@ This endpoint deletes an invite for an email.
 <aside class="notice">
 The invite can only be deleted if it hasn't been accepted by the candidate.
 </aside>
+
+
+## Reset an invite
+
+> Request
+
+```python
+import requests
+
+url = 'https://api.doselect.com/platform/v1/test/esows/candidates/john@example.com/reset/'
+headers = {
+    "DoSelect-Api-Key": "88d4266fd4e6338d13b845fcf28",
+    "DoSelect-Api-Secret": "385041b7bbc2320471b8551d"
+}
+
+response = requests.post(url, headers=headers)
+```
+
+```shell
+curl -X POST \
+  https://api.doselect.com/platform/v1/test/esows/candidates/john@example.com/reset/ \
+  -H 'doselect-api-key: 88d4266fd4e6338d13b845fcf28' \
+  -H 'doselect-api-secret: 385041b7bbc2320471b8551d'
+```
+
+> Response
+
+```json
+204 NO CONTENT
+```
+
+This endpoint resets an invite for an email. This will work only if the user has already taken the test, else it will throw a `400 BAD REQUEST`.
+
+Once an invite has been reset, a user can take the test again.
+
+
+### HTTP Request
+
+`POST https://api.doselect.com/platform/v1/test/<slug>/
+candidates/<email>/reset`
+
+<aside class="notice">
+This will delete all existing data about the user's test report in our system.
+</aside>
