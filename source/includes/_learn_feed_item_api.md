@@ -39,7 +39,11 @@ curl -X POST \
 > Response
 
 ```
-201 Created
+{
+    "id": 22,
+    "resource_uri": "/platform/v1/learnfeeditem/22",
+    "slug": "e2yp2"
+}
 ```
 This endpoint adds a specific problem, identified by a `slug` to the company's learn feed.
 The company is identified using the API Key and secret which is used in authenticating a request.
