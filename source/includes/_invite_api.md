@@ -140,26 +140,46 @@ headers = {
     "DoSelect-Api-Secret": "385041b7bbc2320471b8551d"
 }
 
-response = requests.post(url, headers=headers)
+payload = {
+	"start_time": "2017-11-30T15:15:35+05:30",
+	"expiry": "2017-12-30T15:15:35+05:30"
+}
+
+response = requests.post(url, payload=payload, headers=headers)
 ```
 
 ```shell
 curl -X POST \
   https://api.doselect.com/platform/v1/test/esows/candidates/john@example.com/reset/ \
   -H 'doselect-api-key: 88d4266fd4e6338d13b845fcf28' \
-  -H 'doselect-api-secret: 385041b7bbc2320471b8551d'
+  -H 'doselect-api-secret: 385041b7bbc2320471b8551d' \
+  -d {
+	"start_time": "2017-11-30T15:15:35+05:30",
+	"expiry": "2017-12-30T15:15:35+05:30"
+}
 ```
 
 > Response
 
 ```json
-202 ACCEPTED
+{
+    "start_time": "2017-11-30T15:15:35+05:30",
+    "email": "john@example.com",
+    "candidate_access_url": "https://doselect.com/gateways/test?access_code=lYDMH0%2BnjSiS2NoYej",
+    "expiry": "2017-12-30T15:15:35+05:30"
+}
 ```
 
 This endpoint resets the invite for an user. This will work only if the user has already taken the test, else it will throw a `400 BAD REQUEST`.
 
 Once an invite has been reset, a user can take the test again.
 
+The request takes two params in the request body:
+
+Title      | Type   | Description
+---------- | ------ | -----------
+start_time | string | A ISO 8601 datetime string denoting the new invite start time
+expiry     | string | A ISO 8601 datetime string denoting the new invite expiry
 
 ### HTTP Request
 
