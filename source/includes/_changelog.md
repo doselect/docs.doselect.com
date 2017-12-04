@@ -2,6 +2,7 @@
 
 Date         | Description
 ------------ | -----------
+Dec 04, 2017 | Added `public_access_url` to the [test report](#get-a-candidate-39-s-report)
 Nov 30, 2017 | Update `start_time` and `expiry` in [invite reset API](#reset-an-invite)
 Nov 28, 2017 | Added `learn_feed_item_id` to the [create submission API[(#create-a-new-submission)
 Nov 27, 2017 | Added API to [reset an invite](#reset-an-invite) and added `start_time` to the [create invite api](#create-a-new-invite)

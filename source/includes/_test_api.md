@@ -362,7 +362,8 @@ curl "https://api.doselect.com/platform/v1/test/4242/candidates/donnie@campushas
         "quality_score": null,
         "quality_verdict": "bad",
         "verdict": "Qualified"
-    }
+    },
+    "public_access_url": "https://doselect.com/reports/test?access_code=23iuerdn-092JZh/jAPHLEIZu6lLT4rfdjfmePn2mf"
 }
 ```
 
@@ -370,34 +371,35 @@ This endpoint retrieves the reports of one candidate in a test. A candidate is i
 
 ### HTTP Request
 
-`GET https://api.doselect.com/platform/v1/test/<slug>/candidates/<email>/report`
+`GET https://api.doselect.com/platform/v1/test/<slug>/
+candidates/<email>/report`
 
 
 The report which can be accessed from our APIs will contain the following information:
 
 
-Field Name      | Type  | Description
-----------      | ---------  | -----------
-resource_uri    | string     | The URI for a particular candidate
-email           | string     | The email of the candidate
-total_solutions | integer    | The number of solutions submitted by the candidate
-attempted       | integer    | The number of problems attempted
-rejected        | integer    | The number of problems rejected
-accepted        | integer    | The number of problems accepted
-total_score     | float      | The total score of this candidate
-max_score       | float      | The maximum score of a candidate can get in this test
-started_at      | string     | A datetime string indicating when the candidate began taking the test
-ended_at        | string     | A datetime string indicating when the candidate stopped the test
-time_taken      | integer    | The time taken to give this test in seconds
-is_submitted    | boolean    | If true, the candidate has made the final submission
-sections        | list       | A list of sections of the test
-insights        | list       | A list of
-quality_analysis| list       | A list of dictionaries containing analysis details
-
-expiry          | string     | The datetime string about the expiry date of this candidate's invite
-status          | string     | It indicates whether the candidate has accepted/rejected/not responded to the invite
-test            | string     | The URI of the test
-verdict         | dictionary | The verdict on this report
+Field Name        | Type  | Description
+----------        | ---------  | -----------
+resource_uri      | string     | The URI for a particular candidate
+email             | string     | The email of the candidate
+total_solutions   | integer    | The number of solutions submitted by the candidate
+attempted         | integer    | The number of problems attempted
+rejected          | integer    | The number of problems rejected
+accepted          | integer    | The number of problems accepted
+total_score       | float      | The total score of this candidate
+max_score         | float      | The maximum score of a candidate can get in this test
+started_at        | string     | A datetime string indicating when the candidate began taking the test
+ended_at          | string     | A datetime string indicating when the candidate stopped the test
+time_taken        | integer    | The time taken to give this test in seconds
+is_submitted      | boolean    | If true, the candidate has made the final submission
+sections          | list       | A list of sections of the test
+insights          | list       | A list of
+quality_analysis  | list       | A list of dictionaries containing analysis details
+public_access_url | string     | A publicaly accessible URL of the report
+expiry            | string     | The datetime string about the expiry date of this candidate's invite
+status            | string     | It indicates whether the candidate has accepted/rejected/not responded to the invite
+test              | string     | The URI of the test
+verdict           | dictionary | The verdict on this report
 
 The aforementioned `verdict` dictionary will contain the following information:
 
