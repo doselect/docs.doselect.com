@@ -71,6 +71,7 @@ The following attributes are supported in the configuration object at the moment
 Attribute | Type | Description
 ----------|------| ------
 allow_submission | boolean | Dynamically control if the submissions are allowed for a problem at the moment. This is only available in a problem embed.
+show_solution_revisions | boolean | Control if solution revisions should be visible.
 
 
 ## Test embed
