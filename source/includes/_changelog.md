@@ -2,6 +2,7 @@
 
 Date         | Description
 ------------ | -----------
+Jan 31, 2017 | Added Data science and Machine learning to allowed problem types in [problem creation](#create-a-problem).
 Jan 19, 2017 | Added support for controlling visibility of solution revisions in [problem embed](#problem-embed).
 Dec 04, 2017 | Added `public_access_url` to the [test report](#get-a-candidate-39-s-report).
 Nov 30, 2017 | Update `start_time` and `expiry` in [invite reset API](#reset-an-invite).
