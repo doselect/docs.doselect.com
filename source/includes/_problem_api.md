@@ -461,7 +461,7 @@ The fields accepted in the body of this request are:
 Field Name          | Type       | Description
 ----------          | ---------  | -----------
 name                | string     | The name of the problem
-problem_type        | string     | The type of the problem (`PRJ`, `UIX`, `SCR`, `MOB` or `MCQ`)
+problem_type        | string     | The type of the problem (`PRJ`, `UIX`, `SCR`, `MOB`, `MCQ`, `DSC` or `MLI`)
 description         | string     | The description of the problem
 max_submissions     | integer    | The maximum number of submissions allowed
 score               | integer    | The score of the problem
@@ -480,6 +480,19 @@ technologies        | array      | A list of strings containing the slugs of all
 The fields `name` and `problem_type` are compulsory for the problem creation.
 If any field other than the ones mentioned above is sent then the API will throw a 400 Bad Request
 </aside>
+
+The possible problem types are:
+
+Abbreviation | Description
+------------ | -----------
+PRJ | Project based problem
+UIX | UI/UX problem
+SCR | Coding problem
+MOB | Mobile problem
+MCQ | Multiple choice question
+DSC | Data science problem
+MLI | Machine learning problem
+
 
 The `stubs` dictionary should have the technology slug as the key and the stub string as the value.
 
