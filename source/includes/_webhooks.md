@@ -53,10 +53,11 @@ The calculated and the request hashes should match, indicating that the message 
 
 The actions sent by solution are listed below. These actions are only sent for solutions created via Embed API.
 
-Sender | Action  | Description
------- |-------- | --------
-solution | create | Solution is created (saved for the first time)
-solution | submit | Solution is submitted by the user
+Sender   | Action    | Description
+------   | --------- | --------
+solution | create    | Solution is created (saved for the first time)
+solution | submit    | Solution is submitted by the user
+solution | evaluated | Solution is evaluated and the scores are ready.
 
 The Solution webhooks will have the following fields:
 
