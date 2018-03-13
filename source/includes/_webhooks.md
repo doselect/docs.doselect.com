@@ -76,7 +76,7 @@ code                   | string     | The latest submitted code of the user
 ```json
 {
     "meta":{
-        "sender": "solution",
+        "sender": "submission",
         "action": "submit",
         "timestamp": "2017-10-07T10:41:31.846531+00:00",
         "delivery_id": "441cd01e-d82d-485c-95d8-c8c498417649"
