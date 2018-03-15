@@ -234,6 +234,71 @@ The problem is identified by a unique `slug` that gets generated during creation
 
 `GET https://api.doselect.com/platform/v1/problem/<slug>/submission`
 
+## Get solution revision
+
+The Solution Revision API allows you to view the revisions of solution to a problem.
+
+> Request
+
+```python
+import requests
+
+url = 'https://api.doselect.com/platform/v1/submission/mmoe0/revisions/john@example.com'
+headers = {
+    "DoSelect-Api-Key": "88d4266fd4e6338d13b845fcf28",
+    "DoSelect-Api-Secret": "385041b7bbc2320471b8551d"
+}
+response = requests.get(url, headers=headers)
+```
+```shell
+curl "https://api.doselect.com/platform/v1/submission/mmoe0/revisions/john@example.com"
+  -H "DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28" \
+  -H "DoSelect-Api-Secret: 385041b7bbc2320471b8551d"
+```
+
+> Response
+
+```json
+{
+    "meta": {
+        "limit": 1,
+        "next": "?limit=1&offset=1",
+        "offset": 0,
+        "previous": null,
+        "total_count": 2
+    },
+    "objects": [
+        {
+            "code": "\n# Read the variable from STDIN\nread a\n\n# Output the variable to STDOUT\necho $a\ns\n\n",
+            "creator": {
+                "email": "john@example.com",
+                "first_name": "John",
+                "last_name": "Doe",
+                "username": "johndoe"
+            },
+            "resource_uri": "/platform/v1/submission/mmoe0/revisions/john@example.com",
+            "run_details":  {
+                "evaluation_ended": "2018-01-19T15:38:17Z",
+                "evaluation_started": "2018-01-19T15:38:06Z",
+                "evaluation_status": "",
+                "running_time": "",
+                "score": 0,
+                "sid": "SCR:2018-01-19:12195f75-3330-41cc-9713-539c143c2b86"},
+            "score": 0,
+            "solution": "/platform/v1/submission/mmoe0",
+            "status": "REJ",
+            "technology": "bash",
+            "testcases_failed": 11,
+            "testcases_passed": 0,
+            "total_testcases": 11
+        }
+    ]
+}
+```
+### HTTP Request
+
+`GET https://api.doselect.com/platform/v1/submission/<slug>/revisions/<email>`
+
 
 ## Get submission by a user
 
