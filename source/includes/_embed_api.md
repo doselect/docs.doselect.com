@@ -83,7 +83,66 @@ DoSelect. Add this HTML code where you want a test to show up:
 <div class="doselect-embed" data-category="test" data-slug="es6ts"></div>
 ```
 
-*Please note that the test embed is in an alpha release at the moment, and the API is subject to change without notice.*
+## Snippet runner embed
+
+The snippet runner embed provides a context-free code execution environment that you can embed on your platform to enable your users
+create arbitrary code snippets, and execute them. This component is especially useful in a learning environment where the users are being
+taught programming and need a place to play around with different technologies without any set-up.
+
+The snippet runner supports all programming languages available on DoSelect. Each code runner is tied to a user email as specified in the user settings.
+All code snippets created by a user are saved on DoSelect platform and loaded whenever the snippet runner loads for the user. If you wish to group snippets
+on the basis of an entity, say course, you can pass an arbitrary string as the `collection_id`.
+
+```html
+<!-- Runner with all languages allowed and no collection. -->
+<div class="doselect-embed" data-category="snippet-runner"></div>
+```
+
+```html
+<!-- Runner with Python 2, Python 3 and R allowed, for a collection called `data-science-lab`. -->
+<div class="doselect-embed" data-category="snippet-runner"
+    data-config='{"allowed_technologies": "python2,python3,r", "collection_id": "data-science-lab"}'></div>
+```
+
+In the configuration object, the following attributes are allowed:
+
+Attribute | Type | Description
+----------|------| -----------
+allowed_technologies | string | Comma-separated values representing the programming languages allowed in this runner. This attribute is optional. If not provided, all programming languages on DoSelect will be allowed in the runner.
+collection_id | string | An arbitrary string to classify the collection of the snippets created under using this embed. If this is empty, all snippets created by the user will be loaded in the runner.
+
+The following programming languages are supported in the runner at the moment:
+
+The possible values of technology slugs are:
+
+Slug | Programming language
+--------------- | ---------------
+julia | Julia
+haskell | Haskell
+csharp | C#
+go | Go
+javascript | JavaScript (NodeJS)
+scala | Scala
+swift | Swift
+perl | Perl
+lua | Lua
+clisp | Clisp
+objectivec | ObjectiveC
+php | PHP
+ruby | Ruby
+bash | Bash
+clojure | Clojure
+rust | Rust
+c | C
+cpp | C++
+java7 | Java 7
+python3 | Python 3
+python2 | Python 2
+java8 | Java 8
+r | R
+fsharp | F#
+cpp14 | C++14
+kotlin | Kotlin
 
 ## Actions
 
