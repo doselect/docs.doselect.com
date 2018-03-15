@@ -2,6 +2,8 @@
 
 Date         | Description
 ------------ | -----------
+
+Apr 06, 2018 | Added [Solution Revision API](#get-solution-revision).
 Apr 03, 2018 | Added [update invite API](#update-an-invite)
 Mar 15, 2018 | Added [Snippet Runner embed](#snippet-runner-embed).
 Mar 12, 2018 | Added a webhook triggered on solution evaluation.
