@@ -189,3 +189,70 @@ candidates/<email>/reset`
 <aside class="notice">
 This will delete all existing data about the user's test report in our system and will not be recoverable.
 </aside>
+
+
+## Update an invite
+
+> Request
+
+```python
+import requests
+
+url = "https://api.central.dev.sg1.chsh.in/platform/v1/test/2edq1/candidates/hemil@doselect.com"
+
+payload = {
+	"expiry": "2018-01-31T15:17:35+05:30",
+    "start_time": "2017-12-15T15:15:35+05:30"
+}
+
+headers = {
+    'Doselect-Api-Key': "88d4266fd4e6338d13b845fcf28",
+    'Doselect-Api-Secret': "385041b7bbc2320471b8551d",
+    'Content-Type': "application/json",
+    }
+
+response = requests.request("PATCH", url, data=payload, headers=headers)
+
+```
+
+```shell
+curl -X PATCH \
+  'https://api.central.dev.sg1.chsh.in/platform/v1/test/2edq1/candidates/hemil@doselect.com' \
+  -H 'Doselect-Api-Key: 88d4266fd4e6338d13b845fcf28' \
+  -H 'Doselect-Api-Secret: 385041b7bbc2320471b8551d' \
+  -d '{
+	"expiry": "2018-01-31T15:17:35+05:30",
+    "start_time": "2017-12-15T15:15:35+05:30"
+}'
+```
+
+> Response
+
+```json
+{
+    "candidate_access_url": "https://central.dev.sg1.chsh.in/gateways/test?access_code=7HEdD1C7cis6RA46k214h0GbJB7ZupX3xxuhdH1/znaPCr4x453nCICbR",
+    "email": "hemil@doselect.com",
+    "expiry": "2018-01-31T15:17:35+05:30",
+    "report": null,
+    "resource_uri": "/platform/v1/test/2edq1/candidates/hemil@doselect.com",
+    "start_time": "2017-12-15T15:15:35+05:30",
+    "status": "pending",
+    "test": "/platform/v1/test/2edq1"
+}
+```
+
+This endpoint updates the invite for an user.
+
+The request takes two params in the request body:
+
+Title      | Type   | Description
+---------- | ------ | -----------
+start_time | string | A ISO 8601 datetime string denoting the new invite start time
+expiry     | string | A ISO 8601 datetime string denoting the new invite expiry
+
+This API will only work for the aforementioned fields and will throw an `400 BAD REQUEST` if any other field is sent in the payload.
+
+### HTTP Request
+
+`PATCH https://api.doselect.com/platform/v1/test/<slug>/
+candidates/<email>/`

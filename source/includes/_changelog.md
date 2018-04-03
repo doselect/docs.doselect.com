@@ -2,6 +2,7 @@
 
 Date         | Description
 ------------ | -----------
+Apr 03, 2018 | Added [update invite API](#update-an-invite)
 Mar 15, 2018 | Added [Snippet Runner embed](#snippet-runner-embed).
 Mar 12, 2018 | Added a webhook triggered on solution evaluation.
 Jan 31, 2018 | Added Data science and Machine learning to allowed problem types in [problem creation](#create-a-problem).
