@@ -73,6 +73,7 @@ Attribute | Type | Description
 allow_submission | boolean | Dynamically control if the submissions are allowed for a problem at the moment. This is only available in a problem embed.
 show_solution_revisions | boolean | Control if solution revisions should be visible.
 
+Please note that the problem must be added to your Learn team's feed before it can be used in an embed.
 
 ## Test embed
 
@@ -82,6 +83,8 @@ DoSelect. Add this HTML code where you want a test to show up:
 ```html
 <div class="doselect-embed" data-category="test" data-slug="es6ts"></div>
 ```
+
+Please note that the test must be added to your Learn team's feed before it can be used in an embed.
 
 ## Snippet runner embed
 
