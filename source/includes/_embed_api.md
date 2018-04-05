@@ -20,7 +20,7 @@ To use the Embed API, simply copy and paste the snippet below before the `</body
 #### Step 2: Configure user settings
 
 ```javascript
-window.doselectSettings = {
+window.doselect = {
     "api_key": "88d4266fd4e6338d13b845fcf28",
     "email": "john@example.com",
     "full_name": "John Doe",
@@ -31,7 +31,7 @@ window.doselectSettings = {
 <script src="https://assets.doselect.com/doselect-embed.min.js" async></script>
 ```
 
-To display embed problems and tests with respect to user, update `window.doselectSettings` object with user metadata and place it above the embed code snippet.
+To display embed problems and tests with respect to user, update `window.doselect` object with user metadata and place it above the embed code snippet.
 
 The following details are needed for configuration:
 
