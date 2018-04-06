@@ -30,5 +30,4 @@ in publicly accessible avenues such as GitHub, or in client-side code.
 
 <aside class="notice">
 The examples given in this documentation use dummy credentials. You must use your team's actual credentials for these requests to work.
-If you are using the dev sandbox, make sure you replace the API host accordingly.
 </aside>

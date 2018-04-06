@@ -183,3 +183,15 @@ This endpoint retrieves a specific submission from the unique `slug` which is ge
 
 `GET https://api.doselect.com/platform/v1/submission/<slug>`
 
+The submission object returned contains a number of attributes. A few of them with their possible values and explanations are
+are described below:
+
+#### `status`
+
+Value | Full-form | Explanation
+------|-----------|------------
+`UNE` | Unevaluated | The submission has not been evaluated yet. This happens when it hasn't been submitted yet, or the evaluation is queued.
+`ACC` | Accepted | The submission has passed all test cases in the problem.
+`PAC` | Partially correct | The submission has passed some test cases, while failed the others.
+`REJ` | Rejected | The submission failed to pass any test cases in the problem.
+`NRE` | Needs review | If the problem must have at least one non-sample test case for the submission to get automatically evaluated. Otherwise, this status is set, which means the solution must be evaluated manually.

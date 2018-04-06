@@ -33,14 +33,14 @@ window.doselect = {
 
 To display embed problems and tests with respect to user, update `window.doselect` object with user metadata and place it above the embed code snippet.
 
-The following details are needed for configuration:
+The following details are needed for configuration. Please note that **all** parameters are required for the embed to work.
 
 Parameter | Description
 ----------|------------
 api_key | Your team account's `API_KEY`
 email | Email of the current user in your application for which you want the embed objects
 full_name | Full name of the current user
-timezone | Timezone of the current user
+timezone | Timezone of the current user. This value should be a valid timezone string. You can refer to the full list of timezone strings [here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List).
 user_hash | The verification hash for this user, which must be generated on your server-side
 
 ##### Generating `user_hash`
@@ -162,3 +162,16 @@ To close an embed, call `doselect.closeFrame(category, slug)`. If the embed elem
 ### Fetch report
 
 To fetch the report for an embed, call `doselect.fetchReport(category, slug)`.
+
+## FAQ
+
+### I've configured the `doselect` object properly, but the embed isn't loading. Why?
+
+There can be multiple reasons for this. Here's are a few things you should check for troubleshooting.
+
+ - Make sure the host domain where the embed is getting served at is added to the _Allowed hosts_ field in your team's
+ [integration settings](https://doselect.com/settings/team/integrations).
+
+ - Verify that 3rd-party cookies are allowed on your browser -- since the embed sets cookies on your browser to make things work. Some external
+ software, like anti-virus software, automatically disallow 3rd party cookies on browsers. This will cause the embed loading to fail. [This](https://www.whatismybrowser.com/detect/are-third-party-cookies-enabled)
+ handy tool will help you troubleshoot.
