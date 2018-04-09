@@ -2,7 +2,7 @@
 
 Date         | Description
 ------------ | -----------
-
+Apr 09, 2018 | Added docs for [host authentication](#host-authentication)
 Apr 06, 2018 | Added [Solution Revision API](#get-solution-revision).
 Apr 03, 2018 | Added [update invite API](#update-an-invite)
 Mar 15, 2018 | Added [Snippet Runner embed](#snippet-runner-embed).

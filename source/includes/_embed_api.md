@@ -50,6 +50,19 @@ using **SHA256**, with the current user's `email` as the message and your `API_S
 
 The embed requests will fail if the `user_hash` is incorrect.
 
+
+## Host authentication
+
+This is an optional feature which will enable you to add whitelisted hosts which will be able to open the embed. The host is identified using the `Referer` header of the request.
+The white-listed hosts can be added in your company's [integrations settings](https://doselect.com/settings/team/integrations) in the `Allowed Hosts` section.
+
+By default, no hosts will be allowed to open the embed. You will have to add atleast one allowed host in the team settings.
+
+The hosts can be an restricted using an exact string match as well as through the wildcards `*` for all characters and `?` for one character.
+
+The matching will convert `https://api.doselect:8080/embed/problem/yo3kd` to `api.doselect:8080` and try to match that to the white-listed hosts.
+
+
 ## Problem embed
 
 You can embed a problem on your platform using the problem's `slug`, which uniquely identifies a problem on
