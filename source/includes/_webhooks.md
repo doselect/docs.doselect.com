@@ -51,7 +51,8 @@ The calculated and the request hashes should match, indicating that the message 
 
 ## Solution
 
-The actions sent by solution are listed below. These actions are only sent for solutions created via Embed API.
+The actions sent by solution are listed below.
+These actions are only sent for solutions whose problems have been added to your account's learnfeed.
 
 Sender   | Action    | Description
 ------   | --------- | --------
@@ -95,7 +96,8 @@ code                   | string     | The latest submitted code of the user
 
 ## Test Session
 
-The actions sent by a test session are listed below. These actions are sent for all tests on DoSelect.
+The actions sent by a test session are listed below.
+These actions are sent for all tests associated with your account on DoSelect.
 
 Sender       | Action | Description
 ------------ |------- | --------
@@ -135,7 +137,8 @@ email      | string | The email of the user taking the test
 
 ## Problem
 
-The actions sent by a problem are listed below. These actions are sent for all private problems on DoSelect.
+The actions sent by a problem are listed below.
+These actions are sent for all private problems on DoSelect.
 
 Sender  | Action | Description
 ------- | ------ | --------

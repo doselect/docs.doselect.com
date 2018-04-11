@@ -17,7 +17,7 @@ payload = {
     "technology": "technology_slug",
     "code_url": "https://s3.amazon.com/zygon.zip",
     "problem_slug": "esows",
-    "problem_type": "problem_type",
+    "problem_type": "SCR",
     "email": "john@example.com",
     "learn_feed_item_id": 5
 }
@@ -39,7 +39,7 @@ curl -X POST \
   -H 'DoSelect-Api-Secret: 385041b7bbc2320471b8551d' \
   -d '{
     "technology": "technology_slug",
-    "problem_type": "problem_type",
+    "problem_type": "SCR",
     "code": "print '\''Hello World'\''",
     "email": "john@example.com",
     "problem_slug": "esows",
@@ -50,7 +50,23 @@ curl -X POST \
 
 > Response
 
-```
+```json
+{
+    "status": "UNE",
+    "resubmissions": 0,
+    "learn_feed_item_id": 5,
+    "created": "2018-04-11T05:26:53.233Z",
+    "total_score": "0.0",
+    "run_details": {},
+    "modified": "2018-04-11T05:26:53.740Z",
+    "problem_slug": "esows",
+    "email": "john@example.com",
+    "code": "print 'Hello World'",
+    "analysis_details": {},
+    "submitted_at": "2018-04-11T05:26:53.464Z",
+    "slug": "rd3g0l",
+    "solution_type": "SCR"
+}
 ```
 This endpoint accepts a new submission for a specific problem, identified by a `slug` submitted by a user who is identified by the `email`.
 
