@@ -93,6 +93,16 @@ show_solution_revisions | boolean | Control if solution revisions should be visi
 
 Please note that the problem must be added to your Learn team's feed before it can be used in an embed.
 
+The allowed problem types in the embed are:
+
+Problem type | Description
+------------ | -----------
+`DBA`        | Database problem
+`SCR`        | Scripting/Coding problem
+`MLI`        | Machine learning problem
+`DSC`        | Data-science problem
+`UIX`        | UI/UX problem
+
 ## Test embed
 
 You can embed a test on your platform using the test's `slug`, which uniquely identifies a test on
