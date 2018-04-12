@@ -58,7 +58,12 @@ The white-listed hosts can be added in your company's [integrations settings](ht
 
 By default, no hosts will be allowed to open the embed. You will have to add atleast one allowed host in the team settings.
 
-The hosts can be an restricted using an exact string match as well as through the wildcards `*` for all characters and `?` for one character.
+Host matching option   | Description
+--------------------   | -----------
+Exact Match            | This will be an exact string match between the request and allowed domains
+Using the `*` wildcard | This will match any number of characters
+Using the `?` wildcard | This will match one character
+
 
 The matching will convert `https://api.doselect:8080/embed/problem/yo3kd` to `api.doselect:8080` and try to match that to the white-listed hosts.
 
