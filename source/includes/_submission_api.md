@@ -65,7 +65,8 @@ curl -X POST \
     "analysis_details": {},
     "submitted_at": "2018-04-11T05:26:53.464Z",
     "slug": "rd3g0l",
-    "solution_type": "SCR"
+    "solution_type": "SCR",
+    "max_score": 150
 }
 ```
 This endpoint accepts a new submission for a specific problem, identified by a `slug` submitted by a user who is identified by the `email`.
@@ -190,7 +191,9 @@ curl "https://api.doselect.com/platform/v1/submission/mmoe0"
     "status": "NRE",
     "submitted_at": "2017-09-25T08:14:41.342872",
     "technology": "javascript",
-    "total_score": "0.0"
+    "total_score": "0.0",
+    "max_score": 150
+
 }
 ```
 This endpoint retrieves a specific submission from the unique `slug` which is generated during creation:

@@ -2,6 +2,7 @@
 
 Date         | Description
 ------------ | -----------
+Apr 18, 2018 | Updated the [solution webhook docs](#solution) and added email restriction in [embed](#client-library) and added `max_score` field to [submission API response](#get-one-submission)
 Apr 12, 2018 | Added allowed problem types in [problem embed](#problem-embed)
 Apr 11, 2018 | Added the response to the create submission API and updates the docs for when webhook is triggered and added docs for [host authentication](#host-authentication)
 Apr 06, 2018 | Added [Solution Revision API](#get-solution-revision).

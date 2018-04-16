@@ -43,6 +43,10 @@ full_name | Full name of the current user
 timezone | Timezone of the current user. This value should be a valid timezone string. You can refer to the full list of timezone strings [here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List).
 user_hash | The verification hash for this user, which must be generated on your server-side
 
+<aside class="notice">
+The email given here needs to be different than the recruiter/admin emails of your DoSelect account.
+</aside>
+
 ##### Generating `user_hash`
 
 The `user_hash` must be a server-side generated [HMAC (hash based message authentication code)](http://en.wikipedia.org/wiki/Hash-based_message_authentication_code),
