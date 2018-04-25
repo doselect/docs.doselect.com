@@ -14,6 +14,78 @@ test                   | string     | URI of the test resource for this invite
 candidate_access_uri   | string     | Access link for the candidate to take the test for this invite
 report                 | object     | Optional. If the test has been attempted, this would contain the gist of the result
 
+
+## Get all invites of a user
+
+
+> Request
+
+```python
+import requests
+
+url = "https://api.doselect.com/platform/v1/invite/"
+
+querystring = {"email":"hemil@doselect.com"}
+
+headers = {
+    'Doselect-Api-Key': "88d4266fd4e6338d13b845fcf28",
+    'Doselect-Api-Secret': "385041b7bbc2320471b8551d",
+    'Cache-Control': "no-cache"
+    }
+
+response = requests.request("GET", url, headers=headers, params=querystring)
+```
+
+```shell
+curl -X GET \
+  'https://api.doselect.com/platform/v1/invite/?email=hemil@doselect.com' \
+  -H 'Doselect-Api-Key: 88d4266fd4e6338d13b845fcf28' \
+  -H 'Doselect-Api-Secret: 385041b7bbc2320471b8551d'
+```
+
+> Response
+
+```json
+{
+    "meta": {
+        "limit": 1,
+        "next": null,
+        "offset": 0,
+        "previous": null,
+        "total_count": 1
+    },
+    "objects": [
+        {
+            "candidate_access_url": "https://doselect.com/gateways/test?access_code=f4nldRcHaVw6W2VcNk9ExrMWa6htLUaVF4G28HRCmgO342n",
+            "email": "hemil@doselect.com",
+            "expiry": "2017-12-29T09:47:35+00:00",
+            "report": {
+                "report_uri": "/platform/v1/test/2xmrr/candidates/hemil@doselect.com/report",
+                "time_taken": 4,
+                "total_problems": 2,
+                "total_score": 0,
+                "total_solutions": 0
+            },
+            "resource_uri": "/platform/v1/test/2xmrr/candidates/hemil@doselect.com",
+            "start_time": "2017-11-29T09:45:35+00:00",
+            "status": "accepted",
+            "test": "/platform/v1/test/2xmrr"
+        }
+    ]
+}
+```
+
+This API will fetch all the invites of a particular user which are associated with your account.
+If the user has been invited for tests from multiple accounts, then this API will return only
+those which are associated with the account whose credentials you send.
+
+The user email needs to be sent in the GET params as shown in the sample request with the key `email`.
+
+<aside class="notice">
+If the email is not sent in the params, the API will return all the invites of your account.
+</aside>
+
+
 ## Create a new invite
 
 > Request
