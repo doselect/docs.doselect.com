@@ -106,6 +106,9 @@ Problem type | Description
 `MLI`        | Machine learning problem
 `DSC`        | Data-science problem
 `UIX`        | UI/UX problem
+`PRJ`        | Project-based problem
+`APP`        | Full stack app problem
+`DBA`        | Database problem
 
 ## Test embed
 
