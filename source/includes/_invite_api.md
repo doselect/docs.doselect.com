@@ -69,7 +69,8 @@ curl -X GET \
             "resource_uri": "/platform/v1/test/2xmrr/candidates/hemil@doselect.com",
             "start_time": "2017-11-29T09:45:35+00:00",
             "status": "accepted",
-            "test": "/platform/v1/test/2xmrr"
+            "test": "/platform/v1/test/2xmrr",
+            "test_name": "DoSelect Demo Test for Backend Engineer"
         }
     ]
 }
