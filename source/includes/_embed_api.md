@@ -110,6 +110,16 @@ Problem type | Description
 `APP`        | Full stack app problem
 `DBA`        | Database problem
 
+### Sample solutions of a problem
+
+The sample solution of a problem will be shown on the embed if the following conditions are met:
+
+Number | Condition
+------ | -----------
+1      | The `max_submissions` of a problem is set and it is non-zero.
+2      | The number of submissions for this problem has reached the maximum number of submissions
+3      | A sample solution exists for the technology the user has selected
+
 ## Test embed
 
 You can embed a test on your platform using the test's `slug`, which uniquely identifies a test on
