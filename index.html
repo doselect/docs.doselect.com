@@ -200,6 +200,18 @@
     <link href="stylesheets/print.css" rel="stylesheet" media="print" />
       <script src="javascripts/all.js"></script>
     <link href="images/favicon.png" rel="icon" type="image/png" />
+    <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,400i,900|Source+Code+Pro' rel='stylesheet' type='text/css'>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56081971-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+     gtag('config', 'UA-56081971-1');
+    </script>
+
   </head>
 
   <body class="index" data-languages="[&quot;shell&quot;,&quot;python&quot;]">
@@ -258,19 +270,28 @@
             <a href="#invite-api" class="toc-h1 toc-link" data-title="Invite API">Invite API</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#create-invite" class="toc-h2 toc-link" data-title="Invite API">Create Invite</a>
+                    <a href="#get-all-invites-of-a-user" class="toc-h2 toc-link" data-title="Invite API">Get all invites of a user</a>
                   </li>
                   <li>
-                    <a href="#delete-an-invite" class="toc-h2 toc-link" data-title="Invite API">Delete an Invite</a>
+                    <a href="#create-a-new-invite" class="toc-h2 toc-link" data-title="Invite API">Create a new invite</a>
+                  </li>
+                  <li>
+                    <a href="#delete-an-invite" class="toc-h2 toc-link" data-title="Invite API">Delete an invite</a>
+                  </li>
+                  <li>
+                    <a href="#reset-an-invite" class="toc-h2 toc-link" data-title="Invite API">Reset an invite</a>
+                  </li>
+                  <li>
+                    <a href="#update-an-invite" class="toc-h2 toc-link" data-title="Invite API">Update an invite</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#user-api" class="toc-h1 toc-link" data-title="User API">User API</a>
-          </li>
-          <li>
             <a href="#problem-api" class="toc-h1 toc-link" data-title="Problem API">Problem API</a>
               <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-problems" class="toc-h2 toc-link" data-title="Problem API">Get all problems</a>
+                  </li>
                   <li>
                     <a href="#get-one-problem" class="toc-h2 toc-link" data-title="Problem API">Get one problem</a>
                   </li>
@@ -278,7 +299,41 @@
                     <a href="#get-all-submissions-of-one-problem" class="toc-h2 toc-link" data-title="Problem API">Get all submissions of one problem</a>
                   </li>
                   <li>
+                    <a href="#get-solution-revision" class="toc-h2 toc-link" data-title="Problem API">Get solution revision</a>
+                  </li>
+                  <li>
                     <a href="#get-submission-by-a-user" class="toc-h2 toc-link" data-title="Problem API">Get submission by a user</a>
+                  </li>
+                  <li>
+                    <a href="#create-a-problem" class="toc-h2 toc-link" data-title="Problem API">Create a Problem</a>
+                  </li>
+                  <li>
+                    <a href="#clone-a-problem" class="toc-h2 toc-link" data-title="Problem API">Clone a problem</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-problem" class="toc-h2 toc-link" data-title="Problem API">Update a problem</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#problem-testcase-api" class="toc-h1 toc-link" data-title="Problem Testcase API">Problem Testcase API</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-testcases-of-a-problem" class="toc-h2 toc-link" data-title="Problem Testcase API">Get all testcases of a problem</a>
+                  </li>
+                  <li>
+                    <a href="#create-a-testcase" class="toc-h2 toc-link" data-title="Problem Testcase API">Create a testcase</a>
+                  </li>
+                  <li>
+                    <a href="#delete-a-testcase" class="toc-h2 toc-link" data-title="Problem Testcase API">Delete a testcase</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#learnfeed-item-api" class="toc-h1 toc-link" data-title="LearnFeed Item API">LearnFeed Item API</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#add-problem-to-learn-feed" class="toc-h2 toc-link" data-title="LearnFeed Item API">Add problem to learn feed</a>
                   </li>
               </ul>
           </li>
@@ -300,26 +355,50 @@
                     <a href="#client-library" class="toc-h2 toc-link" data-title="Embed API">Client library</a>
                   </li>
                   <li>
+                    <a href="#host-authentication" class="toc-h2 toc-link" data-title="Embed API">Host authentication</a>
+                  </li>
+                  <li>
                     <a href="#problem-embed" class="toc-h2 toc-link" data-title="Embed API">Problem embed</a>
                   </li>
                   <li>
                     <a href="#test-embed" class="toc-h2 toc-link" data-title="Embed API">Test embed</a>
                   </li>
                   <li>
+                    <a href="#snippet-runner-embed" class="toc-h2 toc-link" data-title="Embed API">Snippet runner embed</a>
+                  </li>
+                  <li>
                     <a href="#actions" class="toc-h2 toc-link" data-title="Embed API">Actions</a>
+                  </li>
+                  <li>
+                    <a href="#faq" class="toc-h2 toc-link" data-title="Embed API">FAQ</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
+            <a href="#webhooks" class="toc-h1 toc-link" data-title="Webhooks">Webhooks</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#unreleased" class="toc-h2 toc-link" data-title="Changelog">[Unreleased]</a>
+                    <a href="#payload" class="toc-h2 toc-link" data-title="Webhooks">Payload</a>
                   </li>
                   <li>
-                    <a href="#released-v1-0-0" class="toc-h2 toc-link" data-title="Changelog">Released v1.0.0</a>
+                    <a href="#webhook-security" class="toc-h2 toc-link" data-title="Webhooks">Webhook Security</a>
+                  </li>
+                  <li>
+                    <a href="#solution" class="toc-h2 toc-link" data-title="Webhooks">Solution</a>
+                  </li>
+                  <li>
+                    <a href="#test-session" class="toc-h2 toc-link" data-title="Webhooks">Test Session</a>
+                  </li>
+                  <li>
+                    <a href="#problem" class="toc-h2 toc-link" data-title="Webhooks">Problem</a>
                   </li>
               </ul>
+          </li>
+          <li>
+            <a href="#help" class="toc-h1 toc-link" data-title="Help">Help</a>
+          </li>
+          <li>
+            <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
           </li>
       </div>
     </div>
@@ -330,7 +409,7 @@
 <p>Welcome to the DoSelect API documentation! These APIs provide you access to various resources and functionalities of the DoSelect platform.</p>
 
 <p>The Platform APIs are organized around REST, and can be accessed at <code>api.doselect.com</code>.
-All request and response bodies, including errors, are encoded in JSON. These APIs include resources like <a href="#test-api">Tests</a>,
+All request and response bodies, including errors, are encoded in JSON. These APIs include resources like <a href="#test-api">Tests</a>, <a href="#invite-api">Invites</a>, 
 <a href="#problem-api">Problems</a>, <a href="#submission-api">Submissions</a> and <a href="#user-api">Users</a>.</p>
 
 <p>The <a href="#embed-api">Embed API</a> gives you a simple JavaScript interface to embed resources like tests and problems on your front-end application directly -- without
@@ -363,7 +442,7 @@ Please contact your account manager or write to <a href="mailto:support@doselect
   -H <span class="s2">"DoSelect-API-Secret: 385041b7bbc2320471b8551d"</span>
 </code></pre>
 <p>Access to the Platform APIs are authenticated using your team account&#39;s <code>API_KEY</code> and <code>API_SECRET</code>.
-These credentials are available in your team dashbaord under the path <code>Team Settings &gt; Integrations</code>.</p>
+These credentials are available in your team dashboard under the path <code>Team Settings &gt; Integrations</code>.</p>
 
 <p>You must include the <code>API_KEY</code> and <code>API_SECRET</code> in custom request headers, <code>DoSelect-API-Key</code> and <code>DoSelect-API-Secret</code> respectively.
 Because your <code>API_SECRET</code> is sensitive information and allows access to your account, we strongly advise you to not expose your <code>API_SECRET</code>
@@ -371,7 +450,6 @@ in publicly accessible avenues such as GitHub, or in client-side code.</p>
 
 <aside class="notice">
 The examples given in this documentation use dummy credentials. You must use your team's actual credentials for these requests to work.
-If you are using the dev sandbox, make sure you replace the API host accordingly.
 </aside>
 <h1 id='errors'>Errors</h1>
 <p>The APIs return standard HTTP success or error status codes. For errors, extra information about what went wrong will also be sent in the respose,
@@ -478,7 +556,7 @@ resource objects in such responses.</p>
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>Data Type</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -558,6 +636,11 @@ resource objects in such responses.</p>
 <td>This will contain the end time of the test in a date time string</td>
 </tr>
 <tr>
+<td>redirection_url</td>
+<td>string</td>
+<td>After the test, the user will be redirected to this URL</td>
+</tr>
+<tr>
 <td>tags</td>
 <td>list</td>
 <td></td>
@@ -579,7 +662,7 @@ resource objects in such responses.</p>
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>Data Type</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -683,7 +766,8 @@ resource objects in such responses.</p>
             </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
             </span><span class="s2">"total_candidates"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
             </span><span class="s2">"total_problems"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"total_sections"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+            </span><span class="s2">"total_sections"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"redirection_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.doselect.com"</span><span class="w">
         </span><span class="p">},</span><span class="w">
 
     </span><span class="p">]</span><span class="w">
@@ -759,7 +843,8 @@ resource objects in such responses.</p>
     </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
     </span><span class="s2">"total_candidates"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"total_problems"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"total_sections"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="s2">"total_sections"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"redirection_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.doselect.com"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 
@@ -815,7 +900,7 @@ resource objects in such responses.</p>
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>Data Type</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -861,7 +946,7 @@ resource objects in such responses.</p>
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>Data Type</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -962,19 +1047,21 @@ resource objects in such responses.</p>
         </span><span class="s2">"quality_score"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"quality_verdict"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bad"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"verdict"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Qualified"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"public_access_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://doselect.com/reports/test?access_code=23iuerdn-092JZh/jAPHLEIZu6lLT4rfdjfmePn2mf"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves the reports of one candidate in a test. A candidate is identified by the <code>email</code> in a test.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>GET https://api.doselect.com/platform/v1/test/&lt;slug&gt;/candidates/&lt;email&gt;/report</code></p>
+<p><code>GET https://api.doselect.com/platform/v1/test/&lt;slug&gt;/
+candidates/&lt;email&gt;/report</code></p>
 
 <p>The report which can be accessed from our APIs will contain the following information:</p>
 
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>Data Type</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -1053,19 +1140,39 @@ resource objects in such responses.</p>
 <td>list</td>
 <td>A list of dictionaries containing analysis details</td>
 </tr>
+<tr>
+<td>public_access_url</td>
+<td>string</td>
+<td>A publicaly accessible URL of the report</td>
+</tr>
+<tr>
+<td>expiry</td>
+<td>string</td>
+<td>The datetime string about the expiry date of this candidate&#39;s invite</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>It indicates whether the candidate has accepted/rejected/not responded to the invite</td>
+</tr>
+<tr>
+<td>test</td>
+<td>string</td>
+<td>The URI of the test</td>
+</tr>
+<tr>
+<td>verdict</td>
+<td>dictionary</td>
+<td>The verdict on this report</td>
+</tr>
 </tbody></table>
-
-<p>expiry          | string     | The datetime string about the expiry date of this candidate&#39;s invite
-status          | string     | It indicates whether the candidate has accepted/rejected/not responded to the invite
-test            | string     | The URI of the test
-verdict         | dictionary | The verdict on this report</p>
 
 <p>The aforementioned <code>verdict</code> dictionary will contain the following information:</p>
 
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>Data Type</th>
+<th>Type</th>
 <th>Possible Values</th>
 <th>Description</th>
 </tr>
@@ -1096,44 +1203,121 @@ verdict         | dictionary | The verdict on this report</p>
 </tr>
 </tbody></table>
 <h1 id='invite-api'>Invite API</h1>
-<p>The Invite API lets you retrieve, create and delete your team&#39;s invites.</p>
-
-<p>The invite information which can be accessed from our APIs will contain the following information:</p>
+<p>Using the Invite API, you can invite a candidate to take a test in your team via their email address. The resources contains the
+following fields:</p>
 
 <table><thead>
 <tr>
 <th>Field Name</th>
-<th>Data Type</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>resource_uri</td>
 <td>string</td>
-<td>The URI for a particular invite</td>
+<td>URI that can be used to access this invite</td>
 </tr>
 <tr>
 <td>email</td>
 <td>string</td>
-<td>The email of the candidate</td>
+<td>Email address of the candidate</td>
 </tr>
 <tr>
 <td>status</td>
 <td>string</td>
-<td>The status of whether the candidate has accepted the invite or not</td>
+<td>Status of this invite. Possible values are <em>accepted</em>, <em>rejected</em> and <em>pending</em></td>
 </tr>
 <tr>
 <td>expiry</td>
 <td>string</td>
-<td>An ISO formatted datetime string signifying the expiry date of an invite</td>
+<td>Optional, denotes the expiry of this invite</td>
+</tr>
+<tr>
+<td>start_time</td>
+<td>string</td>
+<td>Optional, denotes the time when the test becomes active for this invite</td>
 </tr>
 <tr>
 <td>test</td>
 <td>string</td>
-<td>The URI of the test</td>
+<td>URI of the test resource for this invite</td>
+</tr>
+<tr>
+<td>candidate_access_uri</td>
+<td>string</td>
+<td>Access link for the candidate to take the test for this invite</td>
+</tr>
+<tr>
+<td>report</td>
+<td>object</td>
+<td>Optional. If the test has been attempted, this would contain the gist of the result</td>
 </tr>
 </tbody></table>
-<h2 id='create-invite'>Create Invite</h2>
+<h2 id='get-all-invites-of-a-user'>Get all invites of a user</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.doselect.com/platform/v1/invite/"</span>
+
+<span class="n">querystring</span> <span class="o">=</span> <span class="p">{</span><span class="s">"email"</span><span class="p">:</span><span class="s">"hemil@doselect.com"</span><span class="p">}</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'Doselect-Api-Key'</span><span class="p">:</span> <span class="s">"88d4266fd4e6338d13b845fcf28"</span><span class="p">,</span>
+    <span class="s">'Doselect-Api-Secret'</span><span class="p">:</span> <span class="s">"385041b7bbc2320471b8551d"</span><span class="p">,</span>
+    <span class="s">'Cache-Control'</span><span class="p">:</span> <span class="s">"no-cache"</span>
+    <span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">querystring</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+  <span class="s1">'https://api.doselect.com/platform/v1/invite/?email=hemil@doselect.com'</span> <span class="se">\</span>
+  -H <span class="s1">'Doselect-Api-Key: 88d4266fd4e6338d13b845fcf28'</span> <span class="se">\</span>
+  -H <span class="s1">'Doselect-Api-Secret: 385041b7bbc2320471b8551d'</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"previous"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"objects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"candidate_access_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://doselect.com/gateways/test?access_code=f4nldRcHaVw6W2VcNk9ExrMWa6htLUaVF4G28HRCmgO342n"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hemil@doselect.com"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-12-29T09:47:35+00:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"report"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"report_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/test/2xmrr/candidates/hemil@doselect.com/report"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"time_taken"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"total_problems"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"total_score"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"total_solutions"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"resource_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/test/2xmrr/candidates/hemil@doselect.com"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-11-29T09:45:35+00:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accepted"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/test/2xmrr"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"test_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DoSelect Demo Test for Backend Engineer"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This API will fetch all the invites of a particular user which are associated with your account.
+If the user has been invited for tests from multiple accounts, then this API will return only
+those which are associated with the account whose credentials you send.</p>
+
+<p>The user email needs to be sent in the GET params as shown in the sample request with the key <code>email</code>.</p>
+
+<aside class="notice">
+If the email is not sent in the params, the API will return all the invites of your account.
+</aside>
+<h2 id='create-a-new-invite'>Create a new invite</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -1147,7 +1331,8 @@ verdict         | dictionary | The verdict on this report</p>
 
 <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">"email"</span><span class="p">:</span> <span class="s">"john@example.com"</span><span class="p">,</span>
-    <span class="s">"expiry"</span><span class="p">:</span> <span class="s">"2017-10-11T08:16:33.033149"</span>
+    <span class="s">"expiry"</span><span class="p">:</span> <span class="s">"2018-05-29T15:17:35+05:30"</span><span class="p">,</span>
+    <span class="s">"start_time"</span><span class="p">:</span> <span class="s">"2018-05-10T15:17:35+05:30"</span>
 <span class="p">}</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
@@ -1158,34 +1343,37 @@ verdict         | dictionary | The verdict on this report</p>
   -H <span class="s1">'doselect-api-secret: 385041b7bbc2320471b8551d'</span> <span class="se">\</span>
   -d <span class="s1">'{
     "email": "john@example.com",
-    "expiry": "2017-10-11T08:16:33.033149"
+    "expiry": "2018-05-29T15:17:35+05:30",
+    "start_time": "2018-05-10T15:17:35+05:30"
 }'</span>
 </code></pre>
 <blockquote>
 <p>Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"candidate_access_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://doselect.com/gateways/test?access_code=U2DsXUOgvXe2yUXiSPMHglkd/ORMykzTvw8jqmQrj6d1OL8N6MBqUqtu2nxSLz2E5BAuG5T8C9l%2BXYmjUPA0akTATBJB47bU9Yc8CQmwC8s%3D"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@example.com"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-10-11T08:16:33.033149"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-29T15:17:35+05:30"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-10T15:17:35+05:30"</span><span class="w">
     </span><span class="s2">"resource_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/test/esows/candidates/john@example.com"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/test/esows"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint creates an invite for an email.</p>
-<h3 id='http-request'>HTTP Request</h3>
+</span></code></pre><h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://api.doselect.com/platform/v1/test/&lt;slug&gt;/candidates</code></p>
 
-<p>Optionally, add a <code>suppress_email=True</code> parameter to the URL if you do not want
-the candidate to receive an invitation email.</p>
+<p>Optionally, you can add a <code>suppress_email=True</code> GET parameter to the URL if you do not want
+the candidate to receive an invitation email from DoSelect.</p>
 
-<p>Json Payload attributes:</p>
+<p>If you need to schedule a test, it can be done by setting the <code>start_time</code> and <code>expiry</code> of the invite accordingly.</p>
+
+<p>JSON payload attributes:</p>
 
 <table><thead>
 <tr>
 <th>Field</th>
 <th>Required</th>
-<th>Data Type</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -1201,13 +1389,19 @@ the candidate to receive an invitation email.</p>
 <td>string</td>
 <td>The expiry of the invite in an ISO format datetime string</td>
 </tr>
+<tr>
+<td>start_time</td>
+<td>No</td>
+<td>string</td>
+<td>The scheduled start time of an ISO format datetime string</td>
+</tr>
 </tbody></table>
 
 <aside class="notice">
 If the expiry is not sent, the default expiry for an invite will be taken from
-the test's settings' `invite_expiry_days` field.
+the `invite_expiry_days` field in the test's settings.
 </aside>
-<h2 id='delete-an-invite'>Delete an Invite</h2>
+<h2 id='delete-an-invite'>Delete an invite</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -1237,11 +1431,237 @@ the test's settings' `invite_expiry_days` field.
 <aside class="notice">
 The invite can only be deleted if it hasn't been accepted by the candidate.
 </aside>
-<h1 id='user-api'>User API</h1>
-<p>The User API allows you to retrieve the details of a user on DoSelect.</p>
+<h2 id='reset-an-invite'>Reset an invite</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">'https://api.doselect.com/platform/v1/test/esows/candidates/john@example.com/reset/'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"DoSelect-Api-Key"</span><span class="p">:</span> <span class="s">"88d4266fd4e6338d13b845fcf28"</span><span class="p">,</span>
+    <span class="s">"DoSelect-Api-Secret"</span><span class="p">:</span> <span class="s">"385041b7bbc2320471b8551d"</span>
+<span class="p">}</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"start_time"</span><span class="p">:</span> <span class="s">"2017-11-30T15:15:35+05:30"</span><span class="p">,</span>
+    <span class="s">"expiry"</span><span class="p">:</span> <span class="s">"2017-12-30T15:15:35+05:30"</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  https://api.doselect.com/platform/v1/test/esows/candidates/john@example.com/reset/ <span class="se">\</span>
+  -H <span class="s1">'doselect-api-key: 88d4266fd4e6338d13b845fcf28'</span> <span class="se">\</span>
+  -H <span class="s1">'doselect-api-secret: 385041b7bbc2320471b8551d'</span> <span class="se">\</span>
+  -d <span class="o">{</span>
+    <span class="s2">"start_time"</span>: <span class="s2">"2017-11-30T15:15:35+05:30"</span>,
+    <span class="s2">"expiry"</span>: <span class="s2">"2017-12-30T15:15:35+05:30"</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-11-30T15:15:35+05:30"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"candidate_access_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://doselect.com/gateways/test?access_code=lYDMH0%2BnjSiS2NoYej"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-12-30T15:15:35+05:30"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint resets the invite for an user. This will work only if the user has already taken the test, else it will throw a <code>400 BAD REQUEST</code>.</p>
+
+<p>Once an invite has been reset, a user can take the test again.</p>
+
+<p>The request takes two params in the request body:</p>
+
+<table><thead>
+<tr>
+<th>Title</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>start_time</td>
+<td>string</td>
+<td>A ISO 8601 datetime string denoting the new invite start time</td>
+</tr>
+<tr>
+<td>expiry</td>
+<td>string</td>
+<td>A ISO 8601 datetime string denoting the new invite expiry</td>
+</tr>
+</tbody></table>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST https://api.doselect.com/platform/v1/test/&lt;slug&gt;/
+candidates/&lt;email&gt;/reset</code></p>
+
+<aside class="notice">
+This will delete all existing data about the user's test report in our system and will not be recoverable.
+</aside>
+<h2 id='update-an-invite'>Update an invite</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.central.dev.sg1.chsh.in/platform/v1/test/2edq1/candidates/hemil@doselect.com"</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"expiry"</span><span class="p">:</span> <span class="s">"2018-01-31T15:17:35+05:30"</span><span class="p">,</span>
+    <span class="s">"start_time"</span><span class="p">:</span> <span class="s">"2017-12-15T15:15:35+05:30"</span>
+<span class="p">}</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'Doselect-Api-Key'</span><span class="p">:</span> <span class="s">"88d4266fd4e6338d13b845fcf28"</span><span class="p">,</span>
+    <span class="s">'Doselect-Api-Secret'</span><span class="p">:</span> <span class="s">"385041b7bbc2320471b8551d"</span><span class="p">,</span>
+    <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+    <span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"PATCH"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X PATCH <span class="se">\</span>
+  <span class="s1">'https://api.central.dev.sg1.chsh.in/platform/v1/test/2edq1/candidates/hemil@doselect.com'</span> <span class="se">\</span>
+  -H <span class="s1">'Doselect-Api-Key: 88d4266fd4e6338d13b845fcf28'</span> <span class="se">\</span>
+  -H <span class="s1">'Doselect-Api-Secret: 385041b7bbc2320471b8551d'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "expiry": "2018-01-31T15:17:35+05:30",
+    "start_time": "2017-12-15T15:15:35+05:30"
+}'</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"candidate_access_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://central.dev.sg1.chsh.in/gateways/test?access_code=7HEdD1C7cis6RA46k214h0GbJB7ZupX3xxuhdH1/znaPCr4x453nCICbR"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hemil@doselect.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-31T15:17:35+05:30"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"report"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/test/2edq1/candidates/hemil@doselect.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-12-15T15:15:35+05:30"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/test/2edq1"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint updates the invite for an user.</p>
+
+<p>The request takes two params in the request body:</p>
+
+<table><thead>
+<tr>
+<th>Title</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>start_time</td>
+<td>string</td>
+<td>A ISO 8601 datetime string denoting the new invite start time</td>
+</tr>
+<tr>
+<td>expiry</td>
+<td>string</td>
+<td>A ISO 8601 datetime string denoting the new invite expiry</td>
+</tr>
+</tbody></table>
+
+<p>This API will only work for the aforementioned fields and will throw an <code>400 BAD REQUEST</code> if any other field is sent in the payload.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>PATCH https://api.doselect.com/platform/v1/test/&lt;slug&gt;/
+candidates/&lt;email&gt;/</code></p>
 <h1 id='problem-api'>Problem API</h1>
 <p>The Problem API allows you to retrieve one problem on DoSelect. You can also retrieve all submissions made to the problem
 within your team, as well as by a particular user identified by email.</p>
+<h2 id='get-all-problems'>Get all problems</h2>
+<p>You can get all problems in your team account using the list endpoint:</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://api.doselect.com/platform/v1/problem</code></p>
+
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">'https://api.doselect.com/platform/v1/problem'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"DoSelect-Api-Key"</span><span class="p">:</span> <span class="s">"88d4266fd4e6338d13b845fcf28"</span><span class="p">,</span>
+    <span class="s">"DoSelect-Api-Secret"</span><span class="p">:</span> <span class="s">"385041b7bbc2320471b8551d"</span>
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doselect.com/platform/v1/problem"</span>
+  -H <span class="s2">"DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28"</span> <span class="se">\</span>
+  -H <span class="s2">"DoSelect-Api-Secret: 385041b7bbc2320471b8551d"</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"objects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Create a decorator"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MED"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-07-21T16:10:53"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"is_active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"penalty"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"resource_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/problem/rra3l"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"problem_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SCR"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rra3l"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"decorators"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"file handling"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Python"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Implement a Python decorator that should take whatever the decorated function returns, and writes it to a file in a new line.For the sake of this problem, let us assume that the decorated functions always return a string. Constraints:The decorator should ..."</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"previous"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='search-for-problems'>Search for problems</h3>
+<p>The list endpoint enables you to search for problems as well, the constraints of which can be controlled via GET parameters listed below.
+The query can contain any combination of these parameters.</p>
+
+<table><thead>
+<tr>
+<th>Parameter name</th>
+<th>Possible values</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>q</td>
+<td>Any string</td>
+<td>Generic query parameter that does a full text search</td>
+</tr>
+<tr>
+<td>is_active</td>
+<td>true, false</td>
+<td>Filter only active problems that are usable</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>Comma separated tags</td>
+<td>Searches on discovery tags of problems</td>
+</tr>
+<tr>
+<td>problem_type</td>
+<td>Allowed problem type codes</td>
+<td>Filter on problem types</td>
+</tr>
+<tr>
+<td>archived</td>
+<td>true, false</td>
+<td>Filter on archived status</td>
+</tr>
+</tbody></table>
 <h2 id='get-one-problem'>Get one problem</h2>
 <blockquote>
 <p>Request</p>
@@ -1281,7 +1701,7 @@ within your team, as well as by a particular user identified by email.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>A problem is identified by a unique <code>slug</code> that gets generated during creation. This endpoint retrieves a specific problem:</p>
-<h3 id='http-request'>HTTP Request</h3>
+<h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET https://api.doselect.com/platform/v1/problem/&lt;slug&gt;</code></p>
 <h2 id='get-all-submissions-of-one-problem'>Get all submissions of one problem</h2>
 <blockquote>
@@ -1379,8 +1799,66 @@ within your team, as well as by a particular user identified by email.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>The problem is identified by a unique <code>slug</code> that gets generated during creation. This endpoint retrieves all submission of a specific problem:</p>
-<h3 id='http-request-2'>HTTP Request</h3>
+<h3 id='http-request-3'>HTTP Request</h3>
 <p><code>GET https://api.doselect.com/platform/v1/problem/&lt;slug&gt;/submission</code></p>
+<h2 id='get-solution-revision'>Get solution revision</h2>
+<p>The Solution Revision API allows you to view the revisions of solution to a problem.</p>
+
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">'https://api.doselect.com/platform/v1/submission/mmoe0/revisions/john@example.com'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"DoSelect-Api-Key"</span><span class="p">:</span> <span class="s">"88d4266fd4e6338d13b845fcf28"</span><span class="p">,</span>
+    <span class="s">"DoSelect-Api-Secret"</span><span class="p">:</span> <span class="s">"385041b7bbc2320471b8551d"</span>
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doselect.com/platform/v1/submission/mmoe0/revisions/john@example.com"</span>
+  -H <span class="s2">"DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28"</span> <span class="se">\</span>
+  -H <span class="s2">"DoSelect-Api-Secret: 385041b7bbc2320471b8551d"</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"?limit=1&amp;offset=1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"previous"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"objects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"</span><span class="se">\n</span><span class="s2"># Read the variable from STDIN</span><span class="se">\n</span><span class="s2">read a</span><span class="se">\n\n</span><span class="s2"># Output the variable to STDOUT</span><span class="se">\n</span><span class="s2">echo $a</span><span class="se">\n</span><span class="s2">s</span><span class="se">\n\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@example.com"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"johndoe"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"resource_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/submission/mmoe0/revisions/john@example.com"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"run_details"</span><span class="p">:</span><span class="w">  </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"evaluation_ended"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-19T15:38:17Z"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"evaluation_started"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-19T15:38:06Z"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"evaluation_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"running_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SCR:2018-01-19:12195f75-3330-41cc-9713-539c143c2b86"</span><span class="p">},</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"solution"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/submission/mmoe0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REJ"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"technology"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bash"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"testcases_failed"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"testcases_passed"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"total_testcases"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET https://api.doselect.com/platform/v1/submission/&lt;slug&gt;/revisions/&lt;email&gt;</code></p>
 <h2 id='get-submission-by-a-user'>Get submission by a user</h2>
 <blockquote>
 <p>Request</p>
@@ -1471,8 +1949,848 @@ within your team, as well as by a particular user identified by email.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves the submission of a specific problem, identified by a <code>slug</code> submitted by a user who is identified by the <code>email</code>.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<h3 id='http-request-5'>HTTP Request</h3>
 <p><code>GET https://api.doselect.com/platform/v1/problem/&lt;slug&gt;/submission/&lt;email&gt;/</code></p>
+<h2 id='create-a-problem'>Create a Problem</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">'https://api.doselect.com/platform/v1/problem/'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"DoSelect-Api-Key"</span><span class="p">:</span> <span class="s">"88d4266fd4e6338d13b845fcf28"</span><span class="p">,</span>
+    <span class="s">"DoSelect-Api-Secret"</span><span class="p">:</span> <span class="s">"385041b7bbc2320471b8551d"</span><span class="p">,</span>
+    <span class="s">"Content-Type"</span><span class="p">:</span> <span class="s">"application/json"</span>
+<span class="p">}</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"name"</span><span class="p">:</span> <span class="s">"Doselect API Problem"</span><span class="p">,</span>
+    <span class="s">"problem_type"</span><span class="p">:</span> <span class="s">"PRJ"</span><span class="p">,</span>
+    <span class="s">"time_limit_secs"</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="s">"tags"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s">"Regex"</span>
+    <span class="p">],</span>
+    <span class="s">"insight_tags"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s">"Python2"</span>
+    <span class="p">],</span>
+    <span class="s">"description"</span><span class="p">:</span> <span class="s">"This is not the problem you are looking for"</span><span class="p">,</span>
+    <span class="s">"max_submissions"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="s">"score"</span><span class="p">:</span> <span class="mi">75</span><span class="p">,</span>
+    <span class="s">"penalty"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s">"stubs"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">"python2"</span><span class="p">:</span> <span class="s">"print 'hello world'"</span><span class="p">,</span>
+        <span class="s">"java7"</span><span class="p">:</span> <span class="s">"System.out.println('hello world')"</span><span class="p">,</span>
+        <span class="s">"java"</span><span class="p">:</span> <span class="s">"System.out.println('hello world')"</span>
+    <span class="p">},</span>
+    <span class="s">"sample_solutions"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">"python2"</span><span class="p">:</span> <span class="s">"def add(a,b): return a + b"</span>
+    <span class="p">},</span>
+    <span class="s">"technologies"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s">"python2"</span><span class="p">,</span>
+        <span class="s">"java7"</span><span class="p">,</span>
+        <span class="s">"lua"</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.doselect.com/platform/v1/problem/"</span>
+  -H <span class="s2">"DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28"</span> <span class="se">\</span>
+  -H <span class="s2">"DoSelect-Api-Secret: 385041b7bbc2320471b8551d"</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "name": "Doselect API Problem",
+    "problem_type": "PRJ",
+    "time_limit_secs": 100,
+    "tags": [
+        "Regex"
+    ],
+    "insight_tags": [
+        "Python2"
+    ],
+    "description": "This is not the problem you are looking for",
+    "max_submissions": 5,
+    "score": 75,
+    "penalty": 1,
+    "stubs": {
+        "python2": "print '</span>hello world<span class="s1">'",
+        "java7": "System.out.println('</span>hello world<span class="s1">')",
+        "java": "System.out.println('</span>hello world<span class="s1">')"
+    },
+    "sample_solutions": {
+        "python2": "def add(a,b): return a + b"
+    },
+    "technologies": [
+        "python2",
+        "java7",
+        "lua"
+    ]
+}'</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-10-25T10:13:09.561690"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is not the problem you are looking for"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"eval_mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ATF"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"insight_tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"Python2"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"is_active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EAS"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"max_submissions"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-10-25T10:13:09.568721"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doselect API Problem"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"penalty"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"problem_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SCR"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/problem/nq4yq"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sample_solutions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{}"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">75</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nq4yq"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"Regex"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"technologies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"python2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"java7"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lua"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"testcases"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"time_limit_secs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"stubs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"python2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"print 'hello world'"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"java7"</span><span class="p">:</span><span class="w"> </span><span class="s2">"System.out.println('hello world')"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"java"</span><span class="p">:</span><span class="w"> </span><span class="s2">"System.out.println('hello world')"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This API partially creates problem, which can then be edited on the DoSelect platform.</p>
+
+<p>The fields accepted in the body of this request are:</p>
+
+<table><thead>
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>The name of the problem</td>
+</tr>
+<tr>
+<td>problem_type</td>
+<td>string</td>
+<td>The type of the problem (<code>PRJ</code>, <code>UIX</code>, <code>SCR</code>, <code>MOB</code>, <code>MCQ</code>, <code>DSC</code> or <code>MLI</code>)</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>The description of the problem</td>
+</tr>
+<tr>
+<td>max_submissions</td>
+<td>integer</td>
+<td>The maximum number of submissions allowed</td>
+</tr>
+<tr>
+<td>score</td>
+<td>integer</td>
+<td>The score of the problem</td>
+</tr>
+<tr>
+<td>mcq_options</td>
+<td>array</td>
+<td>A list of possible mcq options</td>
+</tr>
+<tr>
+<td>mcq_options_correct</td>
+<td>string</td>
+<td>The correct mcq option</td>
+</tr>
+<tr>
+<td>penalty</td>
+<td>integer</td>
+<td>The penalty for the problem</td>
+</tr>
+<tr>
+<td>time_limit_secs</td>
+<td>integer</td>
+<td>The time limit for this problem in seconds (Between 0-99)</td>
+</tr>
+<tr>
+<td>eval_mode</td>
+<td>string</td>
+<td>Evaluation mode for this problem (<code>TXT</code> IO Based or <code>ATF</code> Script Based)</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>array</td>
+<td>A list of strings of discovery tags</td>
+</tr>
+<tr>
+<td>insight_tags</td>
+<td>array</td>
+<td>A list of strings of insight tags</td>
+</tr>
+<tr>
+<td>stubs</td>
+<td>dictionary</td>
+<td>A dictionary containing the stubs of the problem</td>
+</tr>
+<tr>
+<td>sample_solutions</td>
+<td>dictionary</td>
+<td>A dictionary containing the sample solutions of the problem</td>
+</tr>
+<tr>
+<td>technologies</td>
+<td>array</td>
+<td>A list of strings containing the slugs of allowed technologies</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+The fields `name` and `problem_type` are compulsory for the problem creation.
+If any field other than the ones mentioned above is sent then the API will throw a 400 Bad Request
+</aside>
+
+<p>The possible problem types are:</p>
+
+<table><thead>
+<tr>
+<th>Abbreviation</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>PRJ</td>
+<td>Project based problem</td>
+</tr>
+<tr>
+<td>UIX</td>
+<td>UI/UX problem</td>
+</tr>
+<tr>
+<td>SCR</td>
+<td>Coding problem</td>
+</tr>
+<tr>
+<td>MOB</td>
+<td>Mobile problem</td>
+</tr>
+<tr>
+<td>MCQ</td>
+<td>Multiple choice question</td>
+</tr>
+<tr>
+<td>DSC</td>
+<td>Data science problem</td>
+</tr>
+<tr>
+<td>MLI</td>
+<td>Machine learning problem</td>
+</tr>
+</tbody></table>
+
+<p>The <code>stubs</code> dictionary should have the technology slug as the key and the stub string as the value.</p>
+
+<p>The <code>sample_solutions</code> dictionary should have the technology slug as the key and the solution string as the value.</p>
+
+<p>The possible values of technology slugs are:</p>
+
+<table><thead>
+<tr>
+<th>Technology Slug</th>
+<th>Technology</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>julia</td>
+<td>Julia</td>
+</tr>
+<tr>
+<td>haskell</td>
+<td>Haskell</td>
+</tr>
+<tr>
+<td>csharp</td>
+<td>C#</td>
+</tr>
+<tr>
+<td>go</td>
+<td>Go</td>
+</tr>
+<tr>
+<td>javascript</td>
+<td>JavaScript (NodeJS)</td>
+</tr>
+<tr>
+<td>scala</td>
+<td>Scala</td>
+</tr>
+<tr>
+<td>swift</td>
+<td>Swift</td>
+</tr>
+<tr>
+<td>perl</td>
+<td>Perl</td>
+</tr>
+<tr>
+<td>lua</td>
+<td>Lua</td>
+</tr>
+<tr>
+<td>clisp</td>
+<td>Clisp</td>
+</tr>
+<tr>
+<td>objectivec</td>
+<td>ObjectiveC</td>
+</tr>
+<tr>
+<td>php</td>
+<td>PHP</td>
+</tr>
+<tr>
+<td>ruby</td>
+<td>Ruby</td>
+</tr>
+<tr>
+<td>bash</td>
+<td>Bash</td>
+</tr>
+<tr>
+<td>clojure</td>
+<td>Clojure</td>
+</tr>
+<tr>
+<td>rust</td>
+<td>Rust</td>
+</tr>
+<tr>
+<td>c</td>
+<td>C</td>
+</tr>
+<tr>
+<td>cpp</td>
+<td>C++</td>
+</tr>
+<tr>
+<td>java7</td>
+<td>Java 7</td>
+</tr>
+<tr>
+<td>python3</td>
+<td>Python 3</td>
+</tr>
+<tr>
+<td>python2</td>
+<td>Python 2</td>
+</tr>
+<tr>
+<td>java8</td>
+<td>Java 8</td>
+</tr>
+<tr>
+<td>r</td>
+<td>R</td>
+</tr>
+<tr>
+<td>fsharp</td>
+<td>F#</td>
+</tr>
+<tr>
+<td>cpp14</td>
+<td>C++14</td>
+</tr>
+<tr>
+<td>kotlin</td>
+<td>Kotlin</td>
+</tr>
+</tbody></table>
+<h2 id='clone-a-problem'>Clone a problem</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">'https://api.doselect.com/platform/v1/problem/481bo/clone'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"DoSelect-Api-Key"</span><span class="p">:</span> <span class="s">"88d4266fd4e6338d13b845fcf28"</span><span class="p">,</span>
+    <span class="s">"DoSelect-Api-Secret"</span><span class="p">:</span> <span class="s">"385041b7bbc2320471b8551d"</span><span class="p">,</span>
+    <span class="s">"Content-Type"</span><span class="p">:</span> <span class="s">"application/json"</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.doselect.com/platform/v1/problem/481bo/clone"</span>
+  -H <span class="s2">"DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28"</span> <span class="se">\</span>
+  -H <span class="s2">"DoSelect-Api-Secret: 385041b7bbc2320471b8551d"</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-11-24T09:11:12.103398"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;div&gt;&lt;!--block--&gt;Jim is very health conscious. Determine whether he is.&lt;/div&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"eval_mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TXT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"insight_tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"is_active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MED"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"max_submissions"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-11-24T09:11:12.230166"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nutrition calculator"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"penalty"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"problem_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SCR"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/problem/q3w8q"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sample_solutions"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"q3w8q"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"stubs"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"CPP"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"technologies"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"testcases"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">20873</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"input"</span><span class="p">:</span><span class="w"> </span><span class="s2">"duck egg</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"is_sample"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Testcase #1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"output"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12.81g</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"time_limit_secs"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This API clones a problem identified by the <code>slug</code>. The response will contain the data of the new problem.</p>
+<h2 id='update-a-problem'>Update a problem</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">'https://api.doselect.com/platform/v1/problem/q3w8q/'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"DoSelect-Api-Key"</span><span class="p">:</span> <span class="s">"88d4266fd4e6338d13b845fcf28"</span><span class="p">,</span>
+    <span class="s">"DoSelect-Api-Secret"</span><span class="p">:</span> <span class="s">"385041b7bbc2320471b8551d"</span><span class="p">,</span>
+    <span class="s">"Content-Type"</span><span class="p">:</span> <span class="s">"application/json"</span>
+<span class="p">}</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">"name"</span><span class="p">:</span> <span class="s">"Updated Problem Name"</span><span class="p">,</span>
+  <span class="s">"tags"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s">"Java"</span>
+  <span class="p">],</span>
+  <span class="s">"description"</span><span class="p">:</span> <span class="s">"A new description of the problem"</span>
+<span class="p">}</span>
+
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X PATCH <span class="s2">"https://api.doselect.com/platform/v1/problem/q3w8q"</span>
+  -H <span class="s2">"DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28"</span> <span class="se">\</span>
+  -H <span class="s2">"DoSelect-Api-Secret: 385041b7bbc2320471b8551d"</span> <span class="se">\</span>
+  -d <span class="s1">'{
+  "name": "Updated Problem Name",
+  "tags": [
+    "Java"
+  ],
+  "description": "A new description of the problem"
+}'</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-11-24T09:11:12.103398"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A new description of the problem"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"eval_mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TXT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"insight_tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"is_active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MED"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"max_submissions"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-11-24T09:36:19.239739"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Updated Problem Name"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"penalty"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"problem_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SCR"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/problem/q3w8q"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sample_solutions"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"q3w8q"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"stubs"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"Java"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"technologies"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"testcases"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">20873</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"input"</span><span class="p">:</span><span class="w"> </span><span class="s2">"duck egg</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"is_sample"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Testcase #1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"output"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12.81g</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"time_limit_secs"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This API updates a problem identified by it&#39;s <code>slug</code>.
+The allowed update fields are:</p>
+
+<table><thead>
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>The name of the problem</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>The description of the problem</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>array</td>
+<td>A list of strings of discovery tags</td>
+</tr>
+</tbody></table>
+<h1 id='problem-testcase-api'>Problem Testcase API</h1>
+<p>The Problem testcase API allows you to retrieve all testcases of one problem on DoSelect.
+You can also create and delete the testcases of a problem.</p>
+<h2 id='get-all-testcases-of-a-problem'>Get all testcases of a problem</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.doselect.com/platform/v1/problem/nq4yq/testcase"</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"DoSelect-Api-Key"</span><span class="p">:</span> <span class="s">"88d4266fd4e6338d13b845fcf28"</span><span class="p">,</span>
+    <span class="s">"DoSelect-Api-Secret"</span><span class="p">:</span> <span class="s">"385041b7bbc2320471b8551d"</span><span class="p">,</span>
+    <span class="s">"Content-Type"</span><span class="p">:</span> <span class="s">"application/json"</span>
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+  https://api.doselect.com/platform/v1/problem/nq4yq/testcase <span class="se">\</span>
+  -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'doselect-api-key: 88d4266fd4e6338d13b845fcf28'</span> <span class="se">\</span>
+  -H <span class="s1">'doselect-api-secret: 385041b7bbc2320471b8551dg'</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="s2">"objects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">20869</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"input"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"is_sample"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EAS"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test case API 1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"negative_annotation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"If this test case passes, the code does not handles null values properly"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"output"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"penalty"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"positive_annotation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"If this test case passes, the code handles null values properly"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"problem"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/tardis/problem/nq4yq"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>This API retrieves all testcases of a problem.</p>
+
+<p>The fields in the response body of this request are:</p>
+
+<table><thead>
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>string</td>
+<td>The code for automatic problem evaluation</td>
+</tr>
+<tr>
+<td>weight</td>
+<td>integer</td>
+<td>The weight of the testcase&#39;s result</td>
+</tr>
+<tr>
+<td>negative_annotation</td>
+<td>string</td>
+<td>What it means if the testcase fails</td>
+</tr>
+<tr>
+<td>input</td>
+<td>string</td>
+<td>The input to be given</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>The name of the testcase</td>
+</tr>
+<tr>
+<td>penalty</td>
+<td>integer</td>
+<td>The penalty if the testcase is wrong</td>
+</tr>
+<tr>
+<td>score</td>
+<td>integer</td>
+<td>The score if the testcase passes</td>
+</tr>
+<tr>
+<td>is_sample</td>
+<td>boolean</td>
+<td><code>True</code> if it&#39;s a sample testcase, <code>False</code> otherwise</td>
+</tr>
+<tr>
+<td>positive_annotation</td>
+<td>string</td>
+<td>What it means if the testcase passes</td>
+</tr>
+<tr>
+<td>output</td>
+<td>string</td>
+<td>The expected output</td>
+</tr>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The identifier of this testcase</td>
+</tr>
+<tr>
+<td>level</td>
+<td>string</td>
+<td>The level of the problem</td>
+</tr>
+</tbody></table>
+<h2 id='create-a-testcase'>Create a testcase</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.doselect.com/platform/v1/problem/nq4yq/testcase"</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"DoSelect-Api-Key"</span><span class="p">:</span> <span class="s">"88d4266fd4e6338d13b845fcf28"</span><span class="p">,</span>
+    <span class="s">"DoSelect-Api-Secret"</span><span class="p">:</span> <span class="s">"385041b7bbc2320471b8551d"</span><span class="p">,</span>
+    <span class="s">"Content-Type"</span><span class="p">:</span> <span class="s">"application/json"</span>
+<span class="p">}</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"name"</span><span class="p">:</span> <span class="s">"test case API 3"</span><span class="p">,</span>
+    <span class="s">"input"</span><span class="p">:</span> <span class="s">""</span><span class="p">,</span>
+    <span class="s">"output"</span><span class="p">:</span> <span class="s">"3"</span><span class="p">,</span>
+    <span class="s">"technology"</span><span class="p">:</span> <span class="s">"python2"</span><span class="p">,</span>
+    <span class="s">"is_sample"</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s">"weight"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s">"positive_annotation"</span><span class="p">:</span> <span class="s">"If this test case passes, the code handles null values properly"</span><span class="p">,</span>
+    <span class="s">"negative_annotation"</span><span class="p">:</span> <span class="s">"If this test case passes, the code does not handles null values properly"</span><span class="p">,</span>
+    <span class="s">"code"</span><span class="p">:</span> <span class="s">""</span><span class="p">,</span>
+    <span class="s">"score"</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="s">"penalty"</span><span class="p">:</span> <span class="mi">5</span>
+
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  https://api.doselect.com/platform/v1/problem/nq4yq/testcase <span class="se">\</span>
+  -H <span class="s2">"DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28"</span> <span class="se">\</span>
+  -H <span class="s2">"DoSelect-Api-Secret: 385041b7bbc2320471b8551d"</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "name": "test case API 3",
+    "input": "",
+    "output": "3",
+    "is_sample": false,
+    "weight": 2,
+    "positive_annotation": "If this test case passes, the code handles null values properly",
+    "negative_annotation": "If this test case passes, the code does not handles null values properly",
+    "code": "",
+    "score": 50,
+    "penalty": 5
+
+}'</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">21784</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"input"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_sample"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EAS"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test case API 3"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"negative_annotation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"If this test case passes, the code does not handles null values properly"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"output"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"penalty"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"positive_annotation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"If this test case passes, the code handles null values properly"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"problem"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/tardis/problem/nq4yq"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This API creates a testcase for a problem.</p>
+
+<p>The fields accepted in the body of this request are:</p>
+
+<table><thead>
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>string</td>
+<td>The code for automatic problem evaluation</td>
+</tr>
+<tr>
+<td>weight</td>
+<td>integer</td>
+<td>The weight of the testcase&#39;s result</td>
+</tr>
+<tr>
+<td>negative_annotation</td>
+<td>string</td>
+<td>What it means if the testcase fails</td>
+</tr>
+<tr>
+<td>input</td>
+<td>string</td>
+<td>The input to be given</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>The name of the testcase</td>
+</tr>
+<tr>
+<td>penalty</td>
+<td>integer</td>
+<td>The penalty if the testcase is wrong</td>
+</tr>
+<tr>
+<td>score</td>
+<td>integer</td>
+<td>The score if the testcase passes</td>
+</tr>
+<tr>
+<td>is_sample</td>
+<td>boolean</td>
+<td><code>True</code> if it&#39;s a sample testcase, <code>False</code> otherwise</td>
+</tr>
+<tr>
+<td>positive_annotation</td>
+<td>string</td>
+<td>What it means if the testcase passes</td>
+</tr>
+<tr>
+<td>output</td>
+<td>string</td>
+<td>The expected output</td>
+</tr>
+</tbody></table>
+<h2 id='delete-a-testcase'>Delete a testcase</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.doselect.com/platform/v1/problem/nq4yq/testcase/21782"</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"DoSelect-Api-Key"</span><span class="p">:</span> <span class="s">"88d4266fd4e6338d13b845fcf28"</span><span class="p">,</span>
+    <span class="s">"DoSelect-Api-Secret"</span><span class="p">:</span> <span class="s">"385041b7bbc2320471b8551d"</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
+  https://api.doselect.com/platform/v1/problem/nq4yq/testcase/21782 <span class="se">\</span>
+  -H <span class="s1">'doselect-api-key: 88d4266fd4e6338d13b845fcf28='</span> <span class="se">\</span>
+  -H <span class="s1">'doselect-api-secret: 385041b7bbc2320471b8551d'</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="mi">204</span><span class="w">
+</span></code></pre>
+<p>This API deletes a testcase of a problem. You need to identify the testcase by its <code>id</code>.</p>
+
+<p>This request will throw a <code>403 Forbidden</code> and won&#39;t delete the testcase if anyone has already submitted solutions for this problem.</p>
+<h1 id='learnfeed-item-api'>LearnFeed Item API</h1>
+<p>The LearnFeed Item API allows you to add problems to your teams&#39;s learnfeed on DoSelect.</p>
+<h2 id='add-problem-to-learn-feed'>Add problem to learn feed</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.doselect.com/platform/v1/learnfeeditem/"</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"problem"</span><span class="p">:</span> <span class="s">"/platform/v1/problem/y9or8"</span>
+<span class="p">}</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'DoSelect-Api-Key'</span><span class="p">:</span> <span class="s">"88d4266fd4e6338d13b845fcf28"</span><span class="p">,</span>
+    <span class="s">'DoSelect-Api-Secret'</span><span class="p">:</span> <span class="s">"385041b7bbc2320471b8551d"</span><span class="p">,</span>
+    <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json"</span>
+    <span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  https://api.doselect.com/platform/v1/learnfeeditem/ <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28'</span> <span class="se">\</span>
+  -H <span class="s1">'DoSelect-Api-Secret: 385041b7bbc2320471b8551d'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "problem": "/platform/v1/problem/y9or8"
+}'</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "id": 22,
+    "resource_uri": "/platform/v1/learnfeeditem/22",
+    "slug": "e2yp2"
+}
+</code></pre>
+<p>This endpoint adds a specific problem, identified by a <code>slug</code> to the company&#39;s learn feed.
+The company is identified using the API Key and secret which is used in authenticating a request.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://api.doselect.com/platform/v1/learnfeeditem/</code></p>
+<h3 id='payload-params'>Payload Params</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>problem</td>
+<td>The <code>resource_uri</code> of the problem to be added</td>
+</tr>
+</tbody></table>
+
+<p>The URI of the problem will be in the format of <code>/platform/v1/problem/&lt;slug&gt;</code></p>
 <h1 id='submission-api'>Submission API</h1>
 <p>The Submission API allows you to create a submission for a problem. After creating a submission, you will get notified via webhooks
 when the result becomes available.</p>
@@ -1489,8 +2807,9 @@ when the result becomes available.</p>
     <span class="s">"technology"</span><span class="p">:</span> <span class="s">"technology_slug"</span><span class="p">,</span>
     <span class="s">"code_url"</span><span class="p">:</span> <span class="s">"https://s3.amazon.com/zygon.zip"</span><span class="p">,</span>
     <span class="s">"problem_slug"</span><span class="p">:</span> <span class="s">"esows"</span><span class="p">,</span>
-    <span class="s">"problem_type"</span><span class="p">:</span> <span class="s">"problem_type"</span><span class="p">,</span>
-    <span class="s">"email"</span><span class="p">:</span> <span class="s">"john@example.com"</span>
+    <span class="s">"problem_type"</span><span class="p">:</span> <span class="s">"SCR"</span><span class="p">,</span>
+    <span class="s">"email"</span><span class="p">:</span> <span class="s">"john@example.com"</span><span class="p">,</span>
+    <span class="s">"learn_feed_item_id"</span><span class="p">:</span> <span class="mi">5</span>
 <span class="p">}</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -1507,17 +2826,35 @@ when the result becomes available.</p>
   -H <span class="s1">'DoSelect-Api-Secret: 385041b7bbc2320471b8551d'</span> <span class="se">\</span>
   -d <span class="s1">'{
     "technology": "technology_slug",
-    "problem_type": "problem_type",
+    "problem_type": "SCR",
     "code": "print '</span><span class="se">\'</span><span class="s1">'Hello World'</span><span class="se">\'</span><span class="s1">'",
     "email": "john@example.com",
     "problem_slug": "esows",
-    "code_url": "https://s3.amazon.com/zygon.zip"
+    "code_url": "https://s3.amazon.com/zygon.zip",
+    "learn_feed_item_id": 5
 }'</span>
 </code></pre>
 <blockquote>
 <p>Response</p>
 </blockquote>
-<pre class="highlight plaintext"><code></code></pre>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNE"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resubmissions"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"learn_feed_item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-11T05:26:53.233Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total_score"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"run_details"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-11T05:26:53.740Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"problem_slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"esows"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"print 'Hello World'"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"analysis_details"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="s2">"submitted_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-11T05:26:53.464Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rd3g0l"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"solution_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SCR"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"max_score"</span><span class="p">:</span><span class="w"> </span><span class="mi">150</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <p>This endpoint accepts a new submission for a specific problem, identified by a <code>slug</code> submitted by a user who is identified by the <code>email</code>.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://api.doselect.com/platform/v1/submission/</code></p>
@@ -1551,6 +2888,10 @@ when the result becomes available.</p>
 <tr>
 <td>email</td>
 <td>Email of the user</td>
+</tr>
+<tr>
+<td>learn_feed_item_id</td>
+<td>Optional. The ID of the learn feed item related to the problem.</td>
 </tr>
 </tbody></table>
 
@@ -1682,24 +3023,63 @@ when the result becomes available.</p>
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NRE"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"submitted_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-25T08:14:41.342872"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"technology"</span><span class="p">:</span><span class="w"> </span><span class="s2">"javascript"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"total_score"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="w">
+    </span><span class="s2">"total_score"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"max_score"</span><span class="p">:</span><span class="w"> </span><span class="mi">150</span><span class="w">
+
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a specific submission from the unique <code>slug</code> which is generated during creation:</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET https://api.doselect.com/platform/v1/submission/&lt;slug&gt;</code></p>
+
+<p>The submission object returned contains a number of attributes. A few of them with their possible values and explanations are
+are described below:</p>
+<h4 id='code-status-code'><code>status</code></h4>
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Full-form</th>
+<th>Explanation</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>UNE</code></td>
+<td>Unevaluated</td>
+<td>The submission has not been evaluated yet. This happens when it hasn&#39;t been submitted yet, or the evaluation is queued.</td>
+</tr>
+<tr>
+<td><code>ACC</code></td>
+<td>Accepted</td>
+<td>The submission has passed all test cases in the problem.</td>
+</tr>
+<tr>
+<td><code>PAC</code></td>
+<td>Partially correct</td>
+<td>The submission has passed some test cases, while failed the others.</td>
+</tr>
+<tr>
+<td><code>REJ</code></td>
+<td>Rejected</td>
+<td>The submission failed to pass any test cases in the problem.</td>
+</tr>
+<tr>
+<td><code>NRE</code></td>
+<td>Needs review</td>
+<td>If the problem must have at least one non-sample test case for the submission to get automatically evaluated. Otherwise, this status is set, which means the solution must be evaluated manually.</td>
+</tr>
+</tbody></table>
 <h1 id='embed-api'>Embed API</h1>
 <p>The Embed API allows you to embed a <code>Test</code> or a <code>Problem</code> on DoSelect on your platform. This API is designed keeping in mind that
 the platform which using the embed need not store any state data on their end -- all state data is stored by DoSelect and can be retrieved using
 the REST Platform APIs.</p>
 <h2 id='client-library'>Client library</h2>
 <p>The Embed API can be accessed using the embed client library, <code>doselect-embed.js</code>. This library provides a simple JavaScript interface
-for authentication, creating embed objects on your application, and retrieving general information related to the embedded objects. </p>
+for authentication, creating embed objects on your application, and retrieving general information related to the embedded objects.</p>
 <h3 id='setup'>Setup</h3><h4 id='step-1-install-the-code-doselect-embed-js-code-library'>Step 1: Install the <code>doselect-embed.js</code> library</h4>
 <p>To use the Embed API, simply copy and paste the snippet below before the <code>&lt;/body&gt;</code> tag on every page where you want the embed to appear.</p>
 
-<p><code>&lt;script&gt;[DOSELECT EMBED CODE SNIPPET]&lt;/script&gt;</code></p>
-<h4 id='step-2-configure-user-settings'>Step 2: Configure user settings</h4><pre class="highlight javascript tab-javascript"><code><span class="nb">window</span><span class="p">.</span><span class="nx">doselectSettings</span> <span class="o">=</span> <span class="p">{</span>
+<p><code>&lt;script src=&quot;https://assets.doselect.com/doselect-embed.min.js&quot; async&gt;&lt;/script&gt;</code></p>
+<h4 id='step-2-configure-user-settings'>Step 2: Configure user settings</h4><pre class="highlight javascript tab-javascript"><code><span class="nb">window</span><span class="p">.</span><span class="nx">doselect</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">"api_key"</span><span class="p">:</span> <span class="s2">"88d4266fd4e6338d13b845fcf28"</span><span class="p">,</span>
     <span class="s2">"email"</span><span class="p">:</span> <span class="s2">"john@example.com"</span><span class="p">,</span>
     <span class="s2">"full_name"</span><span class="p">:</span> <span class="s2">"John Doe"</span><span class="p">,</span>
@@ -1707,11 +3087,11 @@ for authentication, creating embed objects on your application, and retrieving g
     <span class="s2">"user_hash"</span><span class="p">:</span> <span class="s2">"CLjME03fz+Jr36VaDwv2MbNeemtfA57IgWhwcR3GfdI="</span>
 <span class="p">}</span>
 
-<span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span><span class="p">[</span><span class="nx">DOSELECT</span> <span class="nx">EMBED</span> <span class="nx">CODE</span> <span class="nx">SNIPPET</span><span class="p">]</span><span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+<span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">"https://assets.doselect.com/doselect-embed.min.js"</span> <span class="nx">async</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
 </span></code></pre>
-<p>To display embed problems and tests with respect to user, update <code>window.doselectSettings</code> object with user metadata and place it above the embed code snippet.</p>
+<p>To display embed problems and tests with respect to user, update <code>window.doselect</code> object with user metadata and place it above the embed code snippet.</p>
 
-<p>The following details are needed for configuration:</p>
+<p>The following details are needed for configuration. Please note that <strong>all</strong> parameters are required for the embed to work.</p>
 
 <table><thead>
 <tr>
@@ -1733,28 +3113,317 @@ for authentication, creating embed objects on your application, and retrieving g
 </tr>
 <tr>
 <td>timezone</td>
-<td>Timezone of the current user</td>
+<td>Timezone of the current user. This value should be a valid timezone string. You can refer to the full list of timezone strings <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List">here</a>.</td>
 </tr>
 <tr>
 <td>user_hash</td>
 <td>The verification hash for this user, which must be generated on your server-side</td>
 </tr>
 </tbody></table>
+
+<aside class="notice">
+The email given here needs to be different than the recruiter/admin emails of your DoSelect account.
+</aside>
 <h5 id='generating-code-user_hash-code'>Generating <code>user_hash</code></h5>
 <p>The <code>user_hash</code> must be a server-side generated <a href="http://en.wikipedia.org/wiki/Hash-based_message_authentication_code">HMAC (hash based message authentication code)</a>,
 using <strong>SHA256</strong>, with the current user&#39;s <code>email</code> as the message and your <code>API_SECRET</code> as the key.</p>
 
 <p>The embed requests will fail if the <code>user_hash</code> is incorrect.</p>
+<h2 id='host-authentication'>Host authentication</h2>
+<p>This is an optional feature which will enable you to add whitelisted hosts which will be able to open the embed. The host is identified using the <code>Referer</code> header of the request.
+The white-listed hosts can be added in your company&#39;s <a href="https://doselect.com/settings/team/integrations">integrations settings</a> in the <code>Allowed Hosts</code> section.</p>
+
+<p>By default, no hosts will be allowed to open the embed. You will have to add atleast one allowed host in the team settings.</p>
+
+<table><thead>
+<tr>
+<th>Host matching option</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Exact Match</td>
+<td>This will be an exact string match between the request and allowed domains</td>
+</tr>
+<tr>
+<td>Using the <code>*</code> wildcard</td>
+<td>This will match any number of characters</td>
+</tr>
+<tr>
+<td>Using the <code>?</code> wildcard</td>
+<td>This will match one character</td>
+</tr>
+</tbody></table>
+
+<p>The matching will convert <code>https://api.doselect:8080/embed/problem/yo3kd</code> to <code>api.doselect:8080</code> and try to match that to the white-listed hosts.</p>
 <h2 id='problem-embed'>Problem embed</h2>
 <p>You can embed a problem on your platform using the problem&#39;s <code>slug</code>, which uniquely identifies a problem on
 DoSelect. Add this HTML code where you want a problem to show up:</p>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"doselect-embed"</span> <span class="na">data-category=</span><span class="s">"problem"</span> <span class="na">data-slug=</span><span class="s">"3myr6"</span>
+     <span class="na">data-config=</span><span class="s">'{"allow_submission": true}'</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data-category</td>
+<td>Required. Defines the kind of embed. Should be either <code>test</code> or <code>problem</code></td>
+</tr>
+<tr>
+<td>data-slug</td>
+<td>Required. Identification slug of the object being embedded</td>
+</tr>
+<tr>
+<td>data-config</td>
+<td>Optional. Specify optional config parameters for this embed. This value must be a valid JSON string.</td>
+</tr>
+</tbody></table>
 
-<p><code>&lt;div class=&quot;doselect-embed&quot; data-category=&quot;problem&quot; data-slug=&quot;3myr6&quot;&gt;</code></p>
+<p>The following attributes are supported in the configuration object at the moment.</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>allow_submission</td>
+<td>boolean</td>
+<td>Dynamically control if the submissions are allowed for a problem at the moment. This is only available in a problem embed.</td>
+</tr>
+<tr>
+<td>show_solution_revisions</td>
+<td>boolean</td>
+<td>Control if solution revisions should be visible.</td>
+</tr>
+</tbody></table>
+
+<p>Please note that the problem must be added to your Learn team&#39;s feed before it can be used in an embed.</p>
+
+<p>The allowed problem types in the embed are:</p>
+
+<table><thead>
+<tr>
+<th>Problem type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>DBA</code></td>
+<td>Database problem</td>
+</tr>
+<tr>
+<td><code>SCR</code></td>
+<td>Scripting/Coding problem</td>
+</tr>
+<tr>
+<td><code>MLI</code></td>
+<td>Machine learning problem</td>
+</tr>
+<tr>
+<td><code>DSC</code></td>
+<td>Data-science problem</td>
+</tr>
+<tr>
+<td><code>UIX</code></td>
+<td>UI/UX problem</td>
+</tr>
+<tr>
+<td><code>PRJ</code></td>
+<td>Project-based problem</td>
+</tr>
+<tr>
+<td><code>APP</code></td>
+<td>Full stack app problem</td>
+</tr>
+<tr>
+<td><code>DBA</code></td>
+<td>Database problem</td>
+</tr>
+</tbody></table>
+<h3 id='sample-solutions-of-a-problem'>Sample solutions of a problem</h3>
+<p>The sample solution of a problem will be shown on the embed if the following conditions are met:</p>
+
+<table><thead>
+<tr>
+<th>Number</th>
+<th>Condition</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>The <code>max_submissions</code> of a problem is set and it is non-zero.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>The number of submissions for this problem has reached the maximum number of submissions</td>
+</tr>
+<tr>
+<td>3</td>
+<td>A sample solution exists for the technology the user has selected</td>
+</tr>
+</tbody></table>
 <h2 id='test-embed'>Test embed</h2>
 <p>You can embed a test on your platform using the test&#39;s <code>slug</code>, which uniquely identifies a test on
 DoSelect. Add this HTML code where you want a test to show up:</p>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"doselect-embed"</span> <span class="na">data-category=</span><span class="s">"test"</span> <span class="na">data-slug=</span><span class="s">"es6ts"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre>
+<p>Please note that the test must be added to your Learn team&#39;s feed before it can be used in an embed.</p>
+<h2 id='snippet-runner-embed'>Snippet runner embed</h2>
+<p>The snippet runner embed provides a context-free code execution environment that you can embed on your platform to enable your users
+create arbitrary code snippets, and execute them. This component is especially useful in a learning environment where the users are being
+taught programming and need a place to play around with different technologies without any set-up.</p>
 
-<p><code>&lt;div class=&quot;doselect-embed&quot; data-category=&quot;test&quot; data-slug=&quot;es6ts&quot;&gt;</code></p>
+<p>The snippet runner supports all programming languages available on DoSelect. Each code runner is tied to a user email as specified in the user settings.
+All code snippets created by a user are saved on DoSelect platform and loaded whenever the snippet runner loads for the user. If you wish to group snippets
+on the basis of an entity, say course, you can pass an arbitrary string as the <code>collection_id</code>.</p>
+<pre class="highlight html tab-html"><code><span class="c">&lt;!-- Runner with all languages allowed and no collection. --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"doselect-embed"</span> <span class="na">data-category=</span><span class="s">"snippet-runner"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="c">&lt;!-- Runner with Python 2, Python 3 and R allowed, for a collection called `data-science-lab`. --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"doselect-embed"</span> <span class="na">data-category=</span><span class="s">"snippet-runner"</span>
+    <span class="na">data-config=</span><span class="s">'{"allowed_technologies": "python2,python3,r", "collection_id": "data-science-lab"}'</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre>
+<p>In the configuration object, the following attributes are allowed:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>allowed_technologies</td>
+<td>string</td>
+<td>Comma-separated values representing the programming languages allowed in this runner. This attribute is optional. If not provided, all programming languages on DoSelect will be allowed in the runner.</td>
+</tr>
+<tr>
+<td>collection_id</td>
+<td>string</td>
+<td>An arbitrary string to classify the collection of the snippets created under using this embed. If this is empty, all snippets created by the user will be loaded in the runner.</td>
+</tr>
+</tbody></table>
+
+<p>The following programming languages are supported in the runner at the moment:</p>
+
+<p>The possible values of technology slugs are:</p>
+
+<table><thead>
+<tr>
+<th>Slug</th>
+<th>Programming language</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>julia</td>
+<td>Julia</td>
+</tr>
+<tr>
+<td>haskell</td>
+<td>Haskell</td>
+</tr>
+<tr>
+<td>csharp</td>
+<td>C#</td>
+</tr>
+<tr>
+<td>go</td>
+<td>Go</td>
+</tr>
+<tr>
+<td>javascript</td>
+<td>JavaScript (NodeJS)</td>
+</tr>
+<tr>
+<td>scala</td>
+<td>Scala</td>
+</tr>
+<tr>
+<td>swift</td>
+<td>Swift</td>
+</tr>
+<tr>
+<td>perl</td>
+<td>Perl</td>
+</tr>
+<tr>
+<td>lua</td>
+<td>Lua</td>
+</tr>
+<tr>
+<td>clisp</td>
+<td>Clisp</td>
+</tr>
+<tr>
+<td>objectivec</td>
+<td>ObjectiveC</td>
+</tr>
+<tr>
+<td>php</td>
+<td>PHP</td>
+</tr>
+<tr>
+<td>ruby</td>
+<td>Ruby</td>
+</tr>
+<tr>
+<td>bash</td>
+<td>Bash</td>
+</tr>
+<tr>
+<td>clojure</td>
+<td>Clojure</td>
+</tr>
+<tr>
+<td>rust</td>
+<td>Rust</td>
+</tr>
+<tr>
+<td>c</td>
+<td>C</td>
+</tr>
+<tr>
+<td>cpp</td>
+<td>C++</td>
+</tr>
+<tr>
+<td>java7</td>
+<td>Java 7</td>
+</tr>
+<tr>
+<td>python3</td>
+<td>Python 3</td>
+</tr>
+<tr>
+<td>python2</td>
+<td>Python 2</td>
+</tr>
+<tr>
+<td>java8</td>
+<td>Java 8</td>
+</tr>
+<tr>
+<td>r</td>
+<td>R</td>
+</tr>
+<tr>
+<td>fsharp</td>
+<td>F#</td>
+</tr>
+<tr>
+<td>cpp14</td>
+<td>C++14</td>
+</tr>
+<tr>
+<td>kotlin</td>
+<td>Kotlin</td>
+</tr>
+</tbody></table>
 <h2 id='actions'>Actions</h2>
 <p>The <code>doselect</code> global object provides methods to take various actions on the embed objects on your
 app.</p>
@@ -1764,29 +3433,402 @@ app.</p>
 <p>To close an embed, call <code>doselect.closeFrame(category, slug)</code>. If the embed element is available in the current page, it will be destroyed.</p>
 <h3 id='fetch-report'>Fetch report</h3>
 <p>To fetch the report for an embed, call <code>doselect.fetchReport(category, slug)</code>.</p>
+<h2 id='faq'>FAQ</h2><h3 id='i-39-ve-configured-the-code-doselect-code-object-properly-but-the-embed-isn-39-t-loading-why'>I&#39;ve configured the <code>doselect</code> object properly, but the embed isn&#39;t loading. Why?</h3>
+<p>There can be multiple reasons for this. Here&#39;s are a few things you should check for troubleshooting.</p>
+
+<ul>
+<li><p>Make sure the host domain where the embed is getting served at is added to the <em>Allowed hosts</em> field in your team&#39;s
+<a href="https://doselect.com/settings/team/integrations">integration settings</a>.</p></li>
+<li><p>Verify that 3rd-party cookies are allowed on your browser -- since the embed sets cookies on your browser to make things work. Some external
+software, like anti-virus software, automatically disallow 3rd party cookies on browsers. This will cause the embed loading to fail. <a href="https://www.whatismybrowser.com/detect/are-third-party-cookies-enabled">This</a>
+handy tool will help you troubleshoot.</p></li>
+</ul>
+<h1 id='webhooks'>Webhooks</h1>
+<p>The webhooks framework notifies you about various actions that have happened related to the resources on your team. You can add a
+<code>webhook_url</code> in your team settings. Whenever a new event occurs, we will make a <code>POST</code> request to this URL with a JSON payload in body.</p>
+
+<p>If you return anything other than an HTTP 2XX status to the webhook POST then we’ll try to deliver the webhook up to 5 times with a backoff.</p>
+
+<p><strong>Tip:</strong> You can use a service like <a href="https://requestb.in/">RequestBin</a> to test webhook delivery.</p>
+<h2 id='payload'>Payload</h2>
+<p>For each webhook delivery on a URL, the <code>POST</code> request contains a JSON payload in the body with information about the action.</p>
+
+<p>The <code>meta</code> object contains metadata about the current webhook delivery, like the <code>sender</code>, <code>action</code>, <code>timestamp</code> and <code>delivery_id</code>.</p>
+
+<p>The <code>object</code> attribute contains a contextual object.</p>
+
+<blockquote>
+<p>Payload body</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"sender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-session"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"end"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-10-07T10:41:31.846531+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"delivery_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"441cd01e-d82d-485c-95d8-c8c498417649"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"report_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.doselect.com/platform/v1/test/k716y/candidates/mibukuyij@storj99.com/report"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"test_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.doselect.com/platform/v1/test/k716y"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mibukuyij@storj99.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"test_slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"k016y"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='webhook-security'>Webhook Security</h2>
+<p>In using a webhook, there is a possibility that an attacker might be able to forge webhook notifications which
+might result in unwanted actions being taken.</p>
+
+<p>To prevent that, in each webhook delivery from DoSelect, the <code>POST</code> request will contain a <code>DoSelect-Webhook-Signature</code> header.</p>
+
+<p>For verification, on your server side, you need to generate a <a href="http://en.wikipedia.org/wiki/Hash-based_message_authentication_code">HMAC (hash based message authentication code)</a>,
+using <strong>SHA256</strong>, with the current request&#39;s <code>delivery_id</code> as the message and your <code>API_SECRET</code> as the key.</p>
+
+<p>The calculated and the request hashes should match, indicating that the message is authentic and was indeed sent by DoSelect.</p>
+<h2 id='solution'>Solution</h2>
+<p>The actions sent by solution are listed below.
+These actions are only sent for solutions whose problems have been added to your account&#39;s learnfeed.</p>
+
+<table><thead>
+<tr>
+<th>Sender</th>
+<th>Action</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>submission</td>
+<td>create</td>
+<td>Solution is created (saved for the first time)</td>
+</tr>
+<tr>
+<td>submission</td>
+<td>submit</td>
+<td>Solution is submitted by the user</td>
+</tr>
+<tr>
+<td>submission</td>
+<td>evaluated</td>
+<td>Solution is evaluated and the scores are ready.</td>
+</tr>
+</tbody></table>
+
+<p>The Solution webhooks will have the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>submission_slug</td>
+<td>string</td>
+<td>The identifier for that submission</td>
+</tr>
+<tr>
+<td>submission_uri</td>
+<td>string</td>
+<td>The URI for a particular submission</td>
+</tr>
+<tr>
+<td>problem_slug</td>
+<td>string</td>
+<td>The identifier for the problem</td>
+</tr>
+<tr>
+<td>problem_uri</td>
+<td>string</td>
+<td>The URI of the problem</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>The email of the user</td>
+</tr>
+<tr>
+<td>code</td>
+<td>string</td>
+<td>The latest submitted code of the user</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example payload</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"meta"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"sender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"submission"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"submit"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-10-07T10:41:31.846531+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"delivery_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"441cd01e-d82d-485c-95d8-c8c498417649"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"object"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"submission_slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7yt6ss"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"submission_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.doselect.com/platform/v1/submission/7yt6ss"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"problem_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.doselect.com/platform/v1/problem/rra3l"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"problem_slug"</span><span class="p">:</span><span class="s2">"rra3l"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mibukuyij@storj99.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"print 'Hello world test.' "</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='test-session'>Test Session</h2>
+<p>The actions sent by a test session are listed below.
+These actions are sent for all tests associated with your account on DoSelect.</p>
+
+<table><thead>
+<tr>
+<th>Sender</th>
+<th>Action</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>test-session</td>
+<td>begin</td>
+<td>The candidate has started taking the test</td>
+</tr>
+<tr>
+<td>test-session</td>
+<td>end</td>
+<td>The candidate has submitted the test, or the test was auto-submitted</td>
+</tr>
+<tr>
+<td>test-session</td>
+<td>report</td>
+<td>The candidate&#39;s test report has been generated</td>
+</tr>
+</tbody></table>
+
+<p>The test webhooks will have the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>report_uri</td>
+<td>string</td>
+<td>The URI of the test report</td>
+</tr>
+<tr>
+<td>test_uri</td>
+<td>string</td>
+<td>The URI of the test</td>
+</tr>
+<tr>
+<td>test_slug</td>
+<td>string</td>
+<td>The identifier for the test</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>The email of the user taking the test</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example payload</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"sender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-session"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"end"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-10-07T10:41:31.846531+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"delivery_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"441cd01e-d82d-485c-95d8-c8c498417649"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"report_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.doselect.com/platform/v1/test/k716y/candidates/mibukuyij@storj99.com/report"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"test_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.doselect.com/platform/v1/test/k716y"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mibukuyij@storj99.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"test_slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"k016y"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='problem'>Problem</h2>
+<p>The actions sent by a problem are listed below.
+These actions are sent for all private problems on DoSelect.</p>
+
+<table><thead>
+<tr>
+<th>Sender</th>
+<th>Action</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>problem</td>
+<td>create</td>
+<td>A new problem has been created</td>
+</tr>
+<tr>
+<td>problem</td>
+<td>edit</td>
+<td>The problem has been edited</td>
+</tr>
+</tbody></table>
+
+<p>The Problem webhooks will have the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>problem_uri</td>
+<td>string</td>
+<td>The URI of the problem</td>
+</tr>
+<tr>
+<td>problem_slug</td>
+<td>string</td>
+<td>The identifier for the problem</td>
+</tr>
+<tr>
+<td>creator_email</td>
+<td>string</td>
+<td>The email of the user who made the problem</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example payload</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"create"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-10-30T07:08:18.457736+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"delivery_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"faa8f070-9644-4112-8a4b-40865afdd5bf"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"problem"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"creator_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"problem_slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"o94yw"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"problem_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://api.central.dev.sg1.chsh.in/platform/v1/problem/o94yw"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h1 id='help'>Help</h1>
+<p>The API platform&#39;s has a public issue tracker which is hosted here - <a href="https://github.com/doselect/api-platform-support">github.com/doselect/api-platform-support</a>.
+If you have any feature requests, need any clarification on something from the docs, or have come across any bugs in general, please create an issue and someone from DoSelect will take a look at it at the earliest.
+If you&#39;re actively integrating the APIs with your application and need some guidance, you may send an email to <a href="mailto:api-platform-support@doselect.com">api-platform-support@doselect.com</a>
+with details.</p>
+
+<p>The API Platform is in limited release at the moment. You must have developer options enabled for your DoSelect team in order to be able to use these APIs.
+Please contact your account manager or write to <a href="mailto:support@doselect.com">support@doselect.com</a> for help.</p>
 <h1 id='changelog'>Changelog</h1>
-<p>All notable changes to the Platform APIs will be documented in this file.</p>
-<h2 id='unreleased'>[Unreleased]</h2><h3 id='added'>Added</h3>
-<ul>
-<li>Create Invitation API docs</li>
-<li>Delete Invitation API docs</li>
-<li>Get one Invitation API docs</li>
-<li>Get Submission by Slug API docs</li>
-</ul>
-<h3 id='changed'>Changed</h3>
-<ul>
-<li>Added fields in report and test</li>
-</ul>
-<h2 id='released-v1-0-0'>Released v1.0.0</h2><h3 id='added-2'>Added</h3>
-<ul>
-<li>Test API docs</li>
-<li>Submission API docs</li>
-<li>Problem API docs</li>
-<li>Embed API docs</li>
-<li>Pagination docs</li>
-<li>Errors docs</li>
-<li>Authentication docs</li>
-</ul>
+<table><thead>
+<tr>
+<th>Date</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>May 11, 2018</td>
+<td>Added <a href="#problem-embed">conditions</a> governing sample solutions behaviour in problem embed.</td>
+</tr>
+<tr>
+<td>May 02, 2018</td>
+<td>Added <code>test_name</code> to the <a href="#get-all-invites-of-a-user">user invite API response</a> and updated the <a href="#problem-embed">allowed embed problem types</a></td>
+</tr>
+<tr>
+<td>Apr 25, 2018</td>
+<td>Added docs for the <a href="#get-all-invites-of-a-user">user invite API</a></td>
+</tr>
+<tr>
+<td>Apr 18, 2018</td>
+<td>Updated the <a href="#solution">solution webhook docs</a> and added email restriction in <a href="#client-library">embed</a> and added <code>max_score</code> field to <a href="#get-one-submission">submission API response</a></td>
+</tr>
+<tr>
+<td>Apr 12, 2018</td>
+<td>Added allowed problem types in <a href="#problem-embed">problem embed</a></td>
+</tr>
+<tr>
+<td>Apr 11, 2018</td>
+<td>Added the response to the create submission API and updates the docs for when webhook is triggered and added docs for <a href="#host-authentication">host authentication</a></td>
+</tr>
+<tr>
+<td>Apr 06, 2018</td>
+<td>Added <a href="#get-solution-revision">Solution Revision API</a>.</td>
+</tr>
+<tr>
+<td>Apr 03, 2018</td>
+<td>Added <a href="#update-an-invite">update invite API</a></td>
+</tr>
+<tr>
+<td>Mar 15, 2018</td>
+<td>Added <a href="#snippet-runner-embed">Snippet Runner embed</a>.</td>
+</tr>
+<tr>
+<td>Mar 12, 2018</td>
+<td>Added a webhook triggered on solution evaluation.</td>
+</tr>
+<tr>
+<td>Jan 31, 2018</td>
+<td>Added Data science and Machine learning to allowed problem types in <a href="#create-a-problem">problem creation</a>.</td>
+</tr>
+<tr>
+<td>Jan 19, 2018</td>
+<td>Added support for controlling visibility of solution revisions in <a href="#problem-embed">problem embed</a>.</td>
+</tr>
+<tr>
+<td>Dec 04, 2017</td>
+<td>Added <code>public_access_url</code> to the <a href="#get-a-candidate-39-s-report">test report</a>.</td>
+</tr>
+<tr>
+<td>Nov 30, 2017</td>
+<td>Update <code>start_time</code> and <code>expiry</code> in <a href="#reset-an-invite">invite reset API</a>.</td>
+</tr>
+<tr>
+<td>Nov 28, 2017</td>
+<td>Added <code>learn_feed_item_id</code> to the <a href="#create-a-new-submission">create submission API</a>.</td>
+</tr>
+<tr>
+<td>Nov 27, 2017</td>
+<td>Added API to <a href="#reset-an-invite">reset an invite</a> and added <code>start_time</code> to the <a href="#create-a-new-invite">create invite api</a>.</td>
+</tr>
+<tr>
+<td>Nov 24, 2017</td>
+<td>Added API to <a href="#clone-a-problem">clone a problem</a>, <a href="#update-a-problem">update a problem</a> and <a href="#add-problem-to-learn-feed">add problem to learnfeed</a> APIs.</td>
+</tr>
+<tr>
+<td>Nov 15, 2017</td>
+<td><code>sample_solutions</code> and <code>technologies</code> can be added while <a href="#create-a-problem">creating a new problem</a>.</td>
+</tr>
+<tr>
+<td>Nov 01, 2017</td>
+<td>Added <a href="#problem-testcase-api">problem testcase API</a>.</td>
+</tr>
+<tr>
+<td>Oct 30, 2017</td>
+<td>Added <a href="#problem">problem creation and edit webhooks</a> and <a href="#solution">code in submit webhook</a>.</td>
+</tr>
+<tr>
+<td>Oct 26, 2017</td>
+<td>Added <a href="#create-a-problem">problem creation API</a>.</td>
+</tr>
+<tr>
+<td>Oct 25, 2017</td>
+<td>Added <code>DoSelect-Webhook-Signature</code> header in <a href="#webhook-security">Webhooks</a>.</td>
+</tr>
+<tr>
+<td>Oct 18, 2017</td>
+<td>Added <code>data-config</code> attribute in <a href="#problem-embed">problem embed</a>.</td>
+</tr>
+<tr>
+<td>Oct 16, 2017</td>
+<td>Added webhook senders for <a href="#test-session">test session report</a>.</td>
+</tr>
+<tr>
+<td>Oct 9, 2017</td>
+<td>Added webhook senders for <a href="#test-session">test session</a> and <a href="#solution">solution</a>.</td>
+</tr>
+</tbody></table>
 
       </div>
       <div class="dark-box">
