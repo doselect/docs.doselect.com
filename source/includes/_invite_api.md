@@ -102,8 +102,8 @@ headers = {
 
 payload = {
     "email": "john@example.com",
-    "expiry": "2017-12-11T08:16:33.033149",
-    "start_time": "2017-11-27T16:30:35"
+    "expiry": "2018-05-29T15:17:35+05:30",
+    "start_time": "2018-05-10T15:17:35+05:30"
 }
 
 response = requests.post(url, headers=headers, json=payload)
@@ -117,8 +117,8 @@ curl -X POST \
   -H 'doselect-api-secret: 385041b7bbc2320471b8551d' \
   -d '{
     "email": "john@example.com",
-    "expiry": "2017-12-11T08:16:33.033149",
-    "start_time": "2017-11-27T16:30:35"
+    "expiry": "2018-05-29T15:17:35+05:30",
+    "start_time": "2018-05-10T15:17:35+05:30"
 }'
 ```
 
@@ -128,11 +128,11 @@ curl -X POST \
 {
     "candidate_access_url": "https://doselect.com/gateways/test?access_code=U2DsXUOgvXe2yUXiSPMHglkd/ORMykzTvw8jqmQrj6d1OL8N6MBqUqtu2nxSLz2E5BAuG5T8C9l%2BXYmjUPA0akTATBJB47bU9Yc8CQmwC8s%3D",
     "email": "john@example.com",
-    "expiry": "2017-12-11T08:16:33.033149",
+    "expiry": "2018-05-29T15:17:35+05:30",
+    "start_time": "2018-05-10T15:17:35+05:30"
     "resource_uri": "/platform/v1/test/esows/candidates/john@example.com",
     "status": "pending",
-    "test": "/platform/v1/test/esows",
-    "start_time": "2017-11-27T16:30:35"
+    "test": "/platform/v1/test/esows"
 }
 ```
 
