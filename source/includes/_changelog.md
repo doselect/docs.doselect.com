@@ -2,9 +2,10 @@
 
 Date         | Description
 ------------ | -----------
+May 29, 2018 | Added an API for [bulk creation of invites](#bulk-creation-of-invites)
 May 22, 2018 | Added an [API for downloading the code zip](#download-code-zip) and added `code_repo_uri` to the submission response
 May 15, 2018 | Added `DSC` (data science type) in [snippet runner embed](#snippet-runner-embed)
-May 11, 2018 | Added [conditions](#problem-embed) governing sample solutions behaviour in problem embed
+May 11, 2018 | Added [conditions](#problem-embed) governing sample solutions behaviour in problem embed.
 May 02, 2018 | Added `test_name` to the [user invite API response](#get-all-invites-of-a-user) and updated the [allowed embed problem types](#problem-embed)
 Apr 25, 2018 | Added docs for the [user invite API](#get-all-invites-of-a-user)
 Apr 18, 2018 | Updated the [solution webhook docs](#solution) and added email restriction in [embed](#client-library) and added `max_score` field to [submission API response](#get-one-submission)

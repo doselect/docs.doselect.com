@@ -159,6 +159,116 @@ the `invite_expiry_days` field in the test's settings.
 </aside>
 
 
+## Bulk creation of invites
+
+> Request
+
+```python
+import requests
+import json
+
+url = "https://api.doselect.com/platform/v1/test/esows/candidates/bulk/"
+
+payload = {
+	"objects": [
+		{
+			"email": "hemil+bulk+1@doselect.com",
+		    "expiry": "2018-05-29T15:17:35+05:30",
+    		"start_time": "2018-04-29T15:15:35+05:30"
+		},
+		{
+			"email": "hemil+bulk+2@doselect.com",
+		    "expiry": "2018-12-29T15:17:35+05:30",
+    		"start_time": "2018-01-29T15:15:35+05:30"
+		}
+	]
+}
+headers = {
+    'Doselect-Api-Key': "88d4266fd4e6338d13b845fcf28",
+    'Doselect-Api-Secret': "385041b7bbc2320471b8551d",
+    'Content-Type': "application/json",
+    }
+
+response = requests.request("POST", url, data=json.dumps(payload), headers=headers)
+
+```
+
+```shell
+curl -X POST \
+  'https://api.doselect.com/platform/v1/test/esows/candidates/bulk/' \
+  -H 'Content-Type: application/json' \
+  -H 'Doselect-Api-Key: 88d4266fd4e6338d13b845fcf28' \
+  -H 'Doselect-Api-Secret: 385041b7bbc2320471b8551d' \
+  -d '{
+	"objects": [
+		{
+			"email": "hemil+bulk+1@doselect.com",
+		    "expiry": "2018-05-29T15:17:35+05:30",
+    		"start_time": "2018-04-29T15:15:35+05:30"
+		},
+		{
+			"email": "hemil+bulk+2@doselect.com",
+		    "expiry": "2018-12-29T15:17:35+05:30",
+    		"start_time": "2018-01-29T15:15:35+05:30"
+		}
+	]
+}'
+```
+
+> Response
+
+```json
+{
+    "errors": [
+        {
+            "email": "hemil+bulk+1@doselect.com",
+            "error": "Unable to save invite. Error: This candidate has already been invited for this test."
+        }
+    ],
+    "invites": [
+        {
+            "status": "pending",
+            "test": "/platform/v1/test/2edpq",
+            "candidate_access_url": "http://doselect.com/gateways/test?access_code=B8lhneCES5yNCqTMmJxKLfMhyWoHZV2/Cr5vKnHmg1VtpLvrp1cI5asvYWndxNlE6opZbKfY2/NPCdVtVQX0YfqroK8JjEU%2BKT5u5/H0hyY%3D",
+            "test_name": "Site Reliability Engineering Test",
+            "report": null,
+            "start_time": "2017-11-29T15:15:35+05:30",
+            "resource_uri": "/platform/v1/test/2edpq/candidates/hemil+bulk+01@doselect.com",
+            "email": "hemil+bulk+2@doselect.com",
+            "expiry": "2017-12-29T15:17:35+05:30"
+        }
+    ]
+}
+```
+
+This API will allow you to create multiple invites in bulk using a single http call.
+
+Optionally, you can add a `suppress_email=True` GET parameter to the URL if you do not want
+the candidate to receive an invitation email from DoSelect.
+
+If you need to schedule a test, it can be done by setting the `start_time` and `expiry` of the invite accordingly in ISO 8601 format.
+
+A sample ISO 8601 format string: `2018-01-29T15:15:35+05:30`
+
+
+### JSON payload attributes:
+
+Field      | Required | Type | Description
+------     | -------- | --------- | -----------
+email      | Yes      | string    | The email of the candidate
+expiry     | No       | string    | The expiry of the invite in an ISO format datetime string
+start_time | No       | string    | The scheduled start time of an ISO format datetime string
+
+
+If there are any errors in the creation of any of the invites, they'll be mentioned in the `errors` key in the response with the reason for failure.
+
+
+<aside class="notice">
+If the expiry is not sent, the default expiry for an invite will be taken from
+the `invite_expiry_days` field in the test's settings.
+</aside>
+
+
 
 ## Delete an invite
 
