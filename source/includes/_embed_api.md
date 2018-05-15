@@ -181,7 +181,7 @@ Type | Description | Programming language slugs
 ### Data science runner
 
 The data science runner has some additional features to facilitate seamless workflow for writing code for data science. The users can upload datasets,
-which can be then attached to be used in one or more snippets. After a dataset has been attached with a snippet, it will be available under the path `/output`
+which can be then attached to be used in one or more snippets. After a dataset has been attached with a snippet, it will be available under the path `/data`
 during the code runtime. The maximum dataset size supported is **20 MB**. Presently, there's no limit on the number of datasets that one user can upload.
 
 <aside class="notice">
