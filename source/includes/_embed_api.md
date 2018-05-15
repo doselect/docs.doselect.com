@@ -220,3 +220,19 @@ There can be multiple reasons for this. Here's are a few things you should check
  - Verify that 3rd-party cookies are allowed on your browser -- since the embed sets cookies on your browser to make things work. Some external
  software, like anti-virus software, automatically disallow 3rd party cookies on browsers. This will cause the embed loading to fail. [This](https://www.whatismybrowser.com/detect/are-third-party-cookies-enabled)
  handy tool will help you troubleshoot.
+
+## Error Reference
+
+While using the Embed API, you might come across various errors if you've not properly configured your parameters properly.
+
+Internal API Endpoint      | Code | Description | Solution
+---       | ---- | ----------- | --------
+auth      | 400  | The configuration is invalid | Make sure you've followed the steps during [the embed setup](#client-library)
+auth      | 400  | You're using an admin email  | Make sure the email you're using isn't an admin or a recruiter. Try using a different or new email.
+auth      | 401  | Either the hash or the referer is invalid | Check the [hash](#client-library) or add the referer to the [allowed hosts](https://doselect.com/settings/team/integrations)
+auth      | 405  | Method not allowed | You were trying to access the resource using an invalid HTTP method.
+loadframe | 400  | Invalid embed div configuration | Check the div attributes of the [problem embed](#problem-embed) or [test embed](#test-embed)
+loadframe | 403  | The problem / test isn't in your learn feed | Add the problem / test to the [learn feed](https://doselect.com/learn/feed)
+loadframe | 405  | Method not allowed | You were trying to access the resource using an invalid HTTP method
+any       | 5xx  | Internal server error | Please try again after some time. If it still persists, [let us know](#help).
+
