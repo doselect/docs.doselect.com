@@ -178,6 +178,18 @@ Type | Description | Programming language slugs
 `SCR` | Coding runner | julia, haskell, csharp, go, javascript, scala, swift, perl, lua, clisp, objectivec, php, ruby, bash, clojure, rust, c, cpp, cpp14, java7, java8, python2, python3, r, fsharp, kotlin
 `DSC` | Data science runner | python2, python3, r
 
+### Data science runner
+
+The data science runner has some additional features to facilitate seamless workflow for writing code for data science. The users can upload datasets,
+which can be then attached to be used in one or more snippets. After a dataset has been attached with a snippet, it will be available under the path `/output`
+during the code runtime. The maximum dataset size supported is **20 MB**. Presently, there's no limit on the number of datasets that one user can upload.
+
+<aside class="notice">
+Please note that the limits on dataset size and the number of datasets uploaded per user are subject to revision in the future.
+</aside>
+
+The following file types are allowed to be uploaded as datasets: zip, csv, xls, txt.
+
 ## Actions
 
 The `doselect` global object provides methods to take various actions on the embed objects on your
