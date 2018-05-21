@@ -372,6 +372,9 @@
                   <li>
                     <a href="#faq" class="toc-h2 toc-link" data-title="Embed API">FAQ</a>
                   </li>
+                  <li>
+                    <a href="#error-reference" class="toc-h2 toc-link" data-title="Embed API">Error Reference</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -3279,14 +3282,22 @@ DoSelect. Add this HTML code where you want a test to show up:</p>
 create arbitrary code snippets, and execute them. This component is especially useful in a learning environment where the users are being
 taught programming and need a place to play around with different technologies without any set-up.</p>
 
-<p>The snippet runner supports all programming languages available on DoSelect. Each code runner is tied to a user email as specified in the user settings.
-All code snippets created by a user are saved on DoSelect platform and loaded whenever the snippet runner loads for the user. If you wish to group snippets
-on the basis of an entity, say course, you can pass an arbitrary string as the <code>collection_id</code>.</p>
-<pre class="highlight html tab-html"><code><span class="c">&lt;!-- Runner with all languages allowed and no collection. --&gt;</span>
+<p>Each code runner is tied to a user email as specified in the user settings. All code snippets created by a user are saved on DoSelect platform and loaded whenever the snippet runner loads for the user.
+If you wish to group snippets on the basis of an entity, say course, you can pass an arbitrary string as the <code>collection_id</code>.</p>
+
+<p>The snippet runner support two types of code snippets: <code>SCR</code> (coding type), and <code>DSC</code> (data science type). The data science snippet type has additional features, such as
+ability to upload datasets, attach datasets to be available during runtime of a snippet, ability to plot graphs and return attachments, etc.</p>
+<pre class="highlight html tab-html"><code><span class="c">&lt;!-- SCR runner with all languages allowed and no collection. --&gt;</span>
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"doselect-embed"</span> <span class="na">data-category=</span><span class="s">"snippet-runner"</span><span class="nt">&gt;&lt;/div&gt;</span>
-</code></pre><pre class="highlight html tab-html"><code><span class="c">&lt;!-- Runner with Python 2, Python 3 and R allowed, for a collection called `data-science-lab`. --&gt;</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="c">&lt;!-- SCR runner with Python 2, Python 3 and Java 8 allowed,
+     for a collection called `full-stack-lab`. --&gt;</span>
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"doselect-embed"</span> <span class="na">data-category=</span><span class="s">"snippet-runner"</span>
-    <span class="na">data-config=</span><span class="s">'{"allowed_technologies": "python2,python3,r", "collection_id": "data-science-lab"}'</span><span class="nt">&gt;&lt;/div&gt;</span>
+    <span class="na">data-config=</span><span class="s">'{"allowed_technologies": "python2,python3,java8",
+                  "collection_id": "full-stack-lab"}'</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="c">&lt;!-- DSC runner with with all languages allowed,
+     for a collection called `data-science-lab`. --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"doselect-embed"</span> <span class="na">data-category=</span><span class="s">"snippet-runner"</span>
+    <span class="na">data-config=</span><span class="s">'{"type": "DSC", "collection_id": "data-science-lab"}'</span><span class="nt">&gt;&lt;/div&gt;</span>
 </code></pre>
 <p>In the configuration object, the following attributes are allowed:</p>
 
@@ -3298,12 +3309,17 @@ on the basis of an entity, say course, you can pass an arbitrary string as the <
 </tr>
 </thead><tbody>
 <tr>
-<td>allowed_technologies</td>
+<td><strong>type</strong></td>
 <td>string</td>
-<td>Comma-separated values representing the programming languages allowed in this runner. This attribute is optional. If not provided, all programming languages on DoSelect will be allowed in the runner.</td>
+<td>Specifies the type of runner. Should be one of <code>SCR</code> and <code>DSC</code>. If no value is provided, defaults to <code>SCR</code>.</td>
 </tr>
 <tr>
-<td>collection_id</td>
+<td><strong>allowed_technologies</strong></td>
+<td>string</td>
+<td>Comma-separated values representing the programming languages allowed in this runner. This attribute is optional. If not provided, all programming languages on DoSelect will be allowed in the runner for that snippet type.</td>
+</tr>
+<tr>
+<td><strong>collection_id</strong></td>
 <td>string</td>
 <td>An arbitrary string to classify the collection of the snippets created under using this embed. If this is empty, all snippets created by the user will be loaded in the runner.</td>
 </tr>
@@ -3311,119 +3327,34 @@ on the basis of an entity, say course, you can pass an arbitrary string as the <
 
 <p>The following programming languages are supported in the runner at the moment:</p>
 
-<p>The possible values of technology slugs are:</p>
-
 <table><thead>
 <tr>
-<th>Slug</th>
-<th>Programming language</th>
+<th>Type</th>
+<th>Description</th>
+<th>Programming language slugs</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>julia</td>
-<td>Julia</td>
+<td><code>SCR</code></td>
+<td>Coding runner</td>
+<td>julia, haskell, csharp, go, javascript, scala, swift, perl, lua, clisp, objectivec, php, ruby, bash, clojure, rust, c, cpp, cpp14, java7, java8, python2, python3, r, fsharp, kotlin</td>
 </tr>
 <tr>
-<td>haskell</td>
-<td>Haskell</td>
-</tr>
-<tr>
-<td>csharp</td>
-<td>C#</td>
-</tr>
-<tr>
-<td>go</td>
-<td>Go</td>
-</tr>
-<tr>
-<td>javascript</td>
-<td>JavaScript (NodeJS)</td>
-</tr>
-<tr>
-<td>scala</td>
-<td>Scala</td>
-</tr>
-<tr>
-<td>swift</td>
-<td>Swift</td>
-</tr>
-<tr>
-<td>perl</td>
-<td>Perl</td>
-</tr>
-<tr>
-<td>lua</td>
-<td>Lua</td>
-</tr>
-<tr>
-<td>clisp</td>
-<td>Clisp</td>
-</tr>
-<tr>
-<td>objectivec</td>
-<td>ObjectiveC</td>
-</tr>
-<tr>
-<td>php</td>
-<td>PHP</td>
-</tr>
-<tr>
-<td>ruby</td>
-<td>Ruby</td>
-</tr>
-<tr>
-<td>bash</td>
-<td>Bash</td>
-</tr>
-<tr>
-<td>clojure</td>
-<td>Clojure</td>
-</tr>
-<tr>
-<td>rust</td>
-<td>Rust</td>
-</tr>
-<tr>
-<td>c</td>
-<td>C</td>
-</tr>
-<tr>
-<td>cpp</td>
-<td>C++</td>
-</tr>
-<tr>
-<td>java7</td>
-<td>Java 7</td>
-</tr>
-<tr>
-<td>python3</td>
-<td>Python 3</td>
-</tr>
-<tr>
-<td>python2</td>
-<td>Python 2</td>
-</tr>
-<tr>
-<td>java8</td>
-<td>Java 8</td>
-</tr>
-<tr>
-<td>r</td>
-<td>R</td>
-</tr>
-<tr>
-<td>fsharp</td>
-<td>F#</td>
-</tr>
-<tr>
-<td>cpp14</td>
-<td>C++14</td>
-</tr>
-<tr>
-<td>kotlin</td>
-<td>Kotlin</td>
+<td><code>DSC</code></td>
+<td>Data science runner</td>
+<td>python2, python3, r</td>
 </tr>
 </tbody></table>
+<h3 id='data-science-runner'>Data science runner</h3>
+<p>The data science runner has some additional features to facilitate seamless workflow for writing code for data science. The users can upload datasets,
+which can be then attached to be used in one or more snippets. After a dataset has been attached with a snippet, it will be available under the path <code>/data</code>
+during the code runtime. The maximum dataset size supported is <strong>20 MB</strong>. Presently, there&#39;s no limit on the number of datasets that one user can upload.</p>
+
+<aside class="notice">
+Please note that the limits on dataset size and the number of datasets uploaded per user are subject to revision in the future.
+</aside>
+
+<p>The following file types are allowed to be uploaded as datasets: zip, csv, xls, txt.</p>
 <h2 id='actions'>Actions</h2>
 <p>The <code>doselect</code> global object provides methods to take various actions on the embed objects on your
 app.</p>
@@ -3443,6 +3374,66 @@ app.</p>
 software, like anti-virus software, automatically disallow 3rd party cookies on browsers. This will cause the embed loading to fail. <a href="https://www.whatismybrowser.com/detect/are-third-party-cookies-enabled">This</a>
 handy tool will help you troubleshoot.</p></li>
 </ul>
+<h2 id='error-reference'>Error Reference</h2>
+<p>While using the Embed API, you might come across various errors if you&#39;ve not properly configured your parameters properly.</p>
+
+<table><thead>
+<tr>
+<th>Internal API Endpoint</th>
+<th>Code</th>
+<th>Description</th>
+<th>Solution</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>auth</td>
+<td>400</td>
+<td>The configuration is invalid</td>
+<td>Make sure you&#39;ve followed the steps during <a href="#client-library">the embed setup</a></td>
+</tr>
+<tr>
+<td>auth</td>
+<td>400</td>
+<td>You&#39;re using an admin email</td>
+<td>Make sure the email you&#39;re using isn&#39;t an admin or a recruiter. Try using a different or new email.</td>
+</tr>
+<tr>
+<td>auth</td>
+<td>401</td>
+<td>Either the hash or the referer is invalid</td>
+<td>Check the <a href="#client-library">hash</a> or add the referer to the <a href="https://doselect.com/settings/team/integrations">allowed hosts</a></td>
+</tr>
+<tr>
+<td>auth</td>
+<td>405</td>
+<td>Method not allowed</td>
+<td>You were trying to access the resource using an invalid HTTP method.</td>
+</tr>
+<tr>
+<td>loadframe</td>
+<td>400</td>
+<td>Invalid embed div configuration</td>
+<td>Check the div attributes of the <a href="#problem-embed">problem embed</a> or <a href="#test-embed">test embed</a></td>
+</tr>
+<tr>
+<td>loadframe</td>
+<td>403</td>
+<td>The problem / test isn&#39;t in your learn feed</td>
+<td>Add the problem / test to the <a href="https://doselect.com/learn/feed">learn feed</a></td>
+</tr>
+<tr>
+<td>loadframe</td>
+<td>405</td>
+<td>Method not allowed</td>
+<td>You were trying to access the resource using an invalid HTTP method</td>
+</tr>
+<tr>
+<td>any</td>
+<td>5xx</td>
+<td>Internal server error</td>
+<td>Please try again after some time. If it still persists, <a href="#help">let us know</a>.</td>
+</tr>
+</tbody></table>
 <h1 id='webhooks'>Webhooks</h1>
 <p>The webhooks framework notifies you about various actions that have happened related to the resources on your team. You can add a
 <code>webhook_url</code> in your team settings. Whenever a new event occurs, we will make a <code>POST</code> request to this URL with a JSON payload in body.</p>
@@ -3729,8 +3720,12 @@ Please contact your account manager or write to <a href="mailto:support@doselect
 </tr>
 </thead><tbody>
 <tr>
+<td>May 15, 2018</td>
+<td>Added <code>DSC</code> (data science type) in <a href="#snippet-runner-embed">snippet runner embed</a></td>
+</tr>
+<tr>
 <td>May 11, 2018</td>
-<td>Added <a href="#problem-embed">conditions</a> governing sample solutions behaviour in problem embed.</td>
+<td>Added <a href="#problem-embed">conditions</a> governing sample solutions behaviour in problem embed</td>
 </tr>
 <tr>
 <td>May 02, 2018</td>
