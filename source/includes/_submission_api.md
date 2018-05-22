@@ -109,6 +109,14 @@ Coding            | julia (Julia), haskell (Haskell), csharp (C#), go (Go), java
 Mobile            | android (Android)
 
 
+
+
+<aside class="notice">
+If it is a project based or a frontend submission, there will be a
+`code_repo_uri` field in the response which will enable you to download the
+code which was uploaded by the user.
+</aside>
+
 ## Get one submission
 
 > Request
@@ -214,3 +222,53 @@ Value | Full-form | Explanation
 `PAC` | Partially correct | The submission has passed some test cases, while failed the others.
 `REJ` | Rejected | The submission failed to pass any test cases in the problem.
 `NRE` | Needs review | If the problem must have at least one non-sample test case for the submission to get automatically evaluated. Otherwise, this status is set, which means the solution must be evaluated manually.
+
+
+<aside class="notice">
+If it is a project based or a frontend submission, there will be a
+`code_repo_uri` field in the response which will enable you to download the
+code which was uploaded by the user.
+</aside>
+
+
+## Download code zip
+
+> Request
+
+```python
+import requests
+
+url = 'https://api.doselect.com/platform/v1/submission/mmoe0/code-repo'
+headers = {
+    "DoSelect-Api-Key": "88d4266fd4e6338d13b845fcf28",
+    "DoSelect-Api-Secret": "385041b7bbc2320471b8551d"
+}
+response = requests.get(url, headers=headers)
+
+with open("code-repo.zip", "w+") as f:
+    f.write(response.content)
+```
+
+```shell
+curl "https://api.doselect.com/platform/v1/submission/mmoe0/code-repo"
+  -H "DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28" \
+  -H "DoSelect-Api-Secret: 385041b7bbc2320471b8551d"
+  > code-repo.zip
+```
+
+> Response
+
+```
+A zip file
+```
+
+This endpoint retrieves the zip file of the code submitted identified by the
+unique `slug` which is generated during creation.
+
+### HTTP Request
+
+`GET https://api.doselect.com/platform/v1/submission/<slug>/code-repo`
+
+
+Currently, this API will only support the downloading of code for `PRJ` and
+`UIX` submissions.
