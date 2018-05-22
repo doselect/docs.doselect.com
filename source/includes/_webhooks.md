@@ -70,7 +70,11 @@ problem_slug           | string     | The identifier for the problem
 problem_uri            | string     | The URI of the problem
 email                  | string     | The email of the user
 code                   | string     | The latest submitted code of the user
+code_repo_uri          | string     | URI pointing to the latest saved UIX-PRJ code
 
+<aside class="notice">
+The `code_repo_uri` will be sent only for `UIX` and `PRJ` submissions.
+</aside>
 
 > Example payload
 
