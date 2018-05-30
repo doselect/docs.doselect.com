@@ -276,6 +276,9 @@
                     <a href="#create-a-new-invite" class="toc-h2 toc-link" data-title="Invite API">Create a new invite</a>
                   </li>
                   <li>
+                    <a href="#bulk-creation-of-invites" class="toc-h2 toc-link" data-title="Invite API">Bulk creation of invites</a>
+                  </li>
+                  <li>
                     <a href="#delete-an-invite" class="toc-h2 toc-link" data-title="Invite API">Delete an invite</a>
                   </li>
                   <li>
@@ -1402,6 +1405,125 @@ the candidate to receive an invitation email from DoSelect.</p>
 <td>The scheduled start time of an ISO format datetime string</td>
 </tr>
 </tbody></table>
+
+<aside class="notice">
+If the expiry is not sent, the default expiry for an invite will be taken from
+the `invite_expiry_days` field in the test's settings.
+</aside>
+<h2 id='bulk-creation-of-invites'>Bulk creation of invites</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.doselect.com/platform/v1/test/esows/candidates/bulk/"</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"objects"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s">"email"</span><span class="p">:</span> <span class="s">"hemil+bulk+1@doselect.com"</span><span class="p">,</span>
+            <span class="s">"expiry"</span><span class="p">:</span> <span class="s">"2018-05-29T15:17:35+05:30"</span><span class="p">,</span>
+            <span class="s">"start_time"</span><span class="p">:</span> <span class="s">"2018-04-29T15:15:35+05:30"</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s">"email"</span><span class="p">:</span> <span class="s">"hemil+bulk+2@doselect.com"</span><span class="p">,</span>
+            <span class="s">"expiry"</span><span class="p">:</span> <span class="s">"2018-12-29T15:17:35+05:30"</span><span class="p">,</span>
+            <span class="s">"start_time"</span><span class="p">:</span> <span class="s">"2018-01-29T15:15:35+05:30"</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'Doselect-Api-Key'</span><span class="p">:</span> <span class="s">"88d4266fd4e6338d13b845fcf28"</span><span class="p">,</span>
+    <span class="s">'Doselect-Api-Secret'</span><span class="p">:</span> <span class="s">"385041b7bbc2320471b8551d"</span><span class="p">,</span>
+    <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+    <span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">),</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  <span class="s1">'https://api.doselect.com/platform/v1/test/esows/candidates/bulk/'</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Doselect-Api-Key: 88d4266fd4e6338d13b845fcf28'</span> <span class="se">\</span>
+  -H <span class="s1">'Doselect-Api-Secret: 385041b7bbc2320471b8551d'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "objects": [
+        {
+            "email": "hemil+bulk+1@doselect.com",
+            "expiry": "2018-05-29T15:17:35+05:30",
+            "start_time": "2018-04-29T15:15:35+05:30"
+        },
+        {
+            "email": "hemil+bulk+2@doselect.com",
+            "expiry": "2018-12-29T15:17:35+05:30",
+            "start_time": "2018-01-29T15:15:35+05:30"
+        }
+    ]
+}'</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hemil+bulk+1@doselect.com"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unable to save invite. Error: This candidate has already been invited for this test."</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"invites"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/test/2edpq"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"candidate_access_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://doselect.com/gateways/test?access_code=B8lhneCES5yNCqTMmJxKLfMhyWoHZV2/Cr5vKnHmg1VtpLvrp1cI5asvYWndxNlE6opZbKfY2/NPCdVtVQX0YfqroK8JjEU%2BKT5u5/H0hyY%3D"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"test_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Site Reliability Engineering Test"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"report"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-11-29T15:15:35+05:30"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"resource_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/test/2edpq/candidates/hemil+bulk+01@doselect.com"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hemil+bulk+2@doselect.com"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-12-29T15:17:35+05:30"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This API will allow you to create multiple invites in bulk using a single http call.</p>
+
+<p>Optionally, you can add a <code>suppress_email=True</code> GET parameter to the URL if you do not want
+the candidate to receive an invitation email from DoSelect.</p>
+
+<p>If you need to schedule a test, it can be done by setting the <code>start_time</code> and <code>expiry</code> of the invite accordingly in ISO 8601 format.</p>
+
+<p>A sample ISO 8601 format string: <code>2018-01-29T15:15:35+05:30</code></p>
+<h3 id='json-payload-attributes'>JSON payload attributes:</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>Yes</td>
+<td>string</td>
+<td>The email of the candidate</td>
+</tr>
+<tr>
+<td>expiry</td>
+<td>No</td>
+<td>string</td>
+<td>The expiry of the invite in an ISO format datetime string</td>
+</tr>
+<tr>
+<td>start_time</td>
+<td>No</td>
+<td>string</td>
+<td>The scheduled start time of an ISO format datetime string</td>
+</tr>
+</tbody></table>
+
+<p>If there are any errors in the creation of any of the invites, they&#39;ll be mentioned in the <code>errors</code> key in the response with the reason for failure.</p>
 
 <aside class="notice">
 If the expiry is not sent, the default expiry for an invite will be taken from
@@ -3589,7 +3711,16 @@ These actions are only sent for solutions whose problems have been added to your
 <td>string</td>
 <td>The latest submitted code of the user</td>
 </tr>
+<tr>
+<td>code_repo_uri</td>
+<td>string</td>
+<td>URI pointing to the latest saved UIX-PRJ code</td>
+</tr>
 </tbody></table>
+
+<aside class="notice">
+The `code_repo_uri` will be sent only for `UIX` and `PRJ` submissions.
+</aside>
 
 <blockquote>
 <p>Example payload</p>
@@ -3767,6 +3898,10 @@ Please contact your account manager or write to <a href="mailto:support@doselect
 </tr>
 </thead><tbody>
 <tr>
+<td>May 29, 2018</td>
+<td>Added an API for <a href="#bulk-creation-of-invites">bulk creation of invites</a></td>
+</tr>
+<tr>
 <td>May 22, 2018</td>
 <td>Added an <a href="#download-code-zip">API for downloading the code zip</a> and added <code>code_repo_uri</code> to the submission response</td>
 </tr>
@@ -3776,7 +3911,7 @@ Please contact your account manager or write to <a href="mailto:support@doselect
 </tr>
 <tr>
 <td>May 11, 2018</td>
-<td>Added <a href="#problem-embed">conditions</a> governing sample solutions behaviour in problem embed</td>
+<td>Added <a href="#problem-embed">conditions</a> governing sample solutions behaviour in problem embed.</td>
 </tr>
 <tr>
 <td>May 02, 2018</td>
