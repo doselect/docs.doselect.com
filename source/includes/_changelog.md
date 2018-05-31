@@ -2,6 +2,7 @@
 
 Date         | Description
 ------------ | -----------
+Jun 01, 2018 | Added [rate limits](#rate-limits) for our client APIs
 May 29, 2018 | Added an API for [bulk creation of invites](#bulk-creation-of-invites)
 May 22, 2018 | Added an [API for downloading the code zip](#download-code-zip) and added `code_repo_uri` to the submission response
 May 15, 2018 | Added `DSC` (data science type) in [snippet runner embed](#snippet-runner-embed)
