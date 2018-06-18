@@ -79,7 +79,8 @@ DoSelect. Add this HTML code where you want a problem to show up:
 
 ```html
 <div class="doselect-embed" data-category="problem" data-slug="3myr6"
-     data-config='{"allow_submission": true}'></div>
+     data-config='{"allow_submission": true,
+                    "custom_body_class": "custom_class1 custom_class2"}'></div>
 ```
 
 Attribute | Description
@@ -94,6 +95,7 @@ Attribute | Type | Description
 ----------|------| ------
 allow_submission | boolean | Dynamically control if the submissions are allowed for a problem at the moment. This is only available in a problem embed.
 show_solution_revisions | boolean | Control if solution revisions should be visible.
+custom_body_class | string | Define custom class to the embed's body element. For multiple classes, use class names in a space seperated string.
 
 Please note that the problem must be added to your Learn team's feed before it can be used in an embed.
 
@@ -150,17 +152,20 @@ ability to upload datasets, attach datasets to be available during runtime of a 
 
 ```html
 <!-- SCR runner with Python 2, Python 3 and Java 8 allowed,
-     for a collection called `full-stack-lab`. -->
+     for a collection called `full-stack-lab`, with custom_body_class. -->
 <div class="doselect-embed" data-category="snippet-runner"
     data-config='{"allowed_technologies": "python2,python3,java8",
-                  "collection_id": "full-stack-lab"}'></div>
+                  "collection_id": "full-stack-lab",
+                  "custom_body_class": "custom_class"}'></div>
 ```
 
 ```html
 <!-- DSC runner with with all languages allowed,
-     for a collection called `data-science-lab`. -->
+     for a collection called `data-science-lab`, with multiple custom_body_class. -->
 <div class="doselect-embed" data-category="snippet-runner"
-    data-config='{"type": "DSC", "collection_id": "data-science-lab"}'></div>
+    data-config='{"type": "DSC",
+                  "collection_id": "data-science-lab",
+                  "custom_body_class": "custom_class1 custom_class2"}'></div>
 ```
 
 In the configuration object, the following attributes are allowed:
@@ -170,6 +175,7 @@ Attribute | Type | Description
 **type** | string | Specifies the type of runner. Should be one of `SCR` and `DSC`. If no value is provided, defaults to `SCR`.
 **allowed_technologies** | string | Comma-separated values representing the programming languages allowed in this runner. This attribute is optional. If not provided, all programming languages on DoSelect will be allowed in the runner for that snippet type.
 **collection_id** | string | An arbitrary string to classify the collection of the snippets created under using this embed. If this is empty, all snippets created by the user will be loaded in the runner.
+**custom_body_class** | string | Define custom class to the embed's body element. For multiple classes, use class names in a space seperated string.
 
 The following programming languages are supported in the runner at the moment:
 
