@@ -20,6 +20,7 @@ includes:
  - problem_testcase_api
  - learn_feed_item_api
  - submission_api
+ - code_lab_api
  - embed_api
  - webhooks
  - help

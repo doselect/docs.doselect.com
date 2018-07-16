@@ -201,8 +201,6 @@ curl "https://api.doselect.com/platform/v1/test/esows"
     "total_sections": 1,
     "redirection_url": "https://www.doselect.com"
 }
-
-
 ```
 A test is identified by a unique `slug` that gets generated during creation. This endpoint retrieves a specific test:
 

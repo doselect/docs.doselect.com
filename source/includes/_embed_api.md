@@ -1,12 +1,12 @@
 # Embed API
 
-The Embed API allows you to embed a `Test` or a `Problem` on DoSelect on your platform. This API is designed keeping in mind that
-the platform which using the embed need not store any state data on their end -- all state data is stored by DoSelect and can be retrieved using
+The Embed API allows you to embed a `Test`, `Problem` or a `Code Lab` from DoSelect on your platform. This API is designed keeping in mind that
+the platform which is using the embed need not store any state-related data on their end -- all of that is stored by DoSelect and can be retrieved using
 the REST Platform APIs.
 
 ## Client library
 
-The Embed API can be accessed using the embed client library, `doselect-embed.js`. This library provides a simple JavaScript interface
+The Embed API can be accessed using the embed client library, [doselect-embed.js](https://assets.doselect.com/doselect-embed.min.js). This library provides a simple JavaScript interface
 for authentication, creating embed objects on your application, and retrieving general information related to the embedded objects.
 
 ### Setup
@@ -44,7 +44,7 @@ timezone | Timezone of the current user. This value should be a valid timezone s
 user_hash | The verification hash for this user, which must be generated on your server-side
 
 <aside class="notice">
-The email given here needs to be different than the recruiter/admin emails of your DoSelect account.
+The email given here needs to be different from the recruiter/admin emails of your DoSelect account.
 </aside>
 
 ##### Generating `user_hash`
@@ -195,6 +195,16 @@ Please note that the limits on dataset size and the number of datasets uploaded 
 </aside>
 
 The following file types are allowed to be uploaded as datasets: zip, csv, xls, txt.
+
+## Code Lab embed
+
+The code lab embed enables you to embed DoSelect Learn's Code Labs environment within your LMS for a seamless learning experience. After you've create a new Code Lab from your Learn
+Dashboard, you must publish it and make the status `Active` before you can embed it.
+
+```html
+<!-- Embed for the code lab with slug "tysgh" -->
+<div class="doselect-embed" data-category="code-lab" data-slug="tysgh"></div>
+```
 
 ## Actions
 
