@@ -355,6 +355,23 @@
               </ul>
           </li>
           <li>
+            <a href="#code-lab-api" class="toc-h1 toc-link" data-title="Code Lab API">Code Lab API</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-code-labs" class="toc-h2 toc-link" data-title="Code Lab API">Get all code labs</a>
+                  </li>
+                  <li>
+                    <a href="#get-one-code-lab" class="toc-h2 toc-link" data-title="Code Lab API">Get one code lab</a>
+                  </li>
+                  <li>
+                    <a href="#get-all-invites" class="toc-h2 toc-link" data-title="Code Lab API">Get all invites</a>
+                  </li>
+                  <li>
+                    <a href="#create-a-new-code-lab-invite" class="toc-h2 toc-link" data-title="Code Lab API">Create a new Code Lab invite</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#embed-api" class="toc-h1 toc-link" data-title="Embed API">Embed API</a>
               <ul class="toc-list-h2">
                   <li>
@@ -371,6 +388,9 @@
                   </li>
                   <li>
                     <a href="#snippet-runner-embed" class="toc-h2 toc-link" data-title="Embed API">Snippet runner embed</a>
+                  </li>
+                  <li>
+                    <a href="#code-lab-embed" class="toc-h2 toc-link" data-title="Embed API">Code Lab embed</a>
                   </li>
                   <li>
                     <a href="#actions" class="toc-h2 toc-link" data-title="Embed API">Actions</a>
@@ -855,8 +875,6 @@ resource objects in such responses.</p>
     </span><span class="s2">"total_sections"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"redirection_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.doselect.com"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
-
 </span></code></pre>
 <p>A test is identified by a unique <code>slug</code> that gets generated during creation. This endpoint retrieves a specific test:</p>
 <h3 id='http-request-2'>HTTP Request</h3>
@@ -3248,12 +3266,190 @@ unique <code>slug</code> which is generated during creation.</p>
 
 <p>Currently, this API will only support the downloading of code for <code>PRJ</code> and
 <code>UIX</code> submissions.</p>
-<h1 id='embed-api'>Embed API</h1>
-<p>The Embed API allows you to embed a <code>Test</code> or a <code>Problem</code> on DoSelect on your platform. This API is designed keeping in mind that
-the platform which using the embed need not store any state data on their end -- all state data is stored by DoSelect and can be retrieved using
+<h1 id='code-lab-api'>Code Lab API</h1>
+<p>The Code Lab API allows you to retrieve Code Labs that have been created from your
+Learn account. This is a read-only API.</p>
+<h2 id='get-all-code-labs'>Get all code labs</h2>
+<p>You can get all code labs created in your Learn team account using the list endpoint:</p>
+<h3 id='http-request'>HTTP request</h3>
+<p><code>GET https://api.doselect.com/platform/v1/codelab</code></p>
+<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">'https://api.doselect.com/platform/v1/codelab'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"DoSelect-Api-Key"</span><span class="p">:</span> <span class="s">"88d4266fd4e6338d13b845fcf28"</span><span class="p">,</span>
+    <span class="s">"DoSelect-Api-Secret"</span><span class="p">:</span> <span class="s">"385041b7bbc2320471b8551d"</span>
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doselect.com/platform/v1/codelab"</span>
+  -H <span class="s2">"DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28"</span> <span class="se">\</span>
+  -H <span class="s2">"DoSelect-Api-Secret: 385041b7bbc2320471b8551d"</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"objects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-14T10:14:51.225572"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"expiry_period"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Django Lab"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"resource_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/codelab/ykb92"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ykb92"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUB"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tasks"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"workspace_specs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"cpu_intensive"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"memory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1024"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"workspace_template_config"</span><span class="p">:</span><span class="w"> </span><span class="s2">"build_steps:</span><span class="se">\n</span><span class="s2">- command: cmd1 to run</span><span class="se">\n</span><span class="s2">  name: cmd1 name</span><span class="se">\n</span><span class="s2">commands:</span><span class="se">\n</span><span class="s2">  build: some build command</span><span class="se">\n</span><span class="s2">  test: some test command</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"workspace_template_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUB"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"previous"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='get-one-code-lab'>Get one code lab</h2>
+<p>You can use the detail end point with the code lab&#39;s slug.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://api.doselect.com/platform/v1/codelab/&lt;code_lab_slug&gt;</code></p>
+
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">'https://api.doselect.com/platform/v1/codelab/ykb92'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"DoSelect-Api-Key"</span><span class="p">:</span> <span class="s">"88d4266fd4e6338d13b845fcf28"</span><span class="p">,</span>
+    <span class="s">"DoSelect-Api-Secret"</span><span class="p">:</span> <span class="s">"385041b7bbc2320471b8551d"</span>
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doselect.com/platform/v1/codelab/ykb92"</span>
+  -H <span class="s2">"DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28"</span> <span class="se">\</span>
+  -H <span class="s2">"DoSelect-Api-Secret: 385041b7bbc2320471b8551d"</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-14T10:14:51.225572"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expiry_period"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Django Lab"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/codelab/ykb92"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ykb92"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUB"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tasks"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"workspace_specs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"cpu_intensive"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"memory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1024"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"workspace_template_config"</span><span class="p">:</span><span class="w"> </span><span class="s2">"build_steps:</span><span class="se">\n</span><span class="s2">- command: cmd1 to run</span><span class="se">\n</span><span class="s2">  name: cmd1 name</span><span class="se">\n</span><span class="s2">commands:</span><span class="se">\n</span><span class="s2">  build: some build command</span><span class="se">\n</span><span class="s2">  test: some test command</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"workspace_template_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUB"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='get-all-invites'>Get all invites</h2>
+<p>You can use the participants endpoint to retrieve all the invites created in a code lab.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET https://api.doselect.com/platform/v1/codelab/&lt;slug&gt;/participants</code></p>
+
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">'https://api.doselect.com/platform/v1/codelab/e2mlk/participants'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"DoSelect-Api-Key"</span><span class="p">:</span> <span class="s">"88d4266fd4e6338d13b845fcf28"</span><span class="p">,</span>
+    <span class="s">"DoSelect-Api-Secret"</span><span class="p">:</span> <span class="s">"385041b7bbc2320471b8551d"</span>
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doselect.com/platform/v1/codelab/e2mlk/participants"</span>
+  -H <span class="s2">"DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28"</span> <span class="se">\</span>
+  -H <span class="s2">"DoSelect-Api-Secret: 385041b7bbc2320471b8551d"</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"objects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"codelab"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/codelab/e2mlk"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-19T10:29:03.655146"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dymmuser@example.com"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"is_accepted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"participant_access_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://doselect.com/gateways/codelab/?access_code=EtjakDPoTOteT7KSINLrOXTKJ6KQPzMN6B%2FD1ou0ibq2IxcsMRNMyAQxaUN4Bml3"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"resource_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/codelabinvite/1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"previous"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='create-a-new-code-lab-invite'>Create a new Code Lab invite</h2>
+<p>New invites can be created by POSTing data to the participants endpoint. Please note that bulk
+invites are not allowed at the moment.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>POST https://api.doselect.com/platform/v1/codelab/&lt;slug&gt;/participants</code></p>
+
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">'https://api.doselect.com/platform/v1/codelab/e2mlk/participants'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"DoSelect-Api-Key"</span><span class="p">:</span> <span class="s">"88d4266fd4e6338d13b845fcf28"</span><span class="p">,</span>
+    <span class="s">"DoSelect-Api-Secret"</span><span class="p">:</span> <span class="s">"385041b7bbc2320471b8551d"</span>
+<span class="p">}</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"email"</span><span class="p">:</span> <span class="s">"john@example.com"</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  https://api.doselect.com/platform/v1/codelab/e2mlk/participants/ <span class="se">\</span>
+  -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'doselect-api-key: 88d4266fd4e6338d13b845fcf28'</span> <span class="se">\</span>
+  -H <span class="s1">'doselect-api-secret: 385041b7bbc2320471b8551d'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "email": "john@example.com"
+}'</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"codelab"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/codelab/e2mlk"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-16T12:35:37.444250"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_accepted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"participant_access_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://doselect.com/gateways/codelab/?access_code=nbysIEgzjEnRATE%2Fdcs3ZDLKZeoy3A3rO1tswlR7z7wxgNuwtPkSM62EvIdUj1QVTv3UsxebSq8rXFGM7N7OF%2FzWfjLsnAunSUpmh35h0BI%253D"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/codelabinvite/12"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h1 id='embed-api'>Embed API</h1>
+<p>The Embed API allows you to embed a <code>Test</code>, <code>Problem</code> or a <code>Code Lab</code> from DoSelect on your platform. This API is designed keeping in mind that
+the platform which is using the embed need not store any state-related data on their end -- all of that is stored by DoSelect and can be retrieved using
 the REST Platform APIs.</p>
 <h2 id='client-library'>Client library</h2>
-<p>The Embed API can be accessed using the embed client library, <code>doselect-embed.js</code>. This library provides a simple JavaScript interface
+<p>The Embed API can be accessed using the embed client library, <a href="https://assets.doselect.com/doselect-embed.min.js">doselect-embed.js</a>. This library provides a simple JavaScript interface
 for authentication, creating embed objects on your application, and retrieving general information related to the embedded objects.</p>
 <h3 id='setup'>Setup</h3><h4 id='step-1-install-the-code-doselect-embed-js-code-library'>Step 1: Install the <code>doselect-embed.js</code> library</h4>
 <p>To use the Embed API, simply copy and paste the snippet below before the <code>&lt;/body&gt;</code> tag on every page where you want the embed to appear.</p>
@@ -3302,7 +3498,7 @@ for authentication, creating embed objects on your application, and retrieving g
 </tbody></table>
 
 <aside class="notice">
-The email given here needs to be different than the recruiter/admin emails of your DoSelect account.
+The email given here needs to be different from the recruiter/admin emails of your DoSelect account.
 </aside>
 <h5 id='generating-code-user_hash-code'>Generating <code>user_hash</code></h5>
 <p>The <code>user_hash</code> must be a server-side generated <a href="http://en.wikipedia.org/wiki/Hash-based_message_authentication_code">HMAC (hash based message authentication code)</a>,
@@ -3546,7 +3742,12 @@ Please note that the limits on dataset size and the number of datasets uploaded 
 </aside>
 
 <p>The following file types are allowed to be uploaded as datasets: zip, csv, xls, txt.</p>
-<h2 id='actions'>Actions</h2>
+<h2 id='code-lab-embed'>Code Lab embed</h2>
+<p>The code lab embed enables you to embed DoSelect Learn&#39;s Code Labs environment within your LMS for a seamless learning experience. After you&#39;ve create a new Code Lab from your Learn
+Dashboard, you must publish it and make the status <code>Active</code> before you can embed it.</p>
+<pre class="highlight html tab-html"><code><span class="c">&lt;!-- Embed for the code lab with slug "tysgh" --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"doselect-embed"</span> <span class="na">data-category=</span><span class="s">"code-lab"</span> <span class="na">data-slug=</span><span class="s">"tysgh"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre><h2 id='actions'>Actions</h2>
 <p>The <code>doselect</code> global object provides methods to take various actions on the embed objects on your
 app.</p>
 <h3 id='loading-embeds'>Loading embeds</h3>
@@ -3919,6 +4120,10 @@ Please contact your account manager or write to <a href="mailto:support@doselect
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>Jul 16, 2018</td>
+<td>Added <a href="#code-lab-embed">Code Lab embed</a> and <a href="#code-lab-api">REST</a> APIs</td>
+</tr>
 <tr>
 <td>Jun 18, 2018</td>
 <td>Added <code>custom_body_class</code> attribute on <code>data-config</code> object for <a href="#problem-embed">problem / test embed</a> and <a href="#snippet-runner-embed">snippet runner embed</a></td>
