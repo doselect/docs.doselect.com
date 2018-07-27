@@ -82,6 +82,14 @@ those which are associated with the account whose credentials you send.
 
 The user email needs to be sent in the GET params as shown in the sample request with the key `email`.
 
+Optionally, You can filter the invites based on start_time and/or expiry by providing
+start_time and/or expiry in GET params with suffix `__lte` or `__gte` e.g start_time__gte, expiry__lte which stands for less than or equal to and greater than or equal to.
+
+For example, to fetch all the invites with `start_time` greater than or equal to `2018-07-01` and `expiry` less than or equal to `2018-07-25` send `start_time__gte=2018-07-01T00:00:00Z` and `expiry__lte=2018-07-25T00:00:00Z` in GET params.
+
+NOTE:
+`start_time` and `expiry` accepts ISO 8601 format string, for example `2018-01-29T15:15:35+05:30`
+
 <aside class="notice">
 If the email is not sent in the params, the API will return all the invites of your account.
 </aside>

@@ -1,12 +1,12 @@
 # Embed API
 
-The Embed API allows you to embed a `Test` or a `Problem` on DoSelect on your platform. This API is designed keeping in mind that
-the platform which using the embed need not store any state data on their end -- all state data is stored by DoSelect and can be retrieved using
+The Embed API allows you to embed a `Test`, `Problem` or a `Code Lab` from DoSelect on your platform. This API is designed keeping in mind that
+the platform which is using the embed need not store any state-related data on their end -- all of that is stored by DoSelect and can be retrieved using
 the REST Platform APIs.
 
 ## Client library
 
-The Embed API can be accessed using the embed client library, `doselect-embed.js`. This library provides a simple JavaScript interface
+The Embed API can be accessed using the embed client library, [doselect-embed.js](https://assets.doselect.com/doselect-embed.min.js). This library provides a simple JavaScript interface
 for authentication, creating embed objects on your application, and retrieving general information related to the embedded objects.
 
 ### Setup
@@ -44,7 +44,7 @@ timezone | Timezone of the current user. This value should be a valid timezone s
 user_hash | The verification hash for this user, which must be generated on your server-side
 
 <aside class="notice">
-The email given here needs to be different than the recruiter/admin emails of your DoSelect account.
+The email given here needs to be different from the recruiter/admin emails of your DoSelect account.
 </aside>
 
 ##### Generating `user_hash`
@@ -79,7 +79,8 @@ DoSelect. Add this HTML code where you want a problem to show up:
 
 ```html
 <div class="doselect-embed" data-category="problem" data-slug="3myr6"
-     data-config='{"allow_submission": true}'></div>
+     data-config='{"allow_submission": true,
+                    "custom_body_class": "custom_class1 custom_class2"}'></div>
 ```
 
 Attribute | Description
@@ -94,6 +95,7 @@ Attribute | Type | Description
 ----------|------| ------
 allow_submission | boolean | Dynamically control if the submissions are allowed for a problem at the moment. This is only available in a problem embed.
 show_solution_revisions | boolean | Control if solution revisions should be visible.
+custom_body_class | string | Define custom class to the embed's body element. For multiple classes, use class names in a space seperated string.
 
 Please note that the problem must be added to your Learn team's feed before it can be used in an embed.
 
@@ -150,17 +152,20 @@ ability to upload datasets, attach datasets to be available during runtime of a 
 
 ```html
 <!-- SCR runner with Python 2, Python 3 and Java 8 allowed,
-     for a collection called `full-stack-lab`. -->
+     for a collection called `full-stack-lab`, with custom_body_class. -->
 <div class="doselect-embed" data-category="snippet-runner"
     data-config='{"allowed_technologies": "python2,python3,java8",
-                  "collection_id": "full-stack-lab"}'></div>
+                  "collection_id": "full-stack-lab",
+                  "custom_body_class": "custom_class"}'></div>
 ```
 
 ```html
 <!-- DSC runner with with all languages allowed,
-     for a collection called `data-science-lab`. -->
+     for a collection called `data-science-lab`, with multiple custom_body_class. -->
 <div class="doselect-embed" data-category="snippet-runner"
-    data-config='{"type": "DSC", "collection_id": "data-science-lab"}'></div>
+    data-config='{"type": "DSC",
+                  "collection_id": "data-science-lab",
+                  "custom_body_class": "custom_class1 custom_class2"}'></div>
 ```
 
 In the configuration object, the following attributes are allowed:
@@ -170,6 +175,7 @@ Attribute | Type | Description
 **type** | string | Specifies the type of runner. Should be one of `SCR` and `DSC`. If no value is provided, defaults to `SCR`.
 **allowed_technologies** | string | Comma-separated values representing the programming languages allowed in this runner. This attribute is optional. If not provided, all programming languages on DoSelect will be allowed in the runner for that snippet type.
 **collection_id** | string | An arbitrary string to classify the collection of the snippets created under using this embed. If this is empty, all snippets created by the user will be loaded in the runner.
+**custom_body_class** | string | Define custom class to the embed's body element. For multiple classes, use class names in a space seperated string.
 
 The following programming languages are supported in the runner at the moment:
 
@@ -189,6 +195,16 @@ Please note that the limits on dataset size and the number of datasets uploaded 
 </aside>
 
 The following file types are allowed to be uploaded as datasets: zip, csv, xls, txt.
+
+## Code Lab embed
+
+The code lab embed enables you to embed DoSelect Learn's Code Labs environment within your LMS for a seamless learning experience. After you've create a new Code Lab from your Learn
+Dashboard, you must publish it and make the status `Active` before you can embed it.
+
+```html
+<!-- Embed for the code lab with slug "tysgh" -->
+<div class="doselect-embed" data-category="code-lab" data-slug="tysgh"></div>
+```
 
 ## Actions
 
