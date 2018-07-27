@@ -250,6 +250,17 @@
               </ul>
           </li>
           <li>
+            <a href="#rate-limits" class="toc-h1 toc-link" data-title="Rate Limits">Rate Limits</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#platform-api" class="toc-h2 toc-link" data-title="Rate Limits">Platform API</a>
+                  </li>
+                  <li>
+                    <a href="#embed-api" class="toc-h2 toc-link" data-title="Rate Limits">Embed API</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#test-api" class="toc-h1 toc-link" data-title="Test API">Test API</a>
               <ul class="toc-list-h2">
                   <li>
@@ -577,6 +588,98 @@ resource objects in such responses.</p>
 <td>The total number of objects in this resource list.</td>
 </tr>
 </tbody></table>
+<h1 id='rate-limits'>Rate Limits</h1>
+<p>The overview documentation describes the rate limit rules. This will help us prevent a Denial-of-Service (DoS) attack by a malicious user in case of our clients&#39; API key or embeds becoming exposed publicly.</p>
+<h2 id='platform-api'>Platform API</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">'https://api.doselect.com/platform/v1/test'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"DoSelect-Api-Key"</span><span class="p">:</span> <span class="s">"88d4266fd4e6338d13b845fcf28"</span><span class="p">,</span>
+    <span class="s">"DoSelect-Api-Secret"</span><span class="p">:</span> <span class="s">"385041b7bbc2320471b8551d"</span>
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doselect.com/platform/v1/test"</span>
+  -H <span class="s2">"DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28"</span> <span class="se">\</span>
+  -H <span class="s2">"DoSelect-Api-Secret: 385041b7bbc2320471b8551d"</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>HTTP/1.1 200 OK
+Date: Thu, 31 May 2018 17:27:06 IST
+Status: 200 OK
+
+&lt;Data&gt;
+
+X-RateLimit-Limit: 10000
+X-RateLimit-Remaining: 9999
+X-RateLimit-Reset: 1527750919
+
+</code></pre>
+<p>The platform APIs will have a per-hour limit based on the request type.
+These APIs will also have a per-second rate limit of 200. If a request fails due to the per second limit, then it will not be counted against the hourly limit.
+While calculating the rate-limit, if an API call has returned a 4xx response, it will be counted.</p>
+
+<p>These limits will be based on your unique API key.</p>
+
+<p>The per hour rate limits are:</p>
+
+<table><thead>
+<tr>
+<th>Request Method</th>
+<th>Limit per hour</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>GET</td>
+<td>10,000</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>2,000</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>2,000</td>
+</tr>
+<tr>
+<td>PATCH</td>
+<td>2,000</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>2,000</td>
+</tr>
+</tbody></table>
+
+<p>The platform APIs will have the following headers which will contain information regarding the rate-limit.</p>
+
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>X-RateLimit-Limit</code></td>
+<td>An integer denoting the limit for the request method type.</td>
+</tr>
+<tr>
+<td><code>X-RateLimit-Remaining</code></td>
+<td>An integer denoting the number of requests remaining.</td>
+</tr>
+<tr>
+<td><code>X-RateLimit-Reset</code></td>
+<td>An integer denoting the epoch time of the next reset of limits.</td>
+</tr>
+</tbody></table>
+<h2 id='embed-api'>Embed API</h2>
+<p>The embed APIs will be rate limited to 200 requests per second.
+These limits will be calculated based on the unique session ID to prevent a single malicious user from affecting the services.</p>
 <h1 id='test-api'>Test API</h1>
 <p>The Test API lets you retrieve tests that have been created in your team.</p>
 
@@ -4127,6 +4230,10 @@ Please contact your account manager or write to <a href="mailto:support@doselect
 <tr>
 <td>Jun 18, 2018</td>
 <td>Added <code>custom_body_class</code> attribute on <code>data-config</code> object for <a href="#problem-embed">problem / test embed</a> and <a href="#snippet-runner-embed">snippet runner embed</a></td>
+</tr>
+<tr>
+<td>Jun 01, 2018</td>
+<td>Added <a href="#rate-limits">rate limits</a> for our client APIs</td>
 </tr>
 <tr>
 <td>May 29, 2018</td>
