@@ -4,6 +4,7 @@ Date         | Description
 ------------ | -----------
 Jul 16, 2018 | Added [Code Lab embed](#code-lab-embed) and [REST](#code-lab-api) APIs
 Jun 18, 2018 | Added `custom_body_class` attribute on `data-config` object for [problem / test embed](#problem-embed) and [snippet runner embed](#snippet-runner-embed)
+Jun 01, 2018 | Added [rate limits](#rate-limits) for our client APIs
 May 29, 2018 | Added an API for [bulk creation of invites](#bulk-creation-of-invites)
 May 22, 2018 | Added an [API for downloading the code zip](#download-code-zip) and added `code_repo_uri` to the submission response
 May 15, 2018 | Added `DSC` (data science type) in [snippet runner embed](#snippet-runner-embed)

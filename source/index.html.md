@@ -14,6 +14,7 @@ includes:
  - authentication
  - errors
  - pagination
+ - rate_limits
  - test_api
  - invite_api
  - problem_api
