@@ -2,6 +2,7 @@
 
 Date         | Description
 ------------ | -----------
+Aug 6, 2018  | Added ability to [lock and unlock a problem](#locking-unlocking-a-problem), enable updating `score` and `penalty` in [Problem API](#update-a-problem)
 Jul 16, 2018 | Added [Code Lab embed](#code-lab-embed) and [REST](#code-lab-api) APIs
 Jun 18, 2018 | Added `custom_body_class` attribute on `data-config` object for [problem / test embed](#problem-embed) and [snippet runner embed](#snippet-runner-embed)
 Jun 01, 2018 | Added [rate limits](#rate-limits) for our client APIs

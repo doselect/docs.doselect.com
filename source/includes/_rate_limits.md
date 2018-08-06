@@ -1,7 +1,7 @@
 # Rate Limits
 The overview documentation describes the rate limit rules. This will help us prevent a Denial-of-Service (DoS) attack by a malicious user in case of our clients' API key or embeds becoming exposed publicly.
 
-## Platform API
+## Platform API limits
 > Request
 
 ```python
@@ -16,7 +16,7 @@ response = requests.get(url, headers=headers)
 ```
 
 ```shell
-curl "https://api.doselect.com/platform/v1/test"
+curl "https://api.doselect.com/platform/v1/test" \
   -H "DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28" \
   -H "DoSelect-Api-Secret: 385041b7bbc2320471b8551d"
 ```
@@ -60,7 +60,7 @@ Header                  | Description
 `X-RateLimit-Reset`     | An integer denoting the epoch time of the next reset of limits.
 
 
-## Embed API
+## Embed API limits
 
 The embed APIs will be rate limited to 200 requests per second.
 These limits will be calculated based on the unique session ID to prevent a single malicious user from affecting the services.

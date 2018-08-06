@@ -53,7 +53,7 @@ response = requests.get(url, headers=headers)
 ```
 
 ```shell
-curl "https://api.doselect.com/platform/v1/test"
+curl "https://api.doselect.com/platform/v1/test" \
   -H "DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28" \
   -H "DoSelect-Api-Secret: 385041b7bbc2320471b8551d"
 ```
@@ -142,7 +142,7 @@ response = requests.get(url, headers=headers)
 ```
 
 ```shell
-curl "https://api.doselect.com/platform/v1/test/esows"
+curl "https://api.doselect.com/platform/v1/test/esows" \
   -H "DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28" \
   -H "DoSelect-Api-Secret: 385041b7bbc2320471b8551d"
 ```
@@ -225,7 +225,7 @@ response = requests.get(url, headers=headers)
 ```
 
 ```shell
-curl "https://api.doselect.com/platform/v1/test/esows/candidates"
+curl "https://api.doselect.com/platform/v1/test/esows/candidates" \
   -H "DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28" \
   -H "DoSelect-Api-Secret: 385041b7bbc2320471b8551d"
 ```
@@ -300,7 +300,7 @@ response = requests.get(url, headers=headers)
 ```
 
 ```shell
-curl "https://api.doselect.com/platform/v1/test/4242/candidates/donnie@campushash.com/report"
+curl "https://api.doselect.com/platform/v1/test/4242/candidates/donnie@campushash.com/report" \
   -H "DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28" \
   -H "DoSelect-Api-Secret: 385041b7bbc2320471b8551d"
 ```

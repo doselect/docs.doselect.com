@@ -23,7 +23,7 @@ response = requests.get(url, headers=headers)
 ```
 
 ```shell
-curl "https://api.doselect.com/platform/v1/codelab"
+curl "https://api.doselect.com/platform/v1/codelab" \
   -H "DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28" \
   -H "DoSelect-Api-Secret: 385041b7bbc2320471b8551d"
 ```
@@ -83,7 +83,7 @@ response = requests.get(url, headers=headers)
 ```
 
 ```shell
-curl "https://api.doselect.com/platform/v1/codelab/ykb92"
+curl "https://api.doselect.com/platform/v1/codelab/ykb92" \
   -H "DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28" \
   -H "DoSelect-Api-Secret: 385041b7bbc2320471b8551d"
 ```
@@ -131,7 +131,7 @@ response = requests.get(url, headers=headers)
 ```
 
 ```shell
-curl "https://api.doselect.com/platform/v1/codelab/e2mlk/participants"
+curl "https://api.doselect.com/platform/v1/codelab/e2mlk/participants" \
   -H "DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28" \
   -H "DoSelect-Api-Secret: 385041b7bbc2320471b8551d"
 ```

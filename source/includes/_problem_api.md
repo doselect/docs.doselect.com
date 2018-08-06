@@ -25,7 +25,7 @@ response = requests.get(url, headers=headers)
 ```
 
 ```shell
-curl "https://api.doselect.com/platform/v1/problem"
+curl "https://api.doselect.com/platform/v1/problem" \
   -H "DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28" \
   -H "DoSelect-Api-Secret: 385041b7bbc2320471b8551d"
 ```
@@ -93,7 +93,7 @@ response = requests.get(url, headers=headers)
 ```
 
 ```shell
-curl "https://api.doselect.com/platform/v1/problem/esows"
+curl "https://api.doselect.com/platform/v1/problem/esows" \
   -H "DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28" \
   -H "DoSelect-Api-Secret: 385041b7bbc2320471b8551d"
 ```
@@ -143,7 +143,7 @@ response = requests.get(url, headers=headers)
 ```
 
 ```shell
-curl "https://api.doselect.com/platform/v1/problem/esows/solution"
+curl "https://api.doselect.com/platform/v1/problem/esows/solution" \
   -H "DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28" \
   -H "DoSelect-Api-Secret: 385041b7bbc2320471b8551d"
 ```
@@ -251,7 +251,7 @@ headers = {
 response = requests.get(url, headers=headers)
 ```
 ```shell
-curl "https://api.doselect.com/platform/v1/submission/mmoe0/revisions/john@example.com"
+curl "https://api.doselect.com/platform/v1/submission/mmoe0/revisions/john@example.com" \
   -H "DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28" \
   -H "DoSelect-Api-Secret: 385041b7bbc2320471b8551d"
 ```
@@ -316,7 +316,7 @@ response = requests.get(url, headers=headers)
 ```
 
 ```shell
-curl "https://api.doselect.com/platform/v1/problem/esows/solution/john@example.com/"
+curl "https://api.doselect.com/platform/v1/problem/esows/solution/john@example.com/" \
   -H "DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28" \
   -H "DoSelect-Api-Secret: 385041b7bbc2320471b8551d"
 ```
@@ -447,7 +447,7 @@ response = requests.post(url, headers=headers, data=payload)
 ```
 
 ```shell
-curl -X POST "https://api.doselect.com/platform/v1/problem/"
+curl -X POST "https://api.doselect.com/platform/v1/problem/" \
   -H "DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28" \
   -H "DoSelect-Api-Secret: 385041b7bbc2320471b8551d" \
   -d '{
@@ -614,7 +614,7 @@ response = requests.post(url, headers=headers)
 ```
 
 ```shell
-curl -X POST "https://api.doselect.com/platform/v1/problem/481bo/clone"
+curl -X POST "https://api.doselect.com/platform/v1/problem/481bo/clone" \
   -H "DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28" \
   -H "DoSelect-Api-Secret: 385041b7bbc2320471b8551d"
 ```
@@ -661,6 +661,21 @@ curl -X POST "https://api.doselect.com/platform/v1/problem/481bo/clone"
 This API clones a problem identified by the `slug`. The response will contain the data of the new problem.
 
 
+## Locking / unlocking a problem
+
+DoSelect allows you to lock a problem to prevent inadvertent changes to it. Using this API, the lock status can be modified.
+
+For locking a problem:
+
+`POST https://api.doselect.com/platform/v1/problem/<PROBLEM_SLUG>/lock`
+
+For unlocking a problem:
+
+`POST https://api.doselect.com/platform/v1/problem/<PROBLEM_SLUG>/unlock`
+
+These endpoints return a status code of `200` if the operation is successful.
+
+
 ## Update a problem
 
 > Request
@@ -680,7 +695,9 @@ payload = {
   "tags": [
     "Java"
   ],
-  "description": "A new description of the problem"
+  "description": "A new description of the problem",
+  "score": 10,
+  "penalty": 5
 }
 
 
@@ -688,7 +705,7 @@ response = requests.patch(url, data=payload, headers=headers)
 ```
 
 ```shell
-curl -X PATCH "https://api.doselect.com/platform/v1/problem/q3w8q"
+curl -X PATCH "https://api.doselect.com/platform/v1/problem/q3w8q" \
   -H "DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28" \
   -H "DoSelect-Api-Secret: 385041b7bbc2320471b8551d" \
   -d '{
@@ -715,11 +732,11 @@ curl -X PATCH "https://api.doselect.com/platform/v1/problem/q3w8q"
     "max_submissions": 0,
     "modified": "2017-11-24T09:36:19.239739",
     "name": "Updated Problem Name",
-    "penalty": 0,
+    "penalty": 5,
     "problem_type": "SCR",
     "resource_uri": "/platform/v1/problem/q3w8q",
     "sample_solutions": {},
-    "score": 100,
+    "score": 10,
     "slug": "q3w8q",
     "stubs": {},
     "tags": [
@@ -739,6 +756,7 @@ curl -X PATCH "https://api.doselect.com/platform/v1/problem/q3w8q"
     "time_limit_secs": null
 }
 ```
+
 This API updates a problem identified by it's `slug`.
 The allowed update fields are:
 
@@ -747,3 +765,7 @@ Field Name          | Type       | Description
 name                | string     | The name of the problem
 description         | string     | The description of the problem
 tags                | array      | A list of strings of discovery tags
+score               | float      | Max points awarded if the solution is correct
+penalty             | float      | Max penalty if the solution is incorrect
+
+Please note that you must unlock a problem if it's locked in order to update it.

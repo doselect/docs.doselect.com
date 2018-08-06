@@ -133,7 +133,7 @@ response = requests.get(url, headers=headers)
 ```
 
 ```shell
-curl "https://api.doselect.com/platform/v1/submission/mmoe0"
+curl "https://api.doselect.com/platform/v1/submission/mmoe0" \
   -H "DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28" \
   -H "DoSelect-Api-Secret: 385041b7bbc2320471b8551d"
 ```
@@ -250,7 +250,7 @@ with open("code-repo.zip", "w+") as f:
 ```
 
 ```shell
-curl "https://api.doselect.com/platform/v1/submission/mmoe0/code-repo"
+curl "https://api.doselect.com/platform/v1/submission/mmoe0/code-repo" \
   -H "DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28" \
   -H "DoSelect-Api-Secret: 385041b7bbc2320471b8551d"
   > code-repo.zip

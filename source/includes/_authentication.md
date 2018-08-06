@@ -16,7 +16,7 @@ response = requests.get(url, headers=headers)
 ```
 
 ```shell
-curl "https://api.doselect.com/platform/v1/test"
+curl "https://api.doselect.com/platform/v1/test" \
   -H "DoSelect-API-Key: 88d4266fd4e6338d13b845fcf28" \
   -H "DoSelect-API-Secret: 385041b7bbc2320471b8551d"
 ```
