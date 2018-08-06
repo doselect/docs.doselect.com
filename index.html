@@ -253,10 +253,10 @@
             <a href="#rate-limits" class="toc-h1 toc-link" data-title="Rate Limits">Rate Limits</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#platform-api" class="toc-h2 toc-link" data-title="Rate Limits">Platform API</a>
+                    <a href="#platform-api-limits" class="toc-h2 toc-link" data-title="Rate Limits">Platform API limits</a>
                   </li>
                   <li>
-                    <a href="#embed-api" class="toc-h2 toc-link" data-title="Rate Limits">Embed API</a>
+                    <a href="#embed-api-limits" class="toc-h2 toc-link" data-title="Rate Limits">Embed API limits</a>
                   </li>
               </ul>
           </li>
@@ -323,6 +323,9 @@
                   </li>
                   <li>
                     <a href="#clone-a-problem" class="toc-h2 toc-link" data-title="Problem API">Clone a problem</a>
+                  </li>
+                  <li>
+                    <a href="#locking-unlocking-a-problem" class="toc-h2 toc-link" data-title="Problem API">Locking / unlocking a problem</a>
                   </li>
                   <li>
                     <a href="#update-a-problem" class="toc-h2 toc-link" data-title="Problem API">Update a problem</a>
@@ -477,7 +480,7 @@ Please contact your account manager or write to <a href="mailto:support@doselect
 <span class="p">}</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doselect.com/platform/v1/test"</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doselect.com/platform/v1/test"</span> <span class="se">\</span>
   -H <span class="s2">"DoSelect-API-Key: 88d4266fd4e6338d13b845fcf28"</span> <span class="se">\</span>
   -H <span class="s2">"DoSelect-API-Secret: 385041b7bbc2320471b8551d"</span>
 </code></pre>
@@ -590,7 +593,7 @@ resource objects in such responses.</p>
 </tbody></table>
 <h1 id='rate-limits'>Rate Limits</h1>
 <p>The overview documentation describes the rate limit rules. This will help us prevent a Denial-of-Service (DoS) attack by a malicious user in case of our clients&#39; API key or embeds becoming exposed publicly.</p>
-<h2 id='platform-api'>Platform API</h2>
+<h2 id='platform-api-limits'>Platform API limits</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -602,7 +605,7 @@ resource objects in such responses.</p>
     <span class="s">"DoSelect-Api-Secret"</span><span class="p">:</span> <span class="s">"385041b7bbc2320471b8551d"</span>
 <span class="p">}</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doselect.com/platform/v1/test"</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doselect.com/platform/v1/test"</span> <span class="se">\</span>
   -H <span class="s2">"DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28"</span> <span class="se">\</span>
   -H <span class="s2">"DoSelect-Api-Secret: 385041b7bbc2320471b8551d"</span>
 </code></pre>
@@ -677,7 +680,7 @@ While calculating the rate-limit, if an API call has returned a 4xx response, it
 <td>An integer denoting the epoch time of the next reset of limits.</td>
 </tr>
 </tbody></table>
-<h2 id='embed-api'>Embed API</h2>
+<h2 id='embed-api-limits'>Embed API limits</h2>
 <p>The embed APIs will be rate limited to 200 requests per second.
 These limits will be calculated based on the unique session ID to prevent a single malicious user from affecting the services.</p>
 <h1 id='test-api'>Test API</h1>
@@ -841,7 +844,7 @@ These limits will be calculated based on the unique session ID to prevent a sing
     <span class="s">"DoSelect-Api-Secret"</span><span class="p">:</span> <span class="s">"385041b7bbc2320471b8551d"</span>
 <span class="p">}</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doselect.com/platform/v1/test"</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doselect.com/platform/v1/test"</span> <span class="se">\</span>
   -H <span class="s2">"DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28"</span> <span class="se">\</span>
   -H <span class="s2">"DoSelect-Api-Secret: 385041b7bbc2320471b8551d"</span>
 </code></pre>
@@ -920,7 +923,7 @@ These limits will be calculated based on the unique session ID to prevent a sing
     <span class="s">"DoSelect-Api-Secret"</span><span class="p">:</span> <span class="s">"385041b7bbc2320471b8551d"</span>
 <span class="p">}</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doselect.com/platform/v1/test/esows"</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doselect.com/platform/v1/test/esows"</span> <span class="se">\</span>
   -H <span class="s2">"DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28"</span> <span class="se">\</span>
   -H <span class="s2">"DoSelect-Api-Secret: 385041b7bbc2320471b8551d"</span>
 </code></pre>
@@ -994,7 +997,7 @@ These limits will be calculated based on the unique session ID to prevent a sing
     <span class="s">"DoSelect-Api-Secret"</span><span class="p">:</span> <span class="s">"385041b7bbc2320471b8551d"</span>
 <span class="p">}</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doselect.com/platform/v1/test/esows/candidates"</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doselect.com/platform/v1/test/esows/candidates"</span> <span class="se">\</span>
   -H <span class="s2">"DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28"</span> <span class="se">\</span>
   -H <span class="s2">"DoSelect-Api-Secret: 385041b7bbc2320471b8551d"</span>
 </code></pre>
@@ -1118,7 +1121,7 @@ These limits will be calculated based on the unique session ID to prevent a sing
     <span class="s">"DoSelect-Api-Secret"</span><span class="p">:</span> <span class="s">"385041b7bbc2320471b8551d"</span>
 <span class="p">}</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doselect.com/platform/v1/test/4242/candidates/donnie@campushash.com/report"</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doselect.com/platform/v1/test/4242/candidates/donnie@campushash.com/report"</span> <span class="se">\</span>
   -H <span class="s2">"DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28"</span> <span class="se">\</span>
   -H <span class="s2">"DoSelect-Api-Secret: 385041b7bbc2320471b8551d"</span>
 </code></pre>
@@ -1846,7 +1849,7 @@ within your team, as well as by a particular user identified by email.</p>
     <span class="s">"DoSelect-Api-Secret"</span><span class="p">:</span> <span class="s">"385041b7bbc2320471b8551d"</span>
 <span class="p">}</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doselect.com/platform/v1/problem"</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doselect.com/platform/v1/problem"</span> <span class="se">\</span>
   -H <span class="s2">"DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28"</span> <span class="se">\</span>
   -H <span class="s2">"DoSelect-Api-Secret: 385041b7bbc2320471b8551d"</span>
 </code></pre>
@@ -1931,7 +1934,7 @@ The query can contain any combination of these parameters.</p>
     <span class="s">"DoSelect-Api-Secret"</span><span class="p">:</span> <span class="s">"385041b7bbc2320471b8551d"</span>
 <span class="p">}</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doselect.com/platform/v1/problem/esows"</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doselect.com/platform/v1/problem/esows"</span> <span class="se">\</span>
   -H <span class="s2">"DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28"</span> <span class="se">\</span>
   -H <span class="s2">"DoSelect-Api-Secret: 385041b7bbc2320471b8551d"</span>
 </code></pre>
@@ -1972,7 +1975,7 @@ The query can contain any combination of these parameters.</p>
     <span class="s">"DoSelect-Api-Secret"</span><span class="p">:</span> <span class="s">"385041b7bbc2320471b8551d"</span>
 <span class="p">}</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doselect.com/platform/v1/problem/esows/solution"</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doselect.com/platform/v1/problem/esows/solution"</span> <span class="se">\</span>
   -H <span class="s2">"DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28"</span> <span class="se">\</span>
   -H <span class="s2">"DoSelect-Api-Secret: 385041b7bbc2320471b8551d"</span>
 </code></pre>
@@ -2072,7 +2075,7 @@ The query can contain any combination of these parameters.</p>
     <span class="s">"DoSelect-Api-Secret"</span><span class="p">:</span> <span class="s">"385041b7bbc2320471b8551d"</span>
 <span class="p">}</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doselect.com/platform/v1/submission/mmoe0/revisions/john@example.com"</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doselect.com/platform/v1/submission/mmoe0/revisions/john@example.com"</span> <span class="se">\</span>
   -H <span class="s2">"DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28"</span> <span class="se">\</span>
   -H <span class="s2">"DoSelect-Api-Secret: 385041b7bbc2320471b8551d"</span>
 </code></pre>
@@ -2128,7 +2131,7 @@ The query can contain any combination of these parameters.</p>
     <span class="s">"DoSelect-Api-Secret"</span><span class="p">:</span> <span class="s">"385041b7bbc2320471b8551d"</span>
 <span class="p">}</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doselect.com/platform/v1/problem/esows/solution/john@example.com/"</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doselect.com/platform/v1/problem/esows/solution/john@example.com/"</span> <span class="se">\</span>
   -H <span class="s2">"DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28"</span> <span class="se">\</span>
   -H <span class="s2">"DoSelect-Api-Secret: 385041b7bbc2320471b8551d"</span>
 </code></pre>
@@ -2249,7 +2252,7 @@ The query can contain any combination of these parameters.</p>
     <span class="p">]</span>
 <span class="p">}</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.doselect.com/platform/v1/problem/"</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.doselect.com/platform/v1/problem/"</span> <span class="se">\</span>
   -H <span class="s2">"DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28"</span> <span class="se">\</span>
   -H <span class="s2">"DoSelect-Api-Secret: 385041b7bbc2320471b8551d"</span> <span class="se">\</span>
   -d <span class="s1">'{
@@ -2582,7 +2585,7 @@ If any field other than the ones mentioned above is sent then the API will throw
 <span class="p">}</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.doselect.com/platform/v1/problem/481bo/clone"</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.doselect.com/platform/v1/problem/481bo/clone"</span> <span class="se">\</span>
   -H <span class="s2">"DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28"</span> <span class="se">\</span>
   -H <span class="s2">"DoSelect-Api-Secret: 385041b7bbc2320471b8551d"</span>
 </code></pre>
@@ -2626,6 +2629,18 @@ If any field other than the ones mentioned above is sent then the API will throw
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This API clones a problem identified by the <code>slug</code>. The response will contain the data of the new problem.</p>
+<h2 id='locking-unlocking-a-problem'>Locking / unlocking a problem</h2>
+<p>DoSelect allows you to lock a problem to prevent inadvertent changes to it. Using this API, the lock status can be modified.</p>
+
+<p>For locking a problem:</p>
+
+<p><code>POST https://api.doselect.com/platform/v1/problem/&lt;PROBLEM_SLUG&gt;/lock</code></p>
+
+<p>For unlocking a problem:</p>
+
+<p><code>POST https://api.doselect.com/platform/v1/problem/&lt;PROBLEM_SLUG&gt;/unlock</code></p>
+
+<p>These endpoints return a status code of <code>200</code> if the operation is successful.</p>
 <h2 id='update-a-problem'>Update a problem</h2>
 <blockquote>
 <p>Request</p>
@@ -2644,12 +2659,14 @@ If any field other than the ones mentioned above is sent then the API will throw
   <span class="s">"tags"</span><span class="p">:</span> <span class="p">[</span>
     <span class="s">"Java"</span>
   <span class="p">],</span>
-  <span class="s">"description"</span><span class="p">:</span> <span class="s">"A new description of the problem"</span>
+  <span class="s">"description"</span><span class="p">:</span> <span class="s">"A new description of the problem"</span><span class="p">,</span>
+  <span class="s">"score"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="s">"penalty"</span><span class="p">:</span> <span class="mi">5</span>
 <span class="p">}</span>
 
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl -X PATCH <span class="s2">"https://api.doselect.com/platform/v1/problem/q3w8q"</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X PATCH <span class="s2">"https://api.doselect.com/platform/v1/problem/q3w8q"</span> <span class="se">\</span>
   -H <span class="s2">"DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28"</span> <span class="se">\</span>
   -H <span class="s2">"DoSelect-Api-Secret: 385041b7bbc2320471b8551d"</span> <span class="se">\</span>
   -d <span class="s1">'{
@@ -2675,11 +2692,11 @@ If any field other than the ones mentioned above is sent then the API will throw
     </span><span class="s2">"max_submissions"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-11-24T09:36:19.239739"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Updated Problem Name"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"penalty"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"penalty"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
     </span><span class="s2">"problem_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SCR"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"resource_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/problem/q3w8q"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"sample_solutions"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-    </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
     </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"q3w8q"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"stubs"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
     </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -2724,7 +2741,19 @@ The allowed update fields are:</p>
 <td>array</td>
 <td>A list of strings of discovery tags</td>
 </tr>
+<tr>
+<td>score</td>
+<td>float</td>
+<td>Max points awarded if the solution is correct</td>
+</tr>
+<tr>
+<td>penalty</td>
+<td>float</td>
+<td>Max penalty if the solution is incorrect</td>
+</tr>
 </tbody></table>
+
+<p>Please note that you must unlock a problem if it&#39;s locked in order to update it.</p>
 <h1 id='problem-testcase-api'>Problem Testcase API</h1>
 <p>The Problem testcase API allows you to retrieve all testcases of one problem on DoSelect.
 You can also create and delete the testcases of a problem.</p>
@@ -3221,7 +3250,7 @@ code which was uploaded by the user.
     <span class="s">"DoSelect-Api-Secret"</span><span class="p">:</span> <span class="s">"385041b7bbc2320471b8551d"</span>
 <span class="p">}</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doselect.com/platform/v1/submission/mmoe0"</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doselect.com/platform/v1/submission/mmoe0"</span> <span class="se">\</span>
   -H <span class="s2">"DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28"</span> <span class="se">\</span>
   -H <span class="s2">"DoSelect-Api-Secret: 385041b7bbc2320471b8551d"</span>
 </code></pre>
@@ -3352,7 +3381,7 @@ code which was uploaded by the user.
 
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"code-repo.zip"</span><span class="p">,</span> <span class="s">"w+"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doselect.com/platform/v1/submission/mmoe0/code-repo"</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doselect.com/platform/v1/submission/mmoe0/code-repo"</span> <span class="se">\</span>
   -H <span class="s2">"DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28"</span> <span class="se">\</span>
   -H <span class="s2">"DoSelect-Api-Secret: 385041b7bbc2320471b8551d"</span>
   &gt; code-repo.zip
@@ -3384,7 +3413,7 @@ Learn account. This is a read-only API.</p>
     <span class="s">"DoSelect-Api-Secret"</span><span class="p">:</span> <span class="s">"385041b7bbc2320471b8551d"</span>
 <span class="p">}</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doselect.com/platform/v1/codelab"</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doselect.com/platform/v1/codelab"</span> <span class="se">\</span>
   -H <span class="s2">"DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28"</span> <span class="se">\</span>
   -H <span class="s2">"DoSelect-Api-Secret: 385041b7bbc2320471b8551d"</span>
 </code></pre>
@@ -3434,7 +3463,7 @@ Learn account. This is a read-only API.</p>
     <span class="s">"DoSelect-Api-Secret"</span><span class="p">:</span> <span class="s">"385041b7bbc2320471b8551d"</span>
 <span class="p">}</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doselect.com/platform/v1/codelab/ykb92"</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doselect.com/platform/v1/codelab/ykb92"</span> <span class="se">\</span>
   -H <span class="s2">"DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28"</span> <span class="se">\</span>
   -H <span class="s2">"DoSelect-Api-Secret: 385041b7bbc2320471b8551d"</span>
 </code></pre>
@@ -3473,7 +3502,7 @@ Learn account. This is a read-only API.</p>
     <span class="s">"DoSelect-Api-Secret"</span><span class="p">:</span> <span class="s">"385041b7bbc2320471b8551d"</span>
 <span class="p">}</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doselect.com/platform/v1/codelab/e2mlk/participants"</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doselect.com/platform/v1/codelab/e2mlk/participants"</span> <span class="se">\</span>
   -H <span class="s2">"DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28"</span> <span class="se">\</span>
   -H <span class="s2">"DoSelect-Api-Secret: 385041b7bbc2320471b8551d"</span>
 </code></pre>
@@ -4223,6 +4252,10 @@ Please contact your account manager or write to <a href="mailto:support@doselect
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>Aug 6, 2018</td>
+<td>Added ability to <a href="#locking-unlocking-a-problem">lock and unlock a problem</a>, enable updating <code>score</code> and <code>penalty</code> in <a href="#update-a-problem">Problem API</a></td>
+</tr>
 <tr>
 <td>Jul 16, 2018</td>
 <td>Added <a href="#code-lab-embed">Code Lab embed</a> and <a href="#code-lab-api">REST</a> APIs</td>
