@@ -272,3 +272,40 @@ unique `slug` which is generated during creation.
 
 Currently, this API will only support the downloading of code for `PRJ` and
 `UIX` submissions.
+
+
+## Submit an existing submission
+
+> Request
+
+```python
+import requests
+
+url = "https://api.doselect.com/platform/v1/submission/28g9a/submit/"
+
+headers = {
+    'DoSelect-Api-Key': "88d4266fd4e6338d13b845fcf28",
+    'DoSelect-Api-Secret': "385041b7bbc2320471b8551d",
+    'Content-Type': "application/json"
+    }
+
+response = requests.request("POST", url, headers=headers)
+```
+
+```shell
+curl -X POST \
+  https://api.doselect.com/platform/v1/submission/28g9a/submit \
+  -H 'Content-Type: application/json' \
+  -H 'DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28' \
+  -H 'DoSelect-Api-Secret: 385041b7bbc2320471b8551d'
+```
+
+> Response
+
+```
+{
+    "status": "SUCCESS",
+    "message": "A new submission has been triggered for this solution."
+}
+```
+This endpoint submits an existing submission for a specific problem, identified by the submission's `slug`.
