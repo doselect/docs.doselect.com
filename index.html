@@ -366,6 +366,9 @@
                   <li>
                     <a href="#download-code-zip" class="toc-h2 toc-link" data-title="Submission API">Download code zip</a>
                   </li>
+                  <li>
+                    <a href="#submit-an-existing-submission" class="toc-h2 toc-link" data-title="Submission API">Submit an existing submission</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -3398,6 +3401,36 @@ unique <code>slug</code> which is generated during creation.</p>
 
 <p>Currently, this API will only support the downloading of code for <code>PRJ</code> and
 <code>UIX</code> submissions.</p>
+<h2 id='submit-an-existing-submission'>Submit an existing submission</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.doselect.com/platform/v1/submission/28g9a/submit/"</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'DoSelect-Api-Key'</span><span class="p">:</span> <span class="s">"88d4266fd4e6338d13b845fcf28"</span><span class="p">,</span>
+    <span class="s">'DoSelect-Api-Secret'</span><span class="p">:</span> <span class="s">"385041b7bbc2320471b8551d"</span><span class="p">,</span>
+    <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json"</span>
+    <span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  https://api.doselect.com/platform/v1/submission/28g9a/submit <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28'</span> <span class="se">\</span>
+  -H <span class="s1">'DoSelect-Api-Secret: 385041b7bbc2320471b8551d'</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "status": "SUCCESS",
+    "message": "A new submission has been triggered for this solution."
+}
+</code></pre>
+<p>This endpoint submits an existing submission for a specific problem, identified by the submission&#39;s <code>slug</code>.</p>
 <h1 id='code-lab-api'>Code Lab API</h1>
 <p>The Code Lab API allows you to retrieve Code Labs that have been created from your
 Learn account. This is a read-only API.</p>
