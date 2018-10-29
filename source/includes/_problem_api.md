@@ -697,7 +697,8 @@ payload = {
   ],
   "description": "A new description of the problem",
   "score": 10,
-  "penalty": 5
+  "penalty": 5,
+  "max_submissions": 10
 }
 
 
@@ -713,7 +714,8 @@ curl -X PATCH "https://api.doselect.com/platform/v1/problem/q3w8q" \
   "tags": [
     "Java"
   ],
-  "description": "A new description of the problem"
+  "description": "A new description of the problem",
+  "max_submissions": 10
 }'
 ```
 
@@ -729,7 +731,7 @@ curl -X PATCH "https://api.doselect.com/platform/v1/problem/q3w8q" \
     "is_active": true,
     "is_locked": false,
     "level": "MED",
-    "max_submissions": 0,
+    "max_submissions": 10,
     "modified": "2017-11-24T09:36:19.239739",
     "name": "Updated Problem Name",
     "penalty": 5,
@@ -767,5 +769,6 @@ description         | string     | The description of the problem
 tags                | array      | A list of strings of discovery tags
 score               | float      | Max points awarded if the solution is correct
 penalty             | float      | Max penalty if the solution is incorrect
+max_submissions     | integer    | Maximum number of submissions allowed on a problem
 
 Please note that you must unlock a problem if it's locked in order to update it.
