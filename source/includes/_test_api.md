@@ -409,4 +409,60 @@ quality_verdict | string     | `good`, `ok`, `bad`| The verdict based on the cod
 verdict         | string     | `Not qualified`, `Qualified`, `Outstanding`| The verdict on the candidate
 
 
+## Get a candidate's previous attempts
+
+> Request
+
+```python
+import requests
+
+url = 'https://api.doselect.com/platform/v1/test/4242/candidates/donnie@campushash.com/past_reports'
+headers = {
+    "DoSelect-Api-Key": "88d4266fd4e6338d13b845fcf28",
+    "DoSelect-Api-Secret": "385041b7bbc2320471b8551d"
+}
+response = requests.get(url, headers=headers)
+```
+
+```shell
+curl "https://api.doselect.com/platform/v1/test/4242/candidates/donnie@campushash.com/past_reports" \
+  -H "DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28" \
+  -H "DoSelect-Api-Secret: 385041b7bbc2320471b8551d"
+```
+
+> Response
+
+```json
+{
+    "reports": [{
+        "time_taken": 1202, # in seconds
+        "total_problems": 10,
+        "total_score": 120,
+        "total_solutions": 9,
+        "report_uri": "/platform/v1/past_report/23498"
+    }]
+}
+```
+
+This endpoint retrieves the past reports of one candidate in a test. For example, if a candidate's test has been reset,
+or the candidate retakes a test, this is visible in the endpoint.
+
+### HTTP Request
+
+`GET https://api.doselect.com/platform/v1/test/<slug>/
+candidates/<email>/past_reports`
+
+
+The report which can be accessed from our APIs will contain the following information:
+
+
+Field Name        | Type  | Description
+----------        | ---------  | -----------
+report_uri        | string     | The URI for a particular attempt
+total_solutions   | integer    | The number of solutions submitted by the candidate
+total_score       | float      | The total score of this candidate
+total_problems    | integer    | Total problems that had to be solved
+time_taken        | float      | Total time taken by the candidate in seconds
+
+
 
