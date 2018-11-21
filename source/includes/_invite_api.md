@@ -389,7 +389,7 @@ This will delete all existing data about the user's test report in our system an
 ```python
 import requests
 
-url = "https://api.central.dev.sg1.chsh.in/platform/v1/test/2edq1/candidates/hemil@doselect.com"
+url = "https://api.doselect.com/platform/v1/test/2edq1/candidates/hemil@doselect.com"
 
 payload = {
 	"expiry": "2018-01-31T15:17:35+05:30",
@@ -408,7 +408,7 @@ response = requests.request("PATCH", url, data=payload, headers=headers)
 
 ```shell
 curl -X PATCH \
-  'https://api.central.dev.sg1.chsh.in/platform/v1/test/2edq1/candidates/hemil@doselect.com' \
+  'https://api.doselect.com/platform/v1/test/2edq1/candidates/hemil@doselect.com' \
   -H 'Doselect-Api-Key: 88d4266fd4e6338d13b845fcf28' \
   -H 'Doselect-Api-Secret: 385041b7bbc2320471b8551d' \
   -d '{
@@ -421,7 +421,7 @@ curl -X PATCH \
 
 ```json
 {
-    "candidate_access_url": "https://central.dev.sg1.chsh.in/gateways/test?access_code=7HEdD1C7cis6RA46k214h0GbJB7ZupX3xxuhdH1/znaPCr4x453nCICbR",
+    "candidate_access_url": "https://doselect.com/gateways/test?access_code=7HEdD1C7cis6RA46k214h0GbJB7ZupX3xxuhdH1/znaPCr4x453nCICbR",
     "email": "hemil@doselect.com",
     "expiry": "2018-01-31T15:17:35+05:30",
     "report": null,
@@ -447,3 +447,64 @@ This API will only work for the aforementioned fields and will throw an `400 BAD
 
 `PATCH https://api.doselect.com/platform/v1/test/<slug>/
 candidates/<email>/`
+
+## Extend an invite's test duration
+
+> Request
+
+```python
+import requests
+
+url = "https://api.doselect.com/platform/v1/test/2edq1/candidates/hemil@doselect.com/extend_duration"
+
+payload = {
+	"minutes": 15,
+}
+
+headers = {
+    'Doselect-Api-Key': "88d4266fd4e6338d13b845fcf28",
+    'Doselect-Api-Secret': "385041b7bbc2320471b8551d",
+    'Content-Type': "application/json",
+}
+
+response = requests.request("POST", url, data=payload, headers=headers)
+
+```
+
+```shell
+curl -X PATCH \
+  'https://api.doselect.com/platform/v1/test/2edq1/candidates/hemil@doselect.com/extend_duration' \
+  -H 'Doselect-Api-Key: 88d4266fd4e6338d13b845fcf28' \
+  -H 'Doselect-Api-Secret: 385041b7bbc2320471b8551d' \
+  -d '{
+	"minutes": 10,
+}'
+```
+
+> Response
+
+```json
+{
+    "candidate_access_url": "https://doselect.com/gateways/test?access_code=7HEdD1C7cis6RA46k214h0GbJB7ZupX3xxuhdH1/znaPCr4x453nCICbR",
+    "email": "hemil@doselect.com",
+    "expiry": "2018-01-31T15:17:35+05:30"
+}
+```
+
+This endpoint updates the end time for a test invite.
+
+The request takes one param in the request body:
+
+Title      | Type   | Description
+---------- | ------ | -----------
+minutes    | string | Number of minutes by which to extend the test's duration
+
+The API works only if the candidate has started the test. If not, `Bad Request` (400) is returned.
+The test extension is supposed to be synchronous. It means that if the test is supposed to end at 20:00 UTC, and
+extended by 20 minutes, the test will now end at 20:20 UTC. If the candidate is offline at this period, they will
+not be able to use this extended time.
+
+### HTTP Request
+
+`POST https://api.doselect.com/platform/v1/test/<slug>/
+candidates/<email>/extend_duration`

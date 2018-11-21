@@ -170,7 +170,7 @@ creator_email | string | The email of the user who made the problem
 	"object": {
 		"creator_email": "",
 		"problem_slug": "o94yw",
-		"problem_uri": "http://api.central.dev.sg1.chsh.in/platform/v1/problem/o94yw"
+		"problem_uri": "http://api.doselect.com/platform/v1/problem/o94yw"
 	}
 }
 ```
