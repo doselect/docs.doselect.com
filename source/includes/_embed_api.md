@@ -96,6 +96,7 @@ Attribute | Type | Description
 allow_submission | boolean | Dynamically control if the submissions are allowed for a problem at the moment. This is only available in a problem embed.
 show_solution_revisions | boolean | Control if solution revisions should be visible.
 custom_body_class | string | Define custom class to the embed's body element. For multiple classes, use class names in a space seperated string.
+show_report | boolean | Control if the quality analysis of a solution should be visible in the embed. This only works for coding, selenium, data science and machine learning problems.
 
 Please note that the problem must be added to your Learn team's feed before it can be used in an embed.
 
@@ -110,7 +111,6 @@ Problem type | Description
 `UIX`        | UI/UX problem
 `PRJ`        | Project-based problem
 `APP`        | Full stack app problem
-`DBA`        | Database problem
 
 ### Sample solutions of a problem
 
