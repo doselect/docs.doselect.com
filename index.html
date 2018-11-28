@@ -275,6 +275,9 @@
                   <li>
                     <a href="#get-a-candidate-39-s-report" class="toc-h2 toc-link" data-title="Test API">Get a candidate's report</a>
                   </li>
+                  <li>
+                    <a href="#get-a-candidate-39-s-previous-attempts" class="toc-h2 toc-link" data-title="Test API">Get a candidate's previous attempts</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -297,6 +300,9 @@
                   </li>
                   <li>
                     <a href="#update-an-invite" class="toc-h2 toc-link" data-title="Invite API">Update an invite</a>
+                  </li>
+                  <li>
+                    <a href="#extend-an-invite-39-s-test-duration" class="toc-h2 toc-link" data-title="Invite API">Extend an invite's test duration</a>
                   </li>
               </ul>
           </li>
@@ -1338,6 +1344,76 @@ candidates/&lt;email&gt;/report</code></p>
 <td>The verdict on the candidate</td>
 </tr>
 </tbody></table>
+<h2 id='get-a-candidate-39-s-previous-attempts'>Get a candidate&#39;s previous attempts</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">'https://api.doselect.com/platform/v1/test/4242/candidates/donnie@campushash.com/past_reports'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"DoSelect-Api-Key"</span><span class="p">:</span> <span class="s">"88d4266fd4e6338d13b845fcf28"</span><span class="p">,</span>
+    <span class="s">"DoSelect-Api-Secret"</span><span class="p">:</span> <span class="s">"385041b7bbc2320471b8551d"</span>
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doselect.com/platform/v1/test/4242/candidates/donnie@campushash.com/past_reports"</span> <span class="se">\</span>
+  -H <span class="s2">"DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28"</span> <span class="se">\</span>
+  -H <span class="s2">"DoSelect-Api-Secret: 385041b7bbc2320471b8551d"</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"reports"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"time_taken"</span><span class="p">:</span><span class="w"> </span><span class="mi">1202</span><span class="p">,</span><span class="w"> </span><span class="err">#</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">seconds</span><span class="w">
+        </span><span class="s2">"total_problems"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total_score"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total_solutions"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"report_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/past_report/23498"</span><span class="w">
+    </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves the past reports of one candidate in a test. For example, if a candidate&#39;s test has been reset,
+or the candidate retakes a test, this is visible in the endpoint.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET https://api.doselect.com/platform/v1/test/&lt;slug&gt;/
+candidates/&lt;email&gt;/past_reports</code></p>
+
+<p>The report which can be accessed from our APIs will contain the following information:</p>
+
+<table><thead>
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>report_uri</td>
+<td>string</td>
+<td>The URI for a particular attempt</td>
+</tr>
+<tr>
+<td>total_solutions</td>
+<td>integer</td>
+<td>The number of solutions submitted by the candidate</td>
+</tr>
+<tr>
+<td>total_score</td>
+<td>float</td>
+<td>The total score of this candidate</td>
+</tr>
+<tr>
+<td>total_problems</td>
+<td>integer</td>
+<td>Total problems that had to be solved</td>
+</tr>
+<tr>
+<td>time_taken</td>
+<td>float</td>
+<td>Total time taken by the candidate in seconds</td>
+</tr>
+</tbody></table>
 <h1 id='invite-api'>Invite API</h1>
 <p>Using the Invite API, you can invite a candidate to take a test in your team via their email address. The resources contains the
 following fields:</p>
@@ -1768,7 +1844,7 @@ This will delete all existing data about the user's test report in our system an
 </blockquote>
 <pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.central.dev.sg1.chsh.in/platform/v1/test/2edq1/candidates/hemil@doselect.com"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.doselect.com/platform/v1/test/2edq1/candidates/hemil@doselect.com"</span>
 
 <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">"expiry"</span><span class="p">:</span> <span class="s">"2018-01-31T15:17:35+05:30"</span><span class="p">,</span>
@@ -1784,7 +1860,7 @@ This will delete all existing data about the user's test report in our system an
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"PATCH"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 </code></pre><pre class="highlight shell tab-shell"><code>curl -X PATCH <span class="se">\</span>
-  <span class="s1">'https://api.central.dev.sg1.chsh.in/platform/v1/test/2edq1/candidates/hemil@doselect.com'</span> <span class="se">\</span>
+  <span class="s1">'https://api.doselect.com/platform/v1/test/2edq1/candidates/hemil@doselect.com'</span> <span class="se">\</span>
   -H <span class="s1">'Doselect-Api-Key: 88d4266fd4e6338d13b845fcf28'</span> <span class="se">\</span>
   -H <span class="s1">'Doselect-Api-Secret: 385041b7bbc2320471b8551d'</span> <span class="se">\</span>
   -d <span class="s1">'{
@@ -1796,7 +1872,7 @@ This will delete all existing data about the user's test report in our system an
 <p>Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"candidate_access_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://central.dev.sg1.chsh.in/gateways/test?access_code=7HEdD1C7cis6RA46k214h0GbJB7ZupX3xxuhdH1/znaPCr4x453nCICbR"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"candidate_access_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://doselect.com/gateways/test?access_code=7HEdD1C7cis6RA46k214h0GbJB7ZupX3xxuhdH1/znaPCr4x453nCICbR"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hemil@doselect.com"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-31T15:17:35+05:30"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"report"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -1833,6 +1909,68 @@ This will delete all existing data about the user's test report in our system an
 <h3 id='http-request-4'>HTTP Request</h3>
 <p><code>PATCH https://api.doselect.com/platform/v1/test/&lt;slug&gt;/
 candidates/&lt;email&gt;/</code></p>
+<h2 id='extend-an-invite-39-s-test-duration'>Extend an invite&#39;s test duration</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.doselect.com/platform/v1/test/2edq1/candidates/hemil@doselect.com/extend_duration"</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"minutes"</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'Doselect-Api-Key'</span><span class="p">:</span> <span class="s">"88d4266fd4e6338d13b845fcf28"</span><span class="p">,</span>
+    <span class="s">'Doselect-Api-Secret'</span><span class="p">:</span> <span class="s">"385041b7bbc2320471b8551d"</span><span class="p">,</span>
+    <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X PATCH <span class="se">\</span>
+  <span class="s1">'https://api.doselect.com/platform/v1/test/2edq1/candidates/hemil@doselect.com/extend_duration'</span> <span class="se">\</span>
+  -H <span class="s1">'Doselect-Api-Key: 88d4266fd4e6338d13b845fcf28'</span> <span class="se">\</span>
+  -H <span class="s1">'Doselect-Api-Secret: 385041b7bbc2320471b8551d'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "minutes": 10,
+}'</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"candidate_access_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://doselect.com/gateways/test?access_code=7HEdD1C7cis6RA46k214h0GbJB7ZupX3xxuhdH1/znaPCr4x453nCICbR"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hemil@doselect.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-31T15:17:35+05:30"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint updates the end time for a test invite.</p>
+
+<p>The request takes one param in the request body:</p>
+
+<table><thead>
+<tr>
+<th>Title</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>minutes</td>
+<td>string</td>
+<td>Number of minutes by which to extend the test&#39;s duration</td>
+</tr>
+</tbody></table>
+
+<p>The API works only if the candidate has started the test. If not, <code>Bad Request</code> (400) is returned.
+The test extension is supposed to be synchronous. It means that if the test is supposed to end at 20:00 UTC, and
+extended by 20 minutes, the test will now end at 20:20 UTC. If the candidate is offline at this period, they will
+not be able to use this extended time.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>POST https://api.doselect.com/platform/v1/test/&lt;slug&gt;/
+candidates/&lt;email&gt;/extend_duration</code></p>
 <h1 id='problem-api'>Problem API</h1>
 <p>The Problem API allows you to retrieve one problem on DoSelect. You can also retrieve all submissions made to the problem
 within your team, as well as by a particular user identified by email.</p>
@@ -4274,7 +4412,7 @@ These actions are sent for all private problems on DoSelect.</p>
     </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"creator_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="s2">"problem_slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"o94yw"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"problem_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://api.central.dev.sg1.chsh.in/platform/v1/problem/o94yw"</span><span class="w">
+        </span><span class="s2">"problem_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://api.doselect.com/platform/v1/problem/o94yw"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h1 id='help'>Help</h1>
