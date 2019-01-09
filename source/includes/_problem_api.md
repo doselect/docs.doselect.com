@@ -526,7 +526,7 @@ The fields accepted in the body of this request are:
 Field Name          | Type       | Description
 ----------          | ---------  | -----------
 name                | string     | The name of the problem
-problem_type        | string     | The type of the problem (`PRJ`, `UIX`, `SCR`, `MOB`, `MCQ`, `DSC` or `MLI`)
+problem_type        | string     | The type of the problem (`DBA`, `PRJ`, `UIX`, `SCR`, `MOB`, `MCQ`, `DSC` or `MLI`)
 description         | string     | The description of the problem
 max_submissions     | integer    | The maximum number of submissions allowed
 score               | integer    | The score of the problem
@@ -550,6 +550,7 @@ The possible problem types are:
 
 Abbreviation | Description
 ------------ | -----------
+DBA | Database problem
 PRJ | Project based problem
 UIX | UI/UX problem
 SCR | Coding problem
@@ -594,6 +595,7 @@ r | R
 fsharp | F#
 cpp14 | C++14
 kotlin | Kotlin
+mysql | MySQL
 
 
 ## Clone a problem
