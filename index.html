@@ -2483,7 +2483,7 @@ The query can contain any combination of these parameters.</p>
 <tr>
 <td>problem_type</td>
 <td>string</td>
-<td>The type of the problem (<code>PRJ</code>, <code>UIX</code>, <code>SCR</code>, <code>MOB</code>, <code>MCQ</code>, <code>DSC</code> or <code>MLI</code>)</td>
+<td>The type of the problem (<code>DBA</code>, <code>PRJ</code>, <code>UIX</code>, <code>SCR</code>, <code>MOB</code>, <code>MCQ</code>, <code>DSC</code> or <code>MLI</code>)</td>
 </tr>
 <tr>
 <td>description</td>
@@ -2565,6 +2565,10 @@ If any field other than the ones mentioned above is sent then the API will throw
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>DBA</td>
+<td>Database problem</td>
+</tr>
 <tr>
 <td>PRJ</td>
 <td>Project based problem</td>
@@ -2710,6 +2714,10 @@ If any field other than the ones mentioned above is sent then the API will throw
 <tr>
 <td>kotlin</td>
 <td>Kotlin</td>
+</tr>
+<tr>
+<td>mysql</td>
+<td>MySQL</td>
 </tr>
 </tbody></table>
 <h2 id='clone-a-problem'>Clone a problem</h2>
@@ -3338,6 +3346,10 @@ when the result becomes available.</p>
 </tr>
 </thead><tbody>
 <tr>
+<td>Database</td>
+<td>DBA</td>
+</tr>
+<tr>
 <td>Project-based</td>
 <td>PRJ</td>
 </tr>
@@ -3363,6 +3375,10 @@ when the result becomes available.</p>
 <th>Slug reference</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>Database</td>
+<td>mysql (MySQL)</td>
+</tr>
 <tr>
 <td>Project-based</td>
 <td>java7 (Java 7), python3 (Python 3), python2 (Python 2), java8 (Java 8)</td>
