@@ -531,7 +531,7 @@ description         | string     | The description of the problem
 max_submissions     | integer    | The maximum number of submissions allowed
 score               | integer    | The score of the problem
 mcq_options         | array      | A list of possible mcq options
-mcq_options_correct | string     | The correct mcq option
+mcq_options_correct | array      | The correct mcq option
 penalty             | integer    | The penalty for the problem
 time_limit_secs     | integer    | The time limit for this problem in seconds (Between 0-99)
 eval_mode           | string     | Evaluation mode for this problem (`TXT` IO Based or `ATF` Script Based)
