@@ -25,6 +25,7 @@ redirection_url        | string     | After the test, the user will be redirecte
 tags                   | list       |
 sections               | list       | This will contain a list of dictionaries with information about each section of the test
 settings               | dictionary |
+total_test_score       | integer    | The total score for a test
 
 The aforementioned `settings` will have the following information:
 
@@ -37,6 +38,11 @@ test_administrators    | list       | A list of test administrators
 invite_expiry_enabled  | boolean    | If true, indicates that the invites can expire
 invite_expiry_days     | integer    | Indicates the number of days for which an invite of this test will be active
 
+<aside class="notice">
+The `total_test_score` field will return an `integer` in the following cases, else will return a `null`.
+a) If the test has problem randomization enabled in sections and all the problems in a section have the same score.
+b) If the test has sections without randomization enabled.
+</aside>
 
 ## Get all tests
 > Request
@@ -112,7 +118,8 @@ curl "https://api.doselect.com/platform/v1/test" \
             "total_candidates": 1,
             "total_problems": 1,
             "total_sections": 1,
-            "redirection_url": "https://www.doselect.com"
+            "redirection_url": "https://www.doselect.com",
+            "total_test_score": 100
         },
 
     ]
@@ -199,7 +206,8 @@ curl "https://api.doselect.com/platform/v1/test/esows" \
     "total_candidates": 1,
     "total_problems": 1,
     "total_sections": 1,
-    "redirection_url": "https://www.doselect.com"
+    "redirection_url": "https://www.doselect.com",
+    "total_test_score": 100
 }
 ```
 A test is identified by a unique `slug` that gets generated during creation. This endpoint retrieves a specific test:
