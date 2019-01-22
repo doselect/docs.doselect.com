@@ -39,9 +39,9 @@ invite_expiry_enabled  | boolean    | If true, indicates that the invites can ex
 invite_expiry_days     | integer    | Indicates the number of days for which an invite of this test will be active
 
 <aside class="notice">
-The `total_test_score` field will return an `integer` in the following cases, else will return a `null`.
-a) If the test has problem randomization enabled in sections and all the problems in a section have the same score.
-b) If the test has sections without randomization enabled.
+The `total_test_score` field will return an `integer` in the following cases, else will return a `null`. 
+<li> If the test has problem randomization enabled in sections and all the problems in a section have the same score. </li>
+<li> If the test has sections without randomization enabled. </li>
 </aside>
 
 ## Get all tests
