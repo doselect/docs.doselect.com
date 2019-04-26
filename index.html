@@ -804,6 +804,11 @@ These limits will be calculated based on the unique session ID to prevent a sing
 <td>integer</td>
 <td>The total score for a test</td>
 </tr>
+<tr>
+<td>in_learn_feed</td>
+<td>boolean</td>
+<td>If true, this test is added to the learn feed</td>
+</tr>
 </tbody></table>
 
 <p>The aforementioned <code>settings</code> will have the following information:</p>
@@ -878,6 +883,7 @@ The `total_test_score` field will return an `integer` in the following cases, el
             </span><span class="s2">"cutoff"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
             </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
             </span><span class="s2">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"in_learn_feed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
             </span><span class="s2">"instructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;ol&gt;&lt;li&gt;&lt;!--block--&gt;This is an online programming test by Doselect.&lt;/li&gt;"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"is_usable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
             </span><span class="s2">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EAS"</span><span class="p">,</span><span class="w">
@@ -932,6 +938,28 @@ The `total_test_score` field will return an `integer` in the following cases, el
 <p>This endpoint retrieves all tests that exist in your team&#39;s account.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET https://api.doselect.com/platform/v1/test</code></p>
+<h3 id='search-for-tests'>Search for tests</h3>
+<p>The list endpoint enables you to search for tests as well, the constraints of which can be controlled via GET parameters listed below.
+The query can contain any combination of these parameters.</p>
+
+<table><thead>
+<tr>
+<th>Parameter name</th>
+<th>Possible values</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>in_learn_feed</td>
+<td>true, false</td>
+<td>Filter on learn feed tests</td>
+</tr>
+<tr>
+<td>archived</td>
+<td>true, false</td>
+<td>Filter on archived status</td>
+</tr>
+</tbody></table>
 <h2 id='get-one-test'>Get one test</h2>
 <blockquote>
 <p>Request</p>
@@ -2013,6 +2041,7 @@ within your team, as well as by a particular user identified by email.</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"objects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"in_learn_feed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
             </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Create a decorator"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MED"</span><span class="p">,</span><span class="w">
@@ -2074,6 +2103,11 @@ The query can contain any combination of these parameters.</p>
 <td>archived</td>
 <td>true, false</td>
 <td>Filter on archived status</td>
+</tr>
+<tr>
+<td>in_learn_feed</td>
+<td>true, false</td>
+<td>Filter on learn feed items</td>
 </tr>
 </tbody></table>
 <h2 id='get-one-problem'>Get one problem</h2>
@@ -4508,6 +4542,10 @@ Please contact your account manager or write to <a href="mailto:support@doselect
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>Apr 26, 2019</td>
+<td>Added <code>in_learn_feed</code> and <code>archived</code> filters in Test API. Added <code>in_learn_feed</code> in Problem API.</td>
+</tr>
 <tr>
 <td>Mar 26, 2019</td>
 <td>Added <code>allow_test_retake</code> field in the Test embed configuration object and enabled versioning of doselect-embed.js library.</td>
