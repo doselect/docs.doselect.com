@@ -36,6 +36,7 @@ curl "https://api.doselect.com/platform/v1/problem" \
 {
     "objects": [
         {
+            "in_learn_feed": true,
             "archived": false,
             "name": "Create a decorator",
             "level": "MED",
@@ -76,6 +77,7 @@ is_active      | true, false      | Filter only active problems that are usable
 tags           | Comma separated tags | Searches on discovery tags of problems
 problem_type   | Allowed problem type codes | Filter on problem types
 archived       | true, false | Filter on archived status
+in_learn_feed  | true, false | Filter on learn feed items
 
 ## Get one problem
 

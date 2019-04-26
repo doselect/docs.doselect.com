@@ -6,7 +6,7 @@ the REST Platform APIs.
 
 ## Client library
 
-The Embed API can be accessed using the embed client library, [doselect-embed.js](https://assets.doselect.com/doselect-embed.min.js). This library provides a simple JavaScript interface
+The Embed API can be accessed using the embed client library, [doselect-embed.js](https://assets.doselect.com/embed/v2/doselect-embed.min.js). This library provides a simple JavaScript interface
 for authentication, creating embed objects on your application, and retrieving general information related to the embedded objects.
 
 ### Setup
@@ -15,7 +15,7 @@ for authentication, creating embed objects on your application, and retrieving g
 
 To use the Embed API, simply copy and paste the snippet below before the `</body>` tag on every page where you want the embed to appear.
 
-`<script src="https://assets.doselect.com/doselect-embed.min.js"></script>`
+`<script src="https://assets.doselect.com/embed/v2/doselect-embed.min.js"></script>`
 
 #### Step 2: Configure user settings
 
@@ -28,7 +28,7 @@ window.doselect = {
     "user_hash": "CLjME03fz+Jr36VaDwv2MbNeemtfA57IgWhwcR3GfdI="
 }
 
-<script src="https://assets.doselect.com/doselect-embed.min.js"></script>
+<script src="https://assets.doselect.com/embed/v2/doselect-embed.min.js"></script>
 ```
 
 To display embed problems and tests with respect to user, update `window.doselect` object with user metadata and place it above the embed code snippet.
@@ -128,10 +128,26 @@ You can embed a test on your platform using the test's `slug`, which uniquely id
 DoSelect. Add this HTML code where you want a test to show up:
 
 ```html
-<div class="doselect-embed" data-category="test" data-slug="es6ts"></div>
+<div class="doselect-embed" data-category="test" data-slug="es6ts"
+     data-config='{"allow_test_retake": true,
+                    "custom_body_class": "custom_class1 custom_class2"}'></div>
 ```
 
 Please note that the test must be added to your Learn team's feed before it can be used in an embed.
+
+Attribute | Description
+----------|------------
+data-category | Required. Defines the kind of embed. Should be `test`
+data-slug | Required. Identification slug of the object being embedded
+data-config | Optional. Specify optional config parameters for this embed. This value must be a valid JSON string.
+
+The following attributes are supported in the configuration object at the moment.
+
+Attribute | Type | Description
+----------|------| ------
+allow_test_retake | boolean | Control if the test retake button is visible in the report.
+custom_body_class | string | Define custom class to the embed's body element. For multiple classes, use class names in a space seperated string.
+show_report | boolean | Control if the quality analysis of a solution should be visible in the embed. This only works for coding, selenium, data science and machine learning problems.
 
 ## Snippet runner embed
 

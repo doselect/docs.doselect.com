@@ -2,6 +2,8 @@
 
 Date         | Description
 ------------ | -----------
+Apr 26, 2019 | Added `in_learn_feed` and `archived` filters in Test API. Added `in_learn_feed` in Problem API.
+Mar 26, 2019 | Added `allow_test_retake` field in the Test embed configuration object and enabled versioning of doselect-embed.js library.
 Jan 21, 2019 | Added `total_test_score` field in the Test API.
 Aug 6, 2018  | Added ability to [lock and unlock a problem](#locking-unlocking-a-problem), enable updating `score` and `penalty` in [Problem API](#update-a-problem)
 Jul 16, 2018 | Added [Code Lab embed](#code-lab-embed) and [REST](#code-lab-api) APIs

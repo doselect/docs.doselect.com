@@ -26,6 +26,7 @@ tags                   | list       |
 sections               | list       | This will contain a list of dictionaries with information about each section of the test
 settings               | dictionary |
 total_test_score       | integer    | The total score for a test
+in_learn_feed          | boolean    | If true, this test is added to the learn feed
 
 The aforementioned `settings` will have the following information:
 
@@ -74,6 +75,7 @@ curl "https://api.doselect.com/platform/v1/test" \
             "cutoff": 40,
             "duration": 120,
             "end_time": null,
+            "in_learn_feed": true,
             "instructions": "<ol><li><!--block-->This is an online programming test by Doselect.</li>",
             "is_usable": true,
             "level": "EAS",
@@ -131,6 +133,17 @@ This endpoint retrieves all tests that exist in your team's account.
 ### HTTP Request
 
 `GET https://api.doselect.com/platform/v1/test`
+
+### Search for tests
+
+The list endpoint enables you to search for tests as well, the constraints of which can be controlled via GET parameters listed below.
+The query can contain any combination of these parameters.
+
+Parameter name | Possible values  | Description
+---------------|------------------|-------------
+in_learn_feed  | true, false      | Filter on learn feed tests
+archived       | true, false      | Filter on archived status
+
 
 
 ## Get one test
