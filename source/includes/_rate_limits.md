@@ -45,10 +45,10 @@ The per hour rate limits are:
 
 Request Method | Limit per hour
 -------------- | --------------
-GET            | 10,000
-POST           | 2,000
+GET            | 15,000
+POST           | 4,000
 PUT            | 2,000
-PATCH          | 2,000
+PATCH          | 4,000
 DELETE         | 2,000
 
 The platform APIs will have the following headers which will contain information regarding the rate-limit.
