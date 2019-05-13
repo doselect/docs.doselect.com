@@ -2,6 +2,7 @@
 
 Date         | Description
 ------------ | -----------
+May 10, 2019 | Increased the platform API ratelimits.
 Apr 26, 2019 | Added `in_learn_feed` and `archived` filters in Test API. Added `in_learn_feed` in Problem API.
 Mar 26, 2019 | Added `allow_test_retake` field in the Test embed configuration object and enabled versioning of doselect-embed.js library.
 Jan 21, 2019 | Added `total_test_score` field in the Test API.
