@@ -15,7 +15,7 @@ for authentication, creating embed objects on your application, and retrieving g
 
 To use the Embed API, simply copy and paste the snippet below before the `</body>` tag on every page where you want the embed to appear.
 
-`<script src="https://assets.doselect.com/embed/v2/doselect-embed.min.js"></script>`
+`<script src="https://assets.doselect.com/embed/v3/doselect-embed.min.js"></script>`
 
 #### Step 2: Configure user settings
 
@@ -28,7 +28,7 @@ window.doselect = {
     "user_hash": "CLjME03fz+Jr36VaDwv2MbNeemtfA57IgWhwcR3GfdI="
 }
 
-<script src="https://assets.doselect.com/embed/v2/doselect-embed.min.js"></script>
+<script src="https://assets.doselect.com/embed/v3/doselect-embed.min.js"></script>
 ```
 
 To display embed problems and tests with respect to user, update `window.doselect` object with user metadata and place it above the embed code snippet.
