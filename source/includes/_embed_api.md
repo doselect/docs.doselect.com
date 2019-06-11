@@ -6,7 +6,7 @@ the REST Platform APIs.
 
 ## Client library
 
-The Embed API can be accessed using the embed client library, [doselect-embed.js](https://assets.doselect.com/embed/v2/doselect-embed.min.js). This library provides a simple JavaScript interface
+The Embed API can be accessed using the embed client library, [doselect-embed.js](https://assets.doselect.com/embed/v3/doselect-embed.min.js). This library provides a simple JavaScript interface
 for authentication, creating embed objects on your application, and retrieving general information related to the embedded objects.
 
 ### Setup
