@@ -2148,7 +2148,22 @@ The query can contain any combination of these parameters.</p>
     </span><span class="s2">"total_testcases"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>A problem is identified by a unique <code>slug</code> that gets generated during creation. This endpoint retrieves a specific problem:</p>
+<p>A problem is identified by a unique <code>slug</code> that gets generated during creation. This endpoint retrieves a specific problem:
+The query can contain any combination of these parameters.</p>
+
+<table><thead>
+<tr>
+<th>Parameter name</th>
+<th>Possible values</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>author_logs</td>
+<td>True, False</td>
+<td>Adds audit logs in the response</td>
+</tr>
+</tbody></table>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET https://api.doselect.com/platform/v1/problem/&lt;slug&gt;</code></p>
 <h2 id='get-all-submissions-of-one-problem'>Get all submissions of one problem</h2>
@@ -2597,6 +2612,11 @@ The query can contain any combination of these parameters.</p>
 <td>array</td>
 <td>A list of strings containing the slugs of allowed technologies</td>
 </tr>
+<tr>
+<td>author_email</td>
+<td>string</td>
+<td>Email of the creator of problem</td>
+</tr>
 </tbody></table>
 
 <aside class="notice">
@@ -2953,6 +2973,11 @@ The allowed update fields are:</p>
 <td>max_submissions</td>
 <td>integer</td>
 <td>Maximum number of submissions allowed on a problem</td>
+</tr>
+<tr>
+<td>author_email</td>
+<td>string</td>
+<td>Email of the editor</td>
 </tr>
 </tbody></table>
 
@@ -4542,6 +4567,10 @@ Please contact your account manager or write to <a href="mailto:support@doselect
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>Jul 17, 2019</td>
+<td>Added <code>author_logs</code> filter and <code>author_email</code> parameter in Problem API.</td>
+</tr>
 <tr>
 <td>May 10, 2019</td>
 <td>Increased the platform API ratelimits.</td>
