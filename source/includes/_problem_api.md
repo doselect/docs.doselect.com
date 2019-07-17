@@ -123,11 +123,16 @@ curl "https://api.doselect.com/platform/v1/problem/esows" \
 }
 ```
 A problem is identified by a unique `slug` that gets generated during creation. This endpoint retrieves a specific problem:
+The query can contain any combination of these parameters.
+
+Parameter name | Possible values  | Description
+---------------|------------------|-------------
+author_logs    | True, False      | Adds audit logs in the response
+
 
 ### HTTP Request
 
 `GET https://api.doselect.com/platform/v1/problem/<slug>`
-
 
 ## Get all submissions of one problem
 
@@ -542,6 +547,7 @@ insight_tags        | array      | A list of strings of insight tags
 stubs               | dictionary | A dictionary containing the stubs of the problem
 sample_solutions    | dictionary | A dictionary containing the sample solutions of the problem
 technologies        | array      | A list of strings containing the slugs of allowed technologies
+author_email        | string     | Email of the creator of problem
 
 <aside class="notice">
 The fields `name` and `problem_type` are compulsory for the problem creation.
@@ -774,5 +780,5 @@ tags                | array      | A list of strings of discovery tags
 score               | float      | Max points awarded if the solution is correct
 penalty             | float      | Max penalty if the solution is incorrect
 max_submissions     | integer    | Maximum number of submissions allowed on a problem
-
+author_email        | string     | Email of the editor 
 Please note that you must unlock a problem if it's locked in order to update it.
