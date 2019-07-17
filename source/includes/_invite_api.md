@@ -378,7 +378,7 @@ expiry     | string | A ISO 8601 datetime string denoting the new invite expiry
 candidates/<email>/reset`
 
 <aside class="notice">
-This will delete all existing data about the user's test report in our system and will not be recoverable.
+This will reset existing data of the user from that test. The user's previous test report will be retained in our database.
 </aside>
 
 
