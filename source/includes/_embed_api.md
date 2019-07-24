@@ -228,7 +228,7 @@ The `doselect` global object provides methods to take various actions on the emb
 app.
 
 ### Loading embeds
-Call `doselect.loadFrame()` to load all the embed objects on a page.
+Call `doselect.startEmbed()` to load all the embed objects on a page.
 
 ### Destroying an embed
 

@@ -382,6 +382,21 @@ curl "https://api.doselect.com/platform/v1/test/4242/candidates/donnie@campushas
         "quality_verdict": "bad",
         "verdict": "Qualified"
     },
+    "proctored_data": {
+        "navigator": {
+            "fingerprint": {
+                "count": 1,
+                "flagged": false
+            },
+            "navigation": {
+                "count": 0,
+                "flagged": false
+            }
+        },
+        "webcam": {
+            "flagged": false
+        }
+    },
     "public_access_url": "https://doselect.com/reports/test?access_code=23iuerdn-092JZh/jAPHLEIZu6lLT4rfdjfmePn2mf"
 }
 ```
@@ -419,6 +434,7 @@ expiry            | string     | The datetime string about the expiry date of th
 status            | string     | It indicates whether the candidate has accepted/rejected/not responded to the invite
 test              | string     | The URI of the test
 verdict           | dictionary | The verdict on this report
+proctored_data    | dictionary | A dictionary containing suspicious activity data
 
 The aforementioned `verdict` dictionary will contain the following information:
 
@@ -429,6 +445,14 @@ quality_score   | string     | N.A | The average code quality score in this test
 quality_verdict | string     | `good`, `ok`, `bad`| The verdict based on the code written by the candidate
 verdict         | string     | `Not qualified`, `Qualified`, `Outstanding`| The verdict on the candidate
 
+The aforementioned `proctored_data` dictionary will contain the following information:
+
+Field Name      | Type  |  Description
+----------      | ------| ------------
+navigator       | dictionary | A Dictionary containing browser activity. Contains `fingerprint` and `navigation` data. 
+fingerprint       | dictionary | Record for test opened in multiple browsers. `count` contains the number of browser/tab in which the test was opened by the canidate and `flagged` is a `boolean` for suspicion. 
+navigation       | dictionary | Record for candidate moving out of test window. `count` contains the number of times candidate has moved out of the window while giving the test and `flagged` is a `boolean` for suspicion. 
+webcam       | dictionary | Record for candidate's suspicious activity on camera. `flagged` is a `boolean` for suspicion.
 
 ## Get a candidate's previous attempts
 
