@@ -1342,6 +1342,21 @@ The query can contain any combination of these parameters.</p>
         </span><span class="s2">"quality_verdict"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bad"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"verdict"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Qualified"</span><span class="w">
     </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"proctored_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"navigator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"flagged"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"navigation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"flagged"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"webcam"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"flagged"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="s2">"public_access_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://doselect.com/reports/test?access_code=23iuerdn-092JZh/jAPHLEIZu6lLT4rfdjfmePn2mf"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -1459,6 +1474,11 @@ candidates/&lt;email&gt;/report</code></p>
 <td>dictionary</td>
 <td>The verdict on this report</td>
 </tr>
+<tr>
+<td>proctored_data</td>
+<td>dictionary</td>
+<td>A dictionary containing suspicious activity data</td>
+</tr>
 </tbody></table>
 
 <p>The aforementioned <code>verdict</code> dictionary will contain the following information:</p>
@@ -1494,6 +1514,37 @@ candidates/&lt;email&gt;/report</code></p>
 <td>string</td>
 <td><code>Not qualified</code>, <code>Qualified</code>, <code>Outstanding</code></td>
 <td>The verdict on the candidate</td>
+</tr>
+</tbody></table>
+
+<p>The aforementioned <code>proctored_data</code> dictionary will contain the following information:</p>
+
+<table><thead>
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>navigator</td>
+<td>dictionary</td>
+<td>A Dictionary containing browser activity. Contains <code>fingerprint</code> and <code>navigation</code> data.</td>
+</tr>
+<tr>
+<td>fingerprint</td>
+<td>dictionary</td>
+<td>Record for test opened in multiple browsers. <code>count</code> contains the number of browser/tab in which the test was opened by the canidate and <code>flagged</code> is a <code>boolean</code> for suspicion.</td>
+</tr>
+<tr>
+<td>navigation</td>
+<td>dictionary</td>
+<td>Record for candidate moving out of test window. <code>count</code> contains the number of times candidate has moved out of the window while giving the test and <code>flagged</code> is a <code>boolean</code> for suspicion.</td>
+</tr>
+<tr>
+<td>webcam</td>
+<td>dictionary</td>
+<td>Record for candidate&#39;s suspicious activity on camera. <code>flagged</code> is a <code>boolean</code> for suspicion.</td>
 </tr>
 </tbody></table>
 <h2 id='get-a-candidate-39-s-previous-attempts'>Get a candidate&#39;s previous attempts</h2>
@@ -4309,7 +4360,7 @@ Dashboard, you must publish it and make the status <code>Active</code> before yo
 <p>The <code>doselect</code> global object provides methods to take various actions on the embed objects on your
 app.</p>
 <h3 id='loading-embeds'>Loading embeds</h3>
-<p>Call <code>doselect.loadFrame()</code> to load all the embed objects on a page.</p>
+<p>Call <code>doselect.startEmbed()</code> to load all the embed objects on a page.</p>
 <h3 id='destroying-an-embed'>Destroying an embed</h3>
 <p>To close an embed, call <code>doselect.closeFrame(category, slug)</code>. If the embed element is available in the current page, it will be destroyed.</p>
 <h3 id='fetch-report'>Fetch report</h3>
