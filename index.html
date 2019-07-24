@@ -550,6 +550,117 @@ encoded in JSON. The various HTTP codes we might return are listed below.</p>
 <td>An error occured with our APIs.</td>
 </tr>
 </tbody></table>
+
+<p>Error messages in embed. </p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Error Message</th>
+<th>State</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>E101</td>
+<td>Invalid request body.</td>
+<td>INIT</td>
+</tr>
+<tr>
+<td>E102</td>
+<td>The API Key is invalid.</td>
+<td>INIT</td>
+</tr>
+<tr>
+<td>E103</td>
+<td>The user cannot be verified.Please check the user_hash corresponding to given email.</td>
+<td>INIT</td>
+</tr>
+<tr>
+<td>E104</td>
+<td>You’re trying to open the embed with the email example@doselect.com which belongs to a team admin user account on DoSelect.</td>
+<td>INIT</td>
+</tr>
+<tr>
+<td>E105</td>
+<td><code>data-slug</code> attribute not found for this embed.</td>
+<td>INIT</td>
+</tr>
+<tr>
+<td>E106</td>
+<td>Invalid referrer host.</td>
+<td>INIT</td>
+</tr>
+<tr>
+<td>E107</td>
+<td>Please Provide API key.</td>
+<td>INIT</td>
+</tr>
+<tr>
+<td>E108</td>
+<td>Token Invalid.</td>
+<td>INIT</td>
+</tr>
+<tr>
+<td>E109</td>
+<td>Email address invalid.</td>
+<td>INIT</td>
+</tr>
+<tr>
+<td>E201</td>
+<td>Permission denied to this resource. Please add this test to your learn feed.</td>
+<td>Test Embed</td>
+</tr>
+<tr>
+<td>E202</td>
+<td>Error creating the invite: Invalid invite email provided.</td>
+<td>Test Embed</td>
+</tr>
+<tr>
+<td>E203</td>
+<td>Error creating the invite: Atleast one problem required in test to send an invite.</td>
+<td>Test Embed</td>
+</tr>
+<tr>
+<td>E204</td>
+<td>Error creating the invite: Cannot invite candidates for an archived test.</td>
+<td>Test Embed</td>
+</tr>
+<tr>
+<td>E205</td>
+<td>Error creating the invite: Expiry can&#39;t be lesser than current time.</td>
+<td>Test Embed</td>
+</tr>
+<tr>
+<td>E301</td>
+<td>You don&#39;t seem to have access to this Code Lab, or it&#39;s not published yet.</td>
+<td>CodeLab Embed</td>
+</tr>
+<tr>
+<td>E302</td>
+<td>Error creating the invite: Cannot create CodeLabInvite for a recruiter.</td>
+<td>CodeLab Embed</td>
+</tr>
+<tr>
+<td>E303</td>
+<td>Error creating the invite: CodeLabInvite - empty &#39;email&#39; field not allowed.</td>
+<td>CodeLab Embed</td>
+</tr>
+<tr>
+<td>E304</td>
+<td>Error creating the invite: CodeLabInvite - empty &#39;codelab&#39; field not allowed.</td>
+<td>CodeLab Embed</td>
+</tr>
+<tr>
+<td>E305</td>
+<td>Error creating the invite: Invite for email ex@doselect.com and codelab java_test already exists.</td>
+<td>CodeLab Embed</td>
+</tr>
+<tr>
+<td>E401</td>
+<td>Permission denied to this resource. Please add this problem to your learn feed.</td>
+<td>Problem Embed</td>
+</tr>
+</tbody></table>
 <h1 id='pagination'>Pagination</h1>
 <p>API endpoints that return a collection of results are always paginated, and contain a <code>meta</code> object with pagination details. The <code>objects</code> object contains the list of
 resource objects in such responses.</p>
