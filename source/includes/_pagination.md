@@ -29,7 +29,7 @@ The `meta` object contains the following information:
 
 Parameter | Description
 ---------- | -------
-limit | The page size for this request. This is set to `50` by default.
+limit | The page size for this request. This is set to `10` by default.
 offset | The offset of the first object sent in this response.
 next | The resource URI of the next page in this resource list. This field would be `null` if there's no next page.
 previous | The resource URI of the previous page in this resource list. This field would be `null` if there's no previous page.
