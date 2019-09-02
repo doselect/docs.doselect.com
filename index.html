@@ -442,6 +442,9 @@
                     <a href="#test-session" class="toc-h2 toc-link" data-title="Webhooks">Test Session</a>
                   </li>
                   <li>
+                    <a href="#test-config" class="toc-h2 toc-link" data-title="Webhooks">Test Config</a>
+                  </li>
+                  <li>
                     <a href="#problem" class="toc-h2 toc-link" data-title="Webhooks">Problem</a>
                   </li>
               </ul>
@@ -4680,6 +4683,60 @@ These actions are sent for all tests associated with your account on DoSelect.</
         </span><span class="s2">"test_slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"k016y"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='test-config'>Test Config</h2>
+<p>The actions sent by a test config are listed below.
+These actions are sent for all tests associated with your account on DoSelect.</p>
+
+<table><thead>
+<tr>
+<th>Sender</th>
+<th>Action</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>test-config</td>
+<td>update</td>
+<td>Test configuration settings have been updated</td>
+</tr>
+</tbody></table>
+
+<p>The test config webhooks will have the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>test_uri</td>
+<td>string</td>
+<td>The URI of the test</td>
+</tr>
+<tr>
+<td>test_slug</td>
+<td>string</td>
+<td>The identifier for the test</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example payload</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+        </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"update"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-10-30T07:08:18.457736+00:00"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"delivery_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"faa8f070-9644-4112-8a4b-40865afdd5bf"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"sender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-config"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"test_slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"o94yw"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"test_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://api.doselect.com/platform/v1/test/o94yw"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre><h2 id='problem'>Problem</h2>
 <p>The actions sent by a problem are listed below.
 These actions are sent for all private problems on DoSelect.</p>
@@ -4733,17 +4790,17 @@ These actions are sent for all private problems on DoSelect.</p>
 <p>Example payload</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"create"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-10-30T07:08:18.457736+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"delivery_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"faa8f070-9644-4112-8a4b-40865afdd5bf"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"sender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"problem"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"creator_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"problem_slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"o94yw"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"problem_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://api.doselect.com/platform/v1/problem/o94yw"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+        </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"create"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-10-30T07:08:18.457736+00:00"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"delivery_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"faa8f070-9644-4112-8a4b-40865afdd5bf"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"sender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"problem"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"creator_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"problem_slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"o94yw"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"problem_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://api.doselect.com/platform/v1/problem/o94yw"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h1 id='help'>Help</h1>
 <p>The API platform&#39;s has a public issue tracker which is hosted here - <a href="https://github.com/doselect/api-platform-support">github.com/doselect/api-platform-support</a>.
