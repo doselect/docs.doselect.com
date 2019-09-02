@@ -104,22 +104,53 @@ curl "https://api.doselect.com/platform/v1/problem/esows" \
 
 ```json
 {
+    "archived": false,
     "attachments": [],
-    "description": "\nBuild a chat application which has `Add chatbox` button, which on click adds a chat box to the window. When clicked again, it should add another chat box next to the first one. Maximum of 10 chat boxes are allowed ...",
-    "insight_tags": [],
+    "created": "2019-04-15T07:42:43.313046",
+    "description": "<div><!--block-->Which of the following statement is true for lists and tuples?</div>",
+    "eval_mode": "AUT",
+    "insight_tags": [
+        "Sequences and File Operations"
+    ],
+    "is_active": true,
+    "is_locked": false,
     "level": "EAS",
-    "mcq_options": ["options"],
-    "name": "Multi chat",
+    "max_submissions": 0,
+    "mcq_options": [
+        {
+            "content": "<div><!--block-->List is a mutable datatype and can hold heterogeneous data elements</div>",
+            "id": "1"
+        },
+        {
+            "content": "<div><!--block-->List is an immutable datatype and can hold heterogeneous data elements</div>",
+            "id": "2"
+        },
+        {
+            "content": "<div><!--block-->Tuple is an immutable datatype and can hold heterogeneous data elements</div>",
+            "id": "3"
+        },
+        {
+            "content": "<div><!--block-->Tuple is a mutable datatype and can hold heterogeneous data elements</div>",
+            "id": "4"
+        }
+    ],
+    "mcq_options_correct": "[u'3']",
+    "modified": "2019-04-15T08:26:27.613249",
+    "name": "Tuples",
     "penalty": 0,
-    "primary_technology": null,
-    "problem_type": "UIX",
-    "score": 75,
-    "slug": "64l05",
+    "private_attachments": [],
+    "problem_type": "MCQ",
+    "resource_uri": "/platform/v1/problem/rxmpo",
+    "sample_solutions": {},
+    "score": 5,
+    "slug": "rxmpo",
     "stubs": {},
-    "tags": ["front-end"],
-    "technologies": ["vanillajs", "angularjs"],
-    "time_limit_secs": 45,
-    "total_testcases": 3,
+    "tags": [
+        "Python"
+    ],
+    "technologies": [],
+    "testcases": [],
+    "time_limit_secs": null
 }
 ```
 A problem is identified by a unique `slug` that gets generated during creation. This endpoint retrieves a specific problem:
