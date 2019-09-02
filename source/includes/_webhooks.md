@@ -139,6 +139,39 @@ email      | string | The email of the user taking the test
 }
 ```
 
+## Test Config
+
+The actions sent by a test config are listed below.
+These actions are sent for all tests associated with your account on DoSelect.
+
+Sender  | Action | Description
+------- | ------ | --------
+test-config | update | Test configuration settings have been updated
+
+The test config webhooks will have the following fields:
+
+Field Name    | Type   | Description
+------------- | ------ | -----------
+test_uri   | string | The URI of the test
+test_slug  | string | The identifier for the test
+
+> Example payload
+
+```json
+{
+        "meta": {
+                "action": "update",
+                "timestamp": "2017-10-30T07:08:18.457736+00:00",
+                "delivery_id": "faa8f070-9644-4112-8a4b-40865afdd5bf",
+                "sender": "test-config"
+        },
+        "object": {
+                "test_slug": "o94yw",
+                "test_uri": "http://api.doselect.com/platform/v1/test/o94yw"
+        }
+}
+```
+
 ## Problem
 
 The actions sent by a problem are listed below.
@@ -161,16 +194,17 @@ creator_email | string | The email of the user who made the problem
 
 ```json
 {
-	"meta": {
-		"action": "create",
-		"timestamp": "2017-10-30T07:08:18.457736+00:00",
-		"delivery_id": "faa8f070-9644-4112-8a4b-40865afdd5bf",
-		"sender": "problem"
-	},
-	"object": {
-		"creator_email": "",
-		"problem_slug": "o94yw",
-		"problem_uri": "http://api.doselect.com/platform/v1/problem/o94yw"
-	}
+        "meta": {
+                "action": "create",
+                "timestamp": "2017-10-30T07:08:18.457736+00:00",
+                "delivery_id": "faa8f070-9644-4112-8a4b-40865afdd5bf",
+                "sender": "problem"
+        },
+        "object": {
+                "creator_email": "",
+                "problem_slug": "o94yw",
+                "problem_uri": "http://api.doselect.com/platform/v1/problem/o94yw"
+        }
 }
 ```
+
