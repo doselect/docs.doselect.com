@@ -2292,22 +2292,53 @@ The query can contain any combination of these parameters.</p>
 <p>Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"</span><span class="se">\n</span><span class="s2">Build a chat application which has `Add chatbox` button, which on click adds a chat box to the window. When clicked again, it should add another chat box next to the first one. Maximum of 10 chat boxes are allowed ..."</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"insight_tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-15T07:42:43.313046"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;div&gt;&lt;!--block--&gt;Which of the following statement is true for lists and tuples?&lt;/div&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"eval_mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"insight_tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"Sequences and File Operations"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"is_active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EAS"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"mcq_options"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"options"</span><span class="p">],</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Multi chat"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"max_submissions"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mcq_options"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;div&gt;&lt;!--block--&gt;List is a mutable datatype and can hold heterogeneous data elements&lt;/div&gt;"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;div&gt;&lt;!--block--&gt;List is an immutable datatype and can hold heterogeneous data elements&lt;/div&gt;"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;div&gt;&lt;!--block--&gt;Tuple is an immutable datatype and can hold heterogeneous data elements&lt;/div&gt;"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;div&gt;&lt;!--block--&gt;Tuple is a mutable datatype and can hold heterogeneous data elements&lt;/div&gt;"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"mcq_options_correct"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[u'3']"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-15T08:26:27.613249"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tuples"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"penalty"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"primary_technology"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"problem_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UIX"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">75</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"64l05"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"private_attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"problem_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MCQ"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/problem/rxmpo"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sample_solutions"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rxmpo"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"stubs"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-    </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"front-end"</span><span class="p">],</span><span class="w">
-    </span><span class="s2">"technologies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"vanillajs"</span><span class="p">,</span><span class="w"> </span><span class="s2">"angularjs"</span><span class="p">],</span><span class="w">
-    </span><span class="s2">"time_limit_secs"</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"total_testcases"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"Python"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"technologies"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"testcases"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"time_limit_secs"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>A problem is identified by a unique <code>slug</code> that gets generated during creation. This endpoint retrieves a specific problem:
