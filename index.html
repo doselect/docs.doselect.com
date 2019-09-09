@@ -1345,6 +1345,17 @@ The query can contain any combination of these parameters.</p>
         </span><span class="s2">"quality_verdict"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bad"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"verdict"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Qualified"</span><span class="w">
     </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"plagiarism_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"y9x31"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iliyas@doselect.com"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Iliyas"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shirol"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"similarity_score"</span><span class="p">:</span><span class="w"> </span><span class="s2">"93.0"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"submitted_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-20T13:07:53.693251"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="s2">"proctored_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"navigator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1482,6 +1493,11 @@ candidates/&lt;email&gt;/report</code></p>
 <td>dictionary</td>
 <td>A dictionary containing suspicious activity data</td>
 </tr>
+<tr>
+<td>plagiarism_data</td>
+<td>dictionary</td>
+<td>A dictionary containing plagiarized problem slugs</td>
+</tr>
 </tbody></table>
 
 <p>The aforementioned <code>verdict</code> dictionary will contain the following information:</p>
@@ -1548,6 +1564,42 @@ candidates/&lt;email&gt;/report</code></p>
 <td>webcam</td>
 <td>dictionary</td>
 <td>Record for candidate&#39;s suspicious activity on camera. <code>flagged</code> is a <code>boolean</code> for suspicion.</td>
+</tr>
+</tbody></table>
+
+<p>The aforementioned <code>plagiarism_data</code> dictionary will contain the following information in a list:</p>
+
+<table><thead>
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>The matching candidate&#39;s email address</td>
+</tr>
+<tr>
+<td>first_name</td>
+<td>string</td>
+<td>The matching candidate&#39;s first name</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>string</td>
+<td>The matching candidate&#39;s last name</td>
+</tr>
+<tr>
+<td>similarity_score</td>
+<td>string</td>
+<td>Percentage of code match</td>
+</tr>
+<tr>
+<td>submitted_at</td>
+<td>string</td>
+<td>The matching candidate&#39;s submission time</td>
 </tr>
 </tbody></table>
 <h2 id='get-a-candidate-39-s-previous-attempts'>Get a candidate&#39;s previous attempts</h2>
