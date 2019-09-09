@@ -382,6 +382,17 @@ curl "https://api.doselect.com/platform/v1/test/4242/candidates/donnie@campushas
         "quality_verdict": "bad",
         "verdict": "Qualified"
     },
+    "plagiarism_data": {
+        "y9x31": [
+            {
+                "email": "iliyas@doselect.com",
+                "first_name": "Iliyas",
+                "last_name": "Shirol",
+                "similarity_score": "93.0",
+                "submitted_at": "2018-05-20T13:07:53.693251"
+                }
+        ]
+    },
     "proctored_data": {
         "navigator": {
             "fingerprint": {
@@ -435,6 +446,7 @@ status            | string     | It indicates whether the candidate has accepted
 test              | string     | The URI of the test
 verdict           | dictionary | The verdict on this report
 proctored_data    | dictionary | A dictionary containing suspicious activity data
+plagiarism_data   | dictionary | A dictionary containing plagiarized problem slugs 
 
 The aforementioned `verdict` dictionary will contain the following information:
 
@@ -453,6 +465,16 @@ navigator       | dictionary | A Dictionary containing browser activity. Contain
 fingerprint       | dictionary | Record for test opened in multiple browsers. `count` contains the number of browser/tab in which the test was opened by the canidate and `flagged` is a `boolean` for suspicion. 
 navigation       | dictionary | Record for candidate moving out of test window. `count` contains the number of times candidate has moved out of the window while giving the test and `flagged` is a `boolean` for suspicion. 
 webcam       | dictionary | Record for candidate's suspicious activity on camera. `flagged` is a `boolean` for suspicion.
+
+The aforementioned `plagiarism_data` dictionary will contain the following information in a list:
+
+Field Name       | Type   | Description
+----------       | ------ | -----------
+email            | string | The matching candidate's email address
+first_name       | string | The matching candidate's first name
+last_name        | string | The matching candidate's last name
+similarity_score | string | Percentage of code match
+submitted_at     | string | The matching candidate's submission time
 
 ## Get a candidate's previous attempts
 
