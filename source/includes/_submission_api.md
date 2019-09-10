@@ -87,7 +87,8 @@ code_url           | If the submission is a project-type problem, the publicly a
 problem_slug       | The `slug` which identifies the problem
 email              | Email of the user
 learn_feed_item_id | Optional. The ID of the learn feed item related to the problem.
-
+choice             | Required for MCQ. Submitted option in a list
+solution_type	   | Required for MCQ with default value "MCQ"
 
 The allowed problem types are:
 
@@ -98,6 +99,7 @@ Project-based     | PRJ
 Front-end project | UIX
 Coding            | SCR
 Mobile            | MOB
+Multiple-choice   | MCQ
 
 
 The allowed technologies for each problem type are:
