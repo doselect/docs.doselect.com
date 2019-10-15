@@ -1074,6 +1074,41 @@ The query can contain any combination of these parameters.</p>
 <td>Filter on archived status</td>
 </tr>
 </tbody></table>
+<h3 id='filter-candidates-report-uri'>Filter candidates report uri</h3>
+<p>The list endpoint enables you to filter for all candidates who have given test.
+The query can contain any combination of these parameters.</p>
+
+<table><thead>
+<tr>
+<th>Parameter name</th>
+<th>Required</th>
+<th>Possible values</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>candidates</td>
+<td>Yes</td>
+<td>true, false</td>
+<td>Allows to filter for candidates reports for given time</td>
+</tr>
+<tr>
+<td>from</td>
+<td>Yes</td>
+<td>datetime</td>
+<td>Start datetime for reports to fetch (Requires <code>candidates</code> parameter to be true)</td>
+</tr>
+<tr>
+<td>to</td>
+<td>Yes</td>
+<td>datetime</td>
+<td>End datetime for reports to fetch (Requires <code>candidates</code> parameter to be true)</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+Maximum difference between from and to datetime can be 86400 seconds. 
+</aside>
 <h2 id='get-one-test'>Get one test</h2>
 <blockquote>
 <p>Request</p>
