@@ -144,6 +144,20 @@ Parameter name | Possible values  | Description
 in_learn_feed  | true, false      | Filter on learn feed tests
 archived       | true, false      | Filter on archived status
 
+### Filter candidates report uri
+
+The list endpoint enables you to filter for all candidates who have given test.
+The query can contain any combination of these parameters.
+
+Parameter name | Required | Possible values   | Description
+---------------|----------|-------------------|-------------
+candidates     | Yes      | true, false       | Allows to filter for candidates reports for given time
+from           | Yes      | datetime          | Start datetime for reports to fetch (Requires `candidates` parameter to be true) 
+to             | Yes      | datetime          | End datetime for reports to fetch (Requires `candidates` parameter to be true)
+
+<aside class="notice">
+Maximum difference between from and to datetime can be 86400 seconds. 
+</aside>
 
 
 ## Get one test
