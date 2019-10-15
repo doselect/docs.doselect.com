@@ -149,11 +149,11 @@ archived       | true, false      | Filter on archived status
 The list endpoint enables you to filter for all candidates who have given test.
 The query can contain any combination of these parameters.
 
-Parameter name | Required | Possible values   | Description
----------------|----------|-------------------|-------------
-candidates     | Yes      | true, false       | Allows to filter for candidates reports for given time
-from           | Yes      | datetime          | Start datetime for reports to fetch (Requires `candidates` parameter to be true) 
-to             | Yes      | datetime          | End datetime for reports to fetch (Requires `candidates` parameter to be true)
+Parameter name | Required | Possible values                | Description
+---------------|----------|--------------------------------|-------------
+candidates     | Yes      | true, false                    | Allows to filter for candidates reports for given time
+from           | Yes      | datetime (`%Y-%m-%d %H:%M:%S`) | Start datetime for reports to fetch (Requires `candidates` parameter to be true) 
+to             | Yes      | datetime (`%Y-%m-%d %H:%M:%S`) | End datetime for reports to fetch (Requires `candidates` parameter to be true)
 
 <aside class="notice">
 Maximum difference between from and to datetime can be 86400 seconds. 
