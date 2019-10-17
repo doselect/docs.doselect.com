@@ -354,6 +354,7 @@ curl "https://api.doselect.com/platform/v1/test/4242/candidates/donnie@campushas
         ],
         "tags": []
     },
+    "test_name": "Python Development Test", 
     "is_submitted": true,
     "max_score": 100,
     "quality_analysis": [
@@ -461,6 +462,7 @@ test              | string     | The URI of the test
 verdict           | dictionary | The verdict on this report
 proctored_data    | dictionary | A dictionary containing suspicious activity data
 plagiarism_data   | dictionary | A dictionary containing plagiarized problem slugs 
+test_name         | string     | The name of the test taken by candidate
 
 The aforementioned `verdict` dictionary will contain the following information:
 
