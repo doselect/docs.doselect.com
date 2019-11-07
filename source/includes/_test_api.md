@@ -356,6 +356,7 @@ curl "https://api.doselect.com/platform/v1/test/4242/candidates/donnie@campushas
     },
     "test_name": "Python Development Test", 
     "is_submitted": true,
+    "status": "PAS",
     "max_score": 100,
     "quality_analysis": [
         {
