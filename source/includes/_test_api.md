@@ -457,7 +457,7 @@ insights          | list       | A list of
 quality_analysis  | list       | A list of dictionaries containing analysis details
 public_access_url | string     | A publicaly accessible URL of the report
 expiry            | string     | The datetime string about the expiry date of this candidate's invite
-status            | string     | It indicates whether the candidate has accepted/rejected/not responded to the invite
+status            | string     | The status of candidate's test
 test              | string     | The URI of the test
 verdict           | dictionary | The verdict on this report
 proctored_data    | dictionary | A dictionary containing suspicious activity data
@@ -491,6 +491,16 @@ first_name       | string | The matching candidate's first name
 last_name        | string | The matching candidate's last name
 similarity_score | string | Percentage of code match
 submitted_at     | string | The matching candidate's submission time
+
+The aforementioned `status` string might contain one of the following code:
+
+Code      | Description  
+--------- | ------
+CTK       | Currently Taking
+CMP       | Completed
+NRE       | Needs Review
+PAS       | Passed
+FAL       | Failed
 
 ## Get a candidate's previous attempts
 
