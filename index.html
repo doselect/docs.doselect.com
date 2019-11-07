@@ -1512,7 +1512,7 @@ candidates/&lt;email&gt;/report</code></p>
 <tr>
 <td>status</td>
 <td>string</td>
-<td>It indicates whether the candidate has accepted/rejected/not responded to the invite</td>
+<td>The status of candidate&#39;s test</td>
 </tr>
 <tr>
 <td>test</td>
@@ -1641,6 +1641,36 @@ candidates/&lt;email&gt;/report</code></p>
 <td>submitted_at</td>
 <td>string</td>
 <td>The matching candidate&#39;s submission time</td>
+</tr>
+</tbody></table>
+
+<p>The aforementioned <code>status</code> string might contain one of the following code:</p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>CTK</td>
+<td>Currently Taking</td>
+</tr>
+<tr>
+<td>CMP</td>
+<td>Completed</td>
+</tr>
+<tr>
+<td>NRE</td>
+<td>Needs Review</td>
+</tr>
+<tr>
+<td>PAS</td>
+<td>Passed</td>
+</tr>
+<tr>
+<td>FAL</td>
+<td>Failed</td>
 </tr>
 </tbody></table>
 <h2 id='get-a-candidate-39-s-previous-attempts'>Get a candidate&#39;s previous attempts</h2>
