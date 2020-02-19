@@ -219,14 +219,14 @@ Dashboard, you must publish it and make the status `Active` before you can embed
 
 ```html
 <!-- Embed for the code lab with slug "tysgh" -->
-<div class="doselect-embed" data-category="code-lab" data-slug="tysgh" data-config='{ "expiry": "2020-02-20 02:00:00.000000+00:00" }'></div>
+<div class="doselect-embed" data-category="code-lab" data-slug="tysgh" data-config='{ "expiry": "2020-02-20T02:00:00.000Z" }'></div>
 ```
 
 The following attributes are supported in the `data-config` object at the moment for code-lab.
 
-Attribute | Type | Description
-----------|------| ------
-expiry | datetime | Expiry of the codelab in datetime format(UTC). example `2020-02-20 02:00:00.000000+00:00`
+Attribute | Type | Required | Description
+----------|------|--------- |------
+expiry | datetime | No |Expiry of the codelab in datetime `ISO` format(UTC). example `2020-02-20T02:00:00.000Z`
 
 
 ## Actions
