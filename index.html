@@ -2341,6 +2341,7 @@ within your team, as well as by a particular user identified by email.</p>
             </span><span class="s2">"resource_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/problem/rra3l"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"problem_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SCR"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rra3l"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"solving_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="s2">"decorators"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"file handling"</span><span class="p">,</span><span class="w">
@@ -2455,6 +2456,7 @@ The query can contain any combination of these parameters.</p>
     </span><span class="s2">"penalty"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"private_attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
     </span><span class="s2">"problem_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MCQ"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"solving_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"resource_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/problem/rxmpo"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"sample_solutions"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
     </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
@@ -2760,6 +2762,7 @@ The query can contain any combination of these parameters.</p>
     <span class="s">"max_submissions"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
     <span class="s">"score"</span><span class="p">:</span> <span class="mi">75</span><span class="p">,</span>
     <span class="s">"penalty"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s">"solving_time"</span><span class="p">:</span> <span class="s">"5"</span><span class="p">,</span>
     <span class="s">"stubs"</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">"python2"</span><span class="p">:</span> <span class="s">"print 'hello world'"</span><span class="p">,</span>
         <span class="s">"java7"</span><span class="p">:</span> <span class="s">"System.out.println('hello world')"</span><span class="p">,</span>
@@ -2792,6 +2795,7 @@ The query can contain any combination of these parameters.</p>
     "max_submissions": 5,
     "score": 75,
     "penalty": 1,
+    "solving_time": "5",
     "stubs": {
         "python2": "print '</span>hello world<span class="s1">'",
         "java7": "System.out.println('</span>hello world<span class="s1">')",
@@ -2824,6 +2828,7 @@ The query can contain any combination of these parameters.</p>
     </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-10-25T10:13:09.568721"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doselect API Problem"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"penalty"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"solving_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"problem_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SCR"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"resource_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/problem/nq4yq"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"sample_solutions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{}"</span><span class="p">,</span><span class="w">
@@ -2936,6 +2941,11 @@ The query can contain any combination of these parameters.</p>
 <td>author_email</td>
 <td>string</td>
 <td>Email of the creator of problem</td>
+</tr>
+<tr>
+<td>solving_time</td>
+<td>string</td>
+<td>Expected solving time of a problem in minutes</td>
 </tr>
 </tbody></table>
 
@@ -3141,6 +3151,7 @@ If any field other than the ones mentioned above is sent then the API will throw
     </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-11-24T09:11:12.230166"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nutrition calculator"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"penalty"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"solving_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="w">
     </span><span class="s2">"problem_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SCR"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"resource_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/problem/q3w8q"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"sample_solutions"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
@@ -3198,7 +3209,8 @@ If any field other than the ones mentioned above is sent then the API will throw
   <span class="s">"description"</span><span class="p">:</span> <span class="s">"A new description of the problem"</span><span class="p">,</span>
   <span class="s">"score"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
   <span class="s">"penalty"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-  <span class="s">"max_submissions"</span><span class="p">:</span> <span class="mi">10</span>
+  <span class="s">"max_submissions"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="s">"solving_time"</span><span class="p">:</span> <span class="s">"5"</span>
 <span class="p">}</span>
 
 
@@ -3212,7 +3224,8 @@ If any field other than the ones mentioned above is sent then the API will throw
     "Java"
   ],
   "description": "A new description of the problem",
-  "max_submissions": 10
+  "max_submissions": 10,
+  "solving_time": "5"
 }'</span>
 </code></pre>
 <blockquote>
@@ -3231,6 +3244,7 @@ If any field other than the ones mentioned above is sent then the API will throw
     </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-11-24T09:36:19.239739"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Updated Problem Name"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"penalty"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"solving_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="w">
     </span><span class="s2">"problem_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SCR"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"resource_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/problem/q3w8q"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"sample_solutions"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
@@ -3298,6 +3312,11 @@ The allowed update fields are:</p>
 <td>author_email</td>
 <td>string</td>
 <td>Email of the editor</td>
+</tr>
+<tr>
+<td>solving_time</td>
+<td>string</td>
+<td>Expected solving time of a problem in minutes</td>
 </tr>
 </tbody></table>
 
