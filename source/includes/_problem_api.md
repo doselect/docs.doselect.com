@@ -47,7 +47,7 @@ curl "https://api.doselect.com/platform/v1/problem" \
             "resource_uri": "/platform/v1/problem/rra3l",
             "problem_type": "SCR",
             "slug": "rra3l",
-	    "solving_time": "4",
+	    "solving_time": "5",
             "tags": [
                 "decorators",
                 "file handling",
