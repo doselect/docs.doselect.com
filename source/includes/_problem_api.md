@@ -47,6 +47,7 @@ curl "https://api.doselect.com/platform/v1/problem" \
             "resource_uri": "/platform/v1/problem/rra3l",
             "problem_type": "SCR",
             "slug": "rra3l",
+	    "solving_time": "5",
             "tags": [
                 "decorators",
                 "file handling",
@@ -140,6 +141,7 @@ curl "https://api.doselect.com/platform/v1/problem/esows" \
     "penalty": 0,
     "private_attachments": [],
     "problem_type": "MCQ",
+    "solving_time": "5",
     "resource_uri": "/platform/v1/problem/rxmpo",
     "sample_solutions": {},
     "score": 5,
@@ -467,6 +469,7 @@ payload = {
 	"max_submissions": 5,
 	"score": 75,
 	"penalty": 1,
+	"solving_time": "5",
 	"stubs": {
 	    "python2": "print 'hello world'",
         "java7": "System.out.println('hello world')",
@@ -502,6 +505,7 @@ curl -X POST "https://api.doselect.com/platform/v1/problem/" \
 	"max_submissions": 5,
 	"score": 75,
 	"penalty": 1,
+	"solving_time": "5",
 	"stubs": {
 	    "python2": "print 'hello world'",
         "java7": "System.out.println('hello world')",
@@ -535,6 +539,7 @@ curl -X POST "https://api.doselect.com/platform/v1/problem/" \
     "modified": "2017-10-25T10:13:09.568721",
     "name": "Doselect API Problem",
     "penalty": 1,
+    "solving_time": "5",
     "problem_type": "SCR",
     "resource_uri": "/platform/v1/problem/nq4yq",
     "sample_solutions": "{}",
@@ -579,6 +584,7 @@ stubs               | dictionary | A dictionary containing the stubs of the prob
 sample_solutions    | dictionary | A dictionary containing the sample solutions of the problem
 technologies        | array      | A list of strings containing the slugs of allowed technologies
 author_email        | string     | Email of the creator of problem
+solving_time        | string     | Expected solving time of a problem in minutes
 
 <aside class="notice">
 The fields `name` and `problem_type` are compulsory for the problem creation.
@@ -676,6 +682,7 @@ curl -X POST "https://api.doselect.com/platform/v1/problem/481bo/clone" \
     "modified": "2017-11-24T09:11:12.230166",
     "name": "Nutrition calculator",
     "penalty": 0,
+    "solving_time": "5"
     "problem_type": "SCR",
     "resource_uri": "/platform/v1/problem/q3w8q",
     "sample_solutions": {},
@@ -739,7 +746,8 @@ payload = {
   "description": "A new description of the problem",
   "score": 10,
   "penalty": 5,
-  "max_submissions": 10
+  "max_submissions": 10,
+  "solving_time": "5"
 }
 
 
@@ -756,7 +764,8 @@ curl -X PATCH "https://api.doselect.com/platform/v1/problem/q3w8q" \
     "Java"
   ],
   "description": "A new description of the problem",
-  "max_submissions": 10
+  "max_submissions": 10,
+  "solving_time": "5"
 }'
 ```
 
@@ -776,6 +785,7 @@ curl -X PATCH "https://api.doselect.com/platform/v1/problem/q3w8q" \
     "modified": "2017-11-24T09:36:19.239739",
     "name": "Updated Problem Name",
     "penalty": 5,
+    "solving_time": "5"
     "problem_type": "SCR",
     "resource_uri": "/platform/v1/problem/q3w8q",
     "sample_solutions": {},
@@ -812,4 +822,5 @@ score               | float      | Max points awarded if the solution is correct
 penalty             | float      | Max penalty if the solution is incorrect
 max_submissions     | integer    | Maximum number of submissions allowed on a problem
 author_email        | string     | Email of the editor 
+solving_time        | string     | Expected solving time of a problem in minutes
 Please note that you must unlock a problem if it's locked in order to update it.
