@@ -349,7 +349,7 @@ curl "https://api.doselect.com/platform/v1/test/4242/candidates/donnie@campushas
     "email": "donnie@campushash.com",
     "ended_at": "2016-07-08T07:26:03.549447",
     "insights": {
-        "languages_used": [
+        "technologies_used": [
             "julia"
         ],
         "tags": []
@@ -370,6 +370,9 @@ curl "https://api.doselect.com/platform/v1/test/4242/candidates/donnie@campushas
     "sections": [
         {
             "name": "Section 1",
+            "duration": 0,
+            "slug": "bb0bf780046a4c96bc0fdef5ba219cf0",
+            "problem_ids": [166800, 218600, 218519, 218612, 218510],
             "problems": [
                 {
                     "level": "EAS",
@@ -377,11 +380,16 @@ curl "https://api.doselect.com/platform/v1/test/4242/candidates/donnie@campushas
                     "problem_type": "SCR",
                     "score": 50,
                     "slug": "shjx7",
+                    "penalty": 0,
+                    "is_multi_correct": false,
                     "solution": {
                         "is_submitted": true,
                         "score": "0.0",
                         "slug": "2pda3",
-                        "status": "NRE"
+                        "status": "NRE",
+                        "worst_score": 0.0,
+                        "best_score": 10.0,
+                        "is_manual_reviewed": false,
                     }
                 },
             ]
@@ -396,7 +404,8 @@ curl "https://api.doselect.com/platform/v1/test/4242/candidates/donnie@campushas
         "percentage": 0,
         "quality_score": null,
         "quality_verdict": "bad",
-        "verdict": "Qualified"
+        "verdict": "Qualified",
+        "rating": 0.8
     },
     "plagiarism_data": {
         "y9x31": [
