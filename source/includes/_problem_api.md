@@ -569,7 +569,7 @@ The fields accepted in the body of this request are:
 Field Name          | Type       | Description
 ----------          | ---------  | -----------
 name                | string     | The name of the problem
-problem_type        | string     | The type of the problem (`DBA`, `PRJ`, `UIX`, `SCR`, `MOB`, `MCQ`, `DSC`, `MLI` or `APP`)
+problem_type        | string     | The type of the problem (`DBA`, `PRJ`, `UIX`, `SCR`, `MCQ`, `DSC`, `MLI` or `APP`)
 description         | string     | The description of the problem
 max_submissions     | integer    | The maximum number of submissions allowed
 score               | integer    | The score of the problem
@@ -599,7 +599,6 @@ DBA | Database problem
 PRJ | Project based problem
 UIX | UI/UX problem
 SCR | Coding problem
-MOB | Mobile problem
 MCQ | Multiple choice question
 DSC | Data science problem
 MLI | Machine learning problem

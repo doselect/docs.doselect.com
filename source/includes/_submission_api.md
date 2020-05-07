@@ -98,7 +98,6 @@ Database          | DBA
 Project-based     | PRJ
 Front-end project | UIX
 Coding            | SCR
-Mobile            | MOB
 Multiple-choice   | MCQ
 
 
@@ -110,7 +109,7 @@ Database          | mysql (MySQL)
 Project-based     | java7 (Java 7), python3 (Python 3), python2 (Python 2), java8 (Java 8)
 Front-end project | angularjs (AngularJS), jquery (jQuery), reactjs (React), backbonejs (Backbone), vanillajs (Vanilla JS)
 Coding            | julia (Julia), haskell (Haskell), csharp (C#), go (Go), javascript (JavaScript (NodeJS)), scala (Scala), swift (Swift), perl (Perl), lua (Lua), clisp (Clisp), objectivec (ObjectiveC), php (PHP), ruby (Ruby), bash (Bash), clojure (Clojure), rust (Rust), c (C), cpp (C++), java7 (Java 7), python3 (Python 3), python2 (Python 2), java8 (Java 8), r (R), fsharp (F#), cpp14 (C++14), kotlin (Kotlin)
-Mobile            | android (Android)
+
 
 
 
