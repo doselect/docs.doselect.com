@@ -46,7 +46,7 @@ The per hour rate limits are:
 Request Method | Limit per hour
 -------------- | --------------
 GET            | 15,000
-POST           | 4,000
+POST           | 10,000
 PUT            | 2,000
 PATCH          | 4,000
 DELETE         | 2,000
