@@ -31,6 +31,7 @@ E202 | Error creating the invite: Invalid invite email provided. | Test Embed
 E203 | Error creating the invite: Atleast one problem required in test to send an invite. | Test Embed
 E204 | Error creating the invite: Cannot invite candidates for an archived test. | Test Embed
 E205 | Error creating the invite: Expiry can't be lesser than current time. | Test Embed
+E206 | Error loading test embed: The test invite has expired. Please contact your test administrator. | Test Embed
 E301 | You don't seem to have access to this Code Lab, or it's not published yet. | CodeLab Embed
 E302 | Error creating the invite: Cannot create CodeLabInvite for a recruiter. | CodeLab Embed
 E303 | Error creating the invite: CodeLabInvite - empty 'email' field not allowed. | CodeLab Embed
