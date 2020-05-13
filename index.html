@@ -634,6 +634,11 @@ encoded in JSON. The various HTTP codes we might return are listed below.</p>
 <td>Test Embed</td>
 </tr>
 <tr>
+<td>E206</td>
+<td>Error loading test embed: The test invite has expired. Please contact your test administrator.</td>
+<td>Test Embed</td>
+</tr>
+<tr>
 <td>E301</td>
 <td>You don&#39;t seem to have access to this Code Lab, or it&#39;s not published yet.</td>
 <td>CodeLab Embed</td>
@@ -766,7 +771,7 @@ While calculating the rate-limit, if an API call has returned a 4xx response, it
 </tr>
 <tr>
 <td>POST</td>
-<td>4,000</td>
+<td>10,000</td>
 </tr>
 <tr>
 <td>PUT</td>
@@ -1333,7 +1338,7 @@ Maximum difference between from and to datetime can be 86400 seconds.
     </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"donnie@campushash.com"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"ended_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-08T07:26:03.549447"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"insights"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"languages_used"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"technologies_used"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="s2">"julia"</span><span class="w">
         </span><span class="p">],</span><span class="w">
         </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
@@ -1354,6 +1359,9 @@ Maximum difference between from and to datetime can be 86400 seconds.
     </span><span class="s2">"sections"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Section 1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bb0bf780046a4c96bc0fdef5ba219cf0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"problem_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">166800</span><span class="p">,</span><span class="w"> </span><span class="mi">218600</span><span class="p">,</span><span class="w"> </span><span class="mi">218519</span><span class="p">,</span><span class="w"> </span><span class="mi">218612</span><span class="p">,</span><span class="w"> </span><span class="mi">218510</span><span class="p">],</span><span class="w">
             </span><span class="s2">"problems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="p">{</span><span class="w">
                     </span><span class="s2">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EAS"</span><span class="p">,</span><span class="w">
@@ -1361,11 +1369,16 @@ Maximum difference between from and to datetime can be 86400 seconds.
                     </span><span class="s2">"problem_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SCR"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shjx7"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"penalty"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"is_multi_correct"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"solution"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                         </span><span class="s2">"is_submitted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
                         </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
                         </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2pda3"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NRE"</span><span class="w">
+                        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NRE"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"worst_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"best_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"is_manual_reviewed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
                     </span><span class="p">}</span><span class="w">
                 </span><span class="p">},</span><span class="w">
             </span><span class="p">]</span><span class="w">
@@ -1380,7 +1393,8 @@ Maximum difference between from and to datetime can be 86400 seconds.
         </span><span class="s2">"percentage"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="s2">"quality_score"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"quality_verdict"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bad"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"verdict"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Qualified"</span><span class="w">
+        </span><span class="s2">"verdict"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Qualified"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"plagiarism_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"y9x31"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -2870,7 +2884,7 @@ The query can contain any combination of these parameters.</p>
 <tr>
 <td>problem_type</td>
 <td>string</td>
-<td>The type of the problem (<code>DBA</code>, <code>PRJ</code>, <code>UIX</code>, <code>SCR</code>, <code>MOB</code>, <code>MCQ</code>, <code>DSC</code>, <code>MLI</code> or <code>APP</code>)</td>
+<td>The type of the problem (<code>DBA</code>, <code>PRJ</code>, <code>UIX</code>, <code>SCR</code>, <code>MCQ</code>, <code>DSC</code>, <code>MLI</code> or <code>APP</code>)</td>
 </tr>
 <tr>
 <td>description</td>
@@ -2977,10 +2991,6 @@ If any field other than the ones mentioned above is sent then the API will throw
 <tr>
 <td>SCR</td>
 <td>Coding problem</td>
-</tr>
-<tr>
-<td>MOB</td>
-<td>Mobile problem</td>
 </tr>
 <tr>
 <td>MCQ</td>
@@ -3781,10 +3791,6 @@ when the result becomes available.</p>
 <td>SCR</td>
 </tr>
 <tr>
-<td>Mobile</td>
-<td>MOB</td>
-</tr>
-<tr>
 <td>Multiple-choice</td>
 <td>MCQ</td>
 </tr>
@@ -3813,10 +3819,6 @@ when the result becomes available.</p>
 <tr>
 <td>Coding</td>
 <td>julia (Julia), haskell (Haskell), csharp (C#), go (Go), javascript (JavaScript (NodeJS)), scala (Scala), swift (Swift), perl (Perl), lua (Lua), clisp (Clisp), objectivec (ObjectiveC), php (PHP), ruby (Ruby), bash (Bash), clojure (Clojure), rust (Rust), c (C), cpp (C++), java7 (Java 7), python3 (Python 3), python2 (Python 2), java8 (Java 8), r (R), fsharp (F#), cpp14 (C++14), kotlin (Kotlin)</td>
-</tr>
-<tr>
-<td>Mobile</td>
-<td>android (Android)</td>
 </tr>
 </tbody></table>
 
