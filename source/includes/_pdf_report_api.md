@@ -69,7 +69,7 @@ JsonResponse with status 400 "If candidate is in currently taking status"
 JsonResponse with status 400 "If report doesn't exists for candidate"
 {
   "status":"ERROR",
-  "description":"Cannot generate the report. The user hasn't attempted the test."
+  "description":"Cannot get the report. The user hasn't attempted the test."
 }
 
 JsonResponse with status 400 "If access code doesn't exists"
@@ -82,23 +82,3 @@ JsonResponse with status 400 "If access code doesn't exists"
 
 Get a candidate's PDF report api needs to call with query string "access_code AND format". Where the value of access_code is an unique identifier of a candidate's test session and the value of format should pass as pdf (Case sensitive). This endpoint gets PDF report of a candidate or return error if report doesn't exists for particular candidate.
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
