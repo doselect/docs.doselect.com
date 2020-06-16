@@ -9,7 +9,6 @@ The PDF report API lets you send request to generate candidate's PDF report and 
 `GET https://doselect.com/reports/test?access_code=<access_code>&generate_pdf=True`
 
 
-
 ```python
 import requests
 
@@ -37,13 +36,13 @@ JsonResponse with status 200 "If request accepted"
   "description":"PDF report generation in process."
 }
 
-JsonResponse with status 400 "If candidate is in currently taking status"
+JsonResponse with status 400 "If candidate is currently taking the test"
 {
   "status":"ERROR",
   "description":"Cannot generate the report. The user is currently taking the test."
 }
 
-JsonResponse with status 400 "If report doesn't exists for candidate"
+JsonResponse with status 400 "If user hasn't attempted the test"
 {
   "status":"ERROR",
   "description":"Cannot generate the report. The user hasn't attempted the test."
@@ -87,16 +86,17 @@ curl "https://doselect.com/reports/test?access_code=MLAl5bGMyUjPlsE2etUQZ5xlF/CO
 
 ```json
 
-Http Response 200 with pdf report as an attachment "If request accepted and if pdf exists"
+Http Response 200 with pdf report "If request accepted and if pdf exists"
+
 Http Response 200 with html report "If request accepted and pdf doesn't exists"
 
-JsonResponse with status 400 "If candidate is in currently taking status"
+JsonResponse with status 400 "If candidate is currently taking the test."
 {
   "status":"ERROR",
   "description":"Cannot get the report. The user is currently taking the test."
 }
 
-JsonResponse with status 400 "If report doesn't exists for candidate"
+JsonResponse with status 400 "If the user hasn't attempted the test."
 {
   "status":"ERROR",
   "description":"Cannot get the report. The user hasn't attempted the test."
