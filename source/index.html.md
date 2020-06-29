@@ -19,6 +19,7 @@ includes:
  - invite_api
  - problem_api
  - problem_testcase_api
+ - pdf_report_api
  - learn_feed_item_api
  - submission_api
  - code_lab_api
