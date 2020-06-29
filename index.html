@@ -353,6 +353,17 @@
               </ul>
           </li>
           <li>
+            <a href="#pdf-report-api" class="toc-h1 toc-link" data-title="PDF report API">PDF report API</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#generate-candidate-39-s-pdf-report" class="toc-h2 toc-link" data-title="PDF report API">Generate candidate's PDF report</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-candidate-39-s-pdf-report" class="toc-h2 toc-link" data-title="PDF report API">Get a candidate's PDF report</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#learnfeed-item-api" class="toc-h1 toc-link" data-title="LearnFeed Item API">LearnFeed Item API</a>
               <ul class="toc-list-h2">
                   <li>
@@ -3597,6 +3608,96 @@ You can also create and delete the testcases of a problem.</p>
 <p>This API deletes a testcase of a problem. You need to identify the testcase by its <code>id</code>.</p>
 
 <p>This request will throw a <code>403 Forbidden</code> and won&#39;t delete the testcase if anyone has already submitted solutions for this problem.</p>
+<h1 id='pdf-report-api'>PDF report API</h1>
+<p>The PDF report API lets you send request to generate candidate&#39;s PDF report and get the same as a http response. </p>
+<h2 id='generate-candidate-39-s-pdf-report'>Generate candidate&#39;s PDF report</h2><h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://doselect.com/reports/test?access_code=&lt;access_code&gt;&amp;generate_pdf=True</code></p>
+<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">'https://doselect.com/reports/test?access_code=MLAl5bGMyUjPlsE2etUQZ5xlF/COjZUEhLHvNPd99x</span><span class="si">%2</span><span class="s">Bc38xWxxyA</span><span class="si">%2</span><span class="s">B62W4TQAf8VqG6WvwzMtJRswQzA9evgAqqlA/hA3KOWmFnENlefQuEA</span><span class="si">%3</span><span class="s">D&amp;generate_pdf=True'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"DoSelect-Api-Key"</span><span class="p">:</span> <span class="s">"88d4266fd4e6338d13b845fcf28"</span><span class="p">,</span>
+    <span class="s">"DoSelect-Api-Secret"</span><span class="p">:</span> <span class="s">"385041b7bbc2320471b8551d"</span>
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://doselect.com/reports/test?access_code=MLAl5bGMyUjPlsE2etUQZ5xlF/COjZUEhLHvNPd99x%2Bc38xWxxyA%2B62W4TQAf8VqG6WvwzMtJRswQzA9evgAqqlA/hA3KOWmFnENlefQuEA%3D&amp;generate_pdf=True"</span> <span class="se">\</span>
+  -H <span class="s2">"DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28"</span> <span class="se">\</span>
+  -H <span class="s2">"DoSelect-Api-Secret: 385041b7bbc2320471b8551d"</span>
+</code></pre>
+<blockquote>
+<p>Response </p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+</span><span class="err">JsonResponse</span><span class="w"> </span><span class="err">with</span><span class="w"> </span><span class="err">status</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="s2">"If request accepted"</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"PDF report generation in process."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">JsonResponse</span><span class="w"> </span><span class="err">with</span><span class="w"> </span><span class="err">status</span><span class="w"> </span><span class="mi">400</span><span class="w"> </span><span class="s2">"If candidate is currently taking the test"</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"Cannot generate the report. The user is currently taking the test."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">JsonResponse</span><span class="w"> </span><span class="err">with</span><span class="w"> </span><span class="err">status</span><span class="w"> </span><span class="mi">400</span><span class="w"> </span><span class="s2">"If user hasn't attempted the test"</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"Cannot generate the report. The user hasn't attempted the test."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">JsonResponse</span><span class="w"> </span><span class="err">with</span><span class="w"> </span><span class="err">status</span><span class="w"> </span><span class="mi">400</span><span class="w"> </span><span class="s2">"If access code doesn't exists"</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"No existing test session with provided access key"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">HttpResponseUnauthorized</span><span class="w"> </span><span class="err">(message</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid auth key."</span><span class="p">,</span><span class="w"> </span><span class="err">status</span><span class="p">:</span><span class="w"> </span><span class="mi">401</span><span class="err">)</span><span class="w"> </span><span class="s2">"If incorrect DoSelect auth credentials provided"</span><span class="w">
+
+
+</span></code></pre>
+<p>Generate candidate&#39;s PDF report api needs to call with query string &quot;access_code AND generate_pdf&quot;. Where the value of access_code is an unique identifier of a candidate&#39;s test session and the value of generate_pdf should pass as True (Case sensitive). This endpoint initiate a request to generate candidate&#39;s PDF report for particular assessment/assignment:</p>
+
+<p>NOTE: Add DoSelect-Api-Key, DoSelect-Api-Secret in request headers for authentication.</p>
+<h2 id='get-a-candidate-39-s-pdf-report'>Get a candidate&#39;s PDF report</h2>
+<p><code>GET https://doselect.com/reports/test?access_code=&lt;access_code&gt;&amp;format=pdf</code></p>
+<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">'https://doselect.com/reports/test?access_code=MLAl5bGMyUjPlsE2etUQZ5xlF/COjZUEhLHvNPd99x</span><span class="si">%2</span><span class="s">Bc38xWxxyA</span><span class="si">%2</span><span class="s">B62W4TQAf8VqG6WvwzMtJRswQzA9evgAqqlA/hA3KOWmFnENlefQuEA</span><span class="si">%3</span><span class="s">D&amp;format=pdf'</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+</code></pre><pre class="highlight shell tab-shell"><code>
+curl <span class="s2">"https://doselect.com/reports/test?access_code=MLAl5bGMyUjPlsE2etUQZ5xlF/COjZUEhLHvNPd99x%2Bc38xWxxyA%2B62W4TQAf8VqG6WvwzMtJRswQzA9evgAqqlA/hA3KOWmFnENlefQuEA%3D&amp;format=pdf"</span>
+
+</code></pre>
+<blockquote>
+<p>Response </p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+</span><span class="err">Http</span><span class="w"> </span><span class="err">Response</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="err">with</span><span class="w"> </span><span class="err">pdf</span><span class="w"> </span><span class="err">report</span><span class="w"> </span><span class="s2">"If request accepted and if pdf exists"</span><span class="w">
+
+</span><span class="err">Http</span><span class="w"> </span><span class="err">Response</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="err">with</span><span class="w"> </span><span class="err">html</span><span class="w"> </span><span class="err">report</span><span class="w"> </span><span class="s2">"If request accepted and pdf doesn't exists"</span><span class="w">
+
+</span><span class="err">JsonResponse</span><span class="w"> </span><span class="err">with</span><span class="w"> </span><span class="err">status</span><span class="w"> </span><span class="mi">400</span><span class="w"> </span><span class="s2">"If candidate is currently taking the test."</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"Cannot get the report. The user is currently taking the test."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">JsonResponse</span><span class="w"> </span><span class="err">with</span><span class="w"> </span><span class="err">status</span><span class="w"> </span><span class="mi">400</span><span class="w"> </span><span class="s2">"If the user hasn't attempted the test."</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"Cannot get the report. The user hasn't attempted the test."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">JsonResponse</span><span class="w"> </span><span class="err">with</span><span class="w"> </span><span class="err">status</span><span class="w"> </span><span class="mi">400</span><span class="w"> </span><span class="s2">"If access code doesn't exists"</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"No existing test session with provided access key"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>Get a candidate&#39;s PDF report api needs to call with query string &quot;access_code AND format&quot;. Where the value of access_code is an unique identifier of a candidate&#39;s test session and the value of format should pass as pdf (Case sensitive). This endpoint gets PDF report of a candidate or return error if report doesn&#39;t exists for particular candidate.</p>
 <h1 id='learnfeed-item-api'>LearnFeed Item API</h1>
 <p>The LearnFeed Item API allows you to add problems to your teams&#39;s learnfeed on DoSelect.</p>
 <h2 id='add-problem-to-learn-feed'>Add problem to learn feed</h2>
@@ -4992,6 +5093,10 @@ Please contact your account manager or write to <a href="mailto:support@doselect
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>Jun 15, 2020</td>
+<td>Added ability to <code>generate</code> and <code>get pdf report</code> through API.</td>
+</tr>
 <tr>
 <td>Jul 17, 2019</td>
 <td>Added <code>author_logs</code> filter and <code>author_email</code> parameter in Problem API. Updated reset invite warning notice.</td>
