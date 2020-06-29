@@ -2,7 +2,7 @@
 
 Date         | Description
 ------------ | -----------
-Jun 15, 2020 | Added ability to generate and get pdf report through API. 
+Jun 15, 2020 | Added ability to `generate` and `get pdf report` through API. 
 Jul 17, 2019 | Added `author_logs` filter and `author_email` parameter in Problem API. Updated reset invite warning notice. 
 May 10, 2019 | Increased the platform API ratelimits.
 Apr 26, 2019 | Added `in_learn_feed` and `archived` filters in Test API. Added `in_learn_feed` in Problem API.
