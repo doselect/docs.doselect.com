@@ -38,3 +38,5 @@ E303 | Error creating the invite: CodeLabInvite - empty 'email' field not allowe
 E304 | Error creating the invite: CodeLabInvite - empty 'codelab' field not allowed. | CodeLab Embed
 E305 | Error creating the invite: Invite for email ex@doselect.com and codelab java_test already exists. | CodeLab Embed
 E401 | Permission denied to this resource. Please add this problem to your learn feed. | Problem Embed
+E501 | The organization account isn't active! Please contact support@doselect.com | Problem, Test, CodeLab Embed 
+E502 | There are no credits left! Please contact support@doselect.com | Test Embed
