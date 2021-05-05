@@ -375,6 +375,9 @@ curl "https://api.doselect.com/platform/v1/test/4242/candidates/donnie@campushas
             "problem_ids": [166800, 218600, 218519, 218612, 218510],
             "problems": [
                 {
+                    "insights": [
+                        "Exceptions"
+                    ],
                     "level": "EAS",
                     "name": "Whois Search Tool",
                     "problem_type": "SCR",
@@ -390,7 +393,11 @@ curl "https://api.doselect.com/platform/v1/test/4242/candidates/donnie@campushas
                         "worst_score": 0.0,
                         "best_score": 10.0,
                         "is_manual_reviewed": false,
-                    }
+                    },
+                    "tags": [
+                        "Exceptions",
+                        "Python Exceptions"
+                    ]
                 },
             ]
         }

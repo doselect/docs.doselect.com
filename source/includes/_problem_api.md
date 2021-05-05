@@ -105,6 +105,7 @@ curl "https://api.doselect.com/platform/v1/problem/esows" \
 
 ```json
 {
+    "in_learn_feed": true,
     "archived": false,
     "attachments": [],
     "created": "2019-04-15T07:42:43.313046",
