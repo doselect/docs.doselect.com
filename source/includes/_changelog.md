@@ -2,6 +2,7 @@
 
 Date         | Description
 ------------ | -----------
+May 05, 2021 | Added `in_learn_feed` in `Get one problem` API. Also, added `insights` and `tags` in `Get a candidate's report` API.
 Jun 15, 2020 | Added ability to `generate` and `get pdf report` through API. 
 Jul 17, 2019 | Added `author_logs` filter and `author_email` parameter in Problem API. Updated reset invite warning notice. 
 May 10, 2019 | Increased the platform API ratelimits.
