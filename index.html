@@ -679,6 +679,16 @@ encoded in JSON. The various HTTP codes we might return are listed below.</p>
 <td>Permission denied to this resource. Please add this problem to your learn feed.</td>
 <td>Problem Embed</td>
 </tr>
+<tr>
+<td>E501</td>
+<td>The organization account isn&#39;t active! Please contact support@doselect.com</td>
+<td>Problem, Test, CodeLab Embed</td>
+</tr>
+<tr>
+<td>E502</td>
+<td>There are no credits left! Please contact support@doselect.com</td>
+<td>Test Embed</td>
+</tr>
 </tbody></table>
 <h1 id='pagination'>Pagination</h1>
 <p>API endpoints that return a collection of results are always paginated, and contain a <code>meta</code> object with pagination details. The <code>objects</code> object contains the list of
@@ -1375,6 +1385,9 @@ Maximum difference between from and to datetime can be 86400 seconds.
             </span><span class="s2">"problem_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">166800</span><span class="p">,</span><span class="w"> </span><span class="mi">218600</span><span class="p">,</span><span class="w"> </span><span class="mi">218519</span><span class="p">,</span><span class="w"> </span><span class="mi">218612</span><span class="p">,</span><span class="w"> </span><span class="mi">218510</span><span class="p">],</span><span class="w">
             </span><span class="s2">"problems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"insights"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="s2">"Exceptions"</span><span class="w">
+                    </span><span class="p">],</span><span class="w">
                     </span><span class="s2">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EAS"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Whois Search Tool"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"problem_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SCR"</span><span class="p">,</span><span class="w">
@@ -1390,7 +1403,11 @@ Maximum difference between from and to datetime can be 86400 seconds.
                         </span><span class="s2">"worst_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
                         </span><span class="s2">"best_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span><span class="w">
                         </span><span class="s2">"is_manual_reviewed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-                    </span><span class="p">}</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="s2">"Exceptions"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"Python Exceptions"</span><span class="w">
+                    </span><span class="p">]</span><span class="w">
                 </span><span class="p">},</span><span class="w">
             </span><span class="p">]</span><span class="w">
         </span><span class="p">}</span><span class="w">
@@ -2445,6 +2462,7 @@ The query can contain any combination of these parameters.</p>
 <p>Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"in_learn_feed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
     </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-15T07:42:43.313046"</span><span class="p">,</span><span class="w">
