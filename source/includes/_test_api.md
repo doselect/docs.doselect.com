@@ -438,7 +438,8 @@ curl "https://api.doselect.com/platform/v1/test/4242/candidates/donnie@campushas
         },
         "webcam": {
             "flagged": false
-        }
+        },
+        "verdict": "NOT_SUSPICIOUS"
     },
     "public_access_url": "https://doselect.com/reports/test?access_code=23iuerdn-092JZh/jAPHLEIZu6lLT4rfdjfmePn2mf"
 }
@@ -498,6 +499,7 @@ navigator       | dictionary | A Dictionary containing browser activity. Contain
 fingerprint       | dictionary | Record for test opened in multiple browsers. `count` contains the number of browser/tab in which the test was opened by the canidate and `flagged` is a `boolean` for suspicion. 
 navigation       | dictionary | Record for candidate moving out of test window. `count` contains the number of times candidate has moved out of the window while giving the test and `flagged` is a `boolean` for suspicion. 
 webcam       | dictionary | Record for candidate's suspicious activity on camera. `flagged` is a `boolean` for suspicion.
+verdict         | string     | The proctor verdict. Possible values :- `NOT_ENABLED`, `IN_PROGRESS`, `SUSPICIOUS`, `NOT_SUSPICIOUS`
 
 The aforementioned `plagiarism_data` dictionary will contain the following information in a list:
 
