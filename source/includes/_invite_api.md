@@ -506,7 +506,8 @@ not be able to use this extended time.
 
 ### HTTP Request
 
-`POST https://api.doselect.com/platform/v1/test/<slug>/candidates/<email>/extend_duration`
+`POST https://api.doselect.com/platform/v1/test/<slug>\
+/candidates/<email>/extend_duration`
 
 
 ## Extend an invite's test retake
@@ -564,7 +565,8 @@ the candidate to receive an retake email from DoSelect.
 
 ### HTTP Request
 
-`POST https://api.doselect.com/platform/v1/test/<slug>/candidates/<email>/retake`
+`POST https://api.doselect.com/platform/v1/test/<slug>\
+/candidates/<email>/retake`
 
 - If you are trying to access this endpoint with invalid request body. It will return `400 BAD REQUEST` with relevant message.
 - If there are fewer or no credits left in your account. It will return `400 BAD REQUEST` with relevant message.
