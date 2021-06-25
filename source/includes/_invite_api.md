@@ -137,7 +137,7 @@ curl -X POST \
     "candidate_access_url": "https://doselect.com/gateways/test?access_code=U2DsXUOgvXe2yUXiSPMHglkd/ORMykzTvw8jqmQrj6d1OL8N6MBqUqtu2nxSLz2E5BAuG5T8C9l%2BXYmjUPA0akTATBJB47bU9Yc8CQmwC8s%3D",
     "email": "john@example.com",
     "expiry": "2018-05-29T15:17:35+05:30",
-    "start_time": "2018-05-10T15:17:35+05:30"
+    "start_time": "2018-05-10T15:17:35+05:30",
     "resource_uri": "/platform/v1/test/esows/candidates/john@example.com",
     "status": "pending",
     "test": "/platform/v1/test/esows"
@@ -549,7 +549,7 @@ curl -X POST \
     "candidate_access_url": "https://doselect.com/gateways/test?access_code=U2DsXUOgvXe2yUXiSPMHglkd/ORMykzTvw8jqmQrj6d1OL8N6MBqUqtu2nxSLz2E5BAuG5T8C9l%2BXYmjUPA0akTATBJB47bU9Yc8CQmwC8s%3D",
     "email": "john@example.com",
     "expiry": "2018-05-29T15:17:35+05:30",
-    "start_time": "2018-05-10T15:17:35+05:30"
+    "start_time": "2018-05-10T15:17:35+05:30",
     "resource_uri": "/platform/v1/test/esows/candidates/john@example.com",
     "status": "pending",
     "test": "/platform/v1/test/esows"
@@ -572,13 +572,11 @@ the candidate to receive an retake email from DoSelect.
 - If you are trying to access this endpoint with invalid `DoSelect-Api-Key` or `DoSelect-Api-Secret`. It will return `401 UNAUTHORIZE` with relevant message.
 - If you are trying to access an invite of different company. It will return `403 FORBIDDEN` with relevant message.
 - If an invite does not exist with the email to a particular test. It will return `404 NOT FOUND` with relevant message.
-- If you trying to access this endpoint with valid data. It will return `201 CREATED` with success response.
+- If you are trying to access this endpoint with valid data. It will return `201 CREATED` with success response.
+
 ### JSON payload attributes:
 
 Field          | Required | Type      | Description
 ----------     | -------- | --------- | -----------
 max_retakes    | Yes      | integer   | Number of retakes to be add. By default, the value will be `0`.
 suppress_email | No       | boolean   | If `True` don’t trigger an email from the platform, return the access_url as the response. By default, the value will be `True`.
-
-
-
