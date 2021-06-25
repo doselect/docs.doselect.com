@@ -506,5 +506,79 @@ not be able to use this extended time.
 
 ### HTTP Request
 
-`POST https://api.doselect.com/platform/v1/test/<slug>/
-candidates/<email>/extend_duration`
+`POST https://api.doselect.com/platform/v1/test/<slug>/candidates/<email>/extend_duration`
+
+
+## Extend an invite's test retake
+
+> Request
+
+```python
+import requests
+
+url = 'https://api.doselect.com/platform/v1/test/esows/candidates/john@example.com/retake'
+headers = {
+    "DoSelect-Api-Key": "88d4266fd4e6338d13b845fcf28",
+    "DoSelect-Api-Secret": "385041b7bbc2320471b8551d"
+}
+
+payload = {
+    "max_retakes": 3,
+    "suppress_email": False
+}
+
+response = requests.post(url, headers=headers, json=payload)
+```
+
+```shell
+curl -X POST \
+  https://api.doselect.com/platform/v1/test/esows/candidates/john@example.com/retake \
+  -H 'content-type: application/json' \
+  -H 'doselect-api-key: 88d4266fd4e6338d13b845fcf28' \
+  -H 'doselect-api-secret: 385041b7bbc2320471b8551d' \
+  -d '{
+    "max_retakes": 3,
+    "suppress_email": false
+}'
+```
+
+> Response
+
+```json
+{
+    "candidate_access_url": "https://doselect.com/gateways/test?access_code=U2DsXUOgvXe2yUXiSPMHglkd/ORMykzTvw8jqmQrj6d1OL8N6MBqUqtu2nxSLz2E5BAuG5T8C9l%2BXYmjUPA0akTATBJB47bU9Yc8CQmwC8s%3D",
+    "email": "john@example.com",
+    "expiry": "2018-05-29T15:17:35+05:30",
+    "start_time": "2018-05-10T15:17:35+05:30"
+    "resource_uri": "/platform/v1/test/esows/candidates/john@example.com",
+    "status": "pending",
+    "test": "/platform/v1/test/esows"
+}
+```
+
+The endpoint adds a retake attempt for the user to a particular test. This will work even if the user hasn’t attempted the test yet. 
+
+Once a retake has been added, our platform will trigger an email to the user with the access URL to attempt the test.
+Optionally, you can add a `suppress_email=False` to the request body if you want
+the candidate to receive an retake email from DoSelect.
+
+### HTTP Request
+
+`POST https://api.doselect.com/platform/v1/test/<slug>/candidates/<email>/retake`
+
+- If you are trying to access this endpoint with invalid request body. It will return `400 BAD REQUEST` with relevant message.
+- If there are fewer or no credits left in your account. It will return `400 BAD REQUEST` with relevant message.
+- If the test of a particular invite is not live for which you are trying to add retake. It will return `400 BAD REQUEST` with relevant message.
+- If you are trying to access this endpoint with invalid `DoSelect-Api-Key` or `DoSelect-Api-Secret`. It will return `401 UNAUTHORIZE` with relevant message.
+- If you are trying to access an invite of different company. It will return `403 FORBIDDEN` with relevant message.
+- If an invite does not exist with the email to a particular test. It will return `404 NOT FOUND` with relevant message.
+- If you trying to access this endpoint with valid data. It will return `201 CREATED` with success response.
+### JSON payload attributes:
+
+Field          | Required | Type      | Description
+----------     | -------- | --------- | -----------
+max_retakes    | Yes      | integer   | Number of retakes to be add. By default, the value will be `0`.
+suppress_email | No       | boolean   | If `True` don’t trigger an email from the platform, return the access_url as the response. By default, the value will be `True`.
+
+
+
