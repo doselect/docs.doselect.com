@@ -304,6 +304,9 @@
                   <li>
                     <a href="#extend-an-invite-39-s-test-duration" class="toc-h2 toc-link" data-title="Invite API">Extend an invite's test duration</a>
                   </li>
+                  <li>
+                    <a href="#extend-an-invite-39-s-test-retake" class="toc-h2 toc-link" data-title="Invite API">Extend an invite's test retake</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -1952,7 +1955,7 @@ If the email is not sent in the params, the API will return all the invites of y
     </span><span class="s2">"candidate_access_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://doselect.com/gateways/test?access_code=U2DsXUOgvXe2yUXiSPMHglkd/ORMykzTvw8jqmQrj6d1OL8N6MBqUqtu2nxSLz2E5BAuG5T8C9l%2BXYmjUPA0akTATBJB47bU9Yc8CQmwC8s%3D"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@example.com"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-29T15:17:35+05:30"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-10T15:17:35+05:30"</span><span class="w">
+    </span><span class="s2">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-10T15:17:35+05:30"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"resource_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/test/esows/candidates/john@example.com"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/test/esows"</span><span class="w">
@@ -2347,8 +2350,87 @@ The test extension is supposed to be synchronous. It means that if the test is s
 extended by 20 minutes, the test will now end at 20:20 UTC. If the candidate is offline at this period, they will
 not be able to use this extended time.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
-<p><code>POST https://api.doselect.com/platform/v1/test/&lt;slug&gt;/
-candidates/&lt;email&gt;/extend_duration</code></p>
+<p><code>POST https://api.doselect.com/platform/v1/test/&lt;slug&gt;/candidates/&lt;email&gt;/extend_duration</code></p>
+<h2 id='extend-an-invite-39-s-test-retake'>Extend an invite&#39;s test retake</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">'https://api.doselect.com/platform/v1/test/esows/candidates/john@example.com/retake'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"DoSelect-Api-Key"</span><span class="p">:</span> <span class="s">"88d4266fd4e6338d13b845fcf28"</span><span class="p">,</span>
+    <span class="s">"DoSelect-Api-Secret"</span><span class="p">:</span> <span class="s">"385041b7bbc2320471b8551d"</span>
+<span class="p">}</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"max_retakes"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="s">"suppress_email"</span><span class="p">:</span> <span class="bp">False</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  https://api.doselect.com/platform/v1/test/esows/candidates/john@example.com/retake <span class="se">\</span>
+  -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'doselect-api-key: 88d4266fd4e6338d13b845fcf28'</span> <span class="se">\</span>
+  -H <span class="s1">'doselect-api-secret: 385041b7bbc2320471b8551d'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "max_retakes": 3,
+    "suppress_email": false
+}'</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"candidate_access_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://doselect.com/gateways/test?access_code=U2DsXUOgvXe2yUXiSPMHglkd/ORMykzTvw8jqmQrj6d1OL8N6MBqUqtu2nxSLz2E5BAuG5T8C9l%2BXYmjUPA0akTATBJB47bU9Yc8CQmwC8s%3D"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-29T15:17:35+05:30"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-10T15:17:35+05:30"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/test/esows/candidates/john@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/platform/v1/test/esows"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>The endpoint adds a retake attempt for the user to a particular test. This will work even if the user hasn’t attempted the test yet. </p>
+
+<p>Once a retake has been added, our platform will trigger an email to the user with the access URL to attempt the test.
+Optionally, you can add a <code>suppress_email=False</code> to the request body if you want
+the candidate to receive an retake email from DoSelect.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>POST https://api.doselect.com/platform/v1/test/&lt;slug&gt;/candidates/&lt;email&gt;/retake</code></p>
+
+<ul>
+<li>If you are trying to access this endpoint with invalid request body. It will return <code>400 BAD REQUEST</code> with relevant message.</li>
+<li>If there are fewer or no credits left in your account. It will return <code>400 BAD REQUEST</code> with relevant message.</li>
+<li>If the test of a particular invite is not live for which you are trying to add retake. It will return <code>400 BAD REQUEST</code> with relevant message.</li>
+<li>If you are trying to access this endpoint with invalid <code>DoSelect-Api-Key</code> or <code>DoSelect-Api-Secret</code>. It will return <code>401 UNAUTHORIZE</code> with relevant message.</li>
+<li>If you are trying to access an invite of different company. It will return <code>403 FORBIDDEN</code> with relevant message.</li>
+<li>If an invite does not exist with the email to a particular test. It will return <code>404 NOT FOUND</code> with relevant message.</li>
+<li>If you are trying to access this endpoint with valid data. It will return <code>201 CREATED</code> with success response.</li>
+</ul>
+<h3 id='json-payload-attributes-2'>JSON payload attributes:</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>max_retakes</td>
+<td>Yes</td>
+<td>integer</td>
+<td>Number of retakes to be add. By default, the value will be <code>0</code>.</td>
+</tr>
+<tr>
+<td>suppress_email</td>
+<td>No</td>
+<td>boolean</td>
+<td>If <code>True</code> don’t trigger an email from the platform, return the access_url as the response. By default, the value will be <code>True</code>.</td>
+</tr>
+</tbody></table>
 <h1 id='problem-api'>Problem API</h1>
 <p>The Problem API allows you to retrieve one problem on DoSelect. You can also retrieve all submissions made to the problem
 within your team, as well as by a particular user identified by email.</p>
@@ -5117,6 +5199,10 @@ Please contact your account manager or write to <a href="mailto:support@doselect
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>Jun 18, 2021</td>
+<td>Added <a href="#extend-an-invite-39-s-test-retake">Extend an invite&#39;s test retake</a> endpoint for adding a retake for a particular test invite.</td>
+</tr>
 <tr>
 <td>May 05, 2021</td>
 <td>Added <code>in_learn_feed</code> in the <a href="#get-one-problem">Get one problem</a> API. Also, added <code>insights</code> and <code>tags</code> into a problem in the <a href="#get-a-candidate-39-s-report">Get a candidate&#39;s report</a> API.</td>
