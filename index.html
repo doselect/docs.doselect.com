@@ -2288,8 +2288,7 @@ This will reset existing data of the user from that test. The user's previous te
 
 <p>This API will only work for the aforementioned fields and will throw an <code>400 BAD REQUEST</code> if any other field is sent in the payload.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>PATCH https://api.doselect.com/platform/v1/test/&lt;slug&gt;/
-candidates/&lt;email&gt;/</code></p>
+<p><code>PATCH https://api.doselect.com/platform/v1/test/&lt;slug&gt;/candidates/&lt;email&gt;/</code></p>
 <h2 id='extend-an-invite-39-s-test-duration'>Extend an invite&#39;s test duration</h2>
 <blockquote>
 <p>Request</p>
@@ -2350,7 +2349,7 @@ The test extension is supposed to be synchronous. It means that if the test is s
 extended by 20 minutes, the test will now end at 20:20 UTC. If the candidate is offline at this period, they will
 not be able to use this extended time.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
-<p><code>POST https://api.doselect.com/platform/v1/test/&lt;slug&gt;/candidates/&lt;email&gt;/extend_duration</code></p>
+<p><code>POST https://api.doselect.com/platform/v1/test/&lt;slug&gt;/ candidates/&lt;email&gt;/extend_duration</code></p>
 <h2 id='extend-an-invite-39-s-test-retake'>Extend an invite&#39;s test retake</h2>
 <blockquote>
 <p>Request</p>
@@ -2398,7 +2397,7 @@ not be able to use this extended time.</p>
 Optionally, you can add a <code>suppress_email=False</code> to the request body if you want
 the candidate to receive an retake email from DoSelect.</p>
 <h3 id='http-request-6'>HTTP Request</h3>
-<p><code>POST https://api.doselect.com/platform/v1/test/&lt;slug&gt;/candidates/&lt;email&gt;/retake</code></p>
+<p><code>POST https://api.doselect.com/platform/v1/test/&lt;slug&gt;/ candidates/&lt;email&gt;/retake</code></p>
 
 <ul>
 <li>If you are trying to access this endpoint with invalid request body. It will return <code>400 BAD REQUEST</code> with relevant message.</li>
