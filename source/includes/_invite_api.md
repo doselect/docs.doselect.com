@@ -572,7 +572,7 @@ the candidate to receive an retake email from DoSelect.
 - If you are trying to access this endpoint with invalid `DoSelect-Api-Key` or `DoSelect-Api-Secret`. It will return `401 UNAUTHORIZE` with relevant message.
 - If you are trying to access an invite of different company. It will return `403 FORBIDDEN` with relevant message.
 - If an invite does not exist with the email to a particular test. It will return `404 NOT FOUND` with relevant message.
-- If you trying to access this endpoint with valid data. It will return `201 CREATED` with success response.
+- If you are trying to access this endpoint with valid data. It will return `201 CREATED` with success response.
 
 ### JSON payload attributes:
 
