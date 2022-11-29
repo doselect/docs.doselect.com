@@ -523,7 +523,8 @@ headers = {
 
 payload = {
     "max_retakes": 3,
-    "suppress_email": False
+    "suppress_email": False,
+    "expiry": "2018-05-29T15:17:35+05:30"
 }
 
 response = requests.post(url, headers=headers, json=payload)
@@ -537,7 +538,8 @@ curl -X POST \
   -H 'doselect-api-secret: 385041b7bbc2320471b8551d' \
   -d '{
     "max_retakes": 3,
-    "suppress_email": false
+    "suppress_email": false,
+    "expiry": "2018-05-29T15:17:35+05:30"
 }'
 ```
 
@@ -579,3 +581,4 @@ Field          | Required | Type      | Description
 ----------     | -------- | --------- | -----------
 max_retakes    | Yes      | integer   | Number of retakes to be add. By default, the value will be `0`.
 suppress_email | No       | boolean   | If `True` don’t trigger an email from the platform, return the access_url as the response. By default, the value will be `True`.
+expiry         | No       | string    | A ISO 8601 datetime string denoting the new invite expiry.
