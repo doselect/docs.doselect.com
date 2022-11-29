@@ -66,7 +66,7 @@ If you'd prefer to use Docker, instructions are available [in the wiki](https://
 ```shell
 docker build . -t docs
 
-docker run -it -p "4567:4567" -v $PWD:/slate docs bash
+docker run -it -p "4567:4567" -v $PWD:/slate docs
 ```
 
 
