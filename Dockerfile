@@ -5,8 +5,6 @@ RUN apt-get update
 RUN gem install bundler:1.17.3
 COPY Gemfile .
 
-
-
 COPY . .
 RUN bundle install
 
