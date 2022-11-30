@@ -2364,7 +2364,8 @@ not be able to use this extended time.</p>
 
 <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">"max_retakes"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-    <span class="s">"suppress_email"</span><span class="p">:</span> <span class="bp">False</span>
+    <span class="s">"suppress_email"</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+    <span class="s">"expiry"</span><span class="p">:</span> <span class="s">"2018-05-29T15:17:35+05:30"</span>
 <span class="p">}</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
@@ -2375,7 +2376,8 @@ not be able to use this extended time.</p>
   -H <span class="s1">'doselect-api-secret: 385041b7bbc2320471b8551d'</span> <span class="se">\</span>
   -d <span class="s1">'{
     "max_retakes": 3,
-    "suppress_email": false
+    "suppress_email": false,
+    "expiry": "2018-05-29T15:17:35+05:30"
 }'</span>
 </code></pre>
 <blockquote>
@@ -2428,6 +2430,12 @@ the candidate to receive an retake email from DoSelect.</p>
 <td>No</td>
 <td>boolean</td>
 <td>If <code>True</code> don’t trigger an email from the platform, return the access_url as the response. By default, the value will be <code>True</code>.</td>
+</tr>
+<tr>
+<td>expiry</td>
+<td>No</td>
+<td>string</td>
+<td>A ISO 8601 datetime string denoting the new invite expiry.</td>
 </tr>
 </tbody></table>
 <h1 id='problem-api'>Problem API</h1>
