@@ -313,6 +313,9 @@ This endpoint deletes an invite for an email.
 
 `DELETE https://api.doselect.com/platform/v1/test/<slug>/candidates/<email>`
 
+Optionally, you can add a `suppress_email=True` GET parameter to the URL if you do not want
+the candidate to receive an invitation email from DoSelect.
+
 <aside class="notice">
 The invite can only be deleted if it hasn't been accepted by the candidate.
 </aside>
@@ -446,6 +449,9 @@ This API will only work for the aforementioned fields and will throw an `400 BAD
 ### HTTP Request
 
 `PATCH https://api.doselect.com/platform/v1/test/<slug>/candidates/<email>/`
+
+Optionally, you can add a `suppress_email=True` GET parameter to the URL if you do not want
+the candidate to receive an invitation email from DoSelect.
 
 ## Extend an invite's test duration
 
