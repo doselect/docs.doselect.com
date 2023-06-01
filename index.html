@@ -2148,6 +2148,9 @@ the `invite_expiry_days` field in the test's settings.
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>DELETE https://api.doselect.com/platform/v1/test/&lt;slug&gt;/candidates/&lt;email&gt;</code></p>
 
+<p>Optionally, you can add a <code>suppress_email=True</code> GET parameter to the URL if you do not want
+the candidate to receive an invitation email from DoSelect.</p>
+
 <aside class="notice">
 The invite can only be deleted if it hasn't been accepted by the candidate.
 </aside>
@@ -2289,6 +2292,9 @@ This will reset existing data of the user from that test. The user's previous te
 <p>This API will only work for the aforementioned fields and will throw an <code>400 BAD REQUEST</code> if any other field is sent in the payload.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
 <p><code>PATCH https://api.doselect.com/platform/v1/test/&lt;slug&gt;/candidates/&lt;email&gt;/</code></p>
+
+<p>Optionally, you can add a <code>suppress_email=True</code> GET parameter to the URL if you do not want
+the candidate to receive an invitation email from DoSelect.</p>
 <h2 id='extend-an-invite-39-s-test-duration'>Extend an invite&#39;s test duration</h2>
 <blockquote>
 <p>Request</p>
