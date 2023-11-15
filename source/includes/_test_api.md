@@ -486,7 +486,7 @@ The aforementioned `verdict` dictionary will contain the following information:
 
 Field Name      | Type  | Possible Values | Description
 ----------      | ---------  | --------------- | -----------
-percentage      | float    | N.A | The percentage of marks scored by the candidate
+percentage      | float      | N.A | The percentage of marks scored by the candidate
 quality_score   | string     | N.A | The average code quality score in this test
 quality_verdict | string     | `good`, `ok`, `bad`| The verdict based on the code written by the candidate
 verdict         | string     | `Not qualified`, `Qualified`, `Outstanding`| The verdict on the candidate
