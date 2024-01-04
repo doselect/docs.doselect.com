@@ -72,14 +72,19 @@ NOTE: Add DoSelect-Api-Key, DoSelect-Api-Secret in request headers for authentic
 import requests
 
 url = 'https://doselect.com/reports/test?access_code=MLAl5bGMyUjPlsE2etUQZ5xlF/COjZUEhLHvNPd99x%2Bc38xWxxyA%2B62W4TQAf8VqG6WvwzMtJRswQzA9evgAqqlA/hA3KOWmFnENlefQuEA%3D&format=pdf'
-response = requests.get(url)
+headers = {
+    "DoSelect-Api-Key": "88d4266fd4e6338d13b845fcf28",
+    "DoSelect-Api-Secret": "385041b7bbc2320471b8551d"
+}
+response = requests.get(url, headers=headers)
 
 ```
 
 ```shell
 
-curl "https://doselect.com/reports/test?access_code=MLAl5bGMyUjPlsE2etUQZ5xlF/COjZUEhLHvNPd99x%2Bc38xWxxyA%2B62W4TQAf8VqG6WvwzMtJRswQzA9evgAqqlA/hA3KOWmFnENlefQuEA%3D&format=pdf"
-
+curl "https://doselect.com/reports/test?access_code=MLAl5bGMyUjPlsE2etUQZ5xlF/COjZUEhLHvNPd99x%2Bc38xWxxyA%2B62W4TQAf8VqG6WvwzMtJRswQzA9evgAqqlA/hA3KOWmFnENlefQuEA%3D&format=pdf" \
+  -H "DoSelect-Api-Key: 88d4266fd4e6338d13b845fcf28" \
+  -H "DoSelect-Api-Secret: 385041b7bbc2320471b8551d"
 ```
 
 > Response 
@@ -108,7 +113,10 @@ JsonResponse with status 400 "If access code doesn't exists"
   "description":"No existing test session with provided access key"
 }
 
+HttpResponseUnauthorized (message: "Unauthorised access.", status: 401) "If incorrect DoSelect auth credentials provided"
+
 ```
 
 Get a candidate's PDF report api needs to call with query string "access_code AND format". Where the value of access_code is an unique identifier of a candidate's test session and the value of format should pass as pdf (Case sensitive). This endpoint gets PDF report of a candidate or return error if report doesn't exists for particular candidate.
  
+NOTE: Add DoSelect-Api-Key, DoSelect-Api-Secret in request headers for authentication.
