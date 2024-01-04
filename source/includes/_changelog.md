@@ -2,6 +2,7 @@
 
 Date         | Description
 ------------ | -----------
+Jan 4, 2023  | Added the api key authentication to the pdf admin report
 Nov 15, 2023 | Changed data type of percentage field from integer to float 
 Jun 18, 2021 | Added [Extend an invite's test retake](#extend-an-invite-39-s-test-retake) endpoint for adding a retake for a particular test invite.
 May 05, 2021 | Added `in_learn_feed` in the [Get one problem](#get-one-problem) API. Also, added `insights` and `tags` into a problem in the [Get a candidate's report](#get-a-candidate-39-s-report) API.
